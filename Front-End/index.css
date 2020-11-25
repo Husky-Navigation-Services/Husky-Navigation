@@ -1,8 +1,8 @@
-.sidebar {
+.content {
     display: flex;
     flex-direction: row;
     height: 100%; /* 100% Full-height */
-    width: 360px; /* 0 width - change this with JavaScript */
+    width: 100%; /* 0 width - change this with JavaScript */
     position: fixed; /* Stay in place */
     z-index: 1; /* Stay on top */
     top: 0;
@@ -92,4 +92,61 @@ html, body {
     z-index: 0;
     height: 100%;
     width: 100%;
+}
+
+.horizontalBar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: #202225;
+    width: calc(100% - 398px);
+    height: 70px;
+    border-radius: 5px;
+    margin: 10px;
+    transition: 0.5s;
+    color: whitesmoke;
+}
+
+.horizontalBar:hover {
+    border-radius: 1em;
+    transition: 0.5s;
+}
+
+.horizontalBar:active {
+    transform: translateY(-5px);
+    transition: 1s;
+}
+
+.marker  {
+    width: 20px;
+    height: 30.72px;
+    margin: 20px;
+}
+
+.tofrom {
+    color: whitesmoke;
+}
+
+.horizontalSpacer {
+    width: 120px;
+    font-size: 30pt;
+}
+
+.verticalSpacer {
+    height: 50px;
+}
+
+.bar {
+    margin-left: 40px;
+    margin-right: 40px;
+    font-size: 20pt;
+    opacity: 0.5;
+}
+
+.inputs {
+    margin-left: 40px;
+}
+
+.textbox {
+    border-radius: 10px;
 }

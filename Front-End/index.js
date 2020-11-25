@@ -8,12 +8,15 @@ document.getElementById("logo").addEventListener("click", toggleSideBar);
 
 function toggleSideBar() {
     var sidebarLeft = document.getElementById("sidebarLeftId");
+    var horizontalBar = document.getElementById("horizontalBarId");
     if (sidebarLeft.style.width == "0px") {
         sidebarLeft.style.opacity = 1;
         sidebarLeft.style.width = "288px";
+        horizontalBar.style.width = "calc(100% - 398px)";
     } else {
         sidebarLeft.style.opacity = 0;
         sidebarLeft.style.width = "0px";
+        horizontalBar.style.width = "calc(100% - 90px)";
     }
     
   
