@@ -9,14 +9,15 @@
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
     integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
     crossorigin=""></script>
-    <script src="index.js"></script>
+
 </head>
+
 <body>
-
     
-
-    <div class= "sidebar">
-        <div class = "sidebarLeft">
+    <div id = "map"></div>
+    
+    <div id = "sidebar" class= "sidebar">
+    <div id = "sidebarLeftId" class = "sidebarLeft">
             <h1 class = "title"> Husky Navigation </h1>
             <h6 class = "header"> BUILDINGS </h6>
             <p class = "building"> Guggenheim Hall</p>
@@ -31,9 +32,10 @@
         </div>
 
         <div class = "sidebarRight">
-            <img class = "logo" src="HuskyNavLogoDarker.png" alt="Husky Navigation">
+            <img id = "logo" class = "logo" src="HuskyNavLogoDarker.png" alt="Husky Navigation">
         </div>
     </div>
-    <div id = "map"></div>
+
+    <script src = "index.js"></script>
 </body>
 </html>
