@@ -147,6 +147,33 @@ html, body {
     margin-left: 40px;
 }
 
-.textbox {
-    border-radius: 10px;
+.select {
+    border-radius: 3px;
+    width: 200px;
+    height: 40px;
+    background-color: #202225;
+    color: whitesmoke;
+    border-width: 5px;
+    transition: 0.5s;
+}
+
+.select:hover {
+    opacity: 0.6;
+}
+
+option {
+    transition: 0.5s;
+}
+
+#navBtn {
+    border-radius: 5px;
+    width: 200px;
+    height: 40px;
+}
+
+#navBtn:hover {
+    background-color: #202225;
+    color: whitesmoke;
+    border-color: whitesmoke;
+    transition: 0.5s;
 }

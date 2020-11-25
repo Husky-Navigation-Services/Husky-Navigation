@@ -32,9 +32,27 @@
         
         <div class = "verticalSpacer"></div>
         <div class = "inputs">
-            <input type="text" id = "startingPointId" class = "textbox startingPoint" name="fname"><br><br>
-            <input type="text" id = "destinationId" class = "textbox destination" name="lname"><br><br>
-            <input type="submit" value="Submit">
+            <select name="startingPoints" id="startingPointsId" class = "select startingPoints">
+                <option value="Select Starting Point">Select Starting Point</option>
+                <option value="Guggenheim Hall">Guggenheim Hall</option>
+                <option value="Guggenheim Annex">Guggenheim Annex</option>
+                <option value="Bagley Hall">Bagley Hall</option>
+                <option value="Johnson Hall">Johnson Hall</option>
+                <option value="Sieg Hall">Sieg Hall</option>
+                <option value="Husky Union Building">Husky Union Building</option>
+            </select>
+            <br></br>
+            <select name="destinations" id="destinationsId" class = "select destinations">
+                <option value="Select Destination">Select Destination</option>
+                <option value="Guggenheim Hall">Guggenheim Hall</option>
+                <option value="Guggenheim Annex">Guggenheim Annex</option>
+                <option value="Bagley Hall">Bagley Hall</option>
+                <option value="Johnson Hall">Johnson Hall</option>
+                <option value="Sieg Hall">Sieg Hall</option>
+                <option value="Husky Union Building">Husky Union Building</option>
+            </select>
+            <br></br>
+            <button id = "navBtn">Navigate</button>
         </div>
     </div>
 
@@ -44,10 +62,10 @@
 
         <div id = "horizontalBarId" class = "horizontalBar">
             <img id = "markerId" class = "marker" src = "MarkerIcon3.png"></img>
-            <p class = "tofrom">Bagley Hall</p>
+            <p id = "from" class = "tofrom">Select Starting Point</p>
             <div class = "horizontalSpacer"></div>
             <img id = "markerId" class = "marker" src = "MarkerIcon3.png"></img>
-            <p class = "tofrom">Guggenheim Hall</p>
+            <p id = "to" class = "tofrom">Select Destination</p>
             <div class = "bar"> &#9474 </div>
             <div id = "distanceId" class = "distance"> Distance: 2.2 mi </div>
             <div class = "bar"> &#9474 </div>
