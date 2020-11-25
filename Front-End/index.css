@@ -1,4 +1,61 @@
-.headerTest {
-    color: red;
+.sidebar {
+    display: flex;
+    flex-direction: row;
+    height: 100%; /* 100% Full-height */
+    width: 360px; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Stay on top */
+    top: 0;
+    left: 0;
+    overflow-x: hidden; /* Disable horizontal scroll */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidebar */
 }
 
+.sidebarLeft {
+    margin: 10px;
+    height: calc(100% - 20px);
+    width: 80%;
+    background-color:#202225; /* Grey*/
+    border-radius: 5px;
+}
+
+.sidebarRight {
+    height: 100%;
+    width: 20%
+}
+
+.logo {
+   
+    margin-top: 10px;
+    width: 70px;
+    height: 70px;
+    padding-top: 0%;
+    border-radius: 5px;
+    
+}
+
+.title {
+    color: whitesmoke;
+    text-align: center;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 15pt;
+    margin: 20px;
+    opacity: 0.8;
+}
+
+.header {
+    margin-left: 40px;
+    margin-top: 80px;
+    color: whitesmoke;
+    opacity: 0.5;
+}
+
+.building {
+    margin-left: 50px;
+    color: whitesmoke;
+    opacity: 0.7;
+}
+
+#map {
+    height: 550px;
+}

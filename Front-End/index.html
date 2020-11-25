@@ -1,14 +1,39 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title class = "titleTest">Husky Navigation Maps</title>
-<link rel="stylesheet" href="index.css">
-<script src="index.js"></script>
+    <title>Husky Navigation Maps</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+    crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+    crossorigin=""></script>
+    <script src="index.js"></script>
 </head>
 <body>
 
-<h1 class = "headerTest">My First Heading</h1>
-<p class = "pTest">My first paragraph.</p>
+    
 
+    <div class= "sidebar">
+        <div class = "sidebarLeft">
+            <h1 class = "title"> Husky Navigation </h1>
+            <h6 class = "header"> BUILDINGS </h6>
+            <p class = "building"> Guggenheim Hall</p>
+            <p class = "building"> Bagley Hall</p>
+            <p class = "building"> Suzzallo Library</p>
+            <p class = "building"> McDonald's</p>
+            <h6 class = "header"> BUS STOPS </h6>
+            <p class = "building"> Stop 123</p>
+            <p class = "building"> Stop 456</p>
+            <p class = "building"> Stop 789</p>
+            <p class = "building"> Stop 321</p>
+        </div>
+
+        <div class = "sidebarRight">
+            <img class = "logo" src="HuskyNavLogoDarker.png" alt="Husky Navigation">
+        </div>
+    </div>
+    <div id = "map"></div>
 </body>
 </html>
