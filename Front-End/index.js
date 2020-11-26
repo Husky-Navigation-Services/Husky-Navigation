@@ -1,3 +1,8 @@
+// Set Location Coordinates
+var locationsMap = {
+    
+}
+
 
 // Initialize Map
 var mymap = L.map('map').setView([47.650017, -122.30654], 13);
@@ -7,25 +12,26 @@ L.tileLayer( 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 }).addTo( mymap );
 
 
-
-
-var myFunction = function() {
-    var attribute = this.getAttribute("data-myattribute");
-    alert(attribute);
-};
-
-for (var i = 0; i < elements.length; i++) {
-    elements[i].addEventListener('click', myFunction, false);
-}
-
 // Add Event Listeners
 var fromElement = document.getElementById("from");
 var toElement = document.getElementById("to");
-var locationElements = document.getElementsByClassName("classname");
+var locationElements = document.getElementsByClassName("location");
 document.getElementById("logo").addEventListener("click", toggleContent);
 document.getElementById("startingPointsId").addEventListener("change", updateStart);
 document.getElementById("destinationsId").addEventListener("change", updateDest);
 document.getElementById("navBtn").addEventListener("click", tryNav);
+
+for (var i = 0; i < locationElements.length; i++) {
+    locationElements[i].addEventListener('click', setViewToLocation);
+}
+
+// Event listener callbacks
+function setViewToLocation() {
+    console.log(this.innerHTML);
+    if (this.innerHTML == "Guggenheim Hall") {
+        alert("Guggenheim Annex Selected");
+    }
+}
 
 function updateStart() {
     fromElement.innerHTML = this.value;
