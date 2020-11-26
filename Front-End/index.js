@@ -71,5 +71,11 @@ function navPossible(from, to) {
 }
 
 function nav() {
-    alert("Navigating...");
+    setNavView(locationsMap[fromElement.innerHTML], locationsMap[toElement.innerHTML])
+}
+
+function setNavView(coord1, coord2) {
+    var mid = [(coord1[0] + coord2[0]) / 2, (coord1[1] + coord2[1]) / 2];
+    console.log()
+    mymap.setView(mid, 30);
 }
