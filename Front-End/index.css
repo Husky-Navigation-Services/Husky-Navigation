@@ -88,9 +88,9 @@ font-family: 'Montserrat Alternates', sans-serif;*/
     color: whitesmoke;
     opacity: 0.7;
     width: 200px;
-    
+    background-color:#313235;
 
-    background-image: linear-gradient(grey,grey), linear-gradient(#202225, #202225);
+    background-image: linear-gradient(grey,grey), linear-gradient(#313235,#313235);
     background-size: 0 2px, auto;
     background-repeat: no-repeat;
     background-position: center bottom;
@@ -212,6 +212,11 @@ option {
     height: 160px;
     overflow-y: auto;
     overflow-x: hidden;
+    box-shadow: 5px 5px 5px 5px #202225;
+    border-radius: 10px;
+    background-color:#313235;
+    margin: 20px;
+    padding-left: 0px;
 }
 
 /* width */
