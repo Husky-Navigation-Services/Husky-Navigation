@@ -9,6 +9,7 @@
     left: 0;
     overflow-x: hidden; /* Disable horizontal scroll */
     transition: 1s; /* 0.5 second transition effect to slide in the sidebar */
+    pointer-events: none;
 }
 
 .sidebarLeft {
@@ -21,6 +22,7 @@
     background-color:#202225; /* Grey*/
     border-radius: 5px;
     transition: 0.5s;
+    pointer-events: auto;
 }
 
 .sidebarLeft:hover {
@@ -39,12 +41,12 @@
 }
 
 .logo {
-    z-index: 2;
     margin-top: 10px;
     width: 70px;
     height: 70px;
     padding-top: 0%;
     border-radius: 5px;
+    pointer-events: auto;
 }
 
 .logo:hover {
@@ -105,6 +107,7 @@ html, body {
     margin: 10px;
     transition: 0.5s;
     color: whitesmoke;
+    pointer-events: auto;
 }
 
 .horizontalBar:hover {
