@@ -1,6 +1,4 @@
 import java.util.*;
-import jdk.internal.org.objectweb.asm.tree.LocalVariableAnnotationNode;
-import sun.reflect.annotation.TypeAnnotation.LocationInfo;
 
 public class Decision {
     private int userSession;
@@ -14,7 +12,7 @@ public class Decision {
         throw new UnsupportedOperationException("Not implemented yet");
     }
 
-    public List<Node> finalDecision(Map<Node> b) {
+    public List<Node> finalDecision(Map<Node> nodeGroups) {
         throw new UnsupportedOperationException("Not implemented yet");
     }
 
