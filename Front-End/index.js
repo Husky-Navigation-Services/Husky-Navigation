@@ -16,6 +16,9 @@ L.tileLayer( 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 }).addTo( mymap );
 mymap.zoomControl.setPosition('bottomright');
 mcdonaldsMarker.addTo(mymap);
+
+
+
 // Add Event Listeners
 var fromElement = document.getElementById("from");
 var toElement = document.getElementById("to");
@@ -32,6 +35,10 @@ document.getElementById("navBtn").addEventListener("click", tryNav);
 for (var i = 0; i < locationElements.length; i++) {
     locationElements[i].addEventListener('click', setViewToLocation);
 }
+
+// Scroll to tops of menus
+buildingContainer.scrollIntoView({block: "center"});
+
 
 // Event listener callbacks
 function updateLocationOpacities() {
