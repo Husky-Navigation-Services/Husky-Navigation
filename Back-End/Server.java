@@ -1,3 +1,5 @@
-public class Server{
+public class Server {
+    public Server(Parser parse, Set<Node> nodes) {
     
+    }
 }
