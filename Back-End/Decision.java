@@ -1,3 +1,4 @@
+import java.util.*;
 import jdk.internal.org.objectweb.asm.tree.LocalVariableAnnotationNode;
 import sun.reflect.annotation.TypeAnnotation.LocationInfo;
 
@@ -13,7 +14,7 @@ public class Decision {
         throw new UnsupportedOperationException("Not implemented yet");
     }
 
-    public Set<Node> finalDecision(Node a, Node b) {
+    public List<Node> finalDecision(Map<Node> b) {
         throw new UnsupportedOperationException("Not implemented yet");
     }
 
