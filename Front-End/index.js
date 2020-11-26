@@ -20,8 +20,10 @@ mcdonaldsMarker.addTo(mymap);
 var fromElement = document.getElementById("from");
 var toElement = document.getElementById("to");
 var locationElements = document.getElementsByClassName("location");
-var locationContainer = document.getElementById("location-container");
-locationContainer.addEventListener('scroll', updateLocationOpacities);
+var buildingContainer = document.getElementById("building-container");
+var busStopContainer = document.getElementById("bus-stop-container");
+buildingContainer.addEventListener('scroll', updateLocationOpacities);
+busStopContainer.addEventListener('scroll', updateLocationOpacities);
 document.getElementById("logo").addEventListener("click", toggleContent);
 document.getElementById("startingPointsId").addEventListener("change", updateStart);
 document.getElementById("destinationsId").addEventListener("change", updateDest);
@@ -34,7 +36,7 @@ for (var i = 0; i < locationElements.length; i++) {
 // Event listener callbacks
 function updateLocationOpacities() {
     for (var i = 0; i < locationElements.length; i++) {
-        if (!isElementVisible(locationElements[i], locationContainer)) {
+        if (!isElementVisible(locationElements[i], this)) {
             locationElements[i].style.opacity = 0.6;
             console.log(locationElements[i].innerHTML + " is invisible");
         } else {
@@ -42,6 +44,7 @@ function updateLocationOpacities() {
         }
     }
 }
+
 
 function setViewToLocation() {
     mymap.setView(locationsMap[this.innerHTML], 30);
