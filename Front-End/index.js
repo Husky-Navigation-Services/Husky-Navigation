@@ -29,6 +29,8 @@ for (var i = 0; i < locationElements.length; i++) {
     locationElements[i].addEventListener('click', setViewToLocation);
 }
 
+
+
 // Event listener callbacks
 function setViewToLocation() {
     mymap.setView(locationsMap[this.innerHTML], 30);

@@ -4,6 +4,8 @@
 font-family: 'Montserrat Alternates', sans-serif;*/
 @import url('https://fonts.googleapis.com/css2?family=Spectral:wght@600&display=swap');
 /*font-family: 'Spectral', serif;*/
+@import url('https://fonts.googleapis.com/css2?family=Castoro&display=swap');
+/*font-family: 'Castoro', serif;*/
 .content {
     display: flex;
     flex-direction: row;
@@ -29,7 +31,7 @@ font-family: 'Montserrat Alternates', sans-serif;*/
     border-radius: 10px;
     transition: 0.5s;
     pointer-events: auto;
-    font-family: 'Montserrat Alternates', sans-serif;
+    font-family: 'Castoro', serif;
 }
 
 .sidebarLeft:hover {
@@ -72,7 +74,7 @@ font-family: 'Montserrat Alternates', sans-serif;*/
     font-size: 20pt;
     margin: 20px;
     opacity: 0.8;
-    font-family: 'Spectral', serif;
+    font-family: 'Castoro', serif;
 }
 
 .header {
@@ -82,7 +84,7 @@ font-family: 'Montserrat Alternates', sans-serif;*/
     opacity: 0.5;
 }
 
-.building, .bus-stop {
+.location {
     margin-left: 50px;
     color: whitesmoke;
     opacity: 0.7;
@@ -95,10 +97,11 @@ font-family: 'Montserrat Alternates', sans-serif;*/
     transition: all .2s ease-out;
 }
 
-.building:hover, .bus-stop:hover {
+.location:hover {
     opacity: 1;
     background-size: 100% 1px, auto;
 }
+
 
 html {
     scroll-behavior: smooth;
@@ -131,7 +134,7 @@ html, body {
     transition: 0.5s;
     color: whitesmoke;
     pointer-events: auto;
-    font-family: 'Montserrat Alternates', sans-serif;
+    font-family: 'Castoro', serif;
 }
 
 .horizontalBar:hover {
@@ -160,7 +163,7 @@ html, body {
 }
 
 .verticalSpacer {
-    height: 50px;
+    height: 30px;
 }
 
 .bar {
@@ -183,7 +186,7 @@ html, body {
     color: whitesmoke;
     border-width: 5px;
     transition: 0.5s;
-    font-family: 'Montserrat Alternates', sans-serif;
+    font-family: 'Castoro', serif;
 }
 
 .select:hover {
@@ -209,14 +212,14 @@ option {
 }
 
 .vertical-menu {
-    height: 200px;
+    height: 150px;
     overflow-y: auto;
     overflow-x: hidden;
 }
 
 /* width */
 ::-webkit-scrollbar {
-    width: 10px;
+    width: 0px;
     
 }
   
