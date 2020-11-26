@@ -1,6 +1,5 @@
-
-@import url('https://fonts.googleapis.com/css2?family=Cantarell&family=Montserrat+Alternates:ital,wght@1,300&display=swap');
-/* font-family: 'Cantarell', sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Castoro&display=swap');
+/* font-family: 'Castoro', sans-serif;
 font-family: 'Montserrat Alternates', sans-serif;*/
 @import url('https://fonts.googleapis.com/css2?family=Spectral:wght@600&display=swap');
 /*font-family: 'Spectral', serif;*/
@@ -29,7 +28,7 @@ font-family: 'Montserrat Alternates', sans-serif;*/
     border-radius: 10px;
     transition: 0.5s;
     pointer-events: auto;
-    font-family: 'Montserrat Alternates', sans-serif;
+    font-family: 'Castoro', serif;
 }
 
 .sidebarLeft:hover {
@@ -131,7 +130,7 @@ html, body {
     transition: 0.5s;
     color: whitesmoke;
     pointer-events: auto;
-    font-family: 'Montserrat Alternates', sans-serif;
+    font-family: 'Castoro', serif;
 }
 
 .horizontalBar:hover {
@@ -183,7 +182,7 @@ html, body {
     color: whitesmoke;
     border-width: 5px;
     transition: 0.5s;
-    font-family: 'Montserrat Alternates', sans-serif;
+    font-family: 'Castoro', serif;
 }
 
 .select:hover {
@@ -198,7 +197,7 @@ option {
     border-radius: 5px;
     width: 200px;
     height: 40px;
-    font-family: 'Montserrat Alternates', sans-serif;
+    font-family: 'Castoro', serif;
 }
 
 #navBtn:hover {
