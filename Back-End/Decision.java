@@ -3,24 +3,28 @@ import sun.reflect.annotation.TypeAnnotation.LocationInfo;
 
 public class Decision {
     private int userSession;
-    private Set<LocationNode> decision;
+    private Set<Node> decision;
 
     public Decision(int userSession) {
         this.userSession = userSession;
     }
 
-    public LocationNode decision(LocationNode a, LocationNode b) {
+    public Node decision(Node a, Node b) {
         throw new UnsupportedOperationException("Not implemented yet");
     }
 
-    public Set<LocationNode> finalDecision(LocationNode a, LocationNode b) {
+    public Set<Node> finalDecision(Node a, Node b) {
         throw new UnsupportedOperationException("Not implemented yet");
+    }
+
+    public int getUserSession() {
+        return userSession;
     }
 
     public String toString() {
         String finalString = "";
         if (decision != null) {
-            for (LocationNode location : decision) {
+            for (Node location : decision) {
                 finalString += "-> [" + location + "]";
             }
         }
