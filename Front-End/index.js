@@ -1,6 +1,9 @@
-// Set Location Coordinates
+// Store Location Coordinates
 var locationsMap = {
-
+    "Bagley Hall": [47.65353, -122.30879],
+    "Suzzallo Library": [47.65580, -122.30818],
+    "Guggenheim Hall": [47.65424, -122.30644],
+    "McDonald's": [47.66774, -122.30037]   
 }
 
 
@@ -27,10 +30,7 @@ for (var i = 0; i < locationElements.length; i++) {
 
 // Event listener callbacks
 function setViewToLocation() {
-    console.log(this.innerHTML);
-    if (this.innerHTML == "Guggenheim Hall") {
-        alert("Guggenheim Annex Selected");
-    }
+    mymap.setView(locationsMap[this.innerHTML], 30);
 }
 
 function updateStart() {
