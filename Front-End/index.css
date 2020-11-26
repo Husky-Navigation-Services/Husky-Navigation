@@ -75,10 +75,22 @@
     opacity: 0.5;
 }
 
-.building {
+.building, .bus-stop {
     margin-left: 50px;
     color: whitesmoke;
     opacity: 0.7;
+    width: 200px;
+
+    background-image: linear-gradient(grey,grey), linear-gradient(#202225, #202225);
+    background-size: 0 2px, auto;
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    transition: all .2s ease-out;
+}
+
+.building:hover, .bus-stop:hover {
+    opacity: 1;
+    background-size: 100% 1px, auto;
 }
 
 html, body { 
