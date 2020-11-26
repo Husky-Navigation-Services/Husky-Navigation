@@ -1,6 +1,5 @@
-
-@import url('https://fonts.googleapis.com/css2?family=Cantarell&family=Montserrat+Alternates:ital,wght@1,300&display=swap');
-/* font-family: 'Cantarell', sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Castoro&display=swap');
+/* font-family: 'Castoro', sans-serif;
 font-family: 'Montserrat Alternates', sans-serif;*/
 @import url('https://fonts.googleapis.com/css2?family=Spectral:wght@600&display=swap');
 /*font-family: 'Spectral', serif;*/
@@ -201,7 +200,7 @@ option {
     border-radius: 5px;
     width: 200px;
     height: 40px;
-    font-family: 'Montserrat Alternates', sans-serif;
+    font-family: 'Castoro', serif;
 }
 
 #navBtn:hover {

@@ -3,7 +3,7 @@ var locationsMap = {
     "Bagley Hall": [47.65353, -122.30879],
     "Suzzallo Library": [47.65580, -122.30818],
     "Guggenheim Hall": [47.65424, -122.30644],
-    "McDonald's": [47.66774, -122.30037]   
+    "Husky Union Building": [40.274761, -76.667091]   
 }
 
 
