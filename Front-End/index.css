@@ -1,10 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Castoro&display=swap');
-/* font-family: 'Castoro', sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Cantarell&family=Montserrat+Alternates:ital,wght@1,300&display=swap');
+/* font-family: 'Cantarell', sans-serif;
 font-family: 'Montserrat Alternates', sans-serif;*/
 @import url('https://fonts.googleapis.com/css2?family=Spectral:wght@600&display=swap');
 /*font-family: 'Spectral', serif;*/
-@import url('https://fonts.googleapis.com/css2?family=Castoro&display=swap');
-/*font-family: 'Castoro', serif;*/
 .content {
     display: flex;
     flex-direction: row;
@@ -30,7 +28,7 @@ font-family: 'Montserrat Alternates', sans-serif;*/
     border-radius: 10px;
     transition: 0.5s;
     pointer-events: auto;
-    font-family: 'Castoro', serif;
+    font-family: 'Montserrat Alternates', sans-serif;
 }
 
 .sidebarLeft:hover {
@@ -73,7 +71,7 @@ font-family: 'Montserrat Alternates', sans-serif;*/
     font-size: 20pt;
     margin: 20px;
     opacity: 0.8;
-    font-family: 'Castoro', serif;
+    font-family: 'Spectral', serif;
 }
 
 .header {
@@ -83,7 +81,7 @@ font-family: 'Montserrat Alternates', sans-serif;*/
     opacity: 0.5;
 }
 
-.location {
+.building, .bus-stop {
     margin-left: 50px;
     color: whitesmoke;
     opacity: 0.7;
@@ -96,11 +94,10 @@ font-family: 'Montserrat Alternates', sans-serif;*/
     transition: all .2s ease-out;
 }
 
-.location:hover {
+.building:hover, .bus-stop:hover {
     opacity: 1;
     background-size: 100% 1px, auto;
 }
-
 
 html {
     scroll-behavior: smooth;
@@ -133,7 +130,7 @@ html, body {
     transition: 0.5s;
     color: whitesmoke;
     pointer-events: auto;
-    font-family: 'Castoro', serif;
+    font-family: 'Montserrat Alternates', sans-serif;
 }
 
 .horizontalBar:hover {
@@ -162,7 +159,7 @@ html, body {
 }
 
 .verticalSpacer {
-    height: 30px;
+    height: 50px;
 }
 
 .bar {
@@ -185,7 +182,7 @@ html, body {
     color: whitesmoke;
     border-width: 5px;
     transition: 0.5s;
-    font-family: 'Castoro', serif;
+    font-family: 'Montserrat Alternates', sans-serif;
 }
 
 .select:hover {
@@ -200,7 +197,7 @@ option {
     border-radius: 5px;
     width: 200px;
     height: 40px;
-    font-family: 'Castoro', serif;
+    font-family: 'Montserrat Alternates', sans-serif;
 }
 
 #navBtn:hover {
@@ -211,14 +208,14 @@ option {
 }
 
 .vertical-menu {
-    height: 150px;
+    height: 200px;
     overflow-y: auto;
     overflow-x: hidden;
 }
 
 /* width */
 ::-webkit-scrollbar {
-    width: 0px;
+    width: 10px;
     
 }
   
