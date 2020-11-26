@@ -95,6 +95,7 @@ font-family: 'Montserrat Alternates', sans-serif;*/
     background-repeat: no-repeat;
     background-position: center bottom;
     transition: all .2s ease-out;
+    transition: opacity 0.4s;
 }
 
 .location:hover {

@@ -35,7 +35,10 @@ for (var i = 0; i < locationElements.length; i++) {
 function updateLocationOpacities() {
     for (var i = 0; i < locationElements.length; i++) {
         if (!isElementVisible(locationElements[i], locationContainer)) {
+            locationElements[i].style.opacity = 0.6;
             console.log(locationElements[i].innerHTML + " is invisible");
+        } else {
+            locationElements[i].style.opacity = 1;
         }
     }
 }
@@ -93,11 +96,13 @@ function setNavView(coord1, coord2) {
 
 // Scrolling Feature
 function isElementVisible (el, holder) {
-    holder = holder || document.body
-    const { top, bottom, height } = el.getBoundingClientRect()
+    
+    const { y } = el.getBoundingClientRect()
     const holderRect = holder.getBoundingClientRect()
-  
-    return top <= holderRect.top
-      ? holderRect.top - top <= height
-      : bottom - holderRect.bottom <= height
+    if (y <= holderRect.top + holderRect.height - 50 && y >= holderRect.top + 30) {
+        return true;
+    } else {
+        return false;
+    }
+
 }
