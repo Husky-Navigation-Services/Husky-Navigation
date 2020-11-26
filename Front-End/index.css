@@ -1,3 +1,8 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Cantarell&family=Montserrat+Alternates:ital,wght@1,300&display=swap');
+/* font-family: 'Cantarell', sans-serif;
+font-family: 'Montserrat Alternates', sans-serif;*/
+
 .content {
     display: flex;
     flex-direction: row;
@@ -20,9 +25,10 @@
     height: calc(100% - 20px);
     width: 288px;
     background-color:#202225; /* Grey*/
-    border-radius: 5px;
+    border-radius: 10px;
     transition: 0.5s;
     pointer-events: auto;
+    font-family: 'Montserrat Alternates', sans-serif;
 }
 
 .sidebarLeft:hover {
@@ -62,10 +68,10 @@
 .title {
     color: whitesmoke;
     text-align: center;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: 15pt;
     margin: 20px;
     opacity: 0.8;
+    
 }
 
 .header {
@@ -115,11 +121,12 @@ html, body {
     background-color: #202225;
     width: calc(100% - 398px);
     height: 70px;
-    border-radius: 5px;
+    border-radius: 10px;
     margin: 10px;
     transition: 0.5s;
     color: whitesmoke;
     pointer-events: auto;
+    font-family: 'Montserrat Alternates', sans-serif;
 }
 
 .horizontalBar:hover {
@@ -160,6 +167,7 @@ html, body {
 
 .inputs {
     margin-left: 40px;
+    
 }
 
 .select {
@@ -170,6 +178,7 @@ html, body {
     color: whitesmoke;
     border-width: 5px;
     transition: 0.5s;
+    font-family: 'Montserrat Alternates', sans-serif;
 }
 
 .select:hover {
@@ -184,6 +193,7 @@ option {
     border-radius: 5px;
     width: 200px;
     height: 40px;
+    font-family: 'Montserrat Alternates', sans-serif;
 }
 
 #navBtn:hover {
