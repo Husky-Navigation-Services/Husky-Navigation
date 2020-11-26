@@ -100,6 +100,10 @@ font-family: 'Montserrat Alternates', sans-serif;*/
     background-size: 100% 1px, auto;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 html, body { 
     height: 100%; 
     width: 100%;
@@ -202,4 +206,34 @@ option {
     color: whitesmoke;
     border-color: whitesmoke;
     transition: 0.5s;
+}
+
+.vertical-menu {
+    height: 200px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+    
+}
+  
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+  border-radius: 10px;
+  
+}
+   
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; 
+  border-radius: 10px;
+}
+  
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
 }
