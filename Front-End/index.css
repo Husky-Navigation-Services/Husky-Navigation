@@ -2,7 +2,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Cantarell&family=Montserrat+Alternates:ital,wght@1,300&display=swap');
 /* font-family: 'Cantarell', sans-serif;
 font-family: 'Montserrat Alternates', sans-serif;*/
-
+@import url('https://fonts.googleapis.com/css2?family=Spectral:wght@600&display=swap');
+/*font-family: 'Spectral', serif;*/
 .content {
     display: flex;
     flex-direction: row;
@@ -68,10 +69,10 @@ font-family: 'Montserrat Alternates', sans-serif;*/
 .title {
     color: whitesmoke;
     text-align: center;
-    font-size: 15pt;
+    font-size: 20pt;
     margin: 20px;
     opacity: 0.8;
-    
+    font-family: 'Spectral', serif;
 }
 
 .header {

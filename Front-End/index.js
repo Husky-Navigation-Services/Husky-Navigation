@@ -9,12 +9,13 @@ var locationsMap = {
 
 // Initialize Map
 var mymap = L.map('map').setView([47.650017, -122.30654], 13);
+var mcdonaldsMarker = new L.Marker(locationsMap["McDonald's"]);
 L.tileLayer( 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
     subdomains: ['a','b','c']
 }).addTo( mymap );
 mymap.zoomControl.setPosition('bottomright');
-
+mcdonaldsMarker.addTo(mymap);
 // Add Event Listeners
 var fromElement = document.getElementById("from");
 var toElement = document.getElementById("to");
@@ -76,6 +77,7 @@ function nav() {
 
 function setNavView(coord1, coord2) {
     var mid = [(coord1[0] + coord2[0]) / 2, (coord1[1] + coord2[1]) / 2];
-    console.log()
-    mymap.setView(mid, 30);
+    mymap.setView(mid);
+    mymap.fitBounds([coord1, coord2]);
+
 }
