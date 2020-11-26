@@ -20,6 +20,8 @@ mcdonaldsMarker.addTo(mymap);
 var fromElement = document.getElementById("from");
 var toElement = document.getElementById("to");
 var locationElements = document.getElementsByClassName("location");
+var locationContainer = document.getElementById("location-container");
+locationContainer.addEventListener('scroll', updateLocationOpacities);
 document.getElementById("logo").addEventListener("click", toggleContent);
 document.getElementById("startingPointsId").addEventListener("change", updateStart);
 document.getElementById("destinationsId").addEventListener("change", updateDest);
@@ -30,6 +32,14 @@ for (var i = 0; i < locationElements.length; i++) {
 }
 
 // Event listener callbacks
+function updateLocationOpacities() {
+    for (var i = 0; i < locationElements.length; i++) {
+        if (!isElementVisible(locationElements[i], locationContainer)) {
+            console.log(locationElements[i].innerHTML + " is invisible");
+        }
+    }
+}
+
 function setViewToLocation() {
     mymap.setView(locationsMap[this.innerHTML], 30);
 }
@@ -79,4 +89,15 @@ function setNavView(coord1, coord2) {
     var mid = [(coord1[0] + coord2[0]) / 2, (coord1[1] + coord2[1]) / 2];
     mymap.setView(mid);
     mymap.fitBounds([coord1, coord2]);
+}
+
+// Scrolling Feature
+function isElementVisible (el, holder) {
+    holder = holder || document.body
+    const { top, bottom, height } = el.getBoundingClientRect()
+    const holderRect = holder.getBoundingClientRect()
+  
+    return top <= holderRect.top
+      ? holderRect.top - top <= height
+      : bottom - holderRect.bottom <= height
 }
