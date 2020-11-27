@@ -23,6 +23,8 @@ mcdonaldsMarker.addTo(mymap);
 var fromElement = document.getElementById("from");
 var toElement = document.getElementById("to");
 var locationElements = document.getElementsByClassName("location");
+var buildingElements = document.getElementsByClassName("building");
+var busStopElements = document.getElementsByClassName("bus-stop");
 var buildingContainer = document.getElementById("building-container");
 var busStopContainer = document.getElementById("bus-stop-container");
 buildingContainer.addEventListener('scroll', updateLocationOpacities);
@@ -31,6 +33,8 @@ document.getElementById("logo").addEventListener("click", toggleContent);
 document.getElementById("startingPointsId").addEventListener("change", updateStart);
 document.getElementById("destinationsId").addEventListener("change", updateDest);
 document.getElementById("navBtn").addEventListener("click", tryNav);
+document.getElementById("buildingSearch").addEventListener("keyup", scrollToBuilding);
+document.getElementById("busStopSearch").addEventListener("keyup", scrollToStop);
 
 for (var i = 0; i < locationElements.length; i++) {
     locationElements[i].addEventListener('click', setViewToLocation);
@@ -38,16 +42,37 @@ for (var i = 0; i < locationElements.length; i++) {
 
 // Scroll to tops of menus
 buildingContainer.scrollIntoView({block: "center"});
-
+busStopContainer.scrollIntoView({block: "center"});
 
 // Event listener callbacks
+function scrollToBuilding() {
+    scrollToLocation(this.value, buildingElements, buildingContainer);
+}
+
+function scrollToStop() {
+    console.log("works");
+    scrollToLocation(this.value, busStopElements, busStopContainer);
+}
+
+function scrollToLocation(input, els, holder) {
+    for (var i = 0; i < els.length; i++) {
+        var inputPrefix = input.toLowerCase();
+        var currentPrefix = els[i].innerHTML.substring(0, inputPrefix.length).toLowerCase();
+        if (inputPrefix === currentPrefix) {
+            console.log(inputPrefix + " MATCHED " + els[i].innerHTML);
+            scroll(els[i], holder);
+            
+        } 
+    }
+}
+
+updateLocationOpacities(); // initial opacity updatef
 function updateLocationOpacities() {
     for (var i = 0; i < locationElements.length; i++) {
-        if (!isElementVisible(locationElements[i], this)) {
-            locationElements[i].style.opacity = 0.6;
-            console.log(locationElements[i].innerHTML + " is invisible");
-        } else {
+        if (isElementVisible(locationElements[i], busStopContainer) || isElementVisible(locationElements[i], buildingContainer)) {
             locationElements[i].style.opacity = 1;
+        } else {
+            locationElements[i].style.opacity = 0.2;
         }
     }
 }
@@ -104,9 +129,8 @@ function setNavView(coord1, coord2) {
     mymap.fitBounds([coord1, coord2]);
 }
 
-// Scrolling Feature
+// Scrolling Features/Tools
 function isElementVisible (el, holder) {
-    
     const { y } = el.getBoundingClientRect()
     const holderRect = holder.getBoundingClientRect()
     if (y <= holderRect.top + holderRect.height - 50 && y >= holderRect.top + 30) {
@@ -114,5 +138,10 @@ function isElementVisible (el, holder) {
     } else {
         return false;
     }
+}
 
+function scroll(el, holder) {
+    console.log("scorlling " + el.offsetTop + " to " + el.innerHTML);
+    var topPos = el.offsetTop;
+    holder.scrollTop = topPos - 40;
 }
