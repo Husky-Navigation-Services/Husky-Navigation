@@ -1,7 +1,7 @@
 public class Node {
-    private String location;
-    private String latitude;
-    private String longitude;
+    private final String location;
+    private final String latitude;
+    private final String longitude;
     
     // Constructs a new node instance given a latitude and longitude.
     public Node(String latitude, String longitude) {
@@ -17,9 +17,6 @@ public class Node {
 
     // Returns a string location.
     public String getLocation() {
-        if (location == null) {
-            throw new NoSuchFieldError("No location field implemented");
-        }
         return location;
     }
 
@@ -40,5 +37,20 @@ public class Node {
         } else {
             return location + ": (" + latitude + ", " + longitude + ")";
         }
+    }
+
+    // Returns true or false if this node is equal to the given object.
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        } else if (!(o instanceof Node)) {
+            return false;
+        }
+        return this.toString().equals(o.toString());
+    }
+
+    // Returns a integer hashcode representation of this DNA strand.
+    public int hashCode() {
+        return toString().hashCode();
     }
 }

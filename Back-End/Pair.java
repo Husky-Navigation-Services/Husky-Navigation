@@ -1,4 +1,4 @@
-public class Pair implements Comparable<Node> {
+public class Pair implements Comparable<Pair> {
     private final int distance;
     private final Node start;
     private final Node end;
@@ -42,7 +42,7 @@ public class Pair implements Comparable<Node> {
     public boolean equals(Object o) {
         if (this == o) {
             return true;
-        } else if (!(o instanceof DNAStrand)) {
+        } else if (!(o instanceof Pair)) {
             return false;
         }
         return this.toString().equals(o.toString());
