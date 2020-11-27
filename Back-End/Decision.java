@@ -1,23 +1,19 @@
 import java.util.*;
 
 public class Decision {
-    private int userSession;
-    private Set<Node> decision;
+    private List<Node> decision;
 
-    public Decision(int userSession) {
-        this.userSession = userSession;
+    public Decision(Map<Node, Set<Pair>> paths) {
+        for (Node start : paths.keySet()) {
+            Set<Pair> nearbyPaths = paths.get(start);
+        }
+        while (decision != null) {
+
+        }
     }
 
-    public Node decision(Node a, Node b) {
-        throw new UnsupportedOperationException("Not implemented yet");
-    }
-
-    public List<Node> finalDecision(Map<Node> nodeGroups) {
-        throw new UnsupportedOperationException("Not implemented yet");
-    }
-
-    public int getUserSession() {
-        return userSession;
+    public List<Node> getDecision() {
+        return decision;
     }
 
     public String toString() {
