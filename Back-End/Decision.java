@@ -1,19 +1,20 @@
 import java.util.*;
 
 public class Decision {
-    private int userSession;
-    private Set<Node> decision;
+    private Set<Node> visited;
 
-    public Decision(int userSession) {
-        this.userSession = userSession;
+    // Takes a map  distances
+    public Decision() {
+        visited = new HashSet<Node>;
     }
 
-    public Node decision(Node a, Node b) {
-        throw new UnsupportedOperationException("Not implemented yet");
-    }
+    public Set<Node> decision(Map<Node, Set<Node>> paths) {
+        for (Node start : nodeGroups.keySet()) {
 
-    public List<Node> finalDecision(Map<Node> nodeGroups) {
-        throw new UnsupportedOperationException("Not implemented yet");
+        }
+        while () {
+
+        } 
     }
 
     public int getUserSession() {
