@@ -1,24 +1,19 @@
 import java.util.*;
 
 public class Decision {
-    private Set<Node> visited;
+    private List<Node> decision;
 
-    // Takes a map  distances
-    public Decision() {
-        visited = new HashSet<Node>;
-    }
-
-    public Set<Node> decision(Map<Node, Set<Node>> paths) {
-        for (Node start : nodeGroups.keySet()) {
+    public Decision(Map<Node, Set<Pair>> paths) {
+        for (Node start : paths.keySet()) {
+            Set<Pair> nearbyPaths = paths.get(start);
+        }
+        while (decision != null) {
 
         }
-        while () {
-
-        } 
     }
 
-    public int getUserSession() {
-        return userSession;
+    public List<Node> getDecision() {
+        return decision;
     }
 
     public String toString() {
