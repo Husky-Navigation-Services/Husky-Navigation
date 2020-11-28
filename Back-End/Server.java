@@ -19,6 +19,7 @@ public class Server {
                 System.out.println("server connected");
                 DataInputStream in = new DataInputStream(socket.getInputStream());
                 DataOutputStream out = new DataOutputStream(socket.getOutputStream());
+                out.writeUTF("hi");
                 while (true) {
                     String command = in.readUTF();
                     if (command.equals("hi"));
