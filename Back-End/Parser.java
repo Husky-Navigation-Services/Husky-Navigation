@@ -27,21 +27,25 @@ public class Parser {
 
     public void createMap(File input) throws FileNotFoundException {
         int currentId = 0;
-        HashSet<Node> seen = new HashSet<>();
+        HashMap<Location, Integer> ids = new HashMap<>();
         Scanner reader = new Scanner(input);
         while (reader.hasNextLine()) {
-// Make sure that for the associated set of paths the pathways go "two-ways" what I mean by that is for
-// the decision module it is pretty critical that all nodes that have a connected pathway in one set
-// have a connected pathway in the other nodes such that for a node n1 and n2 in the associate value in
-// the map for n1 is a set that contains p1 a pair constructed by (4, n1, n2) and for n2 with path p2
-// a pair constructed by the opposite (4, n2, n1).
             StringTokenizer line = new StringTokenizer(reader.nextLine());
-// Only thing left to add here is the sequential id
-            Node key = new Node(line.nextToken(), line.nextToken(), line.nextToken());
+            Location keyLoc = new Location(line.nextToken(), line.nextToken());
+            if (!ids.containsKey(keyLoc)) {
+                ids.put(keyLoc, currentId++);
+            }
+            Node key = new Node (ids.get(keyLoc), keyLoc.x, keyLoc.y, line.nextToken());
             map.put(key, new HashSet<Pair>());
             while (line.hasMoreTokens()) {
-                Node end = new Node(line.nextToken(), line.nextToken(), line.nextToken());
-                map.get(key).add(new Pair(Integer.parseInt(line.nextToken()), key, end));
+                Location temp = new Location(line.nextToken(), line.nextToken());
+                if (!ids.containsKey(temp)) {
+                    ids.put(temp, currentId++);
+                }
+                Node end = new Node(ids.get(temp), temp.x, temp.y, line.nextToken());
+                int d = Integer.parseInt(line.nextToken());
+                map.get(key).add(new Pair(d, key, end));
+                map.get(key).add(new Pair(d, end, key));
             }
         }
         reader.close();
@@ -52,7 +56,7 @@ public class Parser {
         String stops = reader.nextLine();
         StringTokenizer s = new StringTokenizer(stops);
         while (s.hasMoreTokens()) {
-            busStops.add(new Node (s.nextToken(),s.nextToken()));
+            busStops.add(new Node (0, s.nextToken(),s.nextToken()));
         }
         reader.close();
     }
@@ -63,5 +67,22 @@ public class Parser {
 
     public Set<Node> getStops() {
         return busStops;
+    }
+
+    private class Location implements Comparable<Location> {
+        private String x, y;
+
+        private Location(String x, String y) {
+            this.x = x;
+            this.y = y;
+        }
+
+        @Override
+        public int compareTo(Parser.Location o) {
+            if (x.equals(o.x) == y.equals(o.y)) {
+                return 0;
+            }
+            return 1;
+        }        
     }
 }
