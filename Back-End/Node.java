@@ -1,18 +1,24 @@
 public class Node {
-    private final String location;
-    private final String latitude;
-    private final String longitude;
+    public int id;
+    public String location;
+    public String latitude;
+    public String longitude;
     
-    // Constructs a new node instance given a latitude and longitude.
-    public Node(String latitude, String longitude) {
-        this(latitude, longitude, null);
+    // Constructs a new node instance given a id, latitude, and longitude.
+    public Node(int id, String latitude, String longitude) {
+        this(id, latitude, longitude, null);
     }
 
-    // Constructs a new node instance given a location, latitude, and longitude.
-    public Node(String latitude, String longitude, String location) {
+    // Constructs a new node instance given a id, location, latitude, and longitude.
+    public Node(int id, String latitude, String longitude, String location) {
         this.latitude = latitude;
         this.longitude = longitude;
         this.location = location;
+    }
+
+    // Returns a string identification.
+    public int getId() {
+        return id;
     }
 
     // Returns a string location.

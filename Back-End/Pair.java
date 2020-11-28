@@ -1,7 +1,7 @@
 public class Pair implements Comparable<Pair> {
-    private final int distance;
-    private final Node start;
-    private final Node end;
+    public int distance;
+    public Node start;
+    public Node end;
 
     // Constructs an instance of a pair given a distance, start, and end.
     public Pair(int distance, Node start, Node end) {
