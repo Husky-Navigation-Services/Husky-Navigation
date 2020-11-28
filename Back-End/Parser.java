@@ -5,32 +5,23 @@
 
 // Format of Parsing File:
 /*
-x y x y x y
-x y x y
-x y x y x y x y
+x y [name] x y [name] d x y [name] d
+x y [name] x y [name] d
+x y [name] x y [name] d x y [name] d x y [name] d
 */
-// each of the lines must contain an even (>=2) number of integers
-// where the first 2 are the key Node and the rest are its neighbors
-
-// Format of Names File:
-/*
-[name]
-x y
-[name]
-x y
-*/
+// each of the x and y are Strings for latitude and longitude, [name] is the name, and d is an int
 
 
 import java.io.*;
 import java.util.*;
 public class Parser {
-    private Map<Node, HashSet<Node>> map;
-    private Map<String, Node> names;
+    private Map<Node, HashSet<Pair>> map;
+//  private Map<String, Node> names;
     private Set<Node> busStops;
         
     public Parser() {
-        map = new HashMap<Node, HashSet<Node>>();
-        names = new HashMap<String, Node>();
+        map = new HashMap<Node, HashSet<Pair>>();
+//      names = new HashMap<String, Node>();
         busStops = new HashSet<Node>();
     }
 
@@ -38,22 +29,12 @@ public class Parser {
         Scanner reader = new Scanner(input);
         while (reader.hasNextLine()) {
             StringTokenizer line = new StringTokenizer(reader.nextLine());
-            Node key = new Node(Integer.parseInt(line.nextToken()),Integer.parseInt(line.nextToken()));
-            map.put(key, new HashSet<String>());
+            Node key = new Node(line.nextToken(), line.nextToken(), line.nextToken());
+            map.put(key, new HashSet<Pair>());
             while (line.hasMoreTokens()) {
-                map.get(key).add(new Node(Integer.parseInt(line.nextToken()),Integer.parseInt(line.nextToken())));
+                Node end = new Node(line.nextToken(), line.nextToken(), line.nextToken());
+                map.get(key).add(new Pair(Integer.parseInt(line.nextToken()), key, end));
             }
-        }
-        reader.close();
-    }
-
-    public void setNames(File input) throws FileNotFoundException {
-        Scanner reader = new Scanner(input);
-        while (reader.hasNextLine()) {
-            String name = reader.nextLine();
-            StringTokenizer locationReader = new StringTokenizer(reader.nextLine());
-            Node location = new Node (Integer.parseInt(locationReader.nextToken()),Integer.parseInt(locationReader.nextToken()));
-            names.put(name, location);
         }
         reader.close();
     }
@@ -63,19 +44,15 @@ public class Parser {
         String stops = reader.nextLine();
         StringTokenizer s = new StringTokenizer(stops);
         while (s.hasMoreTokens()) {
-            busStops.add(new Node (Integer.parseInt(s.nextToken()),Integer.parseInt(s.nextToken())));
+            busStops.add(new Node (s.nextToken(),s.nextToken()));
         }
         reader.close();
     }
 
-    public Map<Node, Set<Node>> getMap() {
+    public Map<Node, HashSet<Pair>> getMap() {
         return map;
     }
-
-    public Map<String, Node> getNames() {
-        return names;
-    }
-
+    
     public Set<Node> getStops() {
         return busStops;
     }
