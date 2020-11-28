@@ -4,7 +4,8 @@ public class Decision {
     private ArrayList<Node> path;
 
     // Takes a map of each individual node to all nearby nodes.
-    public Decision(Map<Node, Set<Pair>> paths) {
+    // Takes Map<Node, Set<Pair>> paths.
+    public Decision() {
     }
 
     public static void main(String args[]) {
