@@ -143,7 +143,13 @@ html, body {
     transition: 1s;
 }
 
-.marker  {
+.startMarker  {
+    width: 30px;
+    height: 30.72px;
+    margin: 20px;
+}
+
+.endMarker  {
     width: 20px;
     height: 30.72px;
     margin: 20px;
