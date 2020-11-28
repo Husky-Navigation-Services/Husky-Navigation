@@ -16,6 +16,7 @@ public class Server {
             try {
                 ServerSocket server = new ServerSocket(8080);
                 Socket socket = server.accept();
+                System.out.println("server connected");
                 DataInputStream in = new DataInputStream(socket.getInputStream());
                 DataOutputStream out = new DataOutputStream(socket.getOutputStream());
                 while (true) {
