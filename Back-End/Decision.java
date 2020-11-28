@@ -4,8 +4,8 @@ public class Decision {
     private ArrayList<Node> path;
 
     // Takes a map of each individual node to all nearby nodes.
-    // Takes Map<Node, Set<Pair>> paths.
     public Decision() {
+        // Beggining part unpack a given Map<Node, Set<Pair>> paths
     }
 
     public static void main(String args[]) {
@@ -60,8 +60,6 @@ public class Decision {
         }
     }
 
-// rename pair to edge
-
     private ArrayList<Integer> getPath(int startId, int endId, ArrayList<Integer> predecessors) {
         ArrayList<Integer> path = new ArrayList<Integer>();
         int currentId = endId;
@@ -75,7 +73,8 @@ public class Decision {
 
     public int getShortestPath(Node start, Node end, ArrayList<Node> path) {
         int totalLength = 0;
-        
+        // Final part return the total distance in feet and through refrence
+        // semantics a path of nodes.
         return totalLength;
     }
 
