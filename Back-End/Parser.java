@@ -3,57 +3,43 @@
 // - return an error if the file is in incorrect format (see format below)
 // - construct GeoJSON
 
-// Format of Parsing File:
+// Format of File:
 /*
-x y [name] x y [name] d x y [name] d
-x y [name] x y [name] d
-x y [name] x y [name] d x y [name] d x y [name] d
+x y x y x y
+x y x y
+x y x y x y x y
 */
-// each of the x and y are Strings for latitude and longitude, [name] is the name, and d is an int
+// each of the lines must contain an even (>=2) number of integers
+// where the first 2 are the key Node and the rest are its neighbors
 
 
 import java.io.*;
 import java.util.*;
 public class Parser {
-    private Map<Node, HashSet<Pair>> map;
-//  private Map<String, Node> names;
-    private Set<Node> busStops;
+    private Map<Node> nodes;
         
-    public Parser() {
-        map = new HashMap<Node, HashSet<Pair>>();
-//      names = new HashMap<String, Node>();
-        busStops = new HashSet<Node>();
-    }
-
-    public void createMap(File input) throws FileNotFoundException {
-        Scanner reader = new Scanner(input);
-        while (reader.hasNextLine()) {
-            StringTokenizer line = new StringTokenizer(reader.nextLine());
-            Node key = new Node(line.nextToken(), line.nextToken(), line.nextToken());
-            map.put(key, new HashSet<Pair>());
-            while (line.hasMoreTokens()) {
-                Node end = new Node(line.nextToken(), line.nextToken(), line.nextToken());
-                map.get(key).add(new Pair(Integer.parseInt(line.nextToken()), key, end));
-            }
-        }
-        reader.close();
-    }
-
-    public void setStops(File input) throws FileNotFoundException {
-        Scanner reader = new Scanner(input);
-        String stops = reader.nextLine();
-        StringTokenizer s = new StringTokenizer(stops);
-        while (s.hasMoreTokens()) {
-            busStops.add(new Node (s.nextToken(),s.nextToken()));
-        }
-        reader.close();
-    }
-
-    public Map<Node, HashSet<Pair>> getMap() {
-        return map;
+    public Parser(File input) {
+        nodes = parse(input); // Could be a tree set as well.
+        // nah HashMap should be fine (see below), no point in sorting the nodes - albert
     }
     
-    public Set<Node> getStops() {
-        return busStops;
+    public Map<Node, Set<Node>> parse() { // given a map area, returns a set of nodes
+        // or some other similar data structure.
+        // why set? I though we were using a HashMap to point from a Node to all its neighbors - albert
+        return nodes;
+    }
+
+    private Map<Node, Set<Node>> parse(File input) {
+        Map<Node, HashSet<Node>> map = new HashMap<>();
+        Scanner reader = new Scanner(input);
+        while (reader.hasNextLine()) {
+            StringTokenizer line = StringTokenizer(reader.nextLine());
+            Node key = new Node(Integer.parseInt(line.nextToken),Integer.parseInt(line.nextToken));
+            map.put(key, new HashSet<String>());
+            while (line.hasMoreTokens()) {
+                map.get(key).add(new Node(Integer.parseInt(line.nextToken),Integer.parseInt(line.nextToken)));
+            }
+        }
+        return map;
     }
 }
