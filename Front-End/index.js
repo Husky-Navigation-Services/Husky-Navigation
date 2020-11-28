@@ -61,7 +61,7 @@ function scrollToLocation(input, els, holder) {
         if (inputPrefix === currentPrefix) {
             console.log(inputPrefix + " MATCHED " + els[i].innerHTML);
             scroll(els[i], holder);
-            
+            break
         } 
     }
 }
