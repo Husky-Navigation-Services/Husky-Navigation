@@ -14,7 +14,7 @@ public class Server {
     public static void start() {
         new Thread(() -> {
             try {
-                ServerSocket server = new ServerSocket(8080);
+                ServerSocket server = new ServerSocket(8000);
                 Socket socket = server.accept();
                 System.out.println("server connected");
                 DataInputStream in = new DataInputStream(socket.getInputStream());
