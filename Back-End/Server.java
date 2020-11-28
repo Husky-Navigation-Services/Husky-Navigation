@@ -20,8 +20,8 @@ public class Server {
                 DataOutputStream out = new DataOutputStream(socket.getOutputStream());
                 while (true) {
                     String command = in.readUTF();
-                    // call a back-end method to process the command
-                    // output something
+                    if (command.equals("hi"));
+                    out.write(5);
                 }
             }
             catch(IOException ex) {
