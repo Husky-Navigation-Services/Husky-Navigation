@@ -11,6 +11,7 @@ public class Node {
 
     // Constructs a new node instance given a id, location, latitude, and longitude.
     public Node(int id, String latitude, String longitude, String location) {
+        this.id = id;
         this.latitude = latitude;
         this.longitude = longitude;
         this.location = location;
@@ -39,9 +40,9 @@ public class Node {
     // Returns a string representation of the node data type.
     public String toString() {
         if (location != null) {
-            return "(" + latitude + ", " + longitude + ")";
+            return "(" + latitude + ", " + longitude + ")" + "[" + id + "]";
         } else {
-            return location + ": (" + latitude + ", " + longitude + ")";
+            return location + ": (" + latitude + ", " + longitude + ")" + "[" + id + "]";
         }
     }
 

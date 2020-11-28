@@ -1,4 +1,4 @@
-public class Pair implements Comparable<Pair> {
+public class Pair {
     public int distance;
     public Node start;
     public Node end;
@@ -51,5 +51,10 @@ public class Pair implements Comparable<Pair> {
     // Returns a hash code representation of this pair.
     public int hashCode() {
         return start.hashCode() ^ end.hashCode();
+    }
+
+    // Returns a string represenation of this pair.
+    public String toString() {
+        return start + " -> " + end + " [" + distance + "]";
     }
 }
