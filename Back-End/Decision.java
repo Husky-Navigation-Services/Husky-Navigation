@@ -4,7 +4,8 @@ public class Decision {
     private ArrayList<Set<Pair>> neighbors;
     private Map<Integer, Node> nodeSearch;
 
-    // Takes a map of each individual node to all nearby nodes.
+    // Constructs a decision module given a map that connects a node to the set
+    // of possible paths. Also sets up a way to find nodes based on a node id.
     public Decision(Map<Node, Set<Pair>> paths) {
         this.neighbors = new ArrayList<Set<Pair>>();
         this.nodeSearch = new HashMap<Integer, Node>();
@@ -17,72 +18,37 @@ public class Decision {
         }
     }
 
-    public static void main(String args[]) {
-        ArrayList<Integer> visitedNodes = new ArrayList<Integer>();
-        ArrayList<Integer> distances = new ArrayList<Integer>();
-        for (int i = 0; i < 4; i++) {
-            visitedNodes.add(i);
-            distances.add(Integer.MAX_VALUE);
-        }
-
-        Node n0 = new Node(0, "0", "0");
-        Node n1 = new Node(1, "0", "0");
-        Node n2 = new Node(2, "0", "0");
-        Node n3 = new Node(3, "0", "0");
-
-        Pair p01 = new Pair(3, n0, n1);
-        Pair p03 = new Pair(2, n0, n3);
-        Pair p12 = new Pair(1, n1, n2);
-        Pair p32 = new Pair(5, n3, n2);
-
-        Set<Pair> s0 = new HashSet<Pair>();
-        s0.add(p01);
-        s0.add(p03);
-        Set<Pair> s1 = new HashSet<Pair>();
-        s1.add(p12);
-        Set<Pair> s3 = new HashSet<Pair>();
-        s3.add(p32);
-
-        Map<Node, Set<Pair>> decisionMap = new HashMap<Node, Set<Pair>>();
-        decisionMap.put(n0, s0);
-        decisionMap.put(n1, s1);
-        decisionMap.put(n2, new HashSet<Pair>());
-        decisionMap.put(n3, s3);
-        
-        Decision decision = new Decision(decisionMap);
-        ArrayList<Node> path = new ArrayList<Node>();
-        System.out.println(decision.getShortestPath(n0, n2, path));
-        System.out.println(path);
-    }
-    
-    public int getShortestPath(Node start, Node end, ArrayList<Node> path) {
-        // Final part return the total distance in feet and through refrence
-        // semantics a path of nodes.
+    // Returns the total distance of the optimal path. Gives the optimal path given
+    // a start and end node through reference semantics for a given array list.
+    public int getDecision(Node start, Node end, ArrayList<Node> path) {
         ArrayList<Integer> predecessors = new ArrayList<Integer>();
         ArrayList<Integer> distances = new ArrayList<Integer>();
-        for (int i = 0; i < neighbors.size(); i++) {
-            predecessors.add(i);
+        for (int setup = 0; setup < neighbors.size(); setup++) {
+            predecessors.add(setup);
             distances.add(Integer.MAX_VALUE);
         }
         getShortestPath(start.id, start.id, 0, predecessors, distances);
         for (int nodeId: getPath(start.id, end.id, predecessors)) {
-            path.add(nodeSearch.get(nodeId));
-        }
-        return distances.get(end.id);
+            path.add(nodeSearch.get(nodeId)); // Adds nodes to path.
+        } // Based on the total distance, the total time can be computed.
+        return distances.get(end.id); // Returns total distance.
     }
 
+    // Gives the shortest path given the previous and current id, total distance,
+    // array list of predecessors, and a array list of distances.
     private void getShortestPath(int previousId, int currentId, int totalDistance,
             ArrayList<Integer> predecessors, ArrayList<Integer> distances) {
-        if (distances.get(currentId) <= totalDistance) {
-            return;
-        }
-        distances.set(currentId, totalDistance);
-        predecessors.set(currentId, previousId);
-        for (Pair neighbor : neighbors.get(currentId)) {
-            getShortestPath(currentId, neighbor.end.id, totalDistance + neighbor.distance, predecessors, distances);
+        if (distances.get(currentId) > totalDistance) {
+            distances.set(currentId, totalDistance);
+            predecessors.set(currentId, previousId);
+            for (Pair neighbor : neighbors.get(currentId)) {
+                getShortestPath(currentId, neighbor.end.id, totalDistance +
+                        neighbor.distance, predecessors, distances);
+            }
         }
     }
 
+    // Returns the optimal path given a start id, end id, and a given list of predecessors.
     private ArrayList<Integer> getPath(int startId, int endId, ArrayList<Integer> predecessors) {
         ArrayList<Integer> path = new ArrayList<Integer>();
         int currentId = endId;
@@ -93,16 +59,4 @@ public class Decision {
         path.add(0, startId);
         return path;
     }
-
-    /*
-    public String toString() {
-        String finalString = "";
-        if (path != null) {
-            for (Node location : path) {
-                finalString += "-> [" + location + "]";
-            }
-        }
-        return finalString;
-    }
-    */
 }
