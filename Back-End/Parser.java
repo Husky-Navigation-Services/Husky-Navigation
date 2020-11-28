@@ -30,7 +30,13 @@ public class Parser {
         HashSet<Node> seen = new HashSet<>();
         Scanner reader = new Scanner(input);
         while (reader.hasNextLine()) {
+// Make sure that for the associated set of paths the pathways go "two-ways" what I mean by that is for
+// the decision module it is pretty critical that all nodes that have a connected pathway in one set
+// have a connected pathway in the other nodes such that for a node n1 and n2 in the associate value in
+// the map for n1 is a set that contains p1 a pair constructed by (4, n1, n2) and for n2 with path p2
+// a pair constructed by the opposite (4, n2, n1).
             StringTokenizer line = new StringTokenizer(reader.nextLine());
+// Only thing left to add here is the sequential id
             Node key = new Node(line.nextToken(), line.nextToken(), line.nextToken());
             map.put(key, new HashSet<Pair>());
             while (line.hasMoreTokens()) {

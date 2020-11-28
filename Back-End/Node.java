@@ -37,15 +37,6 @@ public class Node {
         return longitude;
     }
 
-    // Returns a string representation of the node data type.
-    public String toString() {
-        if (location != null) {
-            return "(" + latitude + ", " + longitude + ")" + "[" + id + "]";
-        } else {
-            return location + ": (" + latitude + ", " + longitude + ")" + "[" + id + "]";
-        }
-    }
-
     // Returns true or false if this node is equal to the given object.
     public boolean equals(Object o) {
         if (this == o) {
@@ -59,5 +50,14 @@ public class Node {
     // Returns a integer hashcode representation of this DNA strand.
     public int hashCode() {
         return toString().hashCode();
+    }
+
+    // Returns a string representation of the node data type.
+    public String toString() {
+        if (location == null) {
+            return "(" + latitude + ", " + longitude + ")" + "[" + id + "]";
+        } else {
+            return location + ": (" + latitude + ", " + longitude + ")" + "[" + id + "]";
+        }
     }
 }

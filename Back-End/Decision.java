@@ -1,11 +1,20 @@
 import java.util.*;
 
 public class Decision {
-    private ArrayList<Node> path;
+    private ArrayList<Set<Pair>> neighbors;
+    private Map<Integer, Node> nodeSearch;
 
     // Takes a map of each individual node to all nearby nodes.
-    public Decision() {
-        // Beggining part unpack a given Map<Node, Set<Pair>> paths
+    public Decision(Map<Node, Set<Pair>> paths) {
+        this.neighbors = new ArrayList<Set<Pair>>();
+        this.nodeSearch = new HashMap<Integer, Node>();
+        for (int i = 0; i < paths.keySet().size(); i++) {
+            neighbors.add(new HashSet<Pair>());
+        }
+        for (Node node : paths.keySet()) {
+            nodeSearch.put(node.id, node);
+            neighbors.set(node.id, paths.get(node));
+        }
     }
 
     public static void main(String args[]) {
@@ -34,54 +43,58 @@ public class Decision {
         Set<Pair> s3 = new HashSet<Pair>();
         s3.add(p32);
 
-        ArrayList<Set<Pair>> neighbors = new ArrayList<Set<Pair>>();
-        neighbors.add(s0);
-        neighbors.add(s1);
-        neighbors.add(new HashSet<Pair>());
-        neighbors.add(s3);
-
-        Decision decision = new Decision();
-        decision.shortestPath(0, 0, 0, visitedNodes, distances, neighbors);
-        System.out.println(distances.get(2));
-        System.out.println(distances);
-        System.out.println(decision.getPath(0, 2, visitedNodes));
+        Map<Node, Set<Pair>> decisionMap = new HashMap<Node, Set<Pair>>();
+        decisionMap.put(n0, s0);
+        decisionMap.put(n1, s1);
+        decisionMap.put(n2, new HashSet<Pair>());
+        decisionMap.put(n3, s3);
+        
+        Decision decision = new Decision(decisionMap);
+        ArrayList<Node> path = new ArrayList<Node>();
+        System.out.println(decision.getShortestPath(n0, n2, path));
+        System.out.println(path);
+    }
+    
+    public int getShortestPath(Node start, Node end, ArrayList<Node> path) {
+        // Final part return the total distance in feet and through refrence
+        // semantics a path of nodes.
+        ArrayList<Integer> predecessors = new ArrayList<Integer>();
+        ArrayList<Integer> distances = new ArrayList<Integer>();
+        for (int i = 0; i < neighbors.size(); i++) {
+            predecessors.add(i);
+            distances.add(Integer.MAX_VALUE);
+        }
+        getShortestPath(start.id, start.id, 0, predecessors, distances);
+        for (int nodeId: getPath(start.id, end.id, predecessors)) {
+            path.add(nodeSearch.get(nodeId));
+        }
+        return distances.get(end.id);
     }
 
-    private void shortestPath(int previousId, int currentId, int totalDistance,
-            ArrayList<Integer> visitedNodes, ArrayList<Integer> distances,
-            ArrayList<Set<Pair>> neighbors) {
+    private void getShortestPath(int previousId, int currentId, int totalDistance,
+            ArrayList<Integer> predecessors, ArrayList<Integer> distances) {
         if (distances.get(currentId) <= totalDistance) {
             return;
         }
         distances.set(currentId, totalDistance);
-        visitedNodes.set(currentId, previousId);
+        predecessors.set(currentId, previousId);
         for (Pair neighbor : neighbors.get(currentId)) {
-            shortestPath(currentId, neighbor.end.id, totalDistance + neighbor.distance, visitedNodes, distances, neighbors);
+            getShortestPath(currentId, neighbor.end.id, totalDistance + neighbor.distance, predecessors, distances);
         }
     }
 
-    private ArrayList<Integer> getPath(int startId, int endId, ArrayList<Integer> visitedNodes) {
+    private ArrayList<Integer> getPath(int startId, int endId, ArrayList<Integer> predecessors) {
         ArrayList<Integer> path = new ArrayList<Integer>();
         int currentId = endId;
         while (currentId != startId) {
             path.add(0, currentId);
-            currentId = visitedNodes.get(currentId);
+            currentId = predecessors.get(currentId);
         }
         path.add(0, startId);
         return path;
     }
 
-    public int getShortestPath(Node start, Node end, ArrayList<Node> path) {
-        int totalLength = 0;
-        // Final part return the total distance in feet and through refrence
-        // semantics a path of nodes.
-        return totalLength;
-    }
-
-    public ArrayList<Node> getPath() {
-        return path;
-    }
-
+    /*
     public String toString() {
         String finalString = "";
         if (path != null) {
@@ -91,4 +104,5 @@ public class Decision {
         }
         return finalString;
     }
+    */
 }
