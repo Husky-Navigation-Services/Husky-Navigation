@@ -9,10 +9,10 @@ public class Decision {
     }
 
     public static void main(String args[]) {
-        ArrayList<Integer> predecessors = new ArrayList<Integer>();
+        ArrayList<Integer> visitedNodes = new ArrayList<Integer>();
         ArrayList<Integer> distances = new ArrayList<Integer>();
         for (int i = 0; i < 4; i++) {
-            predecessors.add(i);
+            visitedNodes.add(i);
             distances.add(Integer.MAX_VALUE);
         }
 
@@ -41,31 +41,31 @@ public class Decision {
         neighbors.add(s3);
 
         Decision decision = new Decision();
-        decision.shortestPath(0, 0, 0, predecessors, distances, neighbors);
+        decision.shortestPath(0, 0, 0, visitedNodes, distances, neighbors);
         System.out.println(distances.get(2));
         System.out.println(distances);
-        System.out.println(decision.getPath(0, 2, predecessors));
+        System.out.println(decision.getPath(0, 2, visitedNodes));
     }
 
     private void shortestPath(int previousId, int currentId, int totalDistance,
-            ArrayList<Integer> predecessors, ArrayList<Integer> distances,
+            ArrayList<Integer> visitedNodes, ArrayList<Integer> distances,
             ArrayList<Set<Pair>> neighbors) {
         if (distances.get(currentId) <= totalDistance) {
             return;
         }
         distances.set(currentId, totalDistance);
-        predecessors.set(currentId, previousId);
+        visitedNodes.set(currentId, previousId);
         for (Pair neighbor : neighbors.get(currentId)) {
-            shortestPath(currentId, neighbor.end.id, totalDistance + neighbor.distance, predecessors, distances, neighbors);
+            shortestPath(currentId, neighbor.end.id, totalDistance + neighbor.distance, visitedNodes, distances, neighbors);
         }
     }
 
-    private ArrayList<Integer> getPath(int startId, int endId, ArrayList<Integer> predecessors) {
+    private ArrayList<Integer> getPath(int startId, int endId, ArrayList<Integer> visitedNodes) {
         ArrayList<Integer> path = new ArrayList<Integer>();
         int currentId = endId;
         while (currentId != startId) {
             path.add(0, currentId);
-            currentId = predecessors.get(currentId);
+            currentId = visitedNodes.get(currentId);
         }
         path.add(0, startId);
         return path;
