@@ -5,6 +5,7 @@ font-family: 'Montserrat Alternates', sans-serif;*/
 /*font-family: 'Spectral', serif;*/
 @import url('https://fonts.googleapis.com/css2?family=Castoro&display=swap');
 /*font-family: 'Castoro', serif; */
+
 .content {
     display: flex;
     flex-direction: row;
