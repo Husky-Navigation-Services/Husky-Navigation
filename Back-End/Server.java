@@ -15,30 +15,24 @@ public class Server {
         try {
             // Prepare server + client socket connections
             System.out.println("Server On");
-            ServerSocket serverSocket = new ServerSocket(52934);
+            ServerSocket serverSocket = new ServerSocket(35832);
             Socket clientSocket = serverSocket.accept();
-            System.out.println("Client @" + clientSocket.getPort() + " connected....");
+            System.out.println("client connected");
 
-            // Get input and output streams to talk to the client
-            InputStream inputStream = clientSocket.getInputStream();
-            InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
-            BufferedReader bufferedReader = new BufferedReader(inputStreamReader); 
-            OutputStream out = clientSocket.getOutputStream();
+            // Input
+            InputStreamReader in = new InputStreamReader(clientSocket.getInputStream());
+            BufferedReader bufferedReader = new BufferedReader(in); 
+            // Output
+            // OutputStream out = clientSocket.getOutputStream();
 
             // Process Request (read request using in.readLine())
-            String request = bufferedReader.readLine();
-            System.out.println("Request was: ");
-            System.out.println(request);
-
-            // Prepare response (write response using )
-            String response = "Here's a response!";
-
-            System.out.println("Response was: " + response);
+            System.out.println("Request Data: ");
+            String data = bufferedReader.readLine();
+            while (data != null) {
+                System.out.println(data);
+                data = bufferedReader.readLine();
+            }
             
-            // Close socket, breaking client connection. Close input/output streams.
-            out.close();
-            inputStream.close();
-            clientSocket.close();
             System.out.println("Communication thread terminated.");
         }
         catch(IOException ex) {

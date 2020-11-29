@@ -39,19 +39,15 @@ mcdonaldsMarker.addTo(mymap);
 
 // Test Server Back-End
 const testServer = () => {
-    // Rest of Async method is blocked until fetch API completes
-    fetch("https://localhost:52934", {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'text/plain'
-        },
-        body: "Request Data Yayy"
-    })
-    .then(response => response.json())
-    .then(response => {
-        alert("Server Response: " + response);
-    });
-    
+    let socket = new WebSocket("ws://localhost:35832");
+
+    socket.onopen = function(e) {
+        alert("[open] Connection established");
+        alert("Sending to server");
+        var enc = new TextEncoder();
+        socket.send("Some Data!");
+        
+    };
 }
 
 /////////////////////
