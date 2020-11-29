@@ -26,6 +26,7 @@ public class Parser {
     }
 
     public void createMap(File input) throws FileNotFoundException {
+        // test
         int currentId = 0;
         HashMap<Location, Integer> ids = new HashMap<>();
         Scanner reader = new Scanner(input);
