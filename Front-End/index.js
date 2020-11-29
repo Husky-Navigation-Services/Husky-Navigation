@@ -1,3 +1,16 @@
+// Contents:
+//      Location Data
+//      Map Initialization
+//      Server Interface
+//      Event Listeners
+//      Event Listener Callbacks
+//      Scrolling Tools
+//      Other
+
+////////////////////
+// Location Data
+///////////////////
+
 // Store Location Coordinates
 var locationsMap = {
     "Bagley Hall": [47.65353, -122.30879],
@@ -6,6 +19,9 @@ var locationsMap = {
     "McDonald's": [47.66774, -122.30037]   
 }
 
+////////////////////////
+// Map Initialization
+////////////////////////
 
 // Initialize Map
 var mymap = L.map('map').setView([47.650017, -122.30654], 13);
@@ -16,6 +32,10 @@ L.tileLayer( 'https://api.mapbox.com/styles/v1/aferman/ckhvetwgy0bds19nznkfvodbx
 }).addTo( mymap );
 mymap.zoomControl.setPosition('bottomright');
 mcdonaldsMarker.addTo(mymap);
+
+//////////////////////
+// Server Interface
+/////////////////////
 
 // Test Server Back-End
 const testServer = () => {
@@ -33,6 +53,10 @@ const testServer = () => {
     });
     
 }
+
+/////////////////////
+// Event Listeners
+/////////////////////
 
 // Add Event Listeners
 var fromElement = document.getElementById("from");
@@ -55,35 +79,37 @@ for (var i = 0; i < locationElements.length; i++) {
     locationElements[i].addEventListener('click', setViewToLocation);
 }
 
-// Scroll to tops of menus
-buildingContainer.scrollIntoView({block: "center"});
-busStopContainer.scrollIntoView({block: "center"});
+/////////////////////////////
+// Event Listener Callbacks
+/////////////////////////////
 
-// Event listener callbacks
+// Scrolls to the caller (a building location) when the caller is changed
 function scrollToBuilding() {
     scrollToLocation(this.value, buildingElements, buildingContainer);
 }
 
+// Scrolls to the caller (a bus stop location) when the caller is changed
 function scrollToStop() {
     scrollToLocation(this.value, busStopElements, busStopContainer);
 }
 
-function scrollToLocation(input, els, holder) {
+// Scrolls to the first location containing the given prefix, from the given list
+// of elements (els) in the given container (holder)
+function scrollToLocation(prefix, els, holder) {
+    prefix = prefix.toLowerCase();
     for (var i = 0; i < els.length; i++) {
-        var inputPrefix = input.toLowerCase();
-        var currentPrefix = els[i].innerHTML.substring(0, inputPrefix.length).toLowerCase();
-        if (inputPrefix === currentPrefix) {
-            console.log(inputPrefix + " MATCHED " + els[i].innerHTML);
+        var currentPrefix = els[i].innerHTML.substring(0, prefix.length).toLowerCase();
+        if (prefix === currentPrefix) {
             scroll(els[i], holder);
-            break
+            break;
         } 
     }
 }
 
-updateLocationOpacities(); // initial opacity updatef
+// Updates the opacities of the location elements when the caller is scrolled
 function updateLocationOpacities() {
     for (var i = 0; i < locationElements.length; i++) {
-        if (isElementVisible(locationElements[i], busStopContainer) || isElementVisible(locationElements[i], buildingContainer)) {
+        if (isElementCentered(locationElements[i], busStopContainer) || isElementCentered(locationElements[i], buildingContainer)) {
             locationElements[i].style.opacity = 1;
         } else {
             locationElements[i].style.opacity = 0.2;
@@ -91,19 +117,23 @@ function updateLocationOpacities() {
     }
 }
 
-
+// Sets the map view to the caller's location
 function setViewToLocation() {
     mymap.setView(locationsMap[this.innerHTML], 30);
 }
 
+// Sets the start text in the horizontal bar to the caller's text when the caller is changed
 function updateStart() {
     fromElement.innerHTML = this.value;
 }
 
+// Sets the end text in the horizontal bar to the caller's text when the caller is changed
 function updateDest() {
     toElement.innerHTML = this.value;
 }
 
+// Attempts navigation when the caller is clicked. If location endpoints are unique and if 
+// neither are set to "Current Location," then it navigates. Otherwise, it creates an alert.
 function tryNav() {
     var from = fromElement.innerHTML;
     var to = toElement.innerHTML;
@@ -114,6 +144,7 @@ function tryNav() {
     }
 }
 
+// Toggles visbility of the left sidebar when the caller is clicked
 function toggleContent() {
     var sidebarLeft = document.getElementById("sidebarLeftId");
     var horizontalBar = document.getElementById("horizontalBarId");
@@ -128,24 +159,29 @@ function toggleContent() {
     }
 }
 
-// Navigation
+// Return whether navigation is possible. If location endpoints are unique and if 
+// neither are set to "Current Location," then it returns true. Otherwise, false.
 function navPossible(from, to) {
     return from != "Select Starting Point" && to != "Select Destination" && to != from;
 }
 
+// Navigates. Sets the map view to contain both endpoints and draws the path.
 function nav() {
     setNavView(locationsMap[fromElement.innerHTML], locationsMap[toElement.innerHTML]);
     testServer();
 }
 
+// Sets the map view to contain the given lat/lng endpoints
 function setNavView(coord1, coord2) {
-    var mid = [(coord1[0] + coord2[0]) / 2, (coord1[1] + coord2[1]) / 2];
-    mymap.setView(mid);
     mymap.fitBounds([coord1, coord2]);
 }
 
-// Scrolling Features/Tools
-function isElementVisible (el, holder) {
+////////////////////////////
+// Scrolling Tools
+////////////////////////////
+
+// Returns whether the given element is centered in the given container
+function isElementCentered (el, holder) {
     const { y } = el.getBoundingClientRect()
     const holderRect = holder.getBoundingClientRect()
     if (y <= holderRect.top + holderRect.height - 50 && y >= holderRect.top + 30) {
@@ -155,8 +191,16 @@ function isElementVisible (el, holder) {
     }
 }
 
+// Scrolls the given element to the center (if possible) of the given container
 function scroll(el, holder) {
     console.log("scorlling " + el.offsetTop + " to " + el.innerHTML);
     var topPos = el.offsetTop;
     holder.scrollTop = topPos - 40;
 }
+
+//////////////////////////
+// Other
+//////////////////////////
+
+// Initialize Location Opacities on Start
+updateLocationOpacities();
