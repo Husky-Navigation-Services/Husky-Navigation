@@ -17,7 +17,22 @@ L.tileLayer( 'https://api.mapbox.com/styles/v1/aferman/ckhvetwgy0bds19nznkfvodbx
 mymap.zoomControl.setPosition('bottomright');
 mcdonaldsMarker.addTo(mymap);
 
-
+// Test Server Back-End
+const testServer = () => {
+    // Rest of Async method is blocked until fetch API completes
+    fetch("https://localhost:52934", {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'text/plain'
+        },
+        body: "Request Data Yayy"
+    })
+    .then(response => response.json())
+    .then(response => {
+        alert("Server Response: " + response);
+    });
+    
+}
 
 // Add Event Listeners
 var fromElement = document.getElementById("from");
@@ -50,7 +65,6 @@ function scrollToBuilding() {
 }
 
 function scrollToStop() {
-    console.log("works");
     scrollToLocation(this.value, busStopElements, busStopContainer);
 }
 
@@ -120,7 +134,8 @@ function navPossible(from, to) {
 }
 
 function nav() {
-    setNavView(locationsMap[fromElement.innerHTML], locationsMap[toElement.innerHTML])
+    setNavView(locationsMap[fromElement.innerHTML], locationsMap[toElement.innerHTML]);
+    testServer();
 }
 
 function setNavView(coord1, coord2) {

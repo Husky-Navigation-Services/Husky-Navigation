@@ -11,24 +11,40 @@ public class Server {
         start();
     }
 
-    public static void start() {
-        new Thread(() -> {
-            try {
-                ServerSocket server = new ServerSocket(8800);
-                Socket socket = server.accept();
-                System.out.println("server connected");
-                DataInputStream in = new DataInputStream(socket.getInputStream());
-                DataOutputStream out = new DataOutputStream(socket.getOutputStream());
-                out.writeUTF("hi");
-                while (true) {
-                    String command = in.readUTF();
-                    if (command.equals("hi"));
-                    out.write(5);
-                }
-            }
-            catch(IOException ex) {
-                ex.printStackTrace();
-            }
-        }).start();
+    public static void start() throws IOException {
+        try {
+            // Prepare server + client socket connections
+            System.out.println("Server On");
+            ServerSocket serverSocket = new ServerSocket(52934);
+            Socket clientSocket = serverSocket.accept();
+            System.out.println("Client @" + clientSocket.getPort() + " connected....");
+
+            // Get input and output streams to talk to the client
+            InputStream inputStream = clientSocket.getInputStream();
+            InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
+            BufferedReader bufferedReader = new BufferedReader(inputStreamReader); 
+            OutputStream out = clientSocket.getOutputStream();
+
+            // Process Request (read request using in.readLine())
+            String request = bufferedReader.readLine();
+            System.out.println("Request was: ");
+            System.out.println(request);
+
+            // Prepare response (write response using )
+            String response = "Here's a response!";
+
+            System.out.println("Response was: " + response);
+            
+            // Close socket, breaking client connection. Close input/output streams.
+            out.close();
+            inputStream.close();
+            clientSocket.close();
+            System.out.println("Communication thread terminated.");
+        }
+        catch(IOException ex) {
+            ex.printStackTrace();
+        }
     }
 }
+
+// Example: http://www.java2s.com/Code/Java/Network-Protocol/AverysimpleWebserverWhenitreceivesaHTTPrequestitsendstherequestbackasthereply.htm
