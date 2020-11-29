@@ -31,14 +31,14 @@ public class Parser {
         Scanner reader = new Scanner(input);
         while (reader.hasNextLine()) {
             StringTokenizer line = new StringTokenizer(reader.nextLine());
-            Location keyLoc = new Location(line.nextToken(), line.nextToken());
+            Location keyLoc = new Location(Float.parseFloat(line.nextToken()), Float.parseFloat(line.nextToken()));
             if (!ids.containsKey(keyLoc)) {
                 ids.put(keyLoc, currentId++);
             }
             Node key = new Node (ids.get(keyLoc), keyLoc.x, keyLoc.y, line.nextToken());
             map.put(key, new HashSet<Pair>());
             while (line.hasMoreTokens()) {
-                Location temp = new Location(line.nextToken(), line.nextToken());
+                Location temp = new Location(Float.parseFloat(line.nextToken()), Float.parseFloat(line.nextToken()));
                 if (!ids.containsKey(temp)) {
                     ids.put(temp, currentId++);
                 }
@@ -56,7 +56,8 @@ public class Parser {
         String stops = reader.nextLine();
         StringTokenizer s = new StringTokenizer(stops);
         while (s.hasMoreTokens()) {
-            busStops.add(new Node (0, s.nextToken(),s.nextToken()));
+            // will change from 0 to actual id
+            busStops.add(new Node (0, Float.parseFloat(s.nextToken()),Float.parseFloat(s.nextToken())));
         }
         reader.close();
     }
@@ -70,16 +71,16 @@ public class Parser {
     }
 
     private class Location implements Comparable<Location> {
-        private String x, y;
+        private float x, y;
 
-        private Location(String x, String y) {
+        private Location(float x, float y) {
             this.x = x;
             this.y = y;
         }
 
         @Override
         public int compareTo(Parser.Location o) {
-            if (x.equals(o.x) == y.equals(o.y)) {
+            if (x == o.x && y == o.y) {
                 return 0;
             }
             return 1;
