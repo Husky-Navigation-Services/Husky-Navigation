@@ -14,10 +14,10 @@ public class Test {
             distances.add(Integer.MAX_VALUE);
         }
         // Setup the node for a graph with 4 vertices and 4 edges.
-        Node n0 = new Node(0, "0", "0");
-        Node n1 = new Node(1, "0", "0");
-        Node n2 = new Node(2, "0", "0");
-        Node n3 = new Node(3, "0", "0");
+        Node n0 = new Node(0, 0, 0);
+        Node n1 = new Node(1, 0, 0);
+        Node n2 = new Node(2, 0, 0);
+        Node n3 = new Node(3, 0, 0);
         // Setup the 4 edges in the graph.
         Pair p01 = new Pair(3, n0, n1);
         Pair p03 = new Pair(2, n0, n3);
