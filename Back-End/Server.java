@@ -19,27 +19,30 @@ public class Server {
             Socket clientSocket = serverSocket.accept();
             System.out.println("Client @" + clientSocket.getPort() + " connected....");
 
-            // Get input and output streams to talk to the client
-            InputStream inputStream = clientSocket.getInputStream();
-            InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
-            BufferedReader bufferedReader = new BufferedReader(inputStreamReader); 
-            OutputStream out = clientSocket.getOutputStream();
+            while (true) {
+                // Get input and output streams to talk to the client
+                InputStream inputStream = clientSocket.getInputStream();
+                InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
+                BufferedReader bufferedReader = new BufferedReader(inputStreamReader); 
+                OutputStream out = clientSocket.getOutputStream();
 
-            // Process Request (read request using in.readLine())
-            String request = bufferedReader.readLine();
-            System.out.println("Request was: ");
-            System.out.println(request);
 
-            // Prepare response (write response using )
-            String response = "Here's a response!";
+                // Process Request (read request using in.readLine())
+                String request = bufferedReader.readLine();
+                System.out.println("Request was: ");
+                System.out.println(request);
 
-            System.out.println("Response was: " + response);
-            
-            // Close socket, breaking client connection. Close input/output streams.
-            out.close();
-            inputStream.close();
-            clientSocket.close();
-            System.out.println("Communication thread terminated.");
+                // Prepare response (write response using )
+                String response = "Here's a response!";
+
+                System.out.println("Response was: " + response);
+
+                // Close socket, breaking client connection. Close input/output streams.
+                out.close();
+                inputStream.close();
+                clientSocket.close();
+                System.out.println("Communication thread terminated.");
+            }
         }
         catch(IOException ex) {
             ex.printStackTrace();
