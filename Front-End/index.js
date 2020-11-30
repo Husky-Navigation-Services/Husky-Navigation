@@ -4,6 +4,7 @@
 //      Server Interface
 //      Event Listeners
 //      Event Listener Callbacks
+//      Navigation
 //      Scrolling Tools
 //      Other
 
@@ -16,7 +17,7 @@ var locationsMap = {
     "Bagley Hall": [47.65353, -122.30879],
     "Suzzallo Library": [47.65580, -122.30818],
     "Guggenheim Hall": [47.65424, -122.30644],
-    "McDonald's": [47.66774, -122.30037]   
+    "McDonald's": [47.66774, -122.30037] 
 }
 
 ////////////////////////
@@ -25,21 +26,21 @@ var locationsMap = {
 
 // Initialize Map
 var mymap = L.map('map').setView([47.650017, -122.30654], 13);
-var mcdonaldsMarker = new L.Marker(locationsMap["McDonald's"]);
 L.tileLayer( 'https://api.mapbox.com/styles/v1/aferman/ckhvetwgy0bds19nznkfvodbx/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYWZlcm1hbiIsImEiOiJja2ZrZXJvbjUwZW5wMnhxcjdyMXc3ZjRnIn0.WGdId2uO9XokPaJmaxlLXg', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
     subdomains: ['a','b','c']
 }).addTo( mymap );
 mymap.zoomControl.setPosition('bottomright');
-mcdonaldsMarker.addTo(mymap);
 
 //////////////////////
 // Server Interface
 /////////////////////
 
 // Test Server Back-End
+// HTTP Request: "ws://[ipaddress]:[port]/[path]?[parameterName1]=[value1]&[parameterName2]=[value2]"
+
 const testServer = () => {
-    let socket = new WebSocket("ws://localhost:35832");
+    let socket = new WebSocket("ws://localhost:35832/data1=dataaa&data2=dataaaaaWee");
 
     socket.onopen = function(e) {
         alert("[open] Connection established");
@@ -155,6 +156,10 @@ function toggleContent() {
     }
 }
 
+///////////////////////////
+// Navigation
+//////////////////////////
+
 // Return whether navigation is possible. If location endpoints are unique and if 
 // neither are set to "Current Location," then it returns true. Otherwise, false.
 function navPossible(from, to) {
@@ -162,9 +167,11 @@ function navPossible(from, to) {
 }
 
 // Navigates. Sets the map view to contain both endpoints and draws the path.
-function nav() {
+async function nav() {
     setNavView(locationsMap[fromElement.innerHTML], locationsMap[toElement.innerHTML]);
-    testServer();
+    // TODO: Fetch data from server instead
+    const data = await fetch('./geojsonTest.json').then(response => response.json());
+    L.geoJSON(data).addTo(mymap);
 }
 
 // Sets the map view to contain the given lat/lng endpoints

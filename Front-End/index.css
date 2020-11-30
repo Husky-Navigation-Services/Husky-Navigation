@@ -145,8 +145,8 @@ html, body {
 }
 
 .startMarker  {
-    width: 30px;
-    height: 30.72px;
+    width: 25px;
+    height: 25px;
     margin: 20px;
 }
 
@@ -177,17 +177,16 @@ html, body {
 }
 
 .inputs {
-    margin-left: 40px;
-    
+    /*margin-left: 40px;*/
 }
 
 .select {
     border-radius: 3px;
-    width: 200px;
+    width: 172px;
     height: 40px;
     background-color: #202225;
     color: whitesmoke;
-    border-width: 5px;
+    border-width: 3px;
     transition: 0.5s;
     font-family: 'Castoro', serif;
 }
@@ -253,4 +252,28 @@ option {
     border-radius: 5px;
     padding: 10px;
     font-family: 'Castoro', sans-serif;
+}
+
+.inputs {
+    margin-left: 40px;
+}
+
+.inputDiv {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 20px;
+}
+
+.miniStartMarker {
+    width: 15px;
+    height: 15px;
+    margin: 10px;
+    margin-left: 0px;
+}
+
+.miniEndMarker {
+    width: 15px;
+    height: 22.44px;
+    margin: 10px;
+    margin-left: 0px;
 }
