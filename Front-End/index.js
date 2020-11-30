@@ -121,12 +121,25 @@ function setViewToLocation() {
 
 // Sets the start text in the horizontal bar to the caller's text when the caller is changed
 function updateStart() {
-    fromElement.innerHTML = this.value;
+    const newLocation = this.value;
+    fromElement.style.opacity = 0;
+    // Gives css transition time to operate
+    window.setTimeout(function () {
+        fromElement.innerHTML = newLocation;
+        fromElement.style.opacity = 1;
+    }, 100);
+    
 }
 
 // Sets the end text in the horizontal bar to the caller's text when the caller is changed
 function updateDest() {
-    toElement.innerHTML = this.value;
+    const newLocation = this.value;
+    toElement.style.opacity = 0;
+    // Gives css transition time to operate
+    window.setTimeout(function () {
+        toElement.innerHTML = newLocation;
+        toElement.style.opacity = 1;
+    }, 100);
 }
 
 // Attempts navigation when the caller is clicked. If location endpoints are unique and if 

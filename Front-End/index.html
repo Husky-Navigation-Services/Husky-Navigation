@@ -15,12 +15,13 @@
 <body>
     <!-- Map -->
     <div id = "map"></div>
-    
+    <img id = "uw-wordmark-id" class = "uw-wordmark" src = "UnivWaWordmark.png"></img>
     <!-- Content -->
     <div id = "content" class= "content">
         <!-- Left Sidebar -->
         <div id = "sidebarLeftId" class = "sidebarLeft">
             <h1 class = "title"> Husky Navigation</h1>
+            <h3 class = "uw-wordmark"></h3>
             <!-- Buildings List -->
             <h6 class = "header"> BUILDINGS </h6>
             <input type="text" class = "searchBar" id="buildingSearch" placeholder="Search for buildings..">
@@ -51,6 +52,7 @@
             <div class = "verticalSpacer"></div>
             <!-- Input Fields -->
             <div class = "inputs">
+                <!-- Select Start -->
                 <div class = "inputDiv">
                     <img class = "miniStartMarker" src = "EmptyRedCircle.png"></img>
                     <select name="startingPoints" id="startingPointsId" class = "select startingPoints">
@@ -64,6 +66,7 @@
                         <option value="McDonald's">McDonald's</option>
                     </select>
                 </div>
+                <!-- Select End -->
                 <div class = "inputDiv">
                     <img class = "miniEndMarker" src = "MarkerIcon2.png"></img>
                     <select name="destinations" id="destinationsId" class = "select destinations">
@@ -77,24 +80,31 @@
                         <option value="McDonald's">McDonald's</option>
                     </select>
                 </div>
+                <!-- Navigation Button -->
                 <button id = "navBtn">Navigate</button>
             </div>
         </div>
-        <!-- Right Sidebar -->
+        <!-- Right Sidebar (where the logo sits) -->
         <div class = "sidebarRight">
             <img id = "logo" class = "logo" src="HuskyNavLogoDarker.png" alt="Husky Navigation">
         </div>
 
+        <!-- Horizontal Sidebar -->
         <div id = "horizontalBarId" class = "horizontalBar">
+            <!-- Start -->
             <img id = "markerId" class = "startMarker" src = "EmptyRedCircle.png"></img>
             <p id = "from" class = "tofrom">Select Starting Point</p>
             <div class = "horizontalSpacer"></div>
+            <!-- End -->
             <img id = "markerId" class = "endMarker" src = "MarkerIcon2.png"></img>
             <p id = "to" class = "tofrom">Select Destination</p>
+            <!-- Distance -->
             <div class = "bar"> &#9474 </div>
             <div id = "distanceId" class = "distance"> Distance: 2.2 mi </div>
+            <!-- ETA -->
             <div class = "bar"> &#9474 </div>
             <div id = "etaId" class = "eta"> ETA: 5 mins </div>
+            <!-- Other Info -->
             <div class = "bar"> &#9474 </div>
         </div>
     </div>  

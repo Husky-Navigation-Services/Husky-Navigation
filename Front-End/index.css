@@ -5,6 +5,8 @@ font-family: 'Montserrat Alternates', sans-serif;*/
 /*font-family: 'Spectral', serif;*/
 @import url('https://fonts.googleapis.com/css2?family=Castoro&display=swap');
 /*font-family: 'Castoro', serif; */
+@import url('https://fonts.googleapis.com/css2?family=Encode+Sans&display=swap');
+/*font-family: 'Encode Sans', sans-serif;*/
 
 .content {
     display: flex;
@@ -31,7 +33,7 @@ font-family: 'Montserrat Alternates', sans-serif;*/
     border-radius: 10px;
     transition: 0.5s;
     pointer-events: auto;
-    font-family: 'Castoro', serif;
+    font-family: 'Encode Sans', sans-serif;
 }
 
 .sidebarLeft:hover {
@@ -74,12 +76,12 @@ font-family: 'Montserrat Alternates', sans-serif;*/
     font-size: 20pt;
     margin: 20px;
     opacity: 0.8;
-    font-family: 'Castoro', serif;
+    font-family: 'Encode Sans', sans-serif;
 }
 
 .header {
     margin-left: 40px;
-    margin-top: 40px;
+    margin-top: 20px;
     margin-bottom: 0px;
     color: whitesmoke;
     opacity: 1;
@@ -131,7 +133,7 @@ html, body {
     transition: 0.5s;
     color: whitesmoke;
     pointer-events: auto;
-    font-family: 'Castoro', serif;
+    font-family: 'Encode Sans', sans-serif;
 }
 
 .horizontalBar:hover {
@@ -158,6 +160,7 @@ html, body {
 
 .tofrom {
     color: whitesmoke;
+    transition: 0.1s;
 }
 
 .horizontalSpacer {
@@ -188,7 +191,7 @@ html, body {
     color: whitesmoke;
     border-width: 3px;
     transition: 0.5s;
-    font-family: 'Castoro', serif;
+    font-family: 'Encode Sans', sans-serif;
 }
 
 .select:hover {
@@ -248,7 +251,7 @@ option {
 .searchBar {
     margin-left: 40px;
     margin-top: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     border-radius: 5px;
     padding: 10px;
     font-family: 'Castoro', sans-serif;
@@ -276,4 +279,8 @@ option {
     height: 22.44px;
     margin: 10px;
     margin-left: 0px;
+}
+
+.uw-wordmark {
+    width: 300px;
 }
