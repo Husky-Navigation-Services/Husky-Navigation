@@ -12,12 +12,35 @@
 // Location Data
 ///////////////////
 
-// Store Location Coordinates
+// maps locations to their lng/lat coords
 var locationsMap = {
     "Bagley Hall": [47.65353, -122.30879],
     "Suzzallo Library": [47.65580, -122.30818],
     "Guggenheim Hall": [47.65424, -122.30644],
     "McDonald's": [47.66774, -122.30037] 
+}
+
+// maps section ids to its height
+var dropDownLengths = {
+    "navSection": "160px",
+    "buildingsSection": "200px",
+    "stopSection": "200px",
+    "aboutSection": "200px",
+    "librariesSection": "200px"
+}
+
+// maps search bar ids to the class of items being searched
+var searchItemsClass = {
+    "buildingsSearch": "building",
+    "busStopSearch": "bus-stop",
+    "librariesSearch": "library"
+}
+
+// maps search bar ids to the container id of items being searched
+var searchItemsContainer = {
+    "buildingsSearch": "building-container",
+    "busStopSearch": "bus-stop-container",
+    "librariesSearch": "library-container"
 }
 
 ////////////////////////
@@ -61,27 +84,47 @@ var toElement = document.getElementById("to");
 var locationElements = document.getElementsByClassName("location");
 var buildingElements = document.getElementsByClassName("building");
 var busStopElements = document.getElementsByClassName("bus-stop");
+var selectElements = document.getElementsByClassName("select");
+var searchBars = document.getElementsByClassName("searchBar");
 var buildingContainer = document.getElementById("building-container");
 var busStopContainer = document.getElementById("bus-stop-container");
 var horizontalBar = document.getElementById("horizontalBarId");
 var leftSideBar = document.getElementById("sidebarLeftId");
 var logo = document.getElementById("logo");
 var titleElements = document.getElementById("titleElementsId");
-buildingContainer.addEventListener('scroll', updateLocationOpacities);
-busStopContainer.addEventListener('scroll', updateLocationOpacities);
+var currentTheme = document.getElementById("currentModeId");
+var navBttn = document.getElementById("navBtn");
+
 logo.addEventListener("click", toggleContent);
+navBttn.addEventListener("click", tryNav);
+
 document.getElementById("startingPointsId").addEventListener("change", updateStart);
 document.getElementById("destinationsId").addEventListener("change", updateDest);
-document.getElementById("navBtn").addEventListener("click", tryNav);
-document.getElementById("buildingSearch").addEventListener("keyup", scrollToBuilding);
-document.getElementById("busStopSearch").addEventListener("keyup", scrollToStop);
-document.getElementById("navHeader").addEventListener("click", toggleNav);
-document.getElementById("buildingsHeader").addEventListener("click", toggleBuildings);
-document.getElementById("stopHeader").addEventListener("click", toggleStops);
+document.getElementById("navHeader").addEventListener("click", () => {
+    toggleDropdown(document.getElementById("navSection"));
+});
+document.getElementById("buildingsHeader").addEventListener("click", () => {
+    toggleDropdown(document.getElementById("buildingsSection"));
+});
+document.getElementById("stopHeader").addEventListener("click", () => {
+    toggleDropdown(document.getElementById("stopSection"));
+});
+document.getElementById("aboutHeader").addEventListener("click", () => {
+    toggleDropdown(document.getElementById("aboutSection"));
+});
+
+document.getElementById("librariesHeader").addEventListener("click", () => {
+    toggleDropdown(document.getElementById("librariesSection"));
+});
+
 document.getElementById("themeCheckbox").addEventListener("change", toggleTheme);
 
 for (var i = 0; i < locationElements.length; i++) {
     locationElements[i].addEventListener('click', setViewToLocation);
+}
+
+for (var i = 0; i < searchBars.length; i++) {
+    searchBars[i].addEventListener("keyup", handleNewInput);
 }
 
 /////////////////////////////
@@ -93,53 +136,46 @@ function toggleTheme() {
         horizontalBar.style.backgroundColor = "#202225";
         leftSideBar.style.backgroundColor = "#202225";
         titleElements.style.backgroundColor = "rgb(179, 179, 179)";
+        navBttn.style.backgroundColor = "rgb(179, 179, 179)";
         logo.src = "HuskyNavLogoDarker.png";
         logo.style.borderWidth = "0px";
         logo.style.width = "70px";
         logo.style.height = "70px";
         logo.style.marginLeft = "0px";
         logo.style.marginTop = "10px";
-        for (var i = 0; i < locationElements.length; i++) {
-            locationElements[i].style.backgroundColor = "#202225";
+        currentTheme.innerHTML = "Dark";
+        for (var i = 0; i < selectElements.length; i++) {
+            selectElements[i].style.backgroundColor = "rgb(179, 179, 179)";
         }
     } else {
         horizontalBar.style.backgroundColor = "#4b2e83";
         leftSideBar.style.backgroundColor = "#4b2e83";
         titleElements.style.backgroundColor = "whitesmoke";
+        navBttn.style.backgroundColor = "whitesmoke";
         logo.src = "HuskyNavLogoWhite.png";
         logo.style.borderWidth = "5px";
         logo.style.width = "60px";
         logo.style.height = "60px";
-        for (var i = 0; i < locationElements.length; i++) {
-            locationElements[i].style.backgroundColor = "#202225";
+        currentTheme.innerHTML = "Light";
+        for (var i = 0; i < selectElements.length; i++) {
+            selectElements[i].style.backgroundColor = "whitesmoke";
         }
     }
 }
 
-function toggleNav() {
-    var navSec = document.getElementById("navSection");
-    if (navSec.style.height == "0px") {
-        navSec.style.height = "160px";
-    } else {
-        navSec.style.height = "0px";
-    }
+// Handles new input in a search bar
+function handleNewInput() {
+    var els = document.getElementsByClassName(searchItemsClass[this.id]);
+    var container = document.getElementById(searchItemsContainer[this.id]);
+    scrollToLocation(this.value, els, container);
 }
 
-function toggleBuildings() {
-    var builSec = document.getElementById("buildingsSection");
-    if (builSec.style.height == "0px") {
-        builSec.style.height = "210px";
+function toggleDropdown(sec) {
+    var size = dropDownLengths[sec.id];
+    if (sec.style.height == "0px") {
+        sec.style.height = size;
     } else {
-        builSec.style.height = "0px";
-    }
-}
-
-function toggleStops() {
-    var stopSec = document.getElementById("stopSection");
-    if (stopSec.style.height == "0px") {
-        stopSec.style.height = "200px";
-    } else {
-        stopSec.style.height = "0px";
+        sec.style.height = "0px";
     }
 }
 
@@ -263,7 +299,7 @@ function setNavView(coord1, coord2) {
 function isElementCentered (el, holder) {
     const { y } = el.getBoundingClientRect()
     const holderRect = holder.getBoundingClientRect()
-    if (y <= holderRect.top + holderRect.height - 50 && y >= holderRect.top + 30) {
+    if (y <= holderRect.bottom - 60 && y >= holderRect.top + 40) {
         return true;
     } else {
         return false;
@@ -282,4 +318,4 @@ function scroll(el, holder) {
 //////////////////////////
 
 // Initialize Location Opacities on Start
-updateLocationOpacities();
+// updateLocationOpacities();

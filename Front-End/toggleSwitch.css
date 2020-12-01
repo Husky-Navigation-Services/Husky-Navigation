@@ -13,6 +13,7 @@ https://www.w3schools.com/howto/howto_css_switch.asp
     border-color: white;
     border-width: 2px;
     border: solid;
+    border-radius: 5em;
   }
   
   /* Hide default HTML checkbox */
@@ -33,6 +34,7 @@ https://www.w3schools.com/howto/howto_css_switch.asp
     background-color: #ccc;
     -webkit-transition: .4s;
     transition: .4s;
+    border-radius: 5em;
   }
   
   .slider:before {
@@ -45,6 +47,7 @@ https://www.w3schools.com/howto/howto_css_switch.asp
     background-color: white;
     -webkit-transition: .4s;
     transition: .4s;
+    border-radius: 5em;
   }
   
   input:checked + .slider {
