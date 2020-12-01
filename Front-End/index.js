@@ -135,9 +135,8 @@ function toggleTheme() {
     if (this.checked) { // Represents dark mode.
         horizontalBar.style.backgroundColor = "#202225";
         leftSideBar.style.backgroundColor = "#202225";
-        titleElements.style.backgroundColor = "rgb(179, 179, 179)";
-        navBttn.style.backgroundColor = "rgb(179, 179, 179)";
-        //titleElements.style.backgroundColor = "#202225";
+        titleElements.style.backgroundColor = "#202225";
+        wordmark.src = "UnivWaWordmark.png";
         logo.src = "HuskyNavLogoDarker.png";
         logo.style.borderWidth = "0px";
         logo.style.width = "70px";
@@ -152,7 +151,7 @@ function toggleTheme() {
         horizontalBar.style.backgroundColor = "#4b2e83";
         leftSideBar.style.backgroundColor = "#4b2e83";
         titleElements.style.backgroundColor = "whitesmoke";
-        navBttn.style.backgroundColor = "whitesmoke";
+        wordmark.src = "UnivWaWordmarkPurple.png";
         logo.src = "HuskyNavLogoWhite.png";
         logo.style.borderWidth = "5px";
         logo.style.width = "60px";
