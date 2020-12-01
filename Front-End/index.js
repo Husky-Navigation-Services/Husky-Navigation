@@ -132,11 +132,12 @@ for (var i = 0; i < searchBars.length; i++) {
 /////////////////////////////
 
 function toggleTheme() {
-    if (this.checked) { // is dark mode
+    if (this.checked) { // Represents dark mode.
         horizontalBar.style.backgroundColor = "#202225";
         leftSideBar.style.backgroundColor = "#202225";
         titleElements.style.backgroundColor = "rgb(179, 179, 179)";
         navBttn.style.backgroundColor = "rgb(179, 179, 179)";
+        //titleElements.style.backgroundColor = "#202225";
         logo.src = "HuskyNavLogoDarker.png";
         logo.style.borderWidth = "0px";
         logo.style.width = "70px";
@@ -147,7 +148,7 @@ function toggleTheme() {
         for (var i = 0; i < selectElements.length; i++) {
             selectElements[i].style.backgroundColor = "rgb(179, 179, 179)";
         }
-    } else {
+    } else { // Represents light mode.
         horizontalBar.style.backgroundColor = "#4b2e83";
         leftSideBar.style.backgroundColor = "#4b2e83";
         titleElements.style.backgroundColor = "whitesmoke";
