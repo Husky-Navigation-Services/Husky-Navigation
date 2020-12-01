@@ -94,6 +94,8 @@ var logo = document.getElementById("logo");
 var titleElements = document.getElementById("titleElementsId");
 var currentTheme = document.getElementById("currentModeId");
 var navBttn = document.getElementById("navBtn");
+var title = document.getElementById("title");
+
 
 logo.addEventListener("click", toggleContent);
 navBttn.addEventListener("click", tryNav);
@@ -137,6 +139,7 @@ function toggleTheme() {
         leftSideBar.style.backgroundColor = "#202225";
         titleElements.style.backgroundColor = "#202225";
         wordmark.src = "UnivWaWordmark.png";
+        title.style.color = "whitesmoke";
         logo.src = "HuskyNavLogoDarker.png";
         logo.style.borderWidth = "0px";
         logo.style.width = "70px";
@@ -147,11 +150,13 @@ function toggleTheme() {
         for (var i = 0; i < selectElements.length; i++) {
             selectElements[i].style.backgroundColor = "rgb(179, 179, 179)";
         }
+       
     } else { // Represents light mode.
         horizontalBar.style.backgroundColor = "#4b2e83";
         leftSideBar.style.backgroundColor = "#4b2e83";
         titleElements.style.backgroundColor = "whitesmoke";
         wordmark.src = "UnivWaWordmarkPurple.png";
+        title.style.color = "#4b2e83";
         logo.src = "HuskyNavLogoWhite.png";
         logo.style.borderWidth = "5px";
         logo.style.width = "60px";
@@ -160,6 +165,7 @@ function toggleTheme() {
         for (var i = 0; i < selectElements.length; i++) {
             selectElements[i].style.backgroundColor = "whitesmoke";
         }
+        
     }
 }
 
