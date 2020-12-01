@@ -15,46 +15,23 @@
 <body>
     <!-- Map -->
     <div id = "map"></div>
-    <img id = "uw-wordmark-id" class = "uw-wordmark" src = "UnivWaWordmark.png"></img>
+    
     <!-- Content -->
     <div id = "content" class= "content">
         <!-- Left Sidebar -->
         <div id = "sidebarLeftId" class = "sidebarLeft">
-            <h1 class = "title"> Husky Navigation</h1>
-            <h3 class = "uw-wordmark"></h3>
-            <!-- Buildings List -->
-            <h6 class = "header"> BUILDINGS </h6>
-            <input type="text" class = "searchBar" id="buildingSearch" placeholder="Search for buildings..">
-            <div id = "building-container" class = "vertical-menu">
-                <p class = "building location">Bagley Hall</p>
-                <p class = "building location">Guggenheim Hall</p>
-                <p class = "building location">Suzzallo Library</p>
-                <p class = "building location">Allen Library</p>
-                <p class = "building location">Sieg Hall</p>
-                <p class = "building location">Guggenheim Annex</p>
-                <p class = "building location">Johnson Hall</p>
-                <p class = "building location">Gerberding Hall</p>
-                <p class = "building location">Kane Hall</p>
-                <p class = "building location">Odegaard Library</p>
+            <div class = "titleElements">
+                <img id = "uw-wordmark-id" class = "uw-wordmark" src = "UnivWaWordmarkPurple.png"></img>
+                <h1 class = "title">Husky Navigation</h1>
             </div>
-            <!-- Bus Stops List -->
-            <h6 class = "header"> BUS STOPS </h6>
-            <input type="text" class = "searchBar" id="busStopSearch" placeholder="Search for bus stops..">
-            <div id = "bus-stop-container" class = "vertical-menu">
-                <p class = "bus-stop location">Stop 123</p>
-                <p class = "bus-stop location">Stop 456</p>
-                <p class = "bus-stop location">Stop 789</p>
-                <p class = "bus-stop location">Stop 321</p>
-                <p class = "bus-stop location">Stop 321</p>
-                <p class = "bus-stop location">Stop 621</p>
-                <p class = "bus-stop location">Stop 521</p>
-            </div>
-            <div class = "verticalSpacer"></div>
+            <!-- Nav -->
+            <h6 id = "navHeader" class = "header">NAVIGATION </h6>
+            <span class = "uw-slant"></span>
             <!-- Input Fields -->
-            <div class = "inputs">
+            <div id = "navSection" class = "inputs">
                 <!-- Select Start -->
                 <div class = "inputDiv">
-                    <img class = "miniStartMarker" src = "EmptyRedCircle.png"></img>
+                    <!--<img class = "miniStartMarker" src = "EmptyRedCircle.png"></img>-->
                     <select name="startingPoints" id="startingPointsId" class = "select startingPoints">
                         <option value="Current Location">Current Location</option>
                         <option value="Guggenheim Hall">Guggenheim Hall</option>
@@ -68,7 +45,7 @@
                 </div>
                 <!-- Select End -->
                 <div class = "inputDiv">
-                    <img class = "miniEndMarker" src = "MarkerIcon2.png"></img>
+                    <!--<img class = "miniEndMarker" src = "MarkerIcon2.png"></img>-->
                     <select name="destinations" id="destinationsId" class = "select destinations">
                         <option value="Current Location">Current Location</option>
                         <option value="Guggenheim Hall">Guggenheim Hall</option>
@@ -83,10 +60,45 @@
                 <!-- Navigation Button -->
                 <button id = "navBtn">Navigate</button>
             </div>
+            
+            <!-- Buildings List -->
+            
+            <h6 id = "buildingsHeader" class = "header"> BUILDINGS </h6>
+            <span class = "uw-slant"></span>
+            <div id = "buildingsSection"> 
+                <input type="text" class = "searchBar" id="buildingSearch" placeholder="Search for buildings..">
+                <div id = "building-container" class = "vertical-menu">
+                    <p class = "building location">Bagley Hall</p>
+                    <p class = "building location">Guggenheim Hall</p>
+                    <p class = "building location">Suzzallo Library</p>
+                    <p class = "building location">Allen Library</p>
+                    <p class = "building location">Sieg Hall</p>
+                    <p class = "building location">Guggenheim Annex</p>
+                    <p class = "building location">Johnson Hall</p>
+                    <p class = "building location">Gerberding Hall</p>
+                    <p class = "building location">Kane Hall</p>
+                    <p class = "building location">Odegaard Library</p>
+                </div>
+            </div>
+            <!-- Bus Stops List -->
+            <h6 id = "stopHeader" class = "header"> BUS STOPS </h6>
+            <span class = "uw-slant"></span>
+            <div id = "stopSection"> 
+                <input type="text" class = "searchBar" id="busStopSearch" placeholder="Search for bus stops..">
+                <div id = "bus-stop-container" class = "vertical-menu">
+                    <p class = "bus-stop location">Stop 123</p>
+                    <p class = "bus-stop location">Stop 456</p>
+                    <p class = "bus-stop location">Stop 789</p>
+                    <p class = "bus-stop location">Stop 321</p>
+                    <p class = "bus-stop location">Stop 321</p>
+                    <p class = "bus-stop location">Stop 621</p>
+                    <p class = "bus-stop location">Stop 521</p>
+                </div>
+            </div>
         </div>
         <!-- Right Sidebar (where the logo sits) -->
         <div class = "sidebarRight">
-            <img id = "logo" class = "logo" src="HuskyNavLogoDarker.png" alt="Husky Navigation">
+            <img id = "logo" class = "logoIcon" src="HuskyNavLogoWhite.png" alt="Husky Navigation">
         </div>
 
         <!-- Horizontal Sidebar -->

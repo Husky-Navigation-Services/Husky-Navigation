@@ -71,6 +71,9 @@ document.getElementById("destinationsId").addEventListener("change", updateDest)
 document.getElementById("navBtn").addEventListener("click", tryNav);
 document.getElementById("buildingSearch").addEventListener("keyup", scrollToBuilding);
 document.getElementById("busStopSearch").addEventListener("keyup", scrollToStop);
+document.getElementById("navHeader").addEventListener("click", toggleNav);
+document.getElementById("buildingsHeader").addEventListener("click", toggleBuildings);
+document.getElementById("stopHeader").addEventListener("click", toggleStops);
 
 for (var i = 0; i < locationElements.length; i++) {
     locationElements[i].addEventListener('click', setViewToLocation);
@@ -79,6 +82,33 @@ for (var i = 0; i < locationElements.length; i++) {
 /////////////////////////////
 // Event Listener Callbacks
 /////////////////////////////
+
+function toggleNav() {
+    var navSec = document.getElementById("navSection");
+    if (navSec.style.height == "0px") {
+        navSec.style.height = "180px";
+    } else {
+        navSec.style.height = "0px";
+    }
+}
+
+function toggleBuildings() {
+    var builSec = document.getElementById("buildingsSection");
+    if (builSec.style.height == "0px") {
+        builSec.style.height = "210px";
+    } else {
+        builSec.style.height = "0px";
+    }
+}
+
+function toggleStops() {
+    var stopSec = document.getElementById("stopSection");
+    if (stopSec.style.height == "0px") {
+        stopSec.style.height = "200px";
+    } else {
+        stopSec.style.height = "0px";
+    }
+}
 
 // Scrolls to the caller (a building location) when the caller is changed
 function scrollToBuilding() {
