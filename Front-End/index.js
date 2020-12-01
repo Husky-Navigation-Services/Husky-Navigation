@@ -63,9 +63,13 @@ var buildingElements = document.getElementsByClassName("building");
 var busStopElements = document.getElementsByClassName("bus-stop");
 var buildingContainer = document.getElementById("building-container");
 var busStopContainer = document.getElementById("bus-stop-container");
+var horizontalBar = document.getElementById("horizontalBarId");
+var leftSideBar = document.getElementById("sidebarLeftId");
+var logo = document.getElementById("logo");
+var titleElements = document.getElementById("titleElementsId");
 buildingContainer.addEventListener('scroll', updateLocationOpacities);
 busStopContainer.addEventListener('scroll', updateLocationOpacities);
-document.getElementById("logo").addEventListener("click", toggleContent);
+logo.addEventListener("click", toggleContent);
 document.getElementById("startingPointsId").addEventListener("change", updateStart);
 document.getElementById("destinationsId").addEventListener("change", updateDest);
 document.getElementById("navBtn").addEventListener("click", tryNav);
@@ -74,6 +78,7 @@ document.getElementById("busStopSearch").addEventListener("keyup", scrollToStop)
 document.getElementById("navHeader").addEventListener("click", toggleNav);
 document.getElementById("buildingsHeader").addEventListener("click", toggleBuildings);
 document.getElementById("stopHeader").addEventListener("click", toggleStops);
+document.getElementById("themeCheckbox").addEventListener("change", toggleTheme);
 
 for (var i = 0; i < locationElements.length; i++) {
     locationElements[i].addEventListener('click', setViewToLocation);
@@ -82,6 +87,34 @@ for (var i = 0; i < locationElements.length; i++) {
 /////////////////////////////
 // Event Listener Callbacks
 /////////////////////////////
+
+function toggleTheme() {
+    if (this.checked) { // is dark mode
+        horizontalBar.style.backgroundColor = "#202225";
+        leftSideBar.style.backgroundColor = "#202225";
+        titleElements.style.backgroundColor = "rgb(179, 179, 179)";
+        logo.src = "HuskyNavLogoDarker.png";
+        logo.style.borderWidth = "0px";
+        logo.style.width = "70px";
+        logo.style.height = "70px";
+        logo.style.marginLeft = "0px";
+        logo.style.marginTop = "10px";
+        for (var i = 0; i < locationElements.length; i++) {
+            locationElements[i].style.backgroundColor = "#202225";
+        }
+    } else {
+        horizontalBar.style.backgroundColor = "#4b2e83";
+        leftSideBar.style.backgroundColor = "#4b2e83";
+        titleElements.style.backgroundColor = "whitesmoke";
+        logo.src = "HuskyNavLogoWhite.png";
+        logo.style.borderWidth = "5px";
+        logo.style.width = "60px";
+        logo.style.height = "60px";
+        for (var i = 0; i < locationElements.length; i++) {
+            locationElements[i].style.backgroundColor = "#202225";
+        }
+    }
+}
 
 function toggleNav() {
     var navSec = document.getElementById("navSection");

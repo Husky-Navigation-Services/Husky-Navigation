@@ -3,6 +3,7 @@
 <head>
     <title>Husky Navigation Maps</title>
     <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="toggleSwitch.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
     integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
     crossorigin=""/>
@@ -20,7 +21,7 @@
     <div id = "content" class= "content">
         <!-- Left Sidebar -->
         <div id = "sidebarLeftId" class = "sidebarLeft">
-            <div class = "titleElements">
+            <div id = "titleElementsId" class = "titleElements">
                 <h1 class = "title">Husky Navigation</h1>
                 <span class = "uw-slant-large"></span>
                 <img id = "uw-wordmark-id" class = "uw-wordmark" src = "UnivWaWordmarkPurple.png"></img>
@@ -124,6 +125,10 @@
             <div id = "etaId" class = "eta"> ETA: 5 mins </div>
             <!-- Other Info -->
             <div class = "bar"> &#9474 </div>
+            <label class="switch">
+                <input id = "themeCheckbox" type="checkbox">
+                <span class="slider"></span>
+            </label>
         </div>
 
     </div>  

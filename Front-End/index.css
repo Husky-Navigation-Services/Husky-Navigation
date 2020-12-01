@@ -51,6 +51,7 @@ font-family: 'Montserrat Alternates', sans-serif;*/
 .sidebarRight {
     height: 100%;
     width: 72px;
+    text-align: center;
 }
 
 .logoIcon {
@@ -63,20 +64,17 @@ font-family: 'Montserrat Alternates', sans-serif;*/
     padding-top: 0%;
     border-radius: 1em; 
     pointer-events: auto;
+    transition: 0.2s;
+    /*transition: border-width 0.1s ease-in-out;*/
 }
 
 .logoIcon:hover {
-    opacity: 1;
-    width: 55px;
-    height: 55px;
-    margin-left: 2.5px;
-    margin-top: 12.5px;
-    transition: 0.5s;
+    opacity: 0.8;
 }
 
 .logoIcon:active {
     transform: translateY(-5px);
-    transition: 1s;
+    transition: 5s;
 }
 
 .header {
@@ -149,11 +147,6 @@ html, body {
     transition: 0.5s;
 }
 
-.horizontalBar:active {
-    transform: translateY(-5px);
-    transition: 1s;
-}
-
 .startMarker  {
     width: 25px;
     height: 25px;
@@ -184,7 +177,7 @@ html, body {
     margin-left: 40px;
     margin-right: 40px;
     font-size: 20pt;
-    opacity: 0.5;
+    color: #b7a57a;
 }
 
 .inputs {
@@ -303,7 +296,7 @@ option {
     margin-bottom: 20px;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
-    
+    transition: 0.5s;
 }
 
 .uw-wordmark {
@@ -361,3 +354,6 @@ option {
     overflow: hidden;
     transition: 0.5s;
 }
+
+
+
