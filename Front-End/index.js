@@ -230,7 +230,7 @@ function setNavView(coord1, coord2) {
 function isElementCentered (el, holder) {
     const { y } = el.getBoundingClientRect()
     const holderRect = holder.getBoundingClientRect()
-    if (y <= holderRect.top + holderRect.height - 60 && y >= holderRect.top + 20) {
+    if (y <= holderRect.top + holderRect.height - 50 && y >= holderRect.top + 40) {
         return true;
     } else {
         return false;
