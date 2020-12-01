@@ -86,7 +86,7 @@ for (var i = 0; i < locationElements.length; i++) {
 function toggleNav() {
     var navSec = document.getElementById("navSection");
     if (navSec.style.height == "0px") {
-        navSec.style.height = "180px";
+        navSec.style.height = "160px";
     } else {
         navSec.style.height = "0px";
     }

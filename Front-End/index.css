@@ -61,16 +61,16 @@ font-family: 'Montserrat Alternates', sans-serif;*/
     width: 60px;
     height: 60px;
     padding-top: 0%;
-    border-radius: 5px;
+    border-radius: 1em; 
     pointer-events: auto;
 }
 
-.logo:hover {
-    border-radius: 1em;
+.logoIcon:hover {
+    
     transition: 0.5s;
 }
 
-.logo:active {
+.logoIcon:active {
     transform: translateY(-5px);
     transition: 1s;
 }
@@ -332,7 +332,7 @@ option {
 #navSection {
     overflow: hidden;
     transition: 0.5s;
-    height: 180px;
+    height: 160px;
 }
 
 #stopSection {
@@ -340,6 +340,7 @@ option {
     overflow: hidden;
     transition: 0.5s;
 }
+
 #buildingsSection {
     height: 0px;
     overflow: hidden;
