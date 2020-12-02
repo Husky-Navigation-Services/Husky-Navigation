@@ -129,7 +129,6 @@ html, body {
 .horizontalBar {
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
     align-items: center;
     background-color: #4b2e83;
     width: calc(100% - 398px);
@@ -363,14 +362,7 @@ option {
     margin: 20px;
     margin-left: 0px;
 }
-  
-  /* relevant styles */
-  .weather__feature {
-    position: relative;
-    height: 200px;
-    width: 257px;
-  }
-  
+
   .weather__description {
     top: 0;
     bottom: 0;
