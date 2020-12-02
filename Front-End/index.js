@@ -150,7 +150,7 @@ function toggleTheme() {
         logo.style.height = "70px";
         logo.style.marginLeft = "0px";
         logo.style.marginTop = "10px";
-        currentTheme.innerHTML = "Dark Theme";
+        currentTheme.innerHTML = "Dark";
         for (var i = 0; i < selectElements.length; i++) {
             selectElements[i].style.backgroundColor = "rgb(179, 179, 179)";
         }
@@ -167,7 +167,7 @@ function toggleTheme() {
         logo.style.borderWidth = "5px";
         logo.style.width = "60px";
         logo.style.height = "60px";
-        currentTheme.innerHTML = "Light Theme";
+        currentTheme.innerHTML = "Light";
         for (var i = 0; i < selectElements.length; i++) {
             selectElements[i].style.backgroundColor = "whitesmoke";
         }

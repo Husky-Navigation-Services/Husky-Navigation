@@ -163,7 +163,7 @@ html, body {
 }
 
 .horizontalSpacer {
-    width: 120px;
+    width: 80px;
     font-size: 30pt;
 }
 
@@ -332,7 +332,7 @@ option {
 }
 
 .currentMode {
-    margin-left: 10px;
+    margin-left: 5px;
     align-self: center;
 }
 
@@ -359,18 +359,7 @@ option {
     width: 35px;
     height: 35px;
     margin: 20px;
+    margin-left: 0px;
 }
 
-.footer {
-    display: flex;
-    vertical-align: bottom;
-    height: 50px;
-    background-color: whitesmoke;
-    margin: 5px;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-    transition: 0.5s;
-    justify-content: space-between;
-    margin-top: auto;
-    
-}
+
