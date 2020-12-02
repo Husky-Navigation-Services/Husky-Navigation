@@ -14,6 +14,9 @@ https://www.w3schools.com/howto/howto_css_switch.asp
     border-width: 2px;
     border: solid;
     border-radius: 5em;
+    align-self: center;
+    margin-left: 10px;
+    margin-right: 10px;
   }
   
   /* Hide default HTML checkbox */

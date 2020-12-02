@@ -25,7 +25,9 @@ font-family: 'Montserrat Alternates', sans-serif;*/
 
 
 .sidebarLeft {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
     overflow: hidden;
     white-space: nowrap;
     margin: 10px;
@@ -41,11 +43,6 @@ font-family: 'Montserrat Alternates', sans-serif;*/
 
 .sidebarLeft:hover {
 	transition: 0.5s;
-}
-
-.sidebarLeft:active {
-    transform: translateY(-5px);
-    transition: 1s;
 }
 
 .sidebarRight {
@@ -335,7 +332,8 @@ option {
 }
 
 .currentMode {
-    margin-right: 10px;
+    margin-left: 10px;
+    align-self: center;
 }
 
 #aboutSection {
@@ -360,4 +358,18 @@ option {
     width: 25px;
     height: 25px;
     margin: 20px;
+}
+
+.footer {
+    display: flex;
+    vertical-align: bottom;
+    height: 50px;
+    background-color: whitesmoke;
+    margin: 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    transition: 0.5s;
+    justify-content: space-between;
+    margin-top: auto;
+    
 }

@@ -5,6 +5,7 @@
 //      Event Listeners
 //      Event Listener Callbacks
 //      Navigation
+//      Weather
 //      Scrolling Tools
 //      Other
 
@@ -95,6 +96,7 @@ var titleElements = document.getElementById("titleElementsId");
 var currentTheme = document.getElementById("currentModeId");
 var navBttn = document.getElementById("navBtn");
 var title = document.getElementById("title");
+var footer =  document.getElementById("footer");
 
 
 logo.addEventListener("click", toggleContent);
@@ -138,6 +140,8 @@ function toggleTheme() {
         horizontalBar.style.backgroundColor = "#202225";
         leftSideBar.style.backgroundColor = "#202225";
         titleElements.style.backgroundColor = "#202225";
+        footer.style.backgroundColor = "#202225";
+        
         wordmark.src = "UnivWaWordmark.png";
         title.style.color = "whitesmoke";
         logo.src = "HuskyNavLogoDarker.png";
@@ -146,7 +150,7 @@ function toggleTheme() {
         logo.style.height = "70px";
         logo.style.marginLeft = "0px";
         logo.style.marginTop = "10px";
-        currentTheme.innerHTML = "Dark";
+        currentTheme.innerHTML = "Dark Theme";
         for (var i = 0; i < selectElements.length; i++) {
             selectElements[i].style.backgroundColor = "rgb(179, 179, 179)";
         }
@@ -155,13 +159,15 @@ function toggleTheme() {
         horizontalBar.style.backgroundColor = "#4b2e83";
         leftSideBar.style.backgroundColor = "#4b2e83";
         titleElements.style.backgroundColor = "whitesmoke";
+        footer.style.backgroundColor = "whitesmoke";
+        footer.style.width = "278px";
         wordmark.src = "UnivWaWordmarkPurple.png";
         title.style.color = "#4b2e83";
         logo.src = "HuskyNavLogoWhite.png";
         logo.style.borderWidth = "5px";
         logo.style.width = "60px";
         logo.style.height = "60px";
-        currentTheme.innerHTML = "Light";
+        currentTheme.innerHTML = "Light Theme";
         for (var i = 0; i < selectElements.length; i++) {
             selectElements[i].style.backgroundColor = "whitesmoke";
         }
@@ -296,6 +302,10 @@ async function nav() {
 function setNavView(coord1, coord2) {
     mymap.fitBounds([coord1, coord2]);
 }
+
+////////////////////////
+// Weather
+//////////////////////
 
 function weatherBalloon( cityID ) {
     var key = '{yourkey}';
