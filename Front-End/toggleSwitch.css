@@ -39,7 +39,7 @@ https://www.w3schools.com/howto/howto_css_switch.asp
     right: 0;
     bottom: 0;
     background-color: #ccc;
-    -webkit-transition: 0.1s;
+    transition: 0.1s;
     border-radius: 5em;
   }
   
@@ -51,7 +51,7 @@ https://www.w3schools.com/howto/howto_css_switch.asp
     left: 4px;
     bottom: 4px;
     background-color: white;
-    -webkit-transition: 0.1s;
+    transition: 0.1s;
     border-radius: 5em;
   }
   
