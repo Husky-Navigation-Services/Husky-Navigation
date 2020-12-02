@@ -140,8 +140,6 @@ function toggleTheme() {
         horizontalBar.style.backgroundColor = "#202225";
         leftSideBar.style.backgroundColor = "#202225";
         titleElements.style.backgroundColor = "#202225";
-        footer.style.backgroundColor = "#202225";
-        
         wordmark.src = "UnivWaWordmark.png";
         title.style.color = "whitesmoke";
         logo.src = "HuskyNavLogoDarker.png";
@@ -159,8 +157,6 @@ function toggleTheme() {
         horizontalBar.style.backgroundColor = "#4b2e83";
         leftSideBar.style.backgroundColor = "#4b2e83";
         titleElements.style.backgroundColor = "whitesmoke";
-        footer.style.backgroundColor = "whitesmoke";
-        footer.style.width = "278px";
         wordmark.src = "UnivWaWordmarkPurple.png";
         title.style.color = "#4b2e83";
         logo.src = "HuskyNavLogoWhite.png";
