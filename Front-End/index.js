@@ -314,11 +314,12 @@ function weatherBalloon( cityID ) {
     weatherBalloon( 5809844 );
 }
 
+// Choose which icon based on whether it is raining
 function isRain( d ) {
 	if( d.weather[0].description.indexOf('rain') > 0 ) {
-        isRain.src = "RainIcon.jpg";
+        weather.src = "RainIcon.png";
     } else {
-        isRain.src = "NoRainIcon.png";
+        wheather.src = "NoRainIcon.png";
     }
 }
 

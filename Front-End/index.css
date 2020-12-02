@@ -307,7 +307,7 @@ option {
     font-size: 20pt;
     opacity: 1;
     font-weight: 700;
-    font-family: 'Encode Sans', sans-serif;
+    font-family: 'Castoro', sans-serif;
     opacity: 1;
     margin-top: 5px;
     margin-bottom: 5px;
@@ -356,6 +356,7 @@ option {
     transition: 0.5s;
 }
 
+/* Weather icon size. */
 .weather {
     width: 35px;
     height: 35px;
