@@ -355,3 +355,9 @@ option {
     overflow: hidden;
     transition: 0.5s;
 }
+
+.weather {
+    width: 25px;
+    height: 25px;
+    margin: 20px;
+}
