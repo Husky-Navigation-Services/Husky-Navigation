@@ -362,5 +362,30 @@ option {
     margin: 20px;
     margin-left: 0px;
 }
-
-
+  
+  /* relevant styles */
+  .weather__feature {
+    position: relative;
+    height: 200px;
+    width: 257px;
+  }
+  
+  .weather__description {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(29, 106, 154, 0.72);
+    color: #fff;
+    visibility: hidden;
+    opacity: 0;
+  
+    /* transition effect. not necessary */
+    transition: opacity .2s, visibility .2s;
+  }
+  
+  .weather_feature:hover .weather__description {
+    visibility: visible;
+    opacity: 1;
+  }
