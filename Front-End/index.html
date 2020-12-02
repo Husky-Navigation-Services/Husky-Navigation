@@ -141,12 +141,18 @@
             <div id = "etaId" class = "eta"> ETA: 5 mins </div>
             <!-- Theme Switch -->
             <div class = "bar"> &#9474 </div>
-            <!-- Weather -->
+            <!-- Weather TODO: Add Hover -->
             <div class="weather_feature">
-                <img id = "weatherIcon" class = "weather" src = "RainIcon.png" alt = "NoRainIcon.png"></img>
-                
+                <div id = "weatherDiv">
+                    <img id = "weatherIcon" class = "weather" src = "RainIcon.png" alt = "NoRainIcon.png"></img>
+                </div>
+                <div id = "weatherTextDiv">
+                    <p id = "temp" >50 &#8457</p>
+                    <p id = "humidity" >88%</p>
+                    
+                </div>
             </div>
-            <p class="weather__description">This image looks super neat.</p>
+            <!--Theme Switcher-->
             <div id = "themeDiv">
                 <p id = "currentModeId" class = "currentMode">Light</p>
                 <label class = "switch">

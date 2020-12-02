@@ -172,8 +172,8 @@ html, body {
 }
 
 .bar {
-    margin-left: 30px;
-    margin-right: 30px;
+    margin-left: 20px;
+    margin-right: 20px;
     font-size: 20pt;
     color: #b7a57a;
 }
@@ -356,13 +356,29 @@ option {
 
 /* Weather icon size. */
 .weather {
-    width: 35px;
-    height: 35px;
-    margin: 20px;
-    margin-left: 0px;
+    width: 25px;
+    height: 25px;
+    margin-left: 15px;
 }
 
-  .weather__description {
+#temp {
+    display: inline-block;
+    margin: 0px;
+}
+
+#humidity {
+    display: inline-block;
+    margin: 0px;
+}
+
+#weatherTextDiv {
+    padding: 0px;
+    display: block;
+    font-size: 10pt;
+    
+}
+
+.weather__description {
     top: 0;
     bottom: 0;
     left: 0;
