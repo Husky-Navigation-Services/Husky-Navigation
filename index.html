@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Husky Navigation Maps</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="toggleSwitch.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+    crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+    crossorigin=""></script>
+
+</head>
+
+<body>
+    <!-- Map -->
+    <div id = "map"></div>
+    
+    <!-- Content -->
+    <div id = "content" class= "content">
+        <!-- Left Sidebar -->
+        <div id = "sidebarLeftId" class = "sidebarLeft">
+            <div id = "titleElementsId" class = "titleElements">
+                <h1 id = "title" class = "title">Husky Navigation</h1>
+                <span class = "uw-slant-large"></span>
+                <img id = "wordmark" class = "uw-wordmark" src = "UnivWaWordmarkPurple.png" alt = "UnivWaWordmark.png"></img>
+            </div>
+            <!-- Nav -->
+            <h6 id = "navHeader" class = "header">NAVIGATION </h6>
+            <span class = "uw-slant"></span>
+            <!-- Input Fields -->
+            <div id = "navSection" class = "inputs contentSection">
+                <!-- Select Start -->
+                <div class = "inputDiv">
+                    <!--<img class = "miniStartMarker" src = "EmptyRedCircle.png"></img>-->
+                    <select name="startingPoints" id="startingPointsId" class = "select startingPoints">
+                        <option value="Current Location">Current Location</option>
+                        <option value="Guggenheim Hall">Guggenheim Hall</option>
+                        <option value="Guggenheim Annex">Guggenheim Annex</option>
+                        <option value="Bagley Hall">Bagley Hall</option>
+                        <option value="Johnson Hall">Johnson Hall</option>
+                        <option value="Sieg Hall">Sieg Hall</option>
+                        <option value="Husky Union Building">Husky Union Building</option>
+                        <option value="McDonald's">McDonald's</option>
+                    </select>
+                </div>
+                <!-- Select End -->
+                <div class = "inputDiv">
+                    <!--<img class = "miniEndMarker" src = "MarkerIcon2.png"></img>-->
+                    <select name="destinations" id="destinationsId" class = "select destinations">
+                        <option value="Current Location">Current Location</option>
+                        <option value="Guggenheim Hall">Guggenheim Hall</option>
+                        <option value="Guggenheim Annex">Guggenheim Annex</option>
+                        <option value="Bagley Hall">Bagley Hall</option>
+                        <option value="Johnson Hall">Johnson Hall</option>
+                        <option value="Sieg Hall">Sieg Hall</option>
+                        <option value="Husky Union Building">Husky Union Building</option>
+                        <option value="McDonald's">McDonald's</option>
+                    </select>
+                </div>
+                <!-- Navigation Button -->
+                <button id = "navBtn">Navigate</button>
+            </div>
+            
+            <!-- Buildings List -->
+            <h6 id = "buildingsHeader" class = "header"> BUILDINGS </h6>
+            <span class = "uw-slant"></span>
+            <div id = "buildingsSection" class = "contentSection"> 
+                <input type = "text" class = "searchBar" id="buildingsSearch" placeholder="Search for buildings..">
+                <div id = "building-container" class = "vertical-menu">
+                    <p class = "building location">Bagley Hall</p>
+                    <p class = "building location">Guggenheim Hall</p>
+                    <p class = "building location">Sieg Hall</p>
+                    <p class = "building location">Guggenheim Annex</p>
+                    <p class = "building location">Johnson Hall</p>
+                    <p class = "building location">Gerberding Hall</p>
+                    <p class = "building location">Kane Hall</p>
+                </div>
+            </div>
+            <!-- Libraries List -->
+            <h6 id = "librariesHeader" class = "header"> LIBRARIES </h6>
+            <span class = "uw-slant"></span>
+            <div id = "librariesSection" class = "contentSection"> 
+                <input type="text" class = "searchBar" id="librariesSearch" placeholder="Search for libraries..">
+                <div id = "library-container" class = "vertical-menu">
+                    <p class = "library location">Suzzallo Library</p>
+                    <p class = "library location">Allen Library</p>
+                    <p class = "library location">Odegaard Library</p>
+                    <p class = "library location">Engineering Library</p>
+                    <p class = "library location">Gowen Library</p>
+                </div>
+            </div>
+
+            <!-- Bus Stops List -->
+            <h6 id = "stopHeader" class = "header"> BUS STOPS </h6>
+            <span class = "uw-slant"></span>
+            <div id = "stopSection" class = "contentSection"> 
+                <input type="text" class = "searchBar" id="busStopSearch" placeholder="Search for bus stops..">
+                <div id = "bus-stop-container" class = "vertical-menu">
+                    <p class = "bus-stop location">Stop 123</p>
+                    <p class = "bus-stop location">Stop 456</p>
+                    <p class = "bus-stop location">Stop 789</p>
+                    <p class = "bus-stop location">Stop 321</p>
+                    <p class = "bus-stop location">Stop 321</p>
+                    <p class = "bus-stop location">Stop 621</p>
+                    <p class = "bus-stop location">Stop 521</p>
+                </div>
+            </div>
+            <!--About Us-->
+            <h6 id = "aboutHeader" class = "header"> ABOUT US </h6>
+                <span class = "uw-slant"></span>
+            <div id = "aboutSection" class = "contentSection">
+                <p class = "contributor">Daniel Berezansky | Back-End</p>
+                <p class = "credential"> UW CS 2024</p>
+                <p class = "contributor">Amit Ferman | Front-End</p>
+                <p class = "credential"> UW CS 2024</p>
+                <p class = "contributor">Albert Weng | Back-End</p>
+                <p class = "credential"> UW CS 2024</p>
+            </div>
+        </div>
+        <!-- Right Sidebar (where the logo sits) -->
+        <div class = "sidebarRight">
+            <img id = "logo" class = "logoIcon" src="HuskyNavLogoWhite.png" alt="Husky Navigation">
+        </div>
+
+        <!-- Horizontal Sidebar -->
+        <div id = "horizontalBarId" class = "horizontalBar">
+            <!-- Start -->
+            <img id = "markerId" class = "startMarker" src = "EmptyRedCircle.png"></img>
+            <p id = "from" class = "tofrom">Select Starting Point</p>
+            <div class = "horizontalSpacer"></div>
+            <!-- End -->
+            <img id = "markerId" class = "endMarker" src = "MarkerIcon2.png"></img>
+            <p id = "to" class = "tofrom">Select Destination</p>
+            <!-- Distance -->
+            <div class = "bar"> &#9474 </div>
+            <div id = "distanceId" class = "distance"> Distance: 2.2 mi </div>
+            <!-- ETA -->
+            <div class = "bar"> &#9474 </div>
+            <div id = "etaId" class = "eta"> ETA: 5 mins </div>
+            <div class = "bar"> &#9474 </div>
+            <!-- Weather -->
+            <div class="weather_feature">
+                <img id = "weatherIcon" class = "weather" src = "RainIcon.png" alt = "NoRainIcon.png"></img>
+            </div>
+            <!-- Theme Switch -->
+            <div id = "themeDiv">
+                <p id = "currentModeId" class = "currentMode">Light</p>
+                <label class = "switch">
+                    <input id = "themeCheckbox" type="checkbox">
+                    <span class = "slider"></span>
+                </label>
+            </div>
+        </div>
+
+    </div>  
+    <script src = "index.js"></script>
+</body>
+</html>
