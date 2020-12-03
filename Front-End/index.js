@@ -63,18 +63,13 @@ mymap.zoomControl.setPosition('bottomright');
 // Test Server Back-End
 // HTTP Request: "ws://[ipaddress]:[port]/[path]?[parameterName1]=[value1]&[parameterName2]=[value2]"
 
-const testServer = () => {
-    let socket = new WebSocket("ws://localhost:35832/data1=dataaa&data2=dataaaaaWee");
-
-    socket.onopen = function(e) {
-        alert("[open] Connection established");
-        alert("Sending to server");
-        var enc = new TextEncoder();
-        socket.send("Some Data!");
-        
-    };
+function testServer() {
+    fetch("http://192.168.1.128:8500/test")
+        .then(response => response.json())
+        .then(res => console.log(res));
 }
 
+testServer();
 /////////////////////
 // Event Listeners
 /////////////////////
@@ -287,11 +282,12 @@ function navPossible(from, to) {
 }
 
 // Navigates. Sets the map view to contain both endpoints and draws the path.
-async function nav() {
+function nav() {
     setNavView(locationsMap[fromElement.innerHTML], locationsMap[toElement.innerHTML]);
     // TODO: Fetch data from server instead
-    const data = await fetch('./geojsonTest.json').then(response => response.json());
-    L.geoJSON(data).addTo(mymap);
+    
+    //const data = await fetch('./geojsonTest.json').then(response => response.json());
+    //L.geoJSON(data).addTo(mymap);
 }
 
 // Sets the map view to contain the given lat/lng endpoints
