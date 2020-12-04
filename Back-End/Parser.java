@@ -15,17 +15,20 @@ x y [name] x y [name] d x y [name] d x y [name] d
 import java.io.*;
 import java.util.*;
 public class Parser {
-    private Map<Node, HashSet<Pair>> map;
+    private static Map<Node, Set<Pair>> map;
 //  private Map<String, Node> names;
-    private Set<Node> busStops;
+    private static Set<Node> busStops;
+    private static Map<String, Node> names;
         
-    public Parser() {
-        map = new HashMap<Node, HashSet<Pair>>();
-//      names = new HashMap<String, Node>();
-        busStops = new HashSet<Node>();
-    }
+//    public Parser() {
+//        map = new HashMap<Node, HashSet<Pair>>();
+//        names = new HashMap<String, Node>();
+//        busStops = new HashSet<Node>();
+//    }
 
-    public void createMap(File input) throws FileNotFoundException {
+    public static void createMap(File input) throws FileNotFoundException {
+        map = new HashMap<>();
+        busStops = new HashSet<>();
         int currentId = 0;
         HashMap<Location, Integer> ids = new HashMap<>();
         Scanner reader = new Scanner(input);
@@ -36,13 +39,20 @@ public class Parser {
                 ids.put(keyLoc, currentId++);
             }
             Node key = new Node (ids.get(keyLoc), keyLoc.x, keyLoc.y, line.nextToken());
-            map.put(key, new HashSet<Pair>());
+            map.put(key, new HashSet<>());
             while (line.hasMoreTokens()) {
                 Location temp = new Location(Float.parseFloat(line.nextToken()), Float.parseFloat(line.nextToken()));
                 if (!ids.containsKey(temp)) {
                     ids.put(temp, currentId++);
                 }
-                Node end = new Node(ids.get(temp), temp.x, temp.y, line.nextToken());
+                String name = line.nextToken();
+                Node end;
+                if (name.equals("null")) {
+                     end = new Node(ids.get(temp), temp.x, temp.y, null);
+                } else {
+                    end = new Node(ids.get(temp), temp.x, temp.y, name);
+                    names.put(name, end);
+                }
                 int d = Integer.parseInt(line.nextToken());
                 map.get(key).add(new Pair(d, key, end));
                 map.get(key).add(new Pair(d, end, key));
@@ -51,7 +61,7 @@ public class Parser {
         reader.close();
     }
 
-    public void setStops(File input) throws FileNotFoundException {
+    public static void setStops(File input) throws FileNotFoundException {
         Scanner reader = new Scanner(input);
         String stops = reader.nextLine();
         StringTokenizer s = new StringTokenizer(stops);
@@ -62,15 +72,19 @@ public class Parser {
         reader.close();
     }
 
-    public Map<Node, HashSet<Pair>> getMap() {
+    public static Map<Node, Set<Pair>> getMap() {
         return map;
     }
 
-    public Set<Node> getStops() {
+    public static Map<String, Node> getNames() {
+        return names;
+    }
+
+    public static Set<Node> getStops() {
         return busStops;
     }
 
-    private class Location implements Comparable<Location> {
+    private static class Location implements Comparable<Location> {
         private float x, y;
 
         private Location(float x, float y) {
