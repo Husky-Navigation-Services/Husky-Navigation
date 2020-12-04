@@ -6,7 +6,7 @@ public class Test {
         // Front-end will be tested by visual input in contrast to the
         // back-end. Review phase will consist of feedback by review.
 
-        // Testing for the decision module
+        // ------ Testing for the decision module ------
         ArrayList<Integer> visitedNodes = new ArrayList<Integer>();
         ArrayList<Integer> distances = new ArrayList<Integer>();
         for (int setup = 0; setup < 4; setup++) {
@@ -14,10 +14,10 @@ public class Test {
             distances.add(Integer.MAX_VALUE);
         }
         // Setup the node for a graph with 4 vertices and 4 edges.
-        Node n0 = new Node(0, 0, 0);
-        Node n1 = new Node(1, 0, 0);
-        Node n2 = new Node(2, 0, 0);
-        Node n3 = new Node(3, 0, 0);
+        Node n0 = new Node(0, 2.2435454434234, 1.2435454434256); // Gulf of Guinea.
+        Node n1 = new Node(1, 1.3354544342742, 1.2435454235934); // Gulf of Guinea.
+        Node n2 = new Node(2, 1.9835454434274, 2.2777454434274); // Gulf of Guinea.
+        Node n3 = new Node(3, 1.7267454434274, 1.5724954434274); // Gulf of Guinea.
         // Setup the 4 edges in the graph.
         Pair p01 = new Pair(3, n0, n1);
         Pair p03 = new Pair(2, n0, n3);
