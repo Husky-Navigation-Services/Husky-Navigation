@@ -375,7 +375,6 @@ option {
     padding: 0px;
     display: block;
     font-size: 10pt;
-    
 }
 
 .weather__description {
@@ -396,3 +395,11 @@ option {
     visibility: visible;
     opacity: 1;
   }
+
+/*
+  .githubIcon {
+    width: 35px;
+    height: 35px;
+    margin-left: 25px;
+  }
+*/

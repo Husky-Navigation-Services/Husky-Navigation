@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Husky Navigation Maps</title>
+    <title>Husky Navigation</title>
     <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="toggleSwitch.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
@@ -142,7 +142,7 @@
             <!-- Theme Switch -->
             <div class = "bar"> &#9474 </div>
             <!-- Weather TODO: Add Hover -->
-            <div class="weather_feature">
+            <div class = "weather_feature">
                 <div id = "weatherDiv">
                     <img id = "weatherIcon" class = "weather" src = "RainIcon.png" alt = "NoRainIcon.png"></img>
                 </div>
@@ -151,6 +151,15 @@
                     <p id = "humidity" >88%</p>
                     
                 </div>
+            </div>
+            <!-- Space Between Icons -->
+            <p style = "margin-left:0.75em"> </p>
+            <!-- GitHub Page Icon -->
+            <div class = "gtihubIcon">
+                <a href="https://github.com/Husky-Navigation-Services/Husky-Navigation">
+                    <img githubIcon = "githubIcon" src = "GithubIcon.png"
+                    width = "40" height = "40">
+                </a>
             </div>
             <!--Theme Switcher-->
             <div id = "themeDiv">
@@ -161,7 +170,6 @@
                 </label>
             </div>
         </div>
-
     </div>  
     <script src = "index.js"></script>
 </body>
