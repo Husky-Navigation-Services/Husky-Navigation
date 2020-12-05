@@ -134,6 +134,7 @@ var weatherIcon = document.getElementById("weatherIcon");
 var weatherArrow = document.getElementById("arrow");
 var weatherPopupBody = document.getElementById("weatherPopupBody");
 var feedbackInput = document.getElementById("feedbackInput");
+var titleSlant = document.getElementById("title-slant");
 
 logo.addEventListener("click", toggleContent);
 navBttn.addEventListener("click", tryNav);
