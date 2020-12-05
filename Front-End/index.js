@@ -92,10 +92,13 @@ var currentTheme = document.getElementById("currentModeId");
 var navBttn = document.getElementById("navBtn");
 var title = document.getElementById("title");
 var footer =  document.getElementById("footer");
-
+var weatherPopup = document.getElementById("weatherPopup");
+var weatherIcon = document.getElementById("weatherIcon");
+var weatherArrow = document.getElementById("arrow");
 
 logo.addEventListener("click", toggleContent);
 navBttn.addEventListener("click", tryNav);
+weatherIcon.addEventListener("click", toggleWeatherPopup);
 
 document.getElementById("startingPointsId").addEventListener("change", updateStart);
 document.getElementById("destinationsId").addEventListener("change", updateDest);
@@ -129,6 +132,17 @@ for (var i = 0; i < searchBars.length; i++) {
 /////////////////////////////
 // Event Listener Callbacks
 /////////////////////////////
+
+function toggleWeatherPopup() {
+    if (weatherPopup.style.height != "0px") {
+        weatherPopup.style.height = "0px";
+        weatherArrow.style.height = "0px";
+        
+    } else {
+        weatherPopup.style.height = "100px";
+        weatherArrow.style.height = "10px";
+    }
+}
 
 function toggleTheme() {
     if (this.checked) { // Represents dark mode.

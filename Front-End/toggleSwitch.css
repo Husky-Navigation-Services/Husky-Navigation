@@ -4,14 +4,12 @@ Citation/Credit:
 https://www.w3schools.com/howto/howto_css_switch.asp
 */
 
-#themeDiv {
-    margin-left: auto;
-}
+
 
 /* The switch - the box around the slider */
 .switch {
     position: relative;
-    display: inline-block;
+    display: block;
     width: 40px;
     height: 24px;
     border-color: white;

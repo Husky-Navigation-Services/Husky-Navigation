@@ -95,7 +95,6 @@ font-family: 'Montserrat Alternates', sans-serif;*/
     margin-left: 50px;
     color: whitesmoke;
     width: 200px;
-
     background-image: linear-gradient(#b7a57a,#b7a57a), linear-gradient(transparent,transparent);
     background-size: 0 2px, auto;
     background-repeat: no-repeat;
@@ -126,15 +125,74 @@ html, body {
     width: 100%;
 }
 
+#horizontalSection {
+    width: calc(100% - 398px);
+}
+
+.svg-triangle {
+    fill: #4b2e83;
+    width: 20px;
+    height: 10px;
+    display: block;
+    margin: auto;
+    transition: 0.5s;
+}
+
+#weatherPopup {
+    position: absolute;
+    overflow: hidden;
+    z-index: -1;
+    top: 80px;
+    margin-left: -108px;
+    height: 100%;
+    width: 250px;
+    transition: 0.5s;
+}
+
+#weatherDiv {
+    
+}
+
+#weatherPopupBody {
+    width: 100%;
+    height: 90%;
+    border-radius: 5px;
+    background-color: #4b2e83;
+    color: whitesmoke;
+    font-family: 'Encode Sans', sans-serif;
+    font-weight: 200;
+    
+    text-align: center;
+    
+}
+
+#weatherPopupText {
+    margin: 0px;
+    padding: 10px;
+    height: calc(90% - 20px);
+}
+
+
+#horizontalPopupBar {
+    width: 100%;
+    height: 100px;
+    margin: 10px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    
+}
+
 .horizontalBar {
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: flex-start;
     background-color: #4b2e83;
-    width: calc(100% - 398px);
+    width: 100%;
     height: 70px;
     border-radius: 10px;
     margin: 10px;
+    margin-bottom: 0px;
     transition: 0.5s;
     color: whitesmoke;
     pointer-events: auto;
@@ -332,8 +390,8 @@ option {
 }
 
 .currentMode {
-    margin-left: 5px;
-    display: inline-block;
+    display: none;
+    
 }
 
 #aboutSection {
@@ -354,47 +412,23 @@ option {
     transition: 0.5s;
 }
 
-/* Weather icon size. */
+
 .weather {
-    width: 25px;
-    height: 25px;
-    margin-left: 15px;
+    width: 35px;
+    height: 35px;
+    margin-top: 3px;
 }
 
-#temp {
-    display: inline-block;
-    margin: 0px;
+#githubIcon {
+
+    width: 35px;
+    height: 35px;
 }
 
-#humidity {
-    display: inline-block;
-    margin: 0px;
-}
-
-#weatherTextDiv {
-    padding: 0px;
-    display: block;
-    font-size: 10pt;
-}
-
-.weather__description {
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: rgba(29, 106, 154, 0.72);
-    color: #fff;
-    visibility: hidden;
-    opacity: 0;
-  
-    /* transition effect. not necessary */
-    transition: opacity .2s, visibility .2s;
-  }
-  
-  .weather_feature:hover .weather__description {
-    visibility: visible;
-    opacity: 1;
-  }
+ .githubIconDiv {
+     margin-left:auto;
+     margin-right: 10px;
+ }
 
 /*
   .githubIcon {
