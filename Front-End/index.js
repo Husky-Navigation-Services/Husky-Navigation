@@ -16,9 +16,33 @@
 // maps locations to their lng/lat coords
 var locationsMap = {
     "Bagley Hall": [47.65353, -122.30879],
-    "Suzzallo Library": [47.65580, -122.30818],
     "Guggenheim Hall": [47.65424, -122.30644],
-    "McDonald's": [47.66774, -122.30037] 
+    //"Sieg Hall": [],
+    "McDonald's": [47.66774, -122.30037],
+    //"Johnson Hall": [],
+    //"Gerberding Hall": [],
+    //"Kane Hall": [],
+    "Suzzallo Library": [47.65580, -122.30818],
+    //"Allen Library": [],
+    //"Odegaard Library": [],
+    //"Engineering Library": [],
+    //"Gowen Library": [],
+    //"Odegaard Library": [],
+    "Stevens Way and Okanogan Ln": [47.652027, -122.308655],
+    "W Stevens WAY NE and Okanogan LN NE": [47.6521736,-122.3108087],
+    "Stevens Way and Rainier Vista NE": [47.6521736,-122.3108087],
+    "Stevens Way and Benton Ln": [47.6529397,-122.3093174],
+    "E Stevens WAY NE and Jefferson RD NE": [47.6531172,-122.3082742],
+    "Stevens Way and Asotin Pl": [47.6529397,-122.3093174],
+    "NE Pacific Pl and NE Pacific St": [47.6524049,-122.3088024],
+    "NE Pacific Pl and Montlake Blvd NE": [47.6524049,-122.3088024],
+    "NE Pacific St and Montlake Blvd NE": [47.6524121,-122.3087917],
+    "Montlake Blvd NE and NE Pacific Pl": [47.6524121,-122.3087917],
+    "NE Pacific St and 15th Ave NE": [47.6527735,-122.3106263],
+
+
+
+
 }
 
 // maps section ids to its height
@@ -142,20 +166,19 @@ for (var i = 0; i < searchBars.length; i++) {
 /////////////////////////////
 
 function sendFeedback() {
-    /*
     Email.send({ 
         Host: "smtp.gmail.com", 
-        Username: "sender@email_address.com", 
-        Password: "Enter your password", 
-        To: 'receiver@email_address.com', 
-        From: "sender@email_address.com", 
-        Subject: "Sending Email using javascript", 
-        Body: "Well that was easy!!", 
+        Username: "huskynavigationfeedback@gmail.com", 
+        Password: "bighusky123", 
+        To: 'huskynavigationfeedback@gmail.com', 
+        From: "huskynavigationfeedback@gmail.com", 
+        Subject: "Feedback Form", 
+        Body: "Feedback Message: " + feedbackInput.value, 
     }).then(function (message) { 
         alert("Feedback sent successfully!") 
     }); 
-    */
-   alert("Feature in progress...");
+    
+   //alert("Feature in progress...");
 }
 
 function toggleWeatherPopup() {

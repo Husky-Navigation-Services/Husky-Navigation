@@ -38,7 +38,7 @@
                 <div class = "inputDiv">
                     <!--<img class = "miniStartMarker" src = "EmptyRedCircle.png"></img>-->
                     <select name = "startingPoints" id = "startingPointsId" class = "select startingPoints">
-                        <option value = "Current Location">Current Location</option>
+                        <option value = "--Select Starting Point--">--Select Starting Point--</option>
                         <option value = "Guggenheim Hall">Guggenheim Hall</option>
                         <option value = "Guggenheim Annex">Guggenheim Annex</option>
                         <option value = "Bagley Hall">Bagley Hall</option>
@@ -52,7 +52,7 @@
                 <div class = "inputDiv">
                     <!--<img class = "miniEndMarker" src = "MarkerIcon2.png"></img>-->
                     <select name = "destinations" id = "destinationsId" class = "select destinations">
-                        <option value = "Current Location">Current Location</option>
+                        <option value = "--Select Destination--">--Select Destination--</option>
                         <option value = "Guggenheim Hall">Guggenheim Hall</option>
                         <option value = "Guggenheim Annex">Guggenheim Annex</option>
                         <option value = "Bagley Hall">Bagley Hall</option>
@@ -101,13 +101,17 @@
             <div id = "stopSection" class = "contentSection"> 
                 <input type = "text" class = "searchBar" id = "busStopSearch" placeholder = "Search for bus stops..">
                 <div id = "bus-stop-container" class = "vertical-menu">
-                    <p class = "bus-stop location">Stop 123</p>
-                    <p class = "bus-stop location">Stop 456</p>
-                    <p class = "bus-stop location">Stop 789</p>
-                    <p class = "bus-stop location">Stop 321</p>
-                    <p class = "bus-stop location">Stop 321</p>
-                    <p class = "bus-stop location">Stop 621</p>
-                    <p class = "bus-stop location">Stop 521</p>
+                    <p class = "bus-stop location">Stevens Way and Okanogan Ln</p>
+                    <p class = "bus-stop location">W Stevens WAY NE and Okanogan LN NE</p>
+                    <p class = "bus-stop location">Stevens Way and Rainier Vista NE</p>
+                    <p class = "bus-stop location">Stevens Way and Benton Ln</p>
+                    <p class = "bus-stop location">E Stevens WAY NE and Jefferson RD NE</p>
+                    <p class = "bus-stop location">Stevens Way and Asotin Pl</p>
+                    <p class = "bus-stop location">NE Pacific Pl and NE Pacific St</p>
+                    <p class = "bus-stop location">NE Pacific Pl and Montlake Blvd NE</p>
+                    <p class = "bus-stop location">NE Pacific St and Montlake Blvd NE</p>
+                    <p class = "bus-stop location">Montlake Blvd NE and NE Pacific Pl</p>
+                    <p class = "bus-stop location">NE Pacific St and 15th Ave NE</p>
                 </div>
             </div>
             <!--Feedback-->
@@ -115,7 +119,8 @@
             <span class = "uw-slant"></span>
             <div id = "feedbackSection" class = "contentSection">
                 <p id = "feedbackText"> We love feedback! &#127881 &#127881 &#127881</p>
-                <input type = "text" id = "feedbackInput" name = "Feedback">
+                <textarea id="feedbackInput" name="Feedback" rows="1" cols="50"></textarea>
+                
                 <button id = "submitFeedback"> Submit </button>
             </div>
             <!--About Us-->

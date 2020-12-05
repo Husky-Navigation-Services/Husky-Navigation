@@ -62,6 +62,7 @@ font-family: 'Montserrat Alternates', sans-serif;*/
     border-radius: 1em; 
     pointer-events: auto;
     transition: 0.2s;
+    cursor: pointer;
     /*transition: border-width 0.1s ease-in-out;*/
 }
 
@@ -102,6 +103,8 @@ font-family: 'Montserrat Alternates', sans-serif;*/
     transition: all .15s ease-in-out;
     font-weight: 600;
     cursor: pointer;
+    white-space: normal;
+    overflow-wrap: break-word;
 }
 
 .location:hover {
