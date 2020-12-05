@@ -29,16 +29,18 @@ var locationsMap = {
     //"Gowen Library": [],
     //"Odegaard Library": [],
     "Stevens Way and Okanogan Ln": [47.652027, -122.308655],
-    "W Stevens WAY NE and Okanogan LN NE": [47.6521736,-122.3108087],
-    "Stevens Way and Rainier Vista NE": [47.6521736,-122.3108087],
-    "Stevens Way and Benton Ln": [47.6529397,-122.3093174],
-    "E Stevens WAY NE and Jefferson RD NE": [47.6531172,-122.3082742],
-    "Stevens Way and Asotin Pl": [47.6529397,-122.3093174],
-    "NE Pacific Pl and NE Pacific St": [47.6524049,-122.3088024],
-    "NE Pacific Pl and Montlake Blvd NE": [47.6524049,-122.3088024],
-    "NE Pacific St and Montlake Blvd NE": [47.6524121,-122.3087917],
-    "Montlake Blvd NE and NE Pacific Pl": [47.6524121,-122.3087917],
-    "NE Pacific St and 15th Ave NE": [47.6527735,-122.3106263],
+    "W Stevens WAY NE and Okanogan LN NE": [47.652172, -122.308624],
+    "W Stevens Way and Rainier Vista NE": [47.652389, -122.306305],
+    "Stevens Way and Rainier Vista NE": [47.652329, -122.306099],
+    "Stevens Way and Benton Ln": [47.653736, -122.305023],
+    "E Stevens WAY NE and Jefferson RD NE": [47.654503, -122.305130],
+    "Stevens Way and Asotin Pl": [47.654377, -122.310486],
+    "NE Pacific Pl and NE Pacific St": [47.650505, -122.306908],
+    "NE Pacific Pl and Montlake Blvd NE - Bay 1": [47.649143, -122.304970],
+    "NE Pacific St and Montlake Blvd NE - Bay 2": [47.649727, -122.305817],
+    "Montlake Blvd NE and NE Pacific Pl - Bay 3": [47.651367, -122.303604],
+    "Montlake Blvd NE and NE Pacific Pl - Bay 4": [47.650494, -122.304092],
+    "NE Pacific St and 15th Ave NE": [47.652351, -122.311089]
 
 
 
@@ -276,7 +278,9 @@ function updateLocationOpacities() {
 
 // Sets the map view to the caller's location
 function setViewToLocation() {
-    mymap.setView(locationsMap[this.innerHTML], 30);
+    var coords = locationsMap[this.innerHTML];
+    mymap.setView(coords, 30);
+    L.marker(coords).addTo(mymap);
 }
 
 // Sets the start text in the horizontal bar to the caller's text when the caller is changed
