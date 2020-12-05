@@ -135,6 +135,14 @@ html, body {
     transition: 0.5s;
 }
 
+
+#weatherIcon {
+    width: 35px;
+    height: 35px;
+    margin-top: 3px;
+    cursor: pointer;
+}
+
 #weatherIcon:hover {
     opacity: 0.8;
 }
@@ -157,7 +165,8 @@ html, body {
     color: whitesmoke;
     font-family: 'Encode Sans', sans-serif;
     font-weight: 200;
-    text-align: center;   
+    text-align: center;
+    transition: 0.5s;   
 }
 
 #weatherPopupText {
@@ -396,13 +405,6 @@ option {
     height: 0px;
     overflow: hidden;
     transition: 0.5s;
-}
-
-
-.weather {
-    width: 35px;
-    height: 35px;
-    margin-top: 3px;
 }
 
 #githubIcon {

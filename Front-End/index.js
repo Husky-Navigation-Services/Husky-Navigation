@@ -160,11 +160,7 @@ function toggleTheme() {
         logo.style.height = "70px";
         logo.style.marginLeft = "0px";
         logo.style.marginTop = "10px";
-        currentTheme.innerHTML = "Dark";
-        for (var i = 0; i < selectElements.length; i++) {
-            selectElements[i].style.backgroundColor = "rgb(179, 179, 179)";
-        }
-       
+        currentTheme.innerHTML = "Dark";    
     } else { // Represents light mode.
         horizontalBar.style.backgroundColor = "#4b2e83";
         leftSideBar.style.backgroundColor = "#4b2e83";
@@ -178,10 +174,6 @@ function toggleTheme() {
         logo.style.width = "60px";
         logo.style.height = "60px";
         currentTheme.innerHTML = "Light";
-        for (var i = 0; i < selectElements.length; i++) {
-            selectElements[i].style.backgroundColor = "whitesmoke";
-        }
-        
     }
 }
 
