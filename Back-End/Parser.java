@@ -66,8 +66,7 @@ public class Parser {
         String stops = reader.nextLine();
         StringTokenizer s = new StringTokenizer(stops);
         while (s.hasMoreTokens()) {
-            // will change from 0 to actual id
-            busStops.add(new Node (0, Float.parseFloat(s.nextToken()),Float.parseFloat(s.nextToken())));
+            busStops.add(names.get(s.nextToken()));
         }
         reader.close();
     }
