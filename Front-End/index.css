@@ -144,7 +144,7 @@ html, body {
     z-index: -1;
     top: 80px;
     margin-left: -108px;
-    height: 100%;
+    height: 100px;
     width: 250px;
     transition: 0.5s;
 }
