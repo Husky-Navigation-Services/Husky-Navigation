@@ -27,7 +27,8 @@ var dropDownLengths = {
     "buildingsSection": "200px",
     "stopSection": "200px",
     "aboutSection": "200px",
-    "librariesSection": "200px"
+    "librariesSection": "200px",
+    "feedbackSection": "200px"
 }
 
 // maps search bar ids to the class of items being searched
@@ -96,11 +97,13 @@ var weatherPopup = document.getElementById("weatherPopup");
 var weatherIcon = document.getElementById("weatherIcon");
 var weatherArrow = document.getElementById("arrow");
 var weatherPopupBody = document.getElementById("weatherPopupBody");
+var feedbackInput = document.getElementById("feedbackInput");
 
 logo.addEventListener("click", toggleContent);
 navBttn.addEventListener("click", tryNav);
 weatherIcon.addEventListener("click", toggleWeatherPopup);
 
+document.getElementById("submitFeedback").addEventListener("click", sendFeedback);
 document.getElementById("startingPointsId").addEventListener("change", updateStart);
 document.getElementById("destinationsId").addEventListener("change", updateDest);
 document.getElementById("navHeader").addEventListener("click", () => {
@@ -120,6 +123,10 @@ document.getElementById("librariesHeader").addEventListener("click", () => {
     toggleDropdown(document.getElementById("librariesSection"));
 });
 
+document.getElementById("feedbackHeader").addEventListener("click", () => {
+    toggleDropdown(document.getElementById("feedbackSection"));
+});
+
 document.getElementById("themeCheckbox").addEventListener("change", toggleTheme);
 
 for (var i = 0; i < locationElements.length; i++) {
@@ -133,6 +140,23 @@ for (var i = 0; i < searchBars.length; i++) {
 /////////////////////////////
 // Event Listener Callbacks
 /////////////////////////////
+
+function sendFeedback() {
+    /*
+    Email.send({ 
+        Host: "smtp.gmail.com", 
+        Username: "sender@email_address.com", 
+        Password: "Enter your password", 
+        To: 'receiver@email_address.com', 
+        From: "sender@email_address.com", 
+        Subject: "Sending Email using javascript", 
+        Body: "Well that was easy!!", 
+    }).then(function (message) { 
+        alert("Feedback sent successfully!") 
+    }); 
+    */
+   alert("Feature in progress...");
+}
 
 function toggleWeatherPopup() {
     if (weatherPopup.style.height != "0px") {

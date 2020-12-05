@@ -11,7 +11,7 @@
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
     integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
     crossorigin=""></script>
-
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
 </head>
 
 <body>
@@ -110,7 +110,7 @@
             </div>
             <!--About Us-->
             <h6 id = "aboutHeader" class = "header"> ABOUT US </h6>
-                <span class = "uw-slant"></span>
+            <span class = "uw-slant"></span>
             <div id = "aboutSection" class = "contentSection">
                 <p class = "contributor">Daniel Berezansky | Full-Stack </p>
                 <p class = "credential"> UW CS 2024 </p>
@@ -118,6 +118,14 @@
                 <p class = "credential"> UW CS 2024 </p>
                 <p class = "contributor">Albert Weng | Full-Stack </p>
                 <p class = "credential"> UW CS 2024</p>
+            </div>
+            <!--Feedback-->
+            <h6 id = "feedbackHeader" class = "header"> FEEDBACK </h6>
+            <span class = "uw-slant"></span>
+            <div id = "feedbackSection" class = "contentSection">
+                <p id = "feedbackText"> We love feedback! &#127881 &#127881 &#127881</p>
+                <input type = "text" id = "feedbackInput" name = "Feedback">
+                <button id = "submitFeedback"> Submit </button>
             </div>
         </div>
         <!-- Right Sidebar (where the logo sits) -->

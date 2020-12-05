@@ -413,15 +413,40 @@ option {
     height: 35px;
 }
 
- .githubIconDiv {
-     margin-left:auto;
-     margin-right: 10px;
- }
+.githubIconDiv {
+    margin-left: auto;
+    margin-right: 10px;
+}
 
-/*
-  .githubIcon {
-    width: 35px;
-    height: 35px;
-    margin-left: 25px;
-  }
-*/
+#feedbackInput {
+    padding-bottom: 80px;
+    width: 200px;
+    border-radius: 5px;
+    font-family: 'Encode Sans', sans-serif;
+    background-color: whitesmoke;
+    border-style: solid;
+    border-width: 4px;
+    margin-top: 0px;
+    display: block;
+}
+
+#feedbackSection {
+    margin-left: 40px;
+}
+
+#submitFeedback {
+    margin-top: 10px;
+    width: 100px;
+    height: 30px;
+    font-family: 'Encode Sans', sans-serif;
+    background-color: whitesmoke;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#feedbackText {
+    font-weight: 600;
+    font-family: 'Encode Sans', sans-serif;
+    color: whitesmoke;
+    margin-top: 5px;
+}
