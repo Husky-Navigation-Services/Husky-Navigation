@@ -126,7 +126,7 @@ html, body {
 }
 
 #horizontalSection {
-    width: calc(100% - 398px);
+    width: calc(100% - 20px);
 }
 
 .svg-triangle {
@@ -141,16 +141,11 @@ html, body {
 #weatherPopup {
     position: absolute;
     overflow: hidden;
-    z-index: -1;
     top: 80px;
     margin-left: -108px;
     height: 100px;
     width: 250px;
     transition: 0.5s;
-}
-
-#weatherDiv {
-    
 }
 
 #weatherPopupBody {
@@ -173,14 +168,6 @@ html, body {
 }
 
 
-#horizontalPopupBar {
-    width: 100%;
-    height: 100px;
-    margin: 10px;
-    margin-top: 0px;
-    margin-bottom: 0px;
-    
-}
 
 .horizontalBar {
     display: flex;
