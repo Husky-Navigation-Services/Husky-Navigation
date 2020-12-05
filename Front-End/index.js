@@ -75,6 +75,16 @@ var searchItemsContainer = {
 // Map Initialization
 ////////////////////////
 
+// Initialize Icon Style
+/*
+var redIcon = L.icon({
+    iconUrl: 'MarkerIcon2.png',
+    iconSize:     [20, 30], // size of the icon
+    iconAnchor:   [0, 0], // point of the icon which will correspond to marker's location
+    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+});
+*/
+
 // Initialize Map
 var mymap = L.map('map').setView([47.650017, -122.30654], 13);
 L.tileLayer( 'https://api.mapbox.com/styles/v1/aferman/ckhvetwgy0bds19nznkfvodbx/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYWZlcm1hbiIsImEiOiJja2ZrZXJvbjUwZW5wMnhxcjdyMXc3ZjRnIn0.WGdId2uO9XokPaJmaxlLXg', {
@@ -284,7 +294,7 @@ function setViewToLocation() {
     for (var i = 0; i < mapMarkers.length; i++) {
         mapMarkers[i].remove();
     }
-    var locMarker = L.marker(coords).addTo(mymap);
+    var locMarker = L.marker(coords/*, {icon: redIcon}*/).addTo(mymap);
     mapMarkers.push(locMarker);
 }
 
