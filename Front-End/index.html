@@ -2,15 +2,15 @@
 <html>
 <head>
     <title>Husky Navigation</title>
-    <link rel="icon" href="HuskyNavLogoTransparent.png">
-    <link rel="stylesheet" href="index.css">
-    <link rel="stylesheet" href="toggleSwitch.css">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
-    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
-    crossorigin=""/>
-    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
-    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
-    crossorigin=""></script>
+    <link rel = "icon" href="HuskyNavLogoTransparent.png">
+    <link rel = "stylesheet" href="index.css">
+    <link rel = "stylesheet" href="toggleSwitch.css">
+    <link rel = "stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    integrity = "sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+    crossorigin = ""/>
+    <script src = "https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+    integrity = "sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+    crossorigin = ""></script>
     <script src="https://smtpjs.com/v3/smtp.js"></script>
 </head>
 
@@ -25,7 +25,9 @@
             <div id = "titleElementsId" class = "titleElements">
                 <h1 id = "title" class = "title">Husky Navigation</h1>
                 <span class = "uw-slant-large"></span>
-                <img id = "wordmark" class = "uw-wordmark" src = "UnivWaWordmarkPurple.png" alt = "UnivWaWordmark.png"></img>
+                <a href = "https://www.washington.edu">
+                    <img id = "wordmark" class = "uw-wordmark" src = "UnivWaWordmarkPurple.png" alt = "UnivWaWordmark.png"></img>
+                </a>
             </div>
             <!-- Nav -->
             <h6 id = "navHeader" class = "header">NAVIGATION </h6>
@@ -35,29 +37,29 @@
                 <!-- Select Start -->
                 <div class = "inputDiv">
                     <!--<img class = "miniStartMarker" src = "EmptyRedCircle.png"></img>-->
-                    <select name="startingPoints" id="startingPointsId" class = "select startingPoints">
-                        <option value="Current Location">Current Location</option>
-                        <option value="Guggenheim Hall">Guggenheim Hall</option>
-                        <option value="Guggenheim Annex">Guggenheim Annex</option>
-                        <option value="Bagley Hall">Bagley Hall</option>
-                        <option value="Johnson Hall">Johnson Hall</option>
-                        <option value="Sieg Hall">Sieg Hall</option>
-                        <option value="Husky Union Building">Husky Union Building</option>
-                        <option value="McDonald's">McDonald's</option>
+                    <select name = "startingPoints" id = "startingPointsId" class = "select startingPoints">
+                        <option value = "Current Location">Current Location</option>
+                        <option value = "Guggenheim Hall">Guggenheim Hall</option>
+                        <option value = "Guggenheim Annex">Guggenheim Annex</option>
+                        <option value = "Bagley Hall">Bagley Hall</option>
+                        <option value = "Johnson Hall">Johnson Hall</option>
+                        <option value = "Sieg Hall">Sieg Hall</option>
+                        <option value = "Husky Union Building">Husky Union Building</option>
+                        <option value = "McDonald's">McDonald's</option>
                     </select>
                 </div>
                 <!-- Select End -->
                 <div class = "inputDiv">
                     <!--<img class = "miniEndMarker" src = "MarkerIcon2.png"></img>-->
-                    <select name="destinations" id="destinationsId" class = "select destinations">
-                        <option value="Current Location">Current Location</option>
-                        <option value="Guggenheim Hall">Guggenheim Hall</option>
-                        <option value="Guggenheim Annex">Guggenheim Annex</option>
-                        <option value="Bagley Hall">Bagley Hall</option>
-                        <option value="Johnson Hall">Johnson Hall</option>
-                        <option value="Sieg Hall">Sieg Hall</option>
-                        <option value="Husky Union Building">Husky Union Building</option>
-                        <option value="McDonald's">McDonald's</option>
+                    <select name = "destinations" id = "destinationsId" class = "select destinations">
+                        <option value = "Current Location">Current Location</option>
+                        <option value = "Guggenheim Hall">Guggenheim Hall</option>
+                        <option value = "Guggenheim Annex">Guggenheim Annex</option>
+                        <option value = "Bagley Hall">Bagley Hall</option>
+                        <option value = "Johnson Hall">Johnson Hall</option>
+                        <option value = "Sieg Hall">Sieg Hall</option>
+                        <option value = "Husky Union Building">Husky Union Building</option>
+                        <option value = "McDonald's">McDonald's</option>
                     </select>
                 </div>
                 <!-- Navigation Button -->
@@ -68,7 +70,7 @@
             <h6 id = "buildingsHeader" class = "header"> BUILDINGS </h6>
             <span class = "uw-slant"></span>
             <div id = "buildingsSection" class = "contentSection"> 
-                <input type = "text" class = "searchBar" id="buildingsSearch" placeholder="Search for buildings..">
+                <input type = "text" class = "searchBar" id = "buildingsSearch" placeholder = "Search for buildings..">
                 <div id = "building-container" class = "vertical-menu">
                     <p class = "building location">Bagley Hall</p>
                     <p class = "building location">Guggenheim Hall</p>
@@ -83,7 +85,7 @@
             <h6 id = "librariesHeader" class = "header"> LIBRARIES </h6>
             <span class = "uw-slant"></span>
             <div id = "librariesSection" class = "contentSection"> 
-                <input type="text" class = "searchBar" id="librariesSearch" placeholder="Search for libraries..">
+                <input type = "text" class = "searchBar" id="librariesSearch" placeholder = "Search for libraries..">
                 <div id = "library-container" class = "vertical-menu">
                     <p class = "library location">Suzzallo Library</p>
                     <p class = "library location">Allen Library</p>
@@ -97,7 +99,7 @@
             <h6 id = "stopHeader" class = "header"> BUS STOPS </h6>
             <span class = "uw-slant"></span>
             <div id = "stopSection" class = "contentSection"> 
-                <input type="text" class = "searchBar" id="busStopSearch" placeholder="Search for bus stops..">
+                <input type = "text" class = "searchBar" id = "busStopSearch" placeholder = "Search for bus stops..">
                 <div id = "bus-stop-container" class = "vertical-menu">
                     <p class = "bus-stop location">Stop 123</p>
                     <p class = "bus-stop location">Stop 456</p>
@@ -130,7 +132,7 @@
         </div>
         <!-- Right Sidebar (where the logo sits) -->
         <div class = "sidebarRight">
-            <img id = "logo" class = "logoIcon" src="HuskyNavLogoWhite.png" alt="Husky Navigation">
+            <img id = "logo" class = "logoIcon" src = "HuskyNavLogoWhite.png" alt = "Husky Navigation">
         </div>
         <!-- Horizontal Sidebar -->
         <div id = "horizontalBarId" class = "horizontalBar">
@@ -153,8 +155,8 @@
             <div id = "weatherDiv">
                 <img id = "weatherIcon" class = "weather" src = "RainIcon.png" alt = "NoRainIcon.png"></img>
                 <div id = "weatherPopup">
-                    <svg viewBox = "0 0 20 10" id = "arrow" class="svg-triangle">
-                        <polygon points="0,10,20 ,10, 10,0"/>
+                    <svg viewBox = "0 0 20 10" id = "arrow" class = "svg-triangle">
+                        <polygon points = "0, 10, 20, 10, 10, 0"/>
                     </svg>
                     <div id = "weatherPopupBody">
                         <p id = "weatherPopupText">
@@ -166,22 +168,20 @@
             </div>
             <!-- GitHub Page Icon -->
             <div class = "githubIconDiv">
-                <a href="https://github.com/Husky-Navigation-Services/Husky-Navigation">
+                <a href = "https://github.com/Husky-Navigation-Services/Husky-Navigation">
                     <img githubIcon = "githubIcon" src = "GithubIcon.png" id = "githubIcon">
                 </a>
             </div>
             <!--Theme Switcher-->
             <p id = "currentModeId" class = "currentMode">Light</p>
             <label class = "switch">
-                <input id = "themeCheckbox" type="checkbox">
+                <input id = "themeCheckbox" type = "checkbox">
                 <span class = "slider"></span>
             </label>
+            </div>
+            <!--Horizontal Popup Section-->
+            <div id = "horizontalPopupBar">
         </div>
-        <!--Horizontal Popup Section-->
-        <div id = "horizontalPopupBar">
-            
-        </div>
-
     </div>  
     <script src = "index.js"></script>
 </body>
