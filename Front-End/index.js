@@ -41,11 +41,10 @@ var locationsMap = {
     "Montlake Blvd NE and NE Pacific Pl - Bay 3": [47.651367, -122.303604],
     "Montlake Blvd NE and NE Pacific Pl - Bay 4": [47.650494, -122.304092],
     "NE Pacific St and 15th Ave NE": [47.652351, -122.311089]
-
-
-
-
 }
+
+// stores map markes
+var mapMarkers = [];
 
 // maps section ids to its height
 var dropDownLengths = {
@@ -280,7 +279,12 @@ function updateLocationOpacities() {
 function setViewToLocation() {
     var coords = locationsMap[this.innerHTML];
     mymap.setView(coords, 30);
-    L.marker(coords).addTo(mymap);
+    // Remove all previous markers
+    for (var i = 0; i < mapMarkers.length; i++) {
+        mapMarkers[i].remove();
+    }
+    var locMarker = L.marker(coords).addTo(mymap);
+    mapMarkers.push(locMarker);
 }
 
 // Sets the start text in the horizontal bar to the caller's text when the caller is changed
