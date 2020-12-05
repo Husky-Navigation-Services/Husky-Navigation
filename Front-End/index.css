@@ -144,7 +144,7 @@ html, body {
 }
 
 #weatherIcon:hover {
-    opacity: 0.8;
+    opacity: 0.6;
 }
 
 #weatherPopup {
@@ -408,9 +408,12 @@ option {
 }
 
 #githubIcon {
-
     width: 35px;
     height: 35px;
+}
+
+#githubIcon:hover {
+    opacity: 0.6;
 }
 
 .githubIconDiv {
