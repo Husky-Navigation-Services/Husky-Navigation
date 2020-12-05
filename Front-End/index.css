@@ -125,14 +125,11 @@ html, body {
     width: 100%;
 }
 
-#horizontalSection {
-    width: calc(100% - 20px);
-}
 
-.svg-triangle {
+#arrow {
     fill: #4b2e83;
     width: 20px;
-    height: 10px;
+    height: 0px;
     display: block;
     margin: auto;
     transition: 0.5s;
@@ -143,7 +140,7 @@ html, body {
     overflow: hidden;
     top: 80px;
     margin-left: -108px;
-    height: 100px;
+    height: 0px;
     width: 250px;
     transition: 0.5s;
 }
@@ -175,7 +172,7 @@ html, body {
     align-items: center;
     justify-content: flex-start;
     background-color: #4b2e83;
-    width: 100%;
+    width: calc(100% - 398px);
     height: 70px;
     border-radius: 10px;
     margin: 10px;
