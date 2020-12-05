@@ -135,6 +135,10 @@ html, body {
     transition: 0.5s;
 }
 
+#weatherIcon:hover {
+    opacity: 0.8;
+}
+
 #weatherPopup {
     position: absolute;
     overflow: hidden;
@@ -153,9 +157,7 @@ html, body {
     color: whitesmoke;
     font-family: 'Encode Sans', sans-serif;
     font-weight: 200;
-    
-    text-align: center;
-    
+    text-align: center;   
 }
 
 #weatherPopupText {
