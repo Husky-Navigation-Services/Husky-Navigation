@@ -101,12 +101,12 @@ mymap.zoomControl.setPosition('bottomright');
 // HTTP Request: "ws://[ipaddress]:[port]/[path]?[parameterName1]=[value1]&[parameterName2]=[value2]"
 
 function testServer() {
-    fetch("http://192.168.1.128:8500/test")
+    fetch("http://192.168.1.128:8520/test")
         .then(response => response.json())
         .then(res => console.log(res));
 }
 
-testServer();
+
 /////////////////////
 // Event Listeners
 /////////////////////
@@ -325,12 +325,13 @@ function updateDest() {
 // Attempts navigation when the caller is clicked. If location endpoints are unique and if 
 // neither are set to "Current Location," then it navigates. Otherwise, it creates an alert.
 function tryNav() {
+    testServer();
     var from = fromElement.innerHTML;
     var to = toElement.innerHTML;
     if (navPossible(from, to)) {
         nav(from, to);
     } else {
-        alert("Invalid. Try again.")
+       // alert("Invalid. Try again.")
     }
 }
 
