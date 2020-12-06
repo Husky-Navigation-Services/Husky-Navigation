@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5175XW1NS8"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-5175XW1NS8');
+    </script>
     <title>Husky Navigation</title>
     <link rel = "icon" href="HuskyNavLogoTransparent.png">
     <link rel = "stylesheet" href="index.css">
@@ -191,7 +199,28 @@
             <!--Horizontal Popup Section-->
             <div id = "horizontalPopupBar">
         </div>
-    </div>  
+    </div>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-app.js"></script>
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-analytics.js"></script>
+    <script>
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        var firebaseConfig = {
+            apiKey: "AIzaSyCfRap4goy0K57EZKwb_73-ictLkXKPeOE",
+            authDomain: "husky-navigation.firebaseapp.com",
+            projectId: "husky-navigation",
+            storageBucket: "husky-navigation.appspot.com",
+            messagingSenderId: "40591783910",
+            appId: "1:40591783910:web:83fbaf7f936e0557e60827",
+            measurementId: "G-4R6J5M49XR"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        firebase.analytics();
+    </script>
     <script src = "index.js"></script>
 </body>
 </html>
