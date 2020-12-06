@@ -425,17 +425,6 @@ function scroll(el, holder) {
     holder.scrollTop = topPos - 40;
 }
 
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
-    apiKey: "AIzaSyCfRap4goy0K57EZKwb_73-ictLkXKPeOE",
-    authDomain: "husky-navigation.firebaseapp.com",
-    projectId: "husky-navigation",
-    storageBucket: "husky-navigation.appspot.com",
-    messagingSenderId: "40591783910",
-    appId: "1:40591783910:web:83fbaf7f936e0557e60827",
-    measurementId: "G-4R6J5M49XR"
-  };
-
 //////////////////////////
 // Other
 //////////////////////////
