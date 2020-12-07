@@ -16,6 +16,7 @@ public class Server {
             // When transferring JSON in the third parameter, replace "text/plain" with "application/json"
             send(t, "text/plain; charset=utf-8", "Default Response: Make sure to specify the GET request with /[someKeyword]");
         });
+        // Define endpoints for GET requests from client + the callback function for it (via lambda functions, which behave like normal methods but without names)
         server.createContext("/query", (HttpExchange t) -> {
             // Use the code
             //      String s = parse("s", t.getRequestURI().getQuery().split("&"));
@@ -53,5 +54,40 @@ public class Server {
         try (OutputStream os = t.getResponseBody()) {
             os.write(response);
         }
+    }
+
+    private static int processCommand(String command, Decision decision, ArrayList<Node> nodes) {
+        StringTokenizer tokenizer = new StringTokenizer(command);
+        if (tokenizer.nextToken().equals("PATHFIND")) {
+            String start = tokenizer.nextToken();
+            String end = tokenizer.nextToken();
+            Map<String, Node> names = Parser.getNames();
+            if (names.containsKey(start) && names.containsKey(end)) {
+                return decision.getDecision(names.get(start), names.get(end), nodes);
+            }
+        }
+        throw new IllegalArgumentException();
+    }
+
+    public static String convert (ArrayList<Node> nodes) {
+        StringBuilder json = new StringBuilder("{" +
+                "  \"type\": \"FeatureCollection\"," +
+                "  \"features\": [" +
+                "    {" +
+                "      \"type\": \"Feature\"," +
+                "      \"properties\": {}," +
+                "      \"geometry\": {" +
+                "        \"type\": \"LineString\"," +
+                "        \"coordinates\": [");
+        for (Node n: nodes) {
+            json.append("[");
+            json.append(n.latitude);
+            json.append(",");
+            json.append(n.longitude);
+            json.append("],");
+        }
+        json.deleteCharAt(json.length() - 1);
+        json.append("]}}]}");
+        return json.toString();
     }
 }
