@@ -1,16 +1,16 @@
 public class Node {
     public int id;
     public String location;
-    public float latitude;
-    public float longitude;
+    public double latitude;
+    public double longitude;
     
     // Constructs a new node instance given a id, latitude, and longitude.
-    public Node(int id, float latitude, float longitude) {
+    public Node(int id, double latitude, double longitude) {
         this(id, latitude, longitude, null);
     }
 
     // Constructs a new node instance given a id, location, latitude, and longitude.
-    public Node(int id, float latitude, float longitude, String location) {
+    public Node(int id, double latitude, double longitude, String location) {
         this.id = id;
         this.latitude = latitude;
         this.longitude = longitude;
@@ -28,12 +28,12 @@ public class Node {
     }
 
     // Returns a decimal latitude.
-    public float getLatitude() {
+    public double getLatitude() {
         return latitude;
     }
 
     // Returns a decimal longitude.
-    public float getLongitude() {
+    public double getLongitude() {
         return longitude;
     }
 
