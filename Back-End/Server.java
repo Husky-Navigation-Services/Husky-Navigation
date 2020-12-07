@@ -12,7 +12,7 @@ public class Server {
     public static void main(String[] args) throws FileNotFoundException, IOException {
         // Prepare Parser/Decision Module
         Parser.createMap(new File("[placeholder]"));
-        Parser.setStops(new File("[placeholder]"));
+        Parser.setStops(new File("[placeholder]")); 
         Decision decision = new Decision(Parser.getMap());
         // Initialize HTTP server with socket on localhost:8000
         HttpServer server = HttpServer.create(new InetSocketAddress(PORT), 100);
@@ -23,22 +23,26 @@ public class Server {
         });
         // Define endpoints for GET requests from client + the callback function for it (via lambda functions, which behave like normal methods but without names)
         // Request of form : "localhost:8000/pathfind?start=BagleyHall&end=GuggenheimHall"
+        // Use the code
+        //      String s = parse("s", t.getRequestURI().getQuery().split("&"));
+        // to parse the query string of the GET request URL
         server.createContext("/pathfind", (HttpExchange t) -> {
-            // Use the code
-            //      String s = parse("s", t.getRequestURI().getQuery().split("&"));
-            // to parse the query string of the GET request URL, which looks like data1=value1&data2=value2&data3/value3
-
             // Get endpoints
             String start = parse("start", t.getRequestURI().getQuery().split("&")); // e.g., "BagleyHall"
             String end = parse("start", t.getRequestURI().getQuery().split("&")); // e.g., "GuggenheimHall"
-            // Prepare Parser Data
+            // Calculate shortest distance, ETA, and path
             Map<String, Node> names = Parser.getNames();
-            if (names.containsKey(start) && names.containsKey(end)) {
-                //return decision.getDecision(names.get(start), names.get(end), nodes);
+            if (!names.containsKey(start) || !names.containsKey(end)) {
+                throw new IllegalArgumentException("Endpoints are Invalid.");
             }
-
-            // When transferring JSON in the third parameter, replace "text/plain" with "application/json"
-            send(t, "text/plain; charset=utf-8", "Here's a response for /query context");
+            ArrayList<Node> shortestPath = new ArrayList<Node>();
+            String shortestPathJson = convertPathToJSON(shortestPath);
+            int shortestDistance = decision.getDecision(names.get(start), names.get(end), shortestPath);
+            double eta = shortestDistance / 276.0; // where distance is in feet, time is in minutes. Wikipedia approximates that the average walking speed is 4.6 ft/sec, which is also 276 ft/min
+            // Combine above calculations
+            String data = convertAllDataToJSON(shortestDistance, eta, shortestPathJson);
+            // Send data
+            send(t, "application/json; charset=utf-8", data);
         });
         server.setExecutor(null);
         server.start();
@@ -72,15 +76,8 @@ public class Server {
         }
     }
 
-    private static int processCommand(String command, Decision decision, ArrayList<Node> nodes) {
-        StringTokenizer tokenizer = new StringTokenizer(command);
-        if (tokenizer.nextToken().equals("PATHFIND")) {
-
-        }
-        throw new IllegalArgumentException();
-    }
-
-    public static String convert (ArrayList<Node> nodes) {
+    // Gets shortest path in JSON format given the list of nodes
+    public static String convertPathToJSON(ArrayList<Node> nodes) {
         StringBuilder json = new StringBuilder("{" +
                 "  \"type\": \"FeatureCollection\"," +
                 "  \"features\": [" +
@@ -99,6 +96,19 @@ public class Server {
         }
         json.deleteCharAt(json.length() - 1);
         json.append("]}}]}");
+        return json.toString();
+    }
+
+    // Gets final result in JSON format given the JSON for the shortest path, the shortest distance, and the ETA.
+    public static String convertAllDataToJSON(int shortestDistance, double ETA, String pathJSON) {
+        StringBuilder json = new StringBuilder("{" +
+                "  \"distance\": ");
+        json.append(shortestDistance);
+        json.append(", eta: ");
+        json.append(ETA);
+        json.append(", pathGeoJSON: ");
+        json.append(pathJSON);
+        json.append("}");
         return json.toString();
     }
 }
