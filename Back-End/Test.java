@@ -19,23 +19,23 @@ public class Test {
         Node n2 = new Node(2, 1.9835454434274, 2.2777454434274); // Gulf of Guinea.
         Node n3 = new Node(3, 1.7267454434274, 1.5724954434274); // Gulf of Guinea.
         // Setup the 4 edges in the graph.
-        Pair p01 = new Pair(3, n0, n1);
-        Pair p03 = new Pair(2, n0, n3);
-        Pair p12 = new Pair(1, n1, n2);
-        Pair p32 = new Pair(5, n3, n2);
+        Edge p01 = new Edge(3, n0, n1);
+        Edge p03 = new Edge(2, n0, n3);
+        Edge p12 = new Edge(1, n1, n2);
+        Edge p32 = new Edge(5, n3, n2);
         // Set up the set of connected paths for a given node.
-        Set<Pair> s0 = new HashSet<Pair>();
-        Set<Pair> s1 = new HashSet<Pair>();
-        Set<Pair> s3 = new HashSet<Pair>();
+        Set<Edge> s0 = new HashSet<Edge>();
+        Set<Edge> s1 = new HashSet<Edge>();
+        Set<Edge> s3 = new HashSet<Edge>();
         s0.add(p01);
         s0.add(p03);
         s1.add(p12);
         s3.add(p32);
         // Setup a map linking a node to a set of connected paths.
-        Map<Node, Set<Pair>> decisionMap = new HashMap<Node, Set<Pair>>();
+        Map<Node, Set<Edge>> decisionMap = new HashMap<Node, Set<Edge>>();
         decisionMap.put(n0, s0);
         decisionMap.put(n1, s1);
-        decisionMap.put(n2, new HashSet<Pair>());
+        decisionMap.put(n2, new HashSet<Edge>());
         decisionMap.put(n3, s3);
         // Run the decision module and print out the optimal path for this case.
         Decision decision = new Decision(decisionMap);

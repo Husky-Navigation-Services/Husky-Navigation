@@ -70,9 +70,9 @@ public class Server {
     // Returns the value corresponding to the given key in query string, which is given as an array split up at each "&" character. 
     private static String parse(String key, String... params) {
         for (String param : params) {
-            String[] pair = param.split("=");
-            if (pair.length == 2 && pair[0].equals(key)) {
-                return pair[1];
+            String[] edge = param.split("=");
+            if (edge.length == 2 && edge[0].equals(key)) {
+                return edge[1];
             }
         }
         return "";
