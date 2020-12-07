@@ -375,20 +375,16 @@ function setNavView(coord1, coord2) {
 // Weather
 //////////////////////
 
+window.onload = function() {
+    weatherBalloon( 5809844 );
+}
+
 // Gathers the weather data by using a open weather API.
 function weatherBalloon( cityID ) {
-    var key = '{yourkey}';
-    fetch('https://api.openweathermap.org/data/2.5/weather?id=' + cityID+ '&appid=' + key)  
-    .then(function(resp) {return resp.json() }) // Convert data to json
-    .then(function(data) {
-      console.log(data);
-    })
-    .catch(function() {
-      // catch any errors
-    });
-    window.onload = function() {
-        weatherBalloon( 5809844 );
-    }
+    fetch("https://api.openweathermap.org/data/2.5/weather?q=Seattle,WA&appid={0eabe4f0d958928ef5fbeb6346eade3c}")  
+        .then(res => res.json())
+        .then(res => console.log(data))
+        .catch(e => console.log("Error with weather API fetch: " + e));
 }
 
 // Choose which icon based on whether it is raining
