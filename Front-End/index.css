@@ -143,12 +143,32 @@ html, body {
     width: 35px;
     height: 35px;
     margin-top: 3px;
+    filter: brightness(0) invert(1);
     cursor: pointer;
 }
 
 #weatherIcon:hover {
     opacity: 0.6;
 }
+
+#weatherIconMini {
+    width: 30px;
+    height: 30px;
+    margin-top: 3px;
+    position: relative;
+}
+
+#weatherPopupData {
+    margin: 0px; 
+    margin-top: 8px; 
+    padding-right: 10px;
+    font-size: 11pt;
+    text-align: right;
+    position: relative;
+    left: -30px;
+    border-right: 1px solid white;
+}
+
 
 #weatherPopup {
     position: absolute;
@@ -170,6 +190,7 @@ html, body {
     font-weight: 200;
     text-align: center;
     transition: 0.5s;   
+    
 }
 
 #weatherPopupText {

@@ -393,14 +393,36 @@ function weatherBalloon() {
 
 // Choose which icon based on whether it is raining
 function updateData(tempF, tempC, wind, weather, iconcode) {
-    console.log(iconcode);
-	/*if (weather == "Rain") {
-    if (weather == "Mist") {
-    if (weather == "Snow") {
-    if (weather == "Clouds") {*/
-        weatherIcon.src = "icons/" + iconcode + ".png";
-        weatherIcon.style.filter = "brightness(0) invert(1)";
-        //weatherPopupHeader.innerHTML = "It's Raining in Seattle Now!";
+    // update icon
+    weatherIcon.src = "icons/" + iconcode + ".png";
+    // update header message
+    var adj;
+    switch(weather) {
+        case "Rain":
+            adj = "Rainy";
+            break;
+        case "Mist":
+            adj = "Misty";
+            break;
+        case "Snow":
+            adj = "Snowing";
+            break;
+        case "Clouds":
+            adj = "Cloudy";
+            break;
+        case "Clear":
+            adj = "Clear";
+            break;
+        default:
+            adj = "Clear";
+            break;
+    }
+    var header = "It's " + adj + " in Seatte Now!"
+    // update icon
+    weatherPopupHeader.innerHTML = header;
+
+   
+    
     //} else {
     //   weatherIcon.src = "NoRainIcon.png";
     //}
@@ -413,7 +435,7 @@ function roundTen(num) {
     return Math.round(num * 10) / 10;
 }
 
-window.onload = () => weatherBalloon();
+weatherBalloon();
 
 ////////////////////////////
 // Scrolling Tools
