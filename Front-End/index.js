@@ -54,7 +54,7 @@ var dropDownLengths = {
     "stopSection": "200px",
     "aboutSection": "200px",
     "librariesSection": "200px",
-    "feedbackSection": "200px"
+    "feedbackSection": "160px"
 }
 
 // maps search bar ids to the class of items being searched
@@ -102,7 +102,7 @@ mymap.zoomControl.setPosition('bottomright');
 
 function testServer() {
     // http://192.168.1.128:8000/pathfind?start=BagleyHall&end=GuggenheimHall
-    fetch("http://localhost:8000/pathfind")
+    fetch("http://localhost:8000/pathfind?start=BagleyHall&end=GuggenheimHall")
         .then(res => res.json())
         .then(res2 => console.log(res2));
 }

@@ -52,6 +52,7 @@ public class Parser {
                 } else {
                     end = new Node(ids.get(temp), temp.x, temp.y, name);
                     names.put(name, end);
+                    System.out.println("name " + name);
                 }
                 int d = Integer.parseInt(line.nextToken());
                 map.get(key).add(new Pair(d, key, end));

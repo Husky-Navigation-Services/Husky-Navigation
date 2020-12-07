@@ -13,7 +13,7 @@ public class Server {
         
         // Prepare Parser/Decision Module
         System.out.println(new File(".").getAbsolutePath());
-        Parser.createMap(new File("./Back-End/placeholder1.txt"));
+        Parser.createMap(new File("./Back-End/nodes.txt"));
         // Parser.setStops(new File("./Back-End/placeholder2.txt")); 
         Decision decision = new Decision(Parser.getMap());
         // Initialize HTTP server with socket on localhost:8000
@@ -35,23 +35,33 @@ public class Server {
             
             // Get endpoints
             String start = parse("start", t.getRequestURI().getQuery().split("&")); // e.g., "BagleyHall"
-            String end = parse("start", t.getRequestURI().getQuery().split("&")); // e.g., "GuggenheimHall"
+            String end = parse("end", t.getRequestURI().getQuery().split("&")); // e.g., "GuggenheimHall"
+            System.out.println(start);
+            System.out.println(end);
             // Calculate shortest distance, ETA, and path
             Map<String, Node> names = Parser.getNames();
+            System.out.println(names.keySet());
+            System.out.println(names.values());
             if (!names.containsKey(start) || !names.containsKey(end)) {
                 throw new IllegalArgumentException("Endpoints are Invalid.");
             }
             ArrayList<Node> shortestPath = new ArrayList<Node>();
             String shortestPathJson = convertPathToJSON(shortestPath);
             int shortestDistance = decision.getDecision(names.get(start), names.get(end), shortestPath);
+            System.out.println("Shortest Path: ");
+            for (Node n : shortestPath) {
+                System.out.println(n.location);
+            }
+            System.out.println("Shortest Distance: " + shortestDistance + " ft");
             double eta = shortestDistance / 276.0; // where distance is in feet, time is in minutes. Wikipedia approximates that the average walking speed is 4.6 ft/sec, which is also 276 ft/min
+            System.out.println("ETA: " + eta + " mins");
             // Combine above calculations
             String data = convertAllDataToJSON(shortestDistance, eta, shortestPathJson);
             // Send data
             System.out.println(data + " ");
-            //String testdata = "{\"someData\": \"someinfo\"}";
+            String testdata = "{\"someData\": \"someinfo\"}";
             //text/plain; charset=utf-8
-            send(t, "application/json", data);
+            send(t, "application/json", testdata);
         });
         server.setExecutor(null);
         server.start();
