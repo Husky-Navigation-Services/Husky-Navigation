@@ -101,7 +101,8 @@ mymap.zoomControl.setPosition('bottomright');
 // HTTP Request: "ws://[ipaddress]:[port]/[path]?[parameterName1]=[value1]&[parameterName2]=[value2]"
 
 function testServer() {
-    fetch("http://192.168.1.128:8000/query")
+    // http://192.168.1.128:8000/pathfind?start=BagleyHall&end=GuggenheimHall
+    fetch("http://localhost:8000/pathfind?start=BagleyHall&end=GuggenheimHall")
         .then(res => res.text())
         .then(res2 => console.log(res2));
 }

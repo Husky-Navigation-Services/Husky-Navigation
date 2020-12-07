@@ -9,8 +9,8 @@ public class OldServer {
     }
 
     public static void main(String[] args) throws Exception {
-        Parser.createMap(new File("[placeholder]"));
-        Parser.setStops(new File("[placeholder]"));
+        Parser.createMap(new File("placeholder1.txt"));
+        Parser.setStops(new File("placeholder2.txt"));
         Decision decision = new Decision(Parser.getMap());
         start(decision);
     }

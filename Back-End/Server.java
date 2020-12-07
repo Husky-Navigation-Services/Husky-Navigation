@@ -10,16 +10,20 @@ public class Server {
     private static final int PORT = Integer.parseInt(System.getenv().getOrDefault("PORT", "8000"));
 
     public static void main(String[] args) throws FileNotFoundException, IOException {
+        
         // Prepare Parser/Decision Module
-        Parser.createMap(new File("[placeholder]"));
-        Parser.setStops(new File("[placeholder]")); 
+        System.out.println(new File(".").getAbsolutePath());
+        Parser.createMap(new File("./Back-End/placeholder1.txt"));
+        // Parser.setStops(new File("./Back-End/placeholder2.txt")); 
         Decision decision = new Decision(Parser.getMap());
         // Initialize HTTP server with socket on localhost:8000
+        
         HttpServer server = HttpServer.create(new InetSocketAddress(PORT), 100);
+        
         // Define endpoints for GET requests from client + the callback function for it (via lambda functions, which behave like normal methods but without names)
         server.createContext("/", (HttpExchange t) -> {
             // When transferring JSON in the third parameter, replace "text/plain" with "application/json"
-            send(t, "text/plain; charset=utf-8", "Default Response: Make sure to specify the GET request with /[someKeyword]");
+            send(t, "text/plain; charset=utf-8", "Default Response: Make sure to specify the GET request type!");
         });
         // Define endpoints for GET requests from client + the callback function for it (via lambda functions, which behave like normal methods but without names)
         // Request of form : "localhost:8000/pathfind?start=BagleyHall&end=GuggenheimHall"
@@ -27,6 +31,7 @@ public class Server {
         //      String s = parse("s", t.getRequestURI().getQuery().split("&"));
         // to parse the query string of the GET request URL
         server.createContext("/pathfind", (HttpExchange t) -> {
+            System.out.println("calculating");
             // Get endpoints
             String start = parse("start", t.getRequestURI().getQuery().split("&")); // e.g., "BagleyHall"
             String end = parse("start", t.getRequestURI().getQuery().split("&")); // e.g., "GuggenheimHall"
@@ -42,7 +47,8 @@ public class Server {
             // Combine above calculations
             String data = convertAllDataToJSON(shortestDistance, eta, shortestPathJson);
             // Send data
-            send(t, "application/json; charset=utf-8", data);
+            String testdata = "{\"someData\": \"someinfo\"}";
+            send(t, "text/plain; charset=utf-8", testdata);
         });
         server.setExecutor(null);
         server.start();
