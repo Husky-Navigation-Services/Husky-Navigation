@@ -102,8 +102,8 @@ mymap.zoomControl.setPosition('bottomright');
 
 function testServer() {
     // http://192.168.1.128:8000/pathfind?start=BagleyHall&end=GuggenheimHall
-    fetch("http://localhost:8000/pathfind?start=BagleyHall&end=GuggenheimHall")
-        .then(res => res.text())
+    fetch("http://localhost:8000/pathfind")
+        .then(res => res.json())
         .then(res2 => console.log(res2));
 }
 

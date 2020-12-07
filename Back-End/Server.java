@@ -32,6 +32,7 @@ public class Server {
         // to parse the query string of the GET request URL
         server.createContext("/pathfind", (HttpExchange t) -> {
             System.out.println("calculating");
+            
             // Get endpoints
             String start = parse("start", t.getRequestURI().getQuery().split("&")); // e.g., "BagleyHall"
             String end = parse("start", t.getRequestURI().getQuery().split("&")); // e.g., "GuggenheimHall"
@@ -47,8 +48,10 @@ public class Server {
             // Combine above calculations
             String data = convertAllDataToJSON(shortestDistance, eta, shortestPathJson);
             // Send data
-            String testdata = "{\"someData\": \"someinfo\"}";
-            send(t, "text/plain; charset=utf-8", testdata);
+            System.out.println(data + " ");
+            //String testdata = "{\"someData\": \"someinfo\"}";
+            //text/plain; charset=utf-8
+            send(t, "application/json", data);
         });
         server.setExecutor(null);
         server.start();
