@@ -133,6 +133,7 @@ var weatherPopup = document.getElementById("weatherPopup");
 var weatherIcon = document.getElementById("weatherIcon");
 var weatherArrow = document.getElementById("arrow");
 var weatherPopupBody = document.getElementById("weatherPopupBody");
+var weatherPopupHeader = document.getElementById("weatherPopupHeader");
 var feedbackInput = document.getElementById("feedbackInput");
 var titleSlant = document.getElementById("title-slant");
 
@@ -375,26 +376,44 @@ function setNavView(coord1, coord2) {
 // Weather
 //////////////////////
 
-window.onload = function() {
-    weatherBalloon( 5809844 );
-}
-
 // Gathers the weather data by using a open weather API.
-function weatherBalloon( cityID ) {
-    fetch("https://api.openweathermap.org/data/2.5/weather?q=Seattle,WA&appid={0eabe4f0d958928ef5fbeb6346eade3c}")  
+function weatherBalloon() {
+    fetch("https://api.openweathermap.org/data/2.5/weather?q=Seattle&appid=0eabe4f0d958928ef5fbeb6346eade3c")  
         .then(res => res.json())
-        .then(res => console.log(data))
+        .then(res => {
+            var tempK = res.main.temp;
+            var tempF = roundTen((tempK - 273.15) * 9/5 + 32);
+            var tempC = roundTen(3 * tempK - 273.15);
+            var wind = roundTen(res.wind.speed);
+            var weather = res.weather.main;
+            updateData(tempF, tempC, wind, weather, res.weather[0].icon);
+        })
         .catch(e => console.log("Error with weather API fetch: " + e));
 }
 
 // Choose which icon based on whether it is raining
-function isRain( d ) {
-	if( d.weather[0].description.indexOf('rain') > 0 ) {
-        weather.src = "RainIcon.png";
-    } else {
-        wheather.src = "NoRainIcon.png";
-    }
+function updateData(tempF, tempC, wind, weather, iconcode) {
+    console.log(iconcode);
+    iconcode = "01d";
+	/*if (weather == "Rain") {
+    if (weather == "Mist") {
+    if (weather == "Snow") {
+    if (weather == "Clouds") {*/
+        weatherIcon.src = "icons/" + iconcode + ".png";
+        //weatherPopupHeader.innerHTML = "It's Raining in Seattle Now!";
+    //} else {
+    //   weatherIcon.src = "NoRainIcon.png";
+    //}
+    
+    console.log(tempF);
 }
+
+// Returns given number rounded to the nearest tenth
+function roundTen(num) {
+    return Math.round(num * 10) / 10;
+}
+
+window.onload = () => weatherBalloon();
 
 ////////////////////////////
 // Scrolling Tools
