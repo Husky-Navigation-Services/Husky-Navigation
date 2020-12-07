@@ -101,9 +101,9 @@ mymap.zoomControl.setPosition('bottomright');
 // HTTP Request: "ws://[ipaddress]:[port]/[path]?[parameterName1]=[value1]&[parameterName2]=[value2]"
 
 function testServer() {
-    fetch("https://192.168.1.128:8520/test")
-        .then(response => response.json())
-        .then(res => console.log(res));
+    fetch("http://192.168.1.128:8000/query")
+        .then(res => res.text())
+        .then(res2 => console.log(res2));
 }
 
 
