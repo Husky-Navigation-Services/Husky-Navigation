@@ -28,7 +28,7 @@ public class Server {
         server.start();
     }
 
-    // Returns the value corresponding to the given key in a URL GET request's query string (parsed into an array).
+    // Returns the value corresponding to the given key in query string, which is given as an array split up at each "&" character. 
     private static String parse(String key, String... params) {
         for (String param : params) {
             String[] pair = param.split("=");
@@ -39,6 +39,7 @@ public class Server {
         return "";
     }
 
+    // Sends the given data of the given content type over the HttpExchange object representing the current request-response interaction.
     private static void send(HttpExchange t, String contentType, String data)
             throws IOException, UnsupportedEncodingException {
         t.getResponseHeaders().add("Access-Control-Allow-Origin", "*");
