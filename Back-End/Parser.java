@@ -34,14 +34,14 @@ public class Parser {
         Scanner reader = new Scanner(input);
         while (reader.hasNextLine()) {
             StringTokenizer line = new StringTokenizer(reader.nextLine());
-            Location keyLoc = new Location(Double.parseDouble(line.nextToken()), Double.parseDouble(line.nextToken()));
+            Location keyLoc = new Location(Float.parseFloat(line.nextToken()), Float.parseFloat(line.nextToken()));
             if (!ids.containsKey(keyLoc)) {
                 ids.put(keyLoc, currentId++);
             }
             Node key = new Node(ids.get(keyLoc), keyLoc.x, keyLoc.y, line.nextToken());
             map.put(key, new HashSet<>());
             while (line.hasMoreTokens()) {
-                Location temp = new Location(Double.parseDouble(line.nextToken()), Double.parseDouble(line.nextToken()));
+                Location temp = new Location(Float.parseFloat(line.nextToken()), Float.parseFloat(line.nextToken()));
                 if (!ids.containsKey(temp)) {
                     ids.put(temp, currentId++);
                 }
@@ -85,9 +85,9 @@ public class Parser {
     }
 
     private static class Location implements Comparable<Location> {
-        private double x, y;
+        private float x, y;
 
-        private Location(double x, double y) {
+        private Location(float x, float y) {
             this.x = x;
             this.y = y;
         }
