@@ -5,22 +5,30 @@ import java.nio.file.*;
 
 import com.sun.net.httpserver.*;
 
-public class Server3 {
+public class Server {
     // Port number used to connect to this server
     private static final int PORT = Integer.parseInt(System.getenv().getOrDefault("PORT", "8000"));
 
     public static void main(String[] args) throws FileNotFoundException, IOException {
         HttpServer server = HttpServer.create(new InetSocketAddress(PORT), 100);
+        // Define endpoints for GET requests from client + the callback function for it (via lambda functions, which behave like normal methods but without names)
         server.createContext("/", (HttpExchange t) -> {
-            send(t, "text/plain; charset=utf-8", "Here's a response for / context");
+            // When transferring JSON in the third parameter, replace "text/plain" with "application/json"
+            send(t, "text/plain; charset=utf-8", "Default Response: Make sure to specify the GET request with /[someKeyword]");
         });
         server.createContext("/query", (HttpExchange t) -> {
+            // Use the code
+            //      String s = parse("s", t.getRequestURI().getQuery().split("&"));
+            // to parse the query string of the GET request URL, which looks like data1=value1&data2=value2&data3/value3
+
+            // When transferring JSON in the third parameter, replace "text/plain" with "application/json"
             send(t, "text/plain; charset=utf-8", "Here's a response for /query context");
         });
         server.setExecutor(null);
         server.start();
     }
 
+    // Returns the value corresponding to the given key in a URL GET request's query string (parsed into an array).
     private static String parse(String key, String... params) {
         for (String param : params) {
             String[] pair = param.split("=");
