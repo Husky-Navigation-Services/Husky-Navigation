@@ -433,6 +433,7 @@ option {
     border-width: 4px;
     margin-top: 0px;
     display: block;
+    word-wrap: break-word;
 }
 
 #feedbackSection {
