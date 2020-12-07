@@ -1,16 +1,16 @@
 import java.util.*;
 
 public class Decision {
-    private ArrayList<Set<Pair>> neighbors;
+    private ArrayList<Set<Edge>> neighbors;
     private Map<Integer, Node> nodeSearch;
 
     // Constructs a decision module given a map that connects a node to the set
     // of possible paths. Also sets up a way to find nodes based on a node id.
-    public Decision(Map<Node, Set<Pair>> paths) {
-        this.neighbors = new ArrayList<Set<Pair>>();
+    public Decision(Map<Node, Set<Edge>> paths) {
+        this.neighbors = new ArrayList<Set<Edge>>();
         this.nodeSearch = new HashMap<Integer, Node>();
         for (int i = 0; i < paths.keySet().size(); i++) {
-            neighbors.add(new HashSet<Pair>());
+            neighbors.add(new HashSet<Edge>());
         }
         for (Node node : paths.keySet()) {
             nodeSearch.put(node.id, node);
@@ -41,7 +41,7 @@ public class Decision {
         if (distances.get(currentId) > totalDistance) {
             distances.set(currentId, totalDistance);
             predecessors.set(currentId, previousId);
-            for (Pair neighbor : neighbors.get(currentId)) {
+            for (Edge neighbor : neighbors.get(currentId)) {
                 getShortestPath(currentId, neighbor.end.id, totalDistance +
                         neighbor.distance, predecessors, distances);
             }

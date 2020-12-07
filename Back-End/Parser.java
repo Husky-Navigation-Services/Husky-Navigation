@@ -15,13 +15,13 @@ x y [name] x y [name] d x y [name] d x y [name] d
 import java.io.*;
 import java.util.*;
 public class Parser {
-    private static Map<Node, Set<Pair>> map;
+    private static Map<Node, Set<Edge>> map;
 //  private Map<String, Node> names;
     private static Set<Node> busStops;
     private static Map<String, Node> names;
         
 //    public Parser() {
-//        map = new HashMap<Node, HashSet<Pair>>();
+//        map = new HashMap<Node, HashSet<Edge>>();
 //        names = new HashMap<String, Node>();
 //        busStops = new HashSet<Node>();
 //    }
@@ -38,7 +38,7 @@ public class Parser {
             if (!ids.containsKey(keyLoc)) {
                 ids.put(keyLoc, currentId++);
             }
-            Node key = new Node (ids.get(keyLoc), keyLoc.x, keyLoc.y, line.nextToken());
+            Node key = new Node(ids.get(keyLoc), keyLoc.x, keyLoc.y, line.nextToken());
             map.put(key, new HashSet<>());
             while (line.hasMoreTokens()) {
                 Location temp = new Location(Float.parseFloat(line.nextToken()), Float.parseFloat(line.nextToken()));
@@ -55,8 +55,8 @@ public class Parser {
                     System.out.println("name " + name);
                 }
                 int d = Integer.parseInt(line.nextToken());
-                map.get(key).add(new Pair(d, key, end));
-                map.get(key).add(new Pair(d, end, key));
+                map.get(key).add(new Edge(d, key, end));
+                map.get(key).add(new Edge(d, end, key));
             }
         }
         reader.close();
@@ -72,7 +72,7 @@ public class Parser {
         reader.close();
     }
 
-    public static Map<Node, Set<Pair>> getMap() {
+    public static Map<Node, Set<Edge>> getMap() {
         return map;
     }
 
