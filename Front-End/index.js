@@ -394,12 +394,12 @@ function weatherBalloon() {
 // Choose which icon based on whether it is raining
 function updateData(tempF, tempC, wind, weather, iconcode) {
     console.log(iconcode);
-    iconcode = "01d";
 	/*if (weather == "Rain") {
     if (weather == "Mist") {
     if (weather == "Snow") {
     if (weather == "Clouds") {*/
         weatherIcon.src = "icons/" + iconcode + ".png";
+        weatherIcon.style.filter = "brightness(0) invert(1)";
         //weatherPopupHeader.innerHTML = "It's Raining in Seattle Now!";
     //} else {
     //   weatherIcon.src = "NoRainIcon.png";
