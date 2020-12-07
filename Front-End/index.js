@@ -106,7 +106,6 @@ function testServer() {
         .then(res2 => console.log(res2));
 }
 
-
 /////////////////////
 // Event Listeners
 /////////////////////
@@ -187,18 +186,16 @@ function sendFeedback() {
         From: "huskynavigationfeedback@gmail.com", 
         Subject: "Feedback Form", 
         Body: "Feedback Message: " + feedbackInput.value, 
-    }).then(function (message) { 
-        alert("Feedback sent successfully!") 
-    }); 
-    
-   //alert("Feature in progress...");
+    }).then(function (message) {
+        // alert("Feature in progress...");
+        alert("Feedback sent successfully!");
+    });
 }
 
 function toggleWeatherPopup() {
     if (weatherPopup.style.height != "0px") {
         weatherPopup.style.height = "0px";
         weatherArrow.style.height = "0px";
-        
     } else {
         weatherPopup.style.height = "100px";
         weatherArrow.style.height = "10px";
@@ -308,7 +305,6 @@ function updateStart() {
         fromElement.innerHTML = newLocation;
         fromElement.style.opacity = 1;
     }, 100);
-    
 }
 
 // Sets the end text in the horizontal bar to the caller's text when the caller is changed
@@ -331,7 +327,7 @@ function tryNav() {
     if (navPossible(from, to)) {
         nav(from, to);
     } else {
-       // alert("Invalid. Try again.")
+       // alert("Invalid. Try again.");
     }
 }
 
@@ -389,10 +385,9 @@ function weatherBalloon( cityID ) {
     .catch(function() {
       // catch any errors
     });
-  }
-  
     window.onload = function() {
-    weatherBalloon( 5809844 );
+        weatherBalloon( 5809844 );
+    }
 }
 
 // Choose which icon based on whether it is raining
