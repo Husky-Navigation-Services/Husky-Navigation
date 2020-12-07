@@ -43,6 +43,7 @@ public class Server {
     // Sends the given data of the given content type over the HttpExchange object representing the current request-response interaction.
     private static void send(HttpExchange t, String contentType, String data)
             throws IOException, UnsupportedEncodingException {
+        // CORS Support
         t.getResponseHeaders().add("Access-Control-Allow-Origin", "*");
         t.getResponseHeaders().add("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE,OPTIONS");
         t.getResponseHeaders().add("Access-Control-Allow-Headers", "*");
