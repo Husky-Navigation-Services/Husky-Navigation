@@ -10,6 +10,11 @@ public class Server {
     private static final int PORT = Integer.parseInt(System.getenv().getOrDefault("PORT", "8000"));
 
     public static void main(String[] args) throws FileNotFoundException, IOException {
+        // Prepare Parser/Decision Module
+        Parser.createMap(new File("[placeholder]"));
+        Parser.setStops(new File("[placeholder]"));
+        Decision decision = new Decision(Parser.getMap());
+        // Initialize HTTP server with socket on localhost:8000
         HttpServer server = HttpServer.create(new InetSocketAddress(PORT), 100);
         // Define endpoints for GET requests from client + the callback function for it (via lambda functions, which behave like normal methods but without names)
         server.createContext("/", (HttpExchange t) -> {
@@ -17,10 +22,20 @@ public class Server {
             send(t, "text/plain; charset=utf-8", "Default Response: Make sure to specify the GET request with /[someKeyword]");
         });
         // Define endpoints for GET requests from client + the callback function for it (via lambda functions, which behave like normal methods but without names)
-        server.createContext("/query", (HttpExchange t) -> {
+        // Request of form : "localhost:8000/pathfind?start=BagleyHall&end=GuggenheimHall"
+        server.createContext("/pathfind", (HttpExchange t) -> {
             // Use the code
             //      String s = parse("s", t.getRequestURI().getQuery().split("&"));
             // to parse the query string of the GET request URL, which looks like data1=value1&data2=value2&data3/value3
+
+            // Get endpoints
+            String start = parse("start", t.getRequestURI().getQuery().split("&")); // e.g., "BagleyHall"
+            String end = parse("start", t.getRequestURI().getQuery().split("&")); // e.g., "GuggenheimHall"
+            // Prepare Parser Data
+            Map<String, Node> names = Parser.getNames();
+            if (names.containsKey(start) && names.containsKey(end)) {
+                //return decision.getDecision(names.get(start), names.get(end), nodes);
+            }
 
             // When transferring JSON in the third parameter, replace "text/plain" with "application/json"
             send(t, "text/plain; charset=utf-8", "Here's a response for /query context");
@@ -60,12 +75,7 @@ public class Server {
     private static int processCommand(String command, Decision decision, ArrayList<Node> nodes) {
         StringTokenizer tokenizer = new StringTokenizer(command);
         if (tokenizer.nextToken().equals("PATHFIND")) {
-            String start = tokenizer.nextToken();
-            String end = tokenizer.nextToken();
-            Map<String, Node> names = Parser.getNames();
-            if (names.containsKey(start) && names.containsKey(end)) {
-                return decision.getDecision(names.get(start), names.get(end), nodes);
-            }
+
         }
         throw new IllegalArgumentException();
     }
