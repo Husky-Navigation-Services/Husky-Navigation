@@ -426,6 +426,9 @@ function updateData(tempF, tempC, wind, weather, humidity, iconcode) {
         case "Clear":
             adj = "Clear";
             break;
+        case "Hazy":
+            adj = "Hazy";
+            break;
         default:
             adj = "Clear";
             break;
