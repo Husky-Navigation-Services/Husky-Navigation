@@ -1,0 +1,23 @@
+#logo {
+    border-color: #4b2e83;
+    border-style: solid;
+    border-width: 5px;
+    margin-top: 10px;
+    width: 60px;
+    height: 60px;
+    padding-top: 0%;
+    border-radius: 1em; 
+    pointer-events: auto;
+    transition: 0.2s;
+    cursor: pointer;
+    /*transition: border-width 0.1s ease-in-out;*/
+}
+
+#logo:hover {
+    opacity: 0.8;
+}
+
+#logo:active {
+    transform: translateY(-5px);
+    transition: 5s;
+}

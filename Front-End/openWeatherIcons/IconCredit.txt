@@ -1,0 +1,3 @@
+https://github.com/yuvraaaj/openweathermap-api-icons
+
+-- Icons originally from https://openweathermap.org/
