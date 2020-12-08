@@ -7,6 +7,7 @@
 //      Navigation
 //      Weather
 //      Scrolling Tools
+//      Geolocation Tools
 //      Other
 
 ////////////////////
@@ -46,6 +47,9 @@ var locationsMap = {
 
 // stores map markes
 var mapMarkers = [];
+
+// stores current location markers
+var locationMarkers = [];
 
 // maps section ids to its height
 var dropDownLengths = {
@@ -129,6 +133,7 @@ var currentTheme = document.getElementById("currentModeId");
 var navBttn = document.getElementById("navBtn");
 var title = document.getElementById("title");
 var footer =  document.getElementById("footer");
+var locationIcon = document.getElementById("locationIcon");
 var weatherPopup = document.getElementById("weatherPopup");
 var weatherIcon = document.getElementById("weatherIcon");
 var weatherIconMini = document.getElementById("weatherIconMini"); // icon within popup
@@ -141,6 +146,7 @@ var titleSlant = document.getElementById("title-slant");
 
 logo.addEventListener("click", toggleContent);
 navBttn.addEventListener("click", tryNav);
+locationIcon.addEventListener("click", goToCurrentLocation);
 weatherIcon.addEventListener("click", toggleWeatherPopup);
 
 document.getElementById("submitFeedback").addEventListener("click", sendFeedback);
@@ -180,6 +186,10 @@ for (var i = 0; i < searchBars.length; i++) {
 /////////////////////////////
 // Event Listener Callbacks
 /////////////////////////////
+
+function goToCurrentLocation() {
+
+}
 
 function sendFeedback() {
     Email.send({ 
@@ -470,6 +480,39 @@ function scroll(el, holder) {
     console.log("scorlling " + el.offsetTop + " to " + el.innerHTML);
     var topPos = el.offsetTop;
     holder.scrollTop = topPos - 40;
+}
+
+//////////////////////////
+// Geolocation Tools
+//////////////////////////
+
+function goToCurrentLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(goToPosition);
+    } else {
+        alert("Geolocation is not supported by this browser.");
+    }
+}
+
+function goToPosition(position) {
+    // Remove previous markers
+    if (locationMarkers.length > 0) {
+        locationMarkers[0].remove();
+    }
+    // Add new location marker
+    var coords = [position.coords.latitude, position.coords.longitude];
+    var locMarker = L.marker(coords/*, {icon: redIcon}*/).addTo(mymap);
+    // Set view
+    mymap.setView(coords);
+    // Update previous marker value
+    mapMarkers.push(locMarker);
+    // Check whether user is in UW
+    var inXBounds = coords[0] > 47.656183871790766 && coords[0] < 47.66121658241639;
+    var inYBounds = coords[0] > -122.30475545604999 && coords[0] < -122.30798213509433;
+    if (!inXBounds || !inYBounds) {
+        alert("You appear to be outside the University of Washington campus. Please note that our service works best for locations near the campus.")
+    }
+
 }
 
 //////////////////////////

@@ -249,8 +249,8 @@ html, body {
 }
 
 .bar {
-    margin-left: 20px;
-    margin-right: 20px;
+    margin-left: 17px;
+    margin-right: 17px;
     font-size: 20pt;
     color: #b7a57a;
 }
@@ -434,9 +434,13 @@ option {
 }
 
 #locationIcon {
-    filter: brightness(1) invert(1);
     width: 35px;
     height: 35px;
+}
+
+#locationIconDiv {
+    margin-left: auto;
+    margin-right: 10px;
 }
 
 #githubIcon {
@@ -444,12 +448,11 @@ option {
     height: 35px;
 }
 
-#githubIcon:hover {
+#githubIcon:hover, #locationIcon:hover {
     opacity: 0.6;
 }
 
 .githubIconDiv {
-    margin-left: auto;
     margin-right: 10px;
 }
 
