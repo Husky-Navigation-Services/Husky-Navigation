@@ -374,7 +374,7 @@ function nav() {
             distanceElement.innerHTML = roundTen(res.distance / 5280) + " mi";
             etaElement.innerHTML = res.eta + " min";
             L.geoJSON(res.data).addTo(mymap);
-        });
+    });
 }
 
 // Sets the map view to contain the given lat/lng endpoints
