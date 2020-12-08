@@ -441,26 +441,34 @@ option {
 }
 
 #locationIcon {
-    width: 35px;
-    height: 35px;
+    width: 36px;
+    height: 36px;
+}
+
+#coffeeCupIcon {
+    width: 55px; 
+    height: 55px;
+    margin-top: 3px;
 }
 
 #locationIconDiv {
     margin-left: auto;
     margin-right: 10px;
+    margin-top: 1px;
 }
 
 #githubIcon {
     width: 35px;
     height: 35px;
+    cursor: pointer;
 }
 
-#githubIcon:hover, #locationIcon:hover {
+#githubIcon:hover, #locationIcon:hover, #coffeeCupIcon:hover {
     opacity: 0.6;
 }
 
 .githubIconDiv {
-    margin-right: 10px;
+    margin-right: 0px;
 }
 
 #feedbackInput {
