@@ -24,7 +24,7 @@ font-family: 'Montserrat Alternates', sans-serif;*/
 }
 
 
-.sidebarLeft {
+#sidebarLeft {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -363,7 +363,7 @@ option {
     margin-left: 0px;
 }
 
-.titleElements {
+#titleElements {
     padding-top: 0px;
     display: block;
     background-color: whitesmoke;
@@ -383,7 +383,7 @@ option {
     margin-bottom: 20px;
 }
 
-.title {
+#title {
     color: #4B2E83;
     font-size: 20pt;
     width: 220px;

@@ -104,13 +104,6 @@ mymap.zoomControl.setPosition('bottomright');
 // Test Server Back-End
 // HTTP Request: "ws://[ipaddress]:[port]/[path]?[parameterName1]=[value1]&[parameterName2]=[value2]"
 
-function testServer() {
-    // http://192.168.1.128:8000/pathfind?start=BagleyHall&end=GuggenheimHall
-    fetch("http://localhost:8000/pathfind?start=BagleyHall&end=GuggenheimHall")
-        .then(res => res.json())
-        .then(res2 => console.log(res2));
-}
-
 /////////////////////
 // Event Listeners
 /////////////////////
@@ -118,6 +111,8 @@ function testServer() {
 // Add Event Listeners
 var fromElement = document.getElementById("from");
 var toElement = document.getElementById("to");
+var distanceElement = document.getElementById("distance");
+var etaElement = document.getElementById("eta");
 var locationElements = document.getElementsByClassName("location");
 var buildingElements = document.getElementsByClassName("building");
 var busStopElements = document.getElementsByClassName("bus-stop");
@@ -126,7 +121,7 @@ var searchBars = document.getElementsByClassName("searchBar");
 var buildingContainer = document.getElementById("building-container");
 var busStopContainer = document.getElementById("bus-stop-container");
 var horizontalBar = document.getElementById("horizontalBarId");
-var leftSideBar = document.getElementById("sidebarLeftId");
+var leftSideBar = document.getElementById("sidebarLeft");
 var logo = document.getElementById("logo");
 var titleElements = document.getElementById("titleElementsId");
 var currentTheme = document.getElementById("currentModeId");
@@ -347,7 +342,7 @@ function tryNav() {
 
 // Toggles visbility of the left sidebar when the caller is clicked
 function toggleContent() {
-    var sidebarLeft = document.getElementById("sidebarLeftId");
+    var sidebarLeft = document.getElementById("sidebarLeft");
     var horizontalBar = document.getElementById("horizontalBarId");
     if (sidebarLeft.style.width == "0px") {
         sidebarLeft.style.opacity = 1;
@@ -373,10 +368,17 @@ function navPossible(from, to) {
 // Navigates. Sets the map view to contain both endpoints and draws the path.
 function nav() {
     setNavView(locationsMap[fromElement.innerHTML], locationsMap[toElement.innerHTML]);
-    // TODO: Fetch data from server instead
-    
-    //const data = await fetch('./geojsonTest.json').then(response => response.json());
-    //L.geoJSON(data).addTo(mymap);
+    // .replace(/\s/g, '')  ---> removes all spaces
+    var GETurl = "http://localhost:8000/pathfind?start=" + fromElement.innerHTML.replace(/\s/g, '') + "&end=" + toElement.innerHTML.replace(/\s/g, '');
+    var testGETurl = "http://localhost:8000/pathfind?start=BagleyHall&end=GuggenheimHall";
+    fetch(GETurl)
+        .then(res => res.json())
+        .then(res => {
+            console.log(res);
+            distanceElement.innerHTML = roundTen(res.distance / 5280) + " mi";
+            etaElement.innerHTML = res.eta + " min";
+            L.geoJSON(res.data).addTo(mymap);
+        });
 }
 
 // Sets the map view to contain the given lat/lng endpoints

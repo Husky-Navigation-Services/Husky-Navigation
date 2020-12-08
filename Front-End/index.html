@@ -4,22 +4,27 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-5175XW1NS8"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-5175XW1NS8');
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        gtag('config', 'G-5175XW1NS8');
     </script>
     <title>Husky Navigation</title>
-    <link rel = "icon" href="HuskyNavLogoTransparent.png">
-    <link rel = "stylesheet" href="index.css">
-    <link rel = "stylesheet" href="toggleSwitch.css">
-    <link rel = "stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    <!-- For Webpage Icon (appears on browser tab) -->
+    <link rel = "icon" href = "HuskyNavLogoTransparent.png">
+    <!-- Primary Stylesheets -->
+    <link rel = "stylesheet" href = "index.css">
+    <link rel = "stylesheet" href = "toggleSwitch.css">
+    <!-- For LeafletJS Maps -->
+    <link rel = "stylesheet" href = "https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
     integrity = "sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
     crossorigin = ""/>
     <script src = "https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
     integrity = "sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
     crossorigin = ""></script>
+    <!-- For sending emails via gmail -->
     <script src="https://smtpjs.com/v3/smtp.js"></script>
 </head>
 
@@ -30,10 +35,12 @@
     <!-- Content -->
     <div id = "content" class= "content">
         <!-- Left Sidebar -->
-        <div id = "sidebarLeftId" class = "sidebarLeft">
-            <div id = "titleElementsId" class = "titleElements">
-                <h1 id = "title" class = "title">Husky Navigation</h1>
+        <div id = "sidebarLeft">
+            <div id = "titleElements">
+                <!-- Title + Slant -->
+                <h1 id = "title">Husky Navigation</h1>
                 <span id = "title-slant" class = "uw-slant-large"></span>
+                <!-- UW Wordmark -->
                 <a href = "https://www.washington.edu">
                     <img id = "wordmark" class = "uw-wordmark" src = "UnivWaWordmarkPurple.png" alt = "UnivWaWordmark.png"></img>
                 </a>
@@ -45,7 +52,6 @@
             <div id = "navSection" class = "inputs contentSection">
                 <!-- Select Start -->
                 <div class = "inputDiv">
-                    <!--<img class = "miniStartMarker" src = "EmptyRedCircle.png"></img>-->
                     <select name = "startingPoints" id = "startingPointsId" class = "select startingPoints">
                         <option value = "--Select Starting Point--">--Select Starting Point--</option>
                         <optgroup label = "Buildings"></optgroup>
@@ -209,10 +215,10 @@
             <p id = "to" class = "tofrom">Select Destination</p>
             <!-- Distance -->
             <div class = "bar"> &#9474 </div>
-            <div id = "distanceId" class = "distance"> Distance &#8765 2.2 mi </div>
+            <div id = "distance" class = "distance"> Distance &#8765 2.2 mi </div>
             <!-- ETA -->
             <div class = "bar"> &#9474 </div>
-            <div id = "etaId" class = "eta"> ETA &#8765 5 mins </div>
+            <div id = "eta" class = "eta"> ETA &#8765 5 mins </div>
             <!-- Theme Switch -->
             <div class = "bar"> &#9474 </div>
             <!-- Weather TODO: Add Hover -->
@@ -259,6 +265,7 @@
             </label>
         </div>
     </div>
+    <!-- Load primary JavaScript source code -->
     <script src = "index.js"></script>
 </body>
 </html>
