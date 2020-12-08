@@ -29,6 +29,7 @@ public class Parser {
     public static void createMap(File input) throws FileNotFoundException {
         map = new HashMap<>();
         busStops = new HashSet<>();
+        names = new HashMap<>();
         int currentId = 0;
         HashMap<Location, Integer> ids = new HashMap<>();
         Scanner reader = new Scanner(input);
