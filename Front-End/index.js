@@ -131,9 +131,11 @@ var title = document.getElementById("title");
 var footer =  document.getElementById("footer");
 var weatherPopup = document.getElementById("weatherPopup");
 var weatherIcon = document.getElementById("weatherIcon");
+var weatherIconMini = document.getElementById("weatherIconMini"); // icon within popup
 var weatherArrow = document.getElementById("arrow");
 var weatherPopupBody = document.getElementById("weatherPopupBody");
 var weatherPopupHeader = document.getElementById("weatherPopupHeader");
+var weatherPopupData = document.getElementById("weatherPopupData");
 var feedbackInput = document.getElementById("feedbackInput");
 var titleSlant = document.getElementById("title-slant");
 
@@ -199,7 +201,7 @@ function toggleWeatherPopup() {
         weatherPopup.style.height = "0px";
         weatherArrow.style.height = "0px";
     } else {
-        weatherPopup.style.height = "100px";
+        weatherPopup.style.height = "110px";
         weatherArrow.style.height = "10px";
     }
 }
@@ -385,14 +387,16 @@ function weatherBalloon() {
             var tempF = roundTen((tempK - 273.15) * 9/5 + 32);
             var tempC = roundTen(3 * tempK - 273.15);
             var wind = roundTen(res.wind.speed);
-            var weather = res.weather.main;
-            updateData(tempF, tempC, wind, weather, res.weather[0].icon);
+            var humidity = res.main.humidity;
+            var weather = res.weather[0].main;
+            var iconcode = res.weather[0].icon;
+            updateData(tempF, tempC, wind, weather, humidity, iconcode);
         })
         .catch(e => console.log("Error with weather API fetch: " + e));
 }
 
 // Choose which icon based on whether it is raining
-function updateData(tempF, tempC, wind, weather, iconcode) {
+function updateData(tempF, tempC, wind, weather, humidity, iconcode) {
     // update icon
     weatherIcon.src = "icons/" + iconcode + ".png";
     // update header message
@@ -420,7 +424,16 @@ function updateData(tempF, tempC, wind, weather, iconcode) {
     var header = "It's " + adj + " in Seatte Now!"
     // update icon
     weatherPopupHeader.innerHTML = header;
-
+    // update popup icon
+    if (humidity > 75 && weather != "Clear") {
+        weatherIconMini.src = "./RainIcon.png";
+    } else {
+        weatherIconMini.src = "./NoRainIcon.png";
+        weatherIconMini.style.width = "35px";
+        weatherIconMini.style.height = "35px";
+    }
+    // update popup data
+    weatherPopupData.innerHTML = tempF + "&#176F / " + tempC + "&#176C <br> " + wind + " <small>MPH</small> Wind";
    
     
     //} else {

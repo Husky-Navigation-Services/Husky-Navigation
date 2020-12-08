@@ -165,8 +165,9 @@ html, body {
     font-size: 11pt;
     text-align: right;
     position: relative;
-    left: -30px;
+    left: -38px;
     border-right: 1px solid white;
+    line-height: 20px;
 }
 
 
@@ -174,9 +175,9 @@ html, body {
     position: absolute;
     overflow: hidden;
     top: 80px;
-    margin-left: -108px;
+    margin-left: -113px;
     height: 0px;
-    width: 250px;
+    width: 260px;
     transition: 0.5s;
 }
 
