@@ -143,6 +143,7 @@ html, body {
     width: 35px;
     height: 35px;
     margin-top: 3px;
+    filter: brightness(0) invert(1);
     cursor: pointer;
 }
 
@@ -150,13 +151,33 @@ html, body {
     opacity: 0.6;
 }
 
+#weatherIconMini {
+    width: 30px;
+    height: 30px;
+    margin-top: 3px;
+    position: relative;
+}
+
+#weatherPopupData {
+    margin: 0px; 
+    margin-top: 8px; 
+    padding-right: 10px;
+    font-size: 11pt;
+    text-align: right;
+    position: relative;
+    left: -29.5px;
+    border-right: 1px solid white;
+    line-height: 20px;
+}
+
+
 #weatherPopup {
     position: absolute;
     overflow: hidden;
     top: 80px;
-    margin-left: -108px;
+    margin-left: -113px;
     height: 0px;
-    width: 250px;
+    width: 260px;
     transition: 0.5s;
 }
 
@@ -170,6 +191,7 @@ html, body {
     font-weight: 200;
     text-align: center;
     transition: 0.5s;   
+    
 }
 
 #weatherPopupText {
@@ -218,7 +240,7 @@ html, body {
 }
 
 .horizontalSpacer {
-    width: 80px;
+    width: 60px;
     font-size: 30pt;
 }
 
@@ -227,8 +249,8 @@ html, body {
 }
 
 .bar {
-    margin-left: 20px;
-    margin-right: 20px;
+    margin-left: 17px;
+    margin-right: 17px;
     font-size: 20pt;
     color: #b7a57a;
 }
@@ -411,17 +433,26 @@ option {
     transition: 0.5s;
 }
 
+#locationIcon {
+    width: 35px;
+    height: 35px;
+}
+
+#locationIconDiv {
+    margin-left: auto;
+    margin-right: 10px;
+}
+
 #githubIcon {
     width: 35px;
     height: 35px;
 }
 
-#githubIcon:hover {
+#githubIcon:hover, #locationIcon:hover {
     opacity: 0.6;
 }
 
 .githubIconDiv {
-    margin-left: auto;
     margin-right: 10px;
 }
 
