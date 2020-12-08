@@ -32,7 +32,6 @@ public class Server {
         // to parse the query string of the GET request URL
         server.createContext("/pathfind", (HttpExchange t) -> {
             System.out.println("calculating");
-            
             // Get endpoints
             String start = parse("start", t.getRequestURI().getQuery().split("&")); // e.g., "BagleyHall"
             String end = parse("end", t.getRequestURI().getQuery().split("&")); // e.g., "GuggenheimHall"
