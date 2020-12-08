@@ -51,7 +51,7 @@ font-family: 'Montserrat Alternates', sans-serif;*/
     text-align: center;
 }
 
-.logoIcon {
+#logo {
     border-color: #4b2e83;
     border-style: solid;
     border-width: 5px;
@@ -66,11 +66,11 @@ font-family: 'Montserrat Alternates', sans-serif;*/
     /*transition: border-width 0.1s ease-in-out;*/
 }
 
-.logoIcon:hover {
+#logo:hover {
     opacity: 0.8;
 }
 
-.logoIcon:active {
+#logo:active {
     transform: translateY(-5px);
     transition: 5s;
 }
@@ -165,7 +165,14 @@ html, body {
     position: relative;
 }
 
+#weatherPopupHeader {
+    display: inline-block; 
+    margin: 0px; 
+    font-weight: 600;
+}
+
 #weatherPopupData {
+    display: inline-block; 
     margin: 0px; 
     margin-top: 8px; 
     padding-right: 10px;
@@ -229,15 +236,18 @@ html, body {
     transition: 0.5s;
 }
 
-.startMarker  {
+#startMarker  {
     width: 25px;
     height: 25px;
     margin: 20px;
 }
 
-.endMarker  {
+#endMarker  {
     width: 20px;
     height: 30.72px;
+}
+
+.marker {
     margin: 20px;
 }
 
@@ -375,7 +385,7 @@ option {
     transition: 0.5s;
 }
 
-.uw-wordmark {
+#uw-wordmark {
     width: 120px;
     margin-bottom: 0px;
     margin-top: 10px;
@@ -417,7 +427,7 @@ option {
     height: 160px;
 }
 
-.currentMode {
+#currentMode {
     display: none;
     
 }

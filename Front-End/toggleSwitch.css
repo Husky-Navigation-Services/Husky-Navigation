@@ -7,7 +7,7 @@ https://www.w3schools.com/howto/howto_css_switch.asp
 
 
 /* The switch - the box around the slider */
-.switch {
+#switch {
     position: relative;
     display: block;
     width: 40px;
@@ -21,7 +21,7 @@ https://www.w3schools.com/howto/howto_css_switch.asp
   }
   
   /* Hide default HTML checkbox */
-  .switch input {
+  #switch input {
     
     opacity: 0;
     width: 0;
@@ -29,7 +29,7 @@ https://www.w3schools.com/howto/howto_css_switch.asp
   }
   
   /* The slider */
-  .slider {
+  #slider {
     position: absolute;
     cursor: pointer;
     top: 0;
@@ -41,7 +41,7 @@ https://www.w3schools.com/howto/howto_css_switch.asp
     border-radius: 5em;
   }
   
-  .slider:before {
+  #slider:before {
     position: absolute;
     content: "";
     height: 16px;
@@ -53,15 +53,15 @@ https://www.w3schools.com/howto/howto_css_switch.asp
     border-radius: 5em;
   }
   
-  input:checked + .slider {
+  input:checked + #slider {
     background-color: #000000;
   }
   
-  input:focus + .slider {
+  input:focus + #slider {
     box-shadow: 0 0 1px #000000;
   }
   
-  input:checked + .slider:before {
+  input:checked + #slider:before {
     -webkit-transform: translateX(16px);
     -ms-transform: translateX(16px);
     transform: translateX(16px);

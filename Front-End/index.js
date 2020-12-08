@@ -123,8 +123,8 @@ var busStopContainer = document.getElementById("bus-stop-container");
 var horizontalBar = document.getElementById("horizontalBarId");
 var leftSideBar = document.getElementById("sidebarLeft");
 var logo = document.getElementById("logo");
-var titleElements = document.getElementById("titleElementsId");
-var currentTheme = document.getElementById("currentModeId");
+var titleElements = document.getElementById("titleElements");
+var currentTheme = document.getElementById("currentMode");
 var navBttn = document.getElementById("navBtn");
 var title = document.getElementById("title");
 var footer =  document.getElementById("footer");
@@ -138,6 +138,7 @@ var weatherPopupHeader = document.getElementById("weatherPopupHeader");
 var weatherPopupData = document.getElementById("weatherPopupData");
 var feedbackInput = document.getElementById("feedbackInput");
 var titleSlant = document.getElementById("title-slant");
+var wordmark = document.getElementById("uw-wordmark");
 
 logo.addEventListener("click", toggleContent);
 navBttn.addEventListener("click", tryNav);
@@ -181,10 +182,6 @@ for (var i = 0; i < searchBars.length; i++) {
 /////////////////////////////
 // Event Listener Callbacks
 /////////////////////////////
-
-function goToCurrentLocation() {
-
-}
 
 function sendFeedback() {
     Email.send({ 
