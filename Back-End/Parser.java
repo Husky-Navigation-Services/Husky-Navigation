@@ -5,9 +5,9 @@
 
 // Format of Parsing File:
 /*
-x y [name] x y [name] d x y [name] d
-x y [name] x y [name] d
-x y [name] x y [name] d x y [name] d x y [name] d
+x y [name] x y [name] x y [name]
+x y [name] x y [name]
+x y [name] x y [name] x y [name] x y [name]
 */
 // each of the x and y are Strings for latitude and longitude, [name] is the name, and d is an int
 
@@ -54,7 +54,7 @@ public class Parser {
                     names.put(name, end);
                     System.out.println("name " + name);
                 }
-                int d = Integer.parseInt(line.nextToken());
+                float d = temp.getDist(keyLoc);
                 map.get(key).add(new Edge(d, key, end));
                 map.get(key).add(new Edge(d, end, key));
             }
@@ -92,12 +92,16 @@ public class Parser {
             this.y = y;
         }
 
+        public float getDist(Location other) {
+            return (float) Math.sqrt((x-other.x)*(x-other.x)+(y-other.y)*(y-other.y));
+        }
+
         @Override
         public int compareTo(Parser.Location o) {
             if (x == o.x && y == o.y) {
                 return 0;
             }
             return 1;
-        }        
+        }
     }
 }

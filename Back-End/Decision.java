@@ -20,12 +20,12 @@ public class Decision {
 
     // Returns the total distance of the optimal path. Gives the optimal path given
     // a start and end node through reference semantics for a given array list.
-    public int getDecision(Node start, Node end, ArrayList<Node> path) {
-        ArrayList<Integer> predecessors = new ArrayList<Integer>();
-        ArrayList<Integer> distances = new ArrayList<Integer>();
+    public float getDecision(Node start, Node end, ArrayList<Node> path) {
+        ArrayList<Integer> predecessors = new ArrayList<>();
+        ArrayList<Float> distances = new ArrayList<>();
         for (int setup = 0; setup < neighbors.size(); setup++) {
             predecessors.add(setup);
-            distances.add(Integer.MAX_VALUE);
+            distances.add(Float.MAX_VALUE);
         }
         getShortestPath(start.id, start.id, 0, predecessors, distances);
         for (int nodeId: getPath(start.id, end.id, predecessors)) {
@@ -36,8 +36,8 @@ public class Decision {
 
     // Gives the shortest path given the previous and current id, total distance,
     // array list of predecessors, and a array list of distances.
-    private void getShortestPath(int previousId, int currentId, int totalDistance,
-            ArrayList<Integer> predecessors, ArrayList<Integer> distances) {
+    private void getShortestPath(int previousId, int currentId, float totalDistance,
+            ArrayList<Integer> predecessors, ArrayList<Float> distances) {
         if (distances.get(currentId) > totalDistance) {
             distances.set(currentId, totalDistance);
             predecessors.set(currentId, previousId);

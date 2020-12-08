@@ -47,7 +47,7 @@ public class Server {
             }
             ArrayList<Node> shortestPath = new ArrayList<Node>();
             String shortestPathJson = convertPathToJSON(shortestPath);
-            int shortestDistance = decision.getDecision(names.get(start), names.get(end), shortestPath);
+            float shortestDistance = decision.getDecision(names.get(start), names.get(end), shortestPath);
             System.out.println("Shortest Path: ");
             for (Node n : shortestPath) {
                 System.out.println(n.location);
@@ -119,7 +119,7 @@ public class Server {
     }
 
     // Gets final result in JSON format given the JSON for the shortest path, the shortest distance, and the ETA.
-    public static String convertAllDataToJSON(int shortestDistance, double ETA, String pathJSON) {
+    public static String convertAllDataToJSON(float shortestDistance, double ETA, String pathJSON) {
         StringBuilder json = new StringBuilder("{" +
                 "  \"distance\": ");
         json.append(shortestDistance);
