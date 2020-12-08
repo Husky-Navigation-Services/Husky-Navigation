@@ -215,9 +215,9 @@ function toggleTheme() {
         titleElements.style.backgroundColor = "#202225";
         weatherArrow.style.fill = "#202225";
         weatherPopupBody.style.backgroundColor = "#202225";
-        wordmark.src = "UnivWaWordmark.png";
+        wordmark.src = "uwWordmarks/UnivWaWordmark.png";
         title.style.color = "whitesmoke";
-        logo.src = "HuskyNavLogoDarker.png";
+        logo.src = "logos/HuskyNavLogoDarker.png";
         logo.style.borderWidth = "0px";
         logo.style.width = "70px";
         logo.style.height = "70px";
@@ -230,9 +230,9 @@ function toggleTheme() {
         titleElements.style.backgroundColor = "whitesmoke";
         weatherArrow.style.fill = "#4b2e83";
         weatherPopupBody.style.backgroundColor = "#4b2e83"
-        wordmark.src = "UnivWaWordmarkPurple.png";
+        wordmark.src = "uwWordmarks/UnivWaWordmarkPurple.png";
         title.style.color = "#4b2e83";
-        logo.src = "HuskyNavLogoWhite.png";
+        logo.src = "logos/HuskyNavLogoWhite.png";
         logo.style.borderWidth = "5px";
         logo.style.width = "60px";
         logo.style.height = "60px";
@@ -407,7 +407,7 @@ function weatherBalloon() {
 // Choose which icon based on whether it is raining
 function updateData(tempF, tempC, wind, weather, humidity, iconcode) {
     // update icon
-    weatherIcon.src = "icons/" + iconcode + ".png";
+    weatherIcon.src = "openWeatherIcons/" + iconcode + ".png";
     // update header message
     var adj;
     switch(weather) {
@@ -435,9 +435,9 @@ function updateData(tempF, tempC, wind, weather, humidity, iconcode) {
     weatherPopupHeader.innerHTML = header;
     // update popup icon
     if (humidity > 75 && weather != "Clear") {
-        weatherIconMini.src = "./RainIcon.png";
+        weatherIconMini.src = "umbrellaIcons/RainIcon.png";
     } else {
-        weatherIconMini.src = "./NoRainIcon.png";
+        weatherIconMini.src = "umbrellaIcons/NoRainIcon.png";
         weatherIconMini.style.width = "35px";
         weatherIconMini.style.height = "35px";
     }

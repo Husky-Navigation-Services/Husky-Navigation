@@ -13,10 +13,10 @@
     </script>
     <title>Husky Navigation</title>
     <!-- For Webpage Icon (appears on browser tab) -->
-    <link rel = "icon" href = "HuskyNavLogoTransparent.png">
+    <link rel = "icon" href = "logos/HuskyNavLogoTransparent.png">
     <!-- Primary Stylesheets -->
     <link rel = "stylesheet" href = "index.css">
-    <link rel = "stylesheet" href = "toggleSwitch.css">
+    <link rel = "stylesheet" href = "secondaryStylesheets/toggleSwitch.css">
     <!-- For LeafletJS Maps -->
     <link rel = "stylesheet" href = "https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
     integrity = "sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
@@ -42,7 +42,7 @@
                 <span id = "title-slant" class = "uw-slant-large"></span>
                 <!-- UW Wordmark -->
                 <a href = "https://www.washington.edu">
-                    <img id = "uw-wordmark" src = "UnivWaWordmarkPurple.png" alt = "UnivWaWordmark.png">
+                    <img id = "uw-wordmark" src = "uwWordmarks/UnivWaWordmarkPurple.png" alt = "uwWordmarks/UnivWaWordmark.png">
                 </a>
             </div>
 
@@ -217,17 +217,17 @@
 
         <!-- Right Sidebar (where the logo sits) -->
         <div class = "sidebarRight">
-            <img id = "logo" src = "HuskyNavLogoWhite.png" alt = "Husky Navigation Logo">
+            <img id = "logo" src = "logos/HuskyNavLogoWhite.png" alt = "logos/HuskyNavLogoTransparent.png">
         </div>
 
         <!-- Horizontal Sidebar -->
         <div id = "horizontalBarId" class = "horizontalBar">
             <!-- Start -->
-            <img id = "startMarker" class = "marker" src = "EmptyRedCircle.png">
+            <img id = "startMarker" class = "marker" src = "markerIcons/EmptyRedCircle.png">
             <p id = "from" class = "tofrom">Select Starting Point</p>
             <div class = "horizontalSpacer"></div>
             <!-- End -->
-            <img id = "endMarker" class = "marker" src = "MarkerIcon2.png">
+            <img id = "endMarker" class = "marker" src = "markerIcons/RedMarker.png">
             <p id = "to" class = "tofrom">Select Destination</p>
             <!-- Distance -->
             <div class = "bar"> &#9474 </div>
@@ -240,7 +240,7 @@
             <!-- Weather Icon and Weather Popup -->
             <div id = "weatherDiv">
                 <!-- Weather Icon -->
-                <img id = "weatherIcon" src = "transparent-square.png" alt = "//:0">
+                <img id = "weatherIcon" src = "miscIcons/TransparentPlaceholderIcon.png" alt = "//:0">
                 <!-- Weather Popup (Sky Conditions) -->
                 <!-- TODO: Fix same double-clicking styling issue from earlier -->
                 <div id = "weatherPopup" style = "height: 0px;">
@@ -265,19 +265,19 @@
             </div>
             <!-- Location Icon -->
             <div id = "locationIconDiv">
-                <img id = "locationIcon" src = "LocationIcon.png" alt = "//:0">
+                <img id = "locationIcon" src = "miscIcons/LocationIcon.png" alt = "//:0">
             </div>
             <!-- GitHub Page Icon -->
             <div class = "githubIconDiv">
                 <a href = "https://github.com/Husky-Navigation-Services/Husky-Navigation">
-                    <img src = "GithubIcon.png" id = "githubIcon">
+                    <img src = "miscIcons/GithubIcon.png" id = "githubIcon">
                 </a>
             </div>
             <!--Coffe Cup Icon (Monetized) -->
             <!--
             <div id = "coffeeIconDiv">
                 <a href = "https://www.paypal.com/paypalme/AmitFerman">
-                    <img title = "Buy Us a Coffee!" src = "coffeeCup.svg" id = "coffeeCupIcon">
+                    <img title = "Buy Us a Coffee!" src = "miscIcons/coffeeCup.svg" id = "coffeeCupIcon">
                 </a>
             </div>
             -->
