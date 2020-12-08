@@ -31,20 +31,31 @@ public class Parser {
         busStops = new HashSet<>();
         names = new HashMap<>();
         int currentId = 0;
+//        int counter1 = 0;
+//        int counter2 = 0;
         HashMap<Location, Integer> ids = new HashMap<>();
         Scanner reader = new Scanner(input);
         while (reader.hasNextLine()) {
+//            counter1++;
             StringTokenizer line = new StringTokenizer(reader.nextLine());
             Location keyLoc = new Location(Float.parseFloat(line.nextToken()), Float.parseFloat(line.nextToken()));
-            if (!ids.containsKey(keyLoc)) {
+            Location loc1 = contains(ids, keyLoc);
+            if (loc1 == null) {
+//                counter2++;
                 ids.put(keyLoc, currentId++);
+            } else {
+                keyLoc = loc1;
             }
             Node key = new Node(ids.get(keyLoc), keyLoc.x, keyLoc.y, line.nextToken());
             map.put(key, new HashSet<>());
             while (line.hasMoreTokens()) {
                 Location temp = new Location(Float.parseFloat(line.nextToken()), Float.parseFloat(line.nextToken()));
-                if (!ids.containsKey(temp)) {
+                Location loc2 = contains(ids, temp);
+                if (loc2 == null) {
+//                    counter2++;
                     ids.put(temp, currentId++);
+                } else {
+                    temp = loc2;
                 }
                 String name = line.nextToken();
                 Node end;
@@ -61,6 +72,16 @@ public class Parser {
             }
         }
         reader.close();
+//        System.out.println("number test: " +  ids.size() + " " + counter1 + " " + counter2);
+    }
+
+    private static Location contains (Map<Location, Integer> map, Location l) {
+        for (Location location: map.keySet()) {
+            if (l.compareTo(location) == 0) {
+                return location;
+            }
+        }
+        return null;
     }
 
     public static void setStops(File input) throws FileNotFoundException {
