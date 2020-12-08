@@ -368,7 +368,7 @@ function nav() {
     // .replace(/\s/g, '')  ---> removes all spaces
     var GETurl = "http://localhost:8000/pathfind?start=" + fromElement.innerHTML.replace(/\s/g, '') + "&end=" + toElement.innerHTML.replace(/\s/g, '');
     var testGETurl = "http://localhost:8000/pathfind?start=BagleyHall&end=GuggenheimHall";
-    fetch(GETurl)
+    fetch(testGETurl)
         .then(res => res.json())
         .then(res => {
             console.log(res);
