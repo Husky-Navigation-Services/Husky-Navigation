@@ -138,6 +138,13 @@ html, body {
     transition: 0.5s;
 }
 
+#coffeeIcon {
+    width: 35px;
+    height: 35px;
+    margin-top: 3px;
+    filter: brightness(0) invert(1);
+    cursor: pointer;
+}
 
 #weatherIcon {
     width: 35px;
