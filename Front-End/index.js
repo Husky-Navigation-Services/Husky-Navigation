@@ -327,13 +327,12 @@ function updateDest() {
 // Attempts navigation when the caller is clicked. If location endpoints are unique and if 
 // neither are set to "Current Location," then it navigates. Otherwise, it creates an alert.
 function tryNav() {
-    testServer();
     var from = fromElement.innerHTML;
     var to = toElement.innerHTML;
     if (navPossible(from, to)) {
         nav(from, to);
     } else {
-       // alert("Invalid. Try again.");
+       alert("Invalid. Try again.");
     }
 }
 

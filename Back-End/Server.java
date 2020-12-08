@@ -45,11 +45,11 @@ public class Server {
                 throw new IllegalArgumentException("Endpoints are Invalid.");
             }
             ArrayList<Node> shortestPath = new ArrayList<Node>();
-            String shortestPathJson = convertPathToJSON(shortestPath);
             float shortestDistance = decision.getDecision(names.get(start), names.get(end), shortestPath);
+            String shortestPathJson = convertPathToJSON(shortestPath);
             System.out.println("Shortest Path: ");
             for (Node n : shortestPath) {
-                System.out.println(n.location);
+                System.out.println(n.toString());
             }
             System.out.println("Shortest Distance: " + shortestDistance + " ft");
             double eta = shortestDistance / 276.0; // where distance is in feet, time is in minutes. Wikipedia approximates that the average walking speed is 4.6 ft/sec, which is also 276 ft/min
@@ -60,7 +60,7 @@ public class Server {
             System.out.println(data + " ");
             String testdata = "{\"someData\": \"someinfo\"}";
             //text/plain; charset=utf-8
-            send(t, "application/json", testdata);
+            send(t, "application/json", data);
         });
         server.setExecutor(null);
         server.start();
@@ -105,7 +105,7 @@ public class Server {
                 "      \"geometry\": {" +
                 "        \"type\": \"LineString\"," +
                 "        \"coordinates\": [");
-        for (Node n: nodes) {
+        for (Node n : nodes) {
             json.append("[");
             json.append(n.latitude);
             json.append(",");
@@ -120,11 +120,11 @@ public class Server {
     // Gets final result in JSON format given the JSON for the shortest path, the shortest distance, and the ETA.
     public static String convertAllDataToJSON(float shortestDistance, double ETA, String pathJSON) {
         StringBuilder json = new StringBuilder("{" +
-                "  \"distance\": ");
+                "  \"distance\": \"");
         json.append(shortestDistance);
-        json.append(", eta: ");
+        json.append("\", \"eta\": \"");
         json.append(ETA);
-        json.append(", pathGeoJSON: ");
+        json.append("\", \"pathGeoJSON\": ");
         json.append(pathJSON);
         json.append("}");
         return json.toString();
