@@ -1,10 +1,10 @@
 public class Edge {
-    public int distance;
+    public float distance;
     public Node start;
     public Node end;
 
     // Constructs an instance of a edge given a distance, start, and end.
-    public Edge(int distance, Node start, Node end) {
+    public Edge(float distance, Node start, Node end) {
         if (start == null || end == null) {
             throw new IllegalArgumentException("Illegal start or end given.");
         }
@@ -14,7 +14,7 @@ public class Edge {
     }
 
     // Returns the distance from the start and end nodes.
-    public int getDistance() {
+    public float getDistance() {
         return distance;
     }
 
