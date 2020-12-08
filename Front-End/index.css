@@ -165,7 +165,7 @@ html, body {
     font-size: 11pt;
     text-align: right;
     position: relative;
-    left: -38px;
+    left: -29.5px;
     border-right: 1px solid white;
     line-height: 20px;
 }
@@ -240,7 +240,7 @@ html, body {
 }
 
 .horizontalSpacer {
-    width: 80px;
+    width: 60px;
     font-size: 30pt;
 }
 
@@ -431,6 +431,12 @@ option {
     height: 0px;
     overflow: hidden;
     transition: 0.5s;
+}
+
+#locationIcon {
+    filter: brightness(1) invert(1);
+    width: 35px;
+    height: 35px;
 }
 
 #githubIcon {

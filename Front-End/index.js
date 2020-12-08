@@ -385,7 +385,7 @@ function weatherBalloon() {
         .then(res => {
             var tempK = res.main.temp;
             var tempF = roundTen((tempK - 273.15) * 9/5 + 32);
-            var tempC = roundTen(3 * tempK - 273.15);
+            var tempC = roundTen(tempK - 273.15);
             var wind = roundTen(res.wind.speed);
             var humidity = res.main.humidity;
             var weather = res.weather[0].main;
