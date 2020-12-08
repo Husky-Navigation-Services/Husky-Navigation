@@ -7,6 +7,7 @@
 //      Navigation
 //      Weather
 //      Scrolling Tools
+//      Geolocation Tools
 //      Other
 
 ////////////////////
@@ -46,6 +47,9 @@ var locationsMap = {
 
 // stores map markes
 var mapMarkers = [];
+
+// stores current location markers
+var locationMarkers = [];
 
 // maps section ids to its height
 var dropDownLengths = {
@@ -129,16 +133,20 @@ var currentTheme = document.getElementById("currentModeId");
 var navBttn = document.getElementById("navBtn");
 var title = document.getElementById("title");
 var footer =  document.getElementById("footer");
+var locationIcon = document.getElementById("locationIcon");
 var weatherPopup = document.getElementById("weatherPopup");
 var weatherIcon = document.getElementById("weatherIcon");
+var weatherIconMini = document.getElementById("weatherIconMini"); // icon within popup
 var weatherArrow = document.getElementById("arrow");
 var weatherPopupBody = document.getElementById("weatherPopupBody");
 var weatherPopupHeader = document.getElementById("weatherPopupHeader");
+var weatherPopupData = document.getElementById("weatherPopupData");
 var feedbackInput = document.getElementById("feedbackInput");
 var titleSlant = document.getElementById("title-slant");
 
 logo.addEventListener("click", toggleContent);
 navBttn.addEventListener("click", tryNav);
+locationIcon.addEventListener("click", goToCurrentLocation);
 weatherIcon.addEventListener("click", toggleWeatherPopup);
 
 document.getElementById("submitFeedback").addEventListener("click", sendFeedback);
@@ -179,6 +187,10 @@ for (var i = 0; i < searchBars.length; i++) {
 // Event Listener Callbacks
 /////////////////////////////
 
+function goToCurrentLocation() {
+
+}
+
 function sendFeedback() {
     Email.send({ 
         Host: "smtp.gmail.com", 
@@ -199,7 +211,7 @@ function toggleWeatherPopup() {
         weatherPopup.style.height = "0px";
         weatherArrow.style.height = "0px";
     } else {
-        weatherPopup.style.height = "100px";
+        weatherPopup.style.height = "110px";
         weatherArrow.style.height = "10px";
     }
 }
@@ -383,24 +395,57 @@ function weatherBalloon() {
         .then(res => {
             var tempK = res.main.temp;
             var tempF = roundTen((tempK - 273.15) * 9/5 + 32);
-            var tempC = roundTen(3 * tempK - 273.15);
+            var tempC = roundTen(tempK - 273.15);
             var wind = roundTen(res.wind.speed);
-            var weather = res.weather.main;
-            updateData(tempF, tempC, wind, weather, res.weather[0].icon);
+            var humidity = res.main.humidity;
+            var weather = res.weather[0].main;
+            var iconcode = res.weather[0].icon;
+            updateData(tempF, tempC, wind, weather, humidity, iconcode);
         })
         .catch(e => console.log("Error with weather API fetch: " + e));
 }
 
 // Choose which icon based on whether it is raining
-function updateData(tempF, tempC, wind, weather, iconcode) {
-    console.log(iconcode);
-	/*if (weather == "Rain") {
-    if (weather == "Mist") {
-    if (weather == "Snow") {
-    if (weather == "Clouds") {*/
-        weatherIcon.src = "icons/" + iconcode + ".png";
-        weatherIcon.style.filter = "brightness(0) invert(1)";
-        //weatherPopupHeader.innerHTML = "It's Raining in Seattle Now!";
+function updateData(tempF, tempC, wind, weather, humidity, iconcode) {
+    // update icon
+    weatherIcon.src = "icons/" + iconcode + ".png";
+    // update header message
+    var adj;
+    switch(weather) {
+        case "Rain":
+            adj = "Rainy";
+            break;
+        case "Mist":
+            adj = "Misty";
+            break;
+        case "Snow":
+            adj = "Snowing";
+            break;
+        case "Clouds":
+            adj = "Cloudy";
+            break;
+        case "Clear":
+            adj = "Clear";
+            break;
+        default:
+            adj = "Clear";
+            break;
+    }
+    var header = "It's " + adj + " in Seatte Now!"
+    // update icon
+    weatherPopupHeader.innerHTML = header;
+    // update popup icon
+    if (humidity > 75 && weather != "Clear") {
+        weatherIconMini.src = "./RainIcon.png";
+    } else {
+        weatherIconMini.src = "./NoRainIcon.png";
+        weatherIconMini.style.width = "35px";
+        weatherIconMini.style.height = "35px";
+    }
+    // update popup data
+    weatherPopupData.innerHTML = tempF + "&#176F / " + tempC + "&#176C <br> " + wind + " <small>MPH</small> Wind";
+   
+    
     //} else {
     //   weatherIcon.src = "NoRainIcon.png";
     //}
@@ -413,7 +458,7 @@ function roundTen(num) {
     return Math.round(num * 10) / 10;
 }
 
-window.onload = () => weatherBalloon();
+weatherBalloon();
 
 ////////////////////////////
 // Scrolling Tools
@@ -435,6 +480,39 @@ function scroll(el, holder) {
     console.log("scorlling " + el.offsetTop + " to " + el.innerHTML);
     var topPos = el.offsetTop;
     holder.scrollTop = topPos - 40;
+}
+
+//////////////////////////
+// Geolocation Tools
+//////////////////////////
+
+function goToCurrentLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(goToPosition);
+    } else {
+        alert("Geolocation is not supported by this browser.");
+    }
+}
+
+function goToPosition(position) {
+    // Remove previous markers
+    if (locationMarkers.length > 0) {
+        locationMarkers[0].remove();
+    }
+    // Add new location marker
+    var coords = [position.coords.latitude, position.coords.longitude];
+    var locMarker = L.marker(coords/*, {icon: redIcon}*/).addTo(mymap);
+    // Set view
+    mymap.setView(coords);
+    // Update previous marker value
+    mapMarkers.push(locMarker);
+    // Check whether user is in UW
+    var inXBounds = coords[0] > 47.656183871790766 && coords[0] < 47.66121658241639;
+    var inYBounds = coords[0] > -122.30475545604999 && coords[0] < -122.30798213509433;
+    if (!inXBounds || !inYBounds) {
+        alert("You appear to be outside the University of Washington campus. Please note that our service works best for locations near the campus.")
+    }
+
 }
 
 //////////////////////////
