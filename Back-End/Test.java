@@ -14,10 +14,10 @@ public class Test {
             distances.add(Integer.MAX_VALUE);
         }
         // Setup the node for a graph with 4 vertices and 4 edges.
-        Node n0 = new Node(0, 2.2435454434234, 1.2435454434256); // Gulf of Guinea.
-        Node n1 = new Node(1, 1.3354544342742, 1.2435454235934); // Gulf of Guinea.
-        Node n2 = new Node(2, 1.9835454434274, 2.2777454434274); // Gulf of Guinea.
-        Node n3 = new Node(3, 1.7267454434274, 1.5724954434274); // Gulf of Guinea.
+        Node n0 = new Node(0, 2.2435454434234f, 1.2435454434256f); // Gulf of Guinea.
+        Node n1 = new Node(1, 1.3354544342742f, 1.2435454235934f); // Gulf of Guinea.
+        Node n2 = new Node(2, 1.9835454434274f, 2.2777454434274f); // Gulf of Guinea.
+        Node n3 = new Node(3, 1.7267454434274f, 1.5724954434274f); // Gulf of Guinea.
         // Setup the 4 edges in the graph.
         Edge p01 = new Edge(3, n0, n1);
         Edge p03 = new Edge(2, n0, n3);
