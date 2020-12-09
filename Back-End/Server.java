@@ -54,7 +54,7 @@ public class Server {
                 System.out.println(n.toString());
             }
             System.out.println("Shortest Distance: " + shortestDistance + " ft");
-            double eta = shortestDistance / 276.0; // where distance is in feet, time is in minutes. Wikipedia approximates that the average walking speed is 4.6 ft/sec, which is also 276 ft/min
+            double eta = shortestDistance / 0.05223; // where distance is in miles, time is in minutes. Wikipedia approximates that the average walking speed is 4.6 ft/sec, which is also 276 ft/min
             System.out.println("ETA: " + eta + " mins");
             // Combine above calculations
             String data = convertAllDataToJSON(shortestDistance, eta, shortestPathJson);

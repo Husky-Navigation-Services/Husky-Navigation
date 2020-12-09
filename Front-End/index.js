@@ -381,8 +381,8 @@ function nav() {
                 geoJSONPaths.pop();
             }
             console.log(res);
-            distanceElement.innerHTML = roundTen(res.distance / 5280) + " mi";
-            etaElement.innerHTML = res.eta + " min";
+            distanceElement.innerHTML = roundTen(res.distance) + " mi";
+            etaElement.innerHTML = roundTen(res.eta) + " min";
             var path = L.geoJSON(res.pathGeoJSON).addTo(mymap);
             geoJSONPaths.push(path);
     });
