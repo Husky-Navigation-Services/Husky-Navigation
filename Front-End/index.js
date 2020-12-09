@@ -52,6 +52,9 @@ var mapMarkers = [];
 // stores current location markers
 var locationMarkers = [];
 
+// stores current path
+var geoJSONPaths = [];
+
 // maps section ids to its height
 var dropDownLengths = {
     "navSection": "160px",
@@ -97,6 +100,8 @@ L.tileLayer( 'https://api.mapbox.com/styles/v1/aferman/ckhvetwgy0bds19nznkfvodbx
     subdomains: ['a','b','c']
 }).addTo( mymap );
 mymap.zoomControl.setPosition('bottomright');
+var pathGroup = new L.LayerGroup();
+pathGroup.addTo(mymap);
 
 //////////////////////
 // Server Interface
@@ -371,10 +376,15 @@ function nav() {
     fetch(GETurl)
         .then(res => res.json())
         .then(res => {
+            if (geoJSONPaths.length > 0) {
+                geoJSONPaths[0].remove();
+                geoJSONPaths.pop();
+            }
             console.log(res);
             distanceElement.innerHTML = roundTen(res.distance / 5280) + " mi";
             etaElement.innerHTML = res.eta + " min";
-            L.geoJSON(res.pathGeoJSON).addTo(mymap);
+            var path = L.geoJSON(res.pathGeoJSON).addTo(mymap);
+            geoJSONPaths.push(path);
     });
 }
 
