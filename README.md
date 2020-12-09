@@ -11,7 +11,7 @@ On the horizontal bar, the starting point and destination selected in the left s
 
 To the right of the weather icon is an option to display your current location using a browser API. If the user is outside the University of Washington campus, an alert will appear stating that the website is best-suited for navigation within the campus, and has limited functionality beyond it. The next icon, the GitHub logo, takes you to our public GitHub repository when clicked. The coffee-cup icon gives the user an option to “buy us a coffee,” or donate money to our website’s further development. Finally, the right-most switch on the horizontal bar changes the theme of the entire webpage to a night-theme.
 
-![Demo Image](/Project/Demo.PNG)
+![Demo Image](./Project/Demo.PNG)
 
 # Running the Code
 
