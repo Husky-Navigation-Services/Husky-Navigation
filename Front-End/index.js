@@ -23,6 +23,7 @@ var locationsMap = {
     "Sieg Hall": [47.6548927921735, -122.30647925125312],
     "Johnson Hall": [47.65464740610828, -122.30890915209709],
     "Gerberding Hall": [47.65531970084914, -122.30935166970617],
+    "Mary Gates Hall": [47.65487923837424, -122.30787575101562],
     "Kane Hall": [47.65662775950031, -122.30915002044803],
     "Meany Hall": [47.65557303847933, -122.31044083467523],
     "Suzzallo Library": [47.65600745978366, -122.30814818483822],
@@ -367,13 +368,13 @@ function nav() {
     // .replace(/\s/g, '')  ---> removes all spaces
     var GETurl = "http://localhost:8000/pathfind?start=" + fromElement.innerHTML.replace(/\s/g, '') + "&end=" + toElement.innerHTML.replace(/\s/g, '');
     var testGETurl = "http://localhost:8000/pathfind?start=BagleyHall&end=GuggenheimHall";
-    fetch(testGETurl)
+    fetch(GETurl)
         .then(res => res.json())
         .then(res => {
             console.log(res);
             distanceElement.innerHTML = roundTen(res.distance / 5280) + " mi";
             etaElement.innerHTML = res.eta + " min";
-            L.geoJSON(res.data).addTo(mymap);
+            L.geoJSON(res.pathGeoJSON).addTo(mymap);
     });
 }
 

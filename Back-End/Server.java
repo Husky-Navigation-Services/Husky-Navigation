@@ -13,7 +13,7 @@ public class Server {
         
         // Prepare Parser/Decision Module
         System.out.println(new File(".").getAbsolutePath());
-        Parser.createMap(new File("./Back-End/nodes.txt"));
+        Parser.createMap(new File("./Back-End/nodes4.txt"));
         // Parser.setStops(new File("./Back-End/placeholder2.txt")); 
         Decision decision = new Decision(Parser.getMap());
         // Initialize HTTP server with socket on localhost:8000
@@ -107,9 +107,9 @@ public class Server {
                 "        \"coordinates\": [");
         for (Node n : nodes) {
             json.append("[");
-            json.append(n.latitude);
-            json.append(",");
             json.append(n.longitude);
+            json.append(",");
+            json.append(n.latitude);
             json.append("],");
         }
         json.deleteCharAt(json.length() - 1);
