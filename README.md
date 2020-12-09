@@ -1,7 +1,7 @@
 # Husky-Navigation
 A full-stack Web App for navigation of the University of Washington Campus. Enables shortest-route calculation between buildings, bus stops, and the current location. Builds off the limited University of Washington Campus Map web app (https://www.washington.edu/maps/) that already exists in a campus-oriented way.
 
-# Detailed Walkthrough
+# Detailed Walk-through
 
 The primary goal of this project is to enable campus-oriented and intuitive navigation of the University of Washington campus. On the left sidebar, the first dropdown is for navigation (i.e., calculating the shortest path from two locations). To navigate between two locations, choose your "Starting Point" in the top selection, the "Destination" in the bottom selection, and click the “Navigate” button. If the selections are invalid, an alert will appear asking you to try again and the navigation request will fail. 
 
