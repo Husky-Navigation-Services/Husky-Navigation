@@ -46,6 +46,8 @@ public class Server {
             }
             ArrayList<Node> shortestPath = new ArrayList<Node>();
             float shortestDistance = decision.getDecision(names.get(start), names.get(end), shortestPath);
+            shortestDistance *= 69.096; 
+            System.out.println(3959 * ( (float) Math.PI / 180 ) * shortestDistance);
             String shortestPathJson = convertPathToJSON(shortestPath);
             System.out.println("Shortest Path: ");
             for (Node n : shortestPath) {
