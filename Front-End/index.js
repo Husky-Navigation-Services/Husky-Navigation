@@ -371,7 +371,7 @@ function navPossible(from, to) {
 function nav() {
     setNavView(locationsMap[fromElement.innerHTML], locationsMap[toElement.innerHTML]);
     // .replace(/\s/g, '')  ---> removes all spaces
-    var GETurl = "http://localhost:8000/pathfind?start=" + fromElement.innerHTML.replace(/\s/g, '') + "&end=" + toElement.innerHTML.replace(/\s/g, '');
+    var GETurl = "hhttps://hnav.azurewebsites.net:8000/pathfind?start=" + fromElement.innerHTML.replace(/\s/g, '') + "&end=" + toElement.innerHTML.replace(/\s/g, '');
     var testGETurl = "http://localhost:8000/pathfind?start=BagleyHall&end=GuggenheimHall";
     fetch(GETurl)
         .then(res => res.json())
