@@ -1,25 +1,20 @@
-@import url('https://fonts.googleapis.com/css2?family=Cantarell&family=Montserrat+Alternates:ital,wght@1,300&display=swap');
-/* font-family: 'Cantarell', sans-serif;
-font-family: 'Montserrat Alternates', sans-serif;*/
-@import url('https://fonts.googleapis.com/css2?family=Spectral:wght@600&display=swap');
-/*font-family: 'Spectral', serif;*/
 @import url('https://fonts.googleapis.com/css2?family=Castoro&display=swap');
 /*font-family: 'Castoro', serif; */
 @import url('https://fonts.googleapis.com/css2?family=Encode+Sans:wght@400;500;600;700;800&display=swap');
 /*font-family: 'Encode Sans', sans-serif;*/
-/*available weights: 400, 800 */
+/*available weights: 400 -> 800 */
 
-.content {
+#content {
     display: flex;
     flex-direction: row;
-    height: 100%; /* 100% Full-height */
-    width: 100%; /* 0 width - change this with JavaScript */
+    height: 100%; 
+    width: 100%;
     position: fixed; /* Stay in place */
-    z-index: 1; /* Stay on top */
+    z-index: 1; 
     top: 0;
     left: 0;
-    overflow-x: hidden; /* Disable horizontal scroll */
-    transition: 1s; /* 0.5 second transition effect to slide in the sidebar */
+    overflow-x: hidden;
+    transition: 1s; 
     pointer-events: none;
 }
 
@@ -33,7 +28,6 @@ font-family: 'Montserrat Alternates', sans-serif;*/
     margin: 10px;
     height: calc(100% - 20px);
     width: 288px;
-    /*background-color:#202225; */ /* Grey*/
     background-color: #4b2e83;
     border-radius: 10px;
     transition: 0.5s;
@@ -88,6 +82,7 @@ font-family: 'Montserrat Alternates', sans-serif;*/
     background-size: 100% 1px, auto;
 }
 
+/* enables full-screen map */
 html, body { 
     height: 100%; 
     width: 100%;
