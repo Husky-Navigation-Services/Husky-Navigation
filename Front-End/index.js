@@ -349,16 +349,15 @@ function navPossible(from, to) {
 function nav() {
     setNavView(locationsMap[fromElement.innerHTML], locationsMap[toElement.innerHTML]);
     // .replace(/\s/g, '')  ---> removes all spaces
-    var GETurl = "http://localhost:8000/pathfind?start=" 
+    var GETurl = "http://51.124.108.31:8000/pathfind?start=" 
         + fromElement.innerHTML.replace(/\s/g, '') 
         + "&end=" + toElement.innerHTML.replace(/\s/g, '');
-    var testGETurl = "http://localhost:8000/pathfind?start=BagleyHall&end=GuggenheimHall";
+    var testGETurl = "http://51.124.108.31:8000/pathfind?start=BagleyHall&end=GuggenheimHall";
     fetch(GETurl)
         .then(res => res.json())
         .then(res => {
             if (geoJSONPaths.length > 0) {
                 geoJSONPaths[0].remove();
-                // setTimeout(myFunction, 100); Potential animated drawing feature.
                 geoJSONPaths.pop();
             }
             console.log(res);

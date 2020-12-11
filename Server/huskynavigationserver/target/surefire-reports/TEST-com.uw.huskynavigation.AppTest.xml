@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.uw.huskynavigation.AppTest" time="0.182" tests="1" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.uw.huskynavigation.AppTest" time="0.1" tests="1" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="14"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -15,7 +15,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="US"/>
     <property name="sun.boot.library.path" value="C:\Program Files\AdoptOpenJDK\jdk-14.0.1.7-hotspot\bin"/>
-    <property name="sun.java.command" value="C:\Users\bcaki\AppData\Local\Temp\surefire1587924870597116608\surefirebooter7782078514663464484.jar C:\Users\bcaki\AppData\Local\Temp\surefire1587924870597116608 2020-12-11T03-47-55_798-jvmRun1 surefire13360185403063962540tmp surefire_011317576491150132134tmp"/>
+    <property name="sun.java.command" value="C:\Users\bcaki\AppData\Local\Temp\surefire6525854816943741090\surefirebooter1849734692675142901.jar C:\Users\bcaki\AppData\Local\Temp\surefire6525854816943741090 2020-12-11T15-28-18_455-jvmRun1 surefire17727191258704638801tmp surefire_014688043481012665824tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="C:\Users\bcaki\OneDrive\Documents\University of Washington\2020 Fall Quarter\CSE 143\CSE 143 Project\Husky-Navigation\Server\huskynavigationserver\target\test-classes;C:\Users\bcaki\OneDrive\Documents\University of Washington\2020 Fall Quarter\CSE 143\CSE 143 Project\Husky-Navigation\Server\huskynavigationserver\target\classes;C:\Users\bcaki\.m2\repository\com\microsoft\azure\applicationinsights-web-auto\2.5.0\applicationinsights-web-auto-2.5.0.jar;C:\Users\bcaki\.m2\repository\junit\junit\4.11\junit-4.11.jar;C:\Users\bcaki\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -30,7 +30,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\bcaki\AppData\Local\Temp\surefire1587924870597116608\surefirebooter7782078514663464484.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\bcaki\AppData\Local\Temp\surefire6525854816943741090\surefirebooter1849734692675142901.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="14.0.1+7"/>
@@ -56,5 +56,5 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="58.0"/>
   </properties>
-  <testcase name="shouldAnswerWithTrue" classname="com.uw.huskynavigation.AppTest" time="0.001"/>
+  <testcase name="shouldAnswerWithTrue" classname="com.uw.huskynavigation.AppTest" time="0.004"/>
 </testsuite>
