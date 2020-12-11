@@ -23,4 +23,6 @@ This is a full-stack web application, so running it will require to main steps:
 
 Thank you and enjoy!
 
+Video Guide Walkthrough:
 
+https://youtu.be/ExndwEhgLXs
