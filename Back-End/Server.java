@@ -13,7 +13,7 @@ public class Server {
 
         // Prepare Parser/Decision Module
         System.out.println(new File(".").getAbsolutePath());
-        Parser.createMap(new File("./Back-End/nodes6.txt"));
+        Parser.createMap(new File("./Back-End/nodes7.txt"));
         // Parser.setStops(new File("./Back-End/placeholder2.txt")); 
         Decision decision = new Decision(Parser.getMap());
         // Initialize HTTP server with socket on localhost:8000
