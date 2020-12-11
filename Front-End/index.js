@@ -358,6 +358,7 @@ function nav() {
         .then(res => {
             if (geoJSONPaths.length > 0) {
                 geoJSONPaths[0].remove();
+                // setTimeout(myFunction, 100); Potential animated drawing feature.
                 geoJSONPaths.pop();
             }
             console.log(res);

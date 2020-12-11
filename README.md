@@ -9,7 +9,7 @@ The next three dropdowns enable you to easily search for UW locations, and, when
 
 On the horizontal bar, the starting point and destination selected in the left sidebar are listed first. Following is the total distance along the recommended path from these locations in miles, and the estimated time of arrival in minutes. Next is a weather icon which shows the current weather in Seattle, WA using the OpenWeatherMaps API. If you click the icon, a popup will drop down from the icon with more details about the icon itself, the current temperature in two units, the windspeed, and another icon recommending whether or not to bring an umbrella. If the icon is clicked again, the popup will close. 
 
-To the right of the weather icon is an option to display your current location using a browser API. If the user is outside the University of Washington campus, an alert will appear stating that the website is best-suited for navigation within the campus, and has limited functionality beyond it. The next icon, the GitHub logo, takes you to our public GitHub repository when clicked. The coffee-cup icon gives the user an option to “buy us a coffee,” or donate money to our website’s further development. Finally, the right-most switch on the horizontal bar changes the theme of the entire webpage to a alternate dark-mode theme.
+To the right of the weather icon is an option to display your current location using a browser API. If the user is outside the University of Washington campus, an alert will appear stating that the website is best-suited for navigation within the campus, and has limited functionality beyond it. The next icon, the GitHub logo, takes you to our public GitHub repository when clicked. The coffee-cup icon (which is currently commented out) gives the user an option to “buy us a coffee,” or donate money to our website’s further development. Finally, the right-most switch on the horizontal bar changes the theme of the entire webpage to a alternate dark-mode theme.
 
 ![Demo Image](Project/DemonstrationImage.PNG)
 
@@ -23,4 +23,6 @@ This is a full-stack web application, so running it will require to main steps:
 
 Thank you and enjoy!
 
+Video Guide Walkthrough:
 
+https://youtu.be/ExndwEhgLXs

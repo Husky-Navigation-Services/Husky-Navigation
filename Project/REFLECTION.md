@@ -1,15 +1,17 @@
-# Reflection
-In a file named reflection.txt, write a reflection answering the following questions (along with anything else you find appropriate) at least one paragraph in length.
-
-What did you learn during this project?
+# What did you learn during this project?
 
 Throughout the project, on the front-end, we substantially improved our knowledge of front-end languages such as HTML, CSS, and JavaScript as we designed the webpage. We learned about new libraries and APIs, such as LeafletJS, Open Weather Map, and the Gmail API, as well as corresponding tools like GeoJSON. The scale of the project (roughly 1300 lines of front-end code) required us to include decent levels of commmenting and have good communication across our team. The communication element was particularly important to our team due to the speed at which we were working and the way in which our tasks heavily related with each other. We enjoyed testing out new APIs, designs, and features, as well as working with feedback we received for our design. Debugging the code was sometimes challenging since we relied heavily upon "Ctrl-F" to find stylesheet components, callbacks, etc. Our TAs were particularly helpful when we discussed our early ideas for the project at its outset.
 
-What did you enjoy during this project?
+Similarly, on the back-end our team sought to improve our ability to applay algorithmic thinking and used a wide variety of resources for explanation such as the Second Edition of Introduction to Algorithms by Cormen, Leiserson, Rivest, and Stein. This is the area where our team feels that we both learned and enjoyed the most due to how it brought mathematics to the forefront and made heavy use of graph theory. For our team this was enjoyable and important because it was what we saw as the elegancy of "computer science" die to how it applies mathematics to do some powerful actions. In this case allowing this path-finding through thinking about a weighted-directed graph.
 
-Across our team what we enjoyed most was the way in which our project came together and how we were able to seamlessly integreate our modules together.
-Idea: Include feedback from beta round as part of supplemental information. (We enjoyed hearing postive feedback from users)
+# What did you enjoy during this project?
 
-What did you find challenging or frustrating during this project?
+Across our team what we enjoyed most was the way in which our project came together and how we were able to seamlessly integreate our modules together. As mentioned above we beleived that creating the path-finding algorithm was perhaps the most enjoyable part of our project as it felt like an apt culmination of all the material in the CSE 14x series and the mathematics courses that we had participated in. We also enjoyed sharing our work with others and hearing what was mostly positive feedback from our users. Relatedly, it was also enjoyable to watch our audience of users grow bit by bit completely organically. Before launching our beta simply by word-of-mouth our site had 36 unique users based on information from Google Analytics (often these users return to see how are project has developed. We found it amazing that our number of unique users grew so quickly, which is not something we expected, as we saw this as spreading the impact of our work. We plan to release a beta to a larger group of acquaintances this week (12-11) and our looking forward to hearing from even more users! 
 
-What did you find particularly helpful for your learning during this project?
+# What did you find challenging or frustrating during this project?
+
+Our team found it particularly challenging and frusturating to deal with "breaking changes" that occured when small changes in one module had large impacts for already completed modules done by another team member. Though our team grew more in sync as we gained more and more experience on how to deal with these type of issuses.
+
+# What did you find particularly helpful for your learning during this project?
+
+We found that keeping an organized plan of tasks as seen in our GitHub project section was a very useful tool to make sure that we were going in the right direction and understood the different components of our project. Another element we found particularly userful is being able to use past knowledge to our benefit while working such as with our core algorithm and graph theory. Another element that our team found very helpful is holding regular team-wide meetings where we updated each other on our respective sections and walked through issues that plagued our individual work as a team. Most importantly however was being able to rely on each other and know that as a team we were all similarly excited about the topics and ideas that we are and were pursuing.
