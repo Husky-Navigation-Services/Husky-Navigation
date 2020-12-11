@@ -16,7 +16,7 @@ public class Server {
         Parser.createMap(new File("./Back-End/nodes7.txt"));
         // Parser.setStops(new File("./Back-End/placeholder2.txt")); 
         Decision decision = new Decision(Parser.getMap());
-        // Initialize HTTP server with socket on localhost:8000
+        // Initialize HTTP server with socket on 51.124.108.31/:8000
         
         HttpServer server = HttpServer.create(new InetSocketAddress(PORT), 100);
         
@@ -26,7 +26,7 @@ public class Server {
             send(t, "text/plain; charset=utf-8", "Default Response: Make sure to specify the GET request type!");
         });
         // Define endpoints for GET requests from client + the callback function for it (via lambda functions, which behave like normal methods but without names)
-        // Request of form : "localhost:8000/pathfind?start=BagleyHall&end=GuggenheimHall"
+        // Request of form : "http://51.124.108.31:8000/pathfind?start=BagleyHall&end=GuggenheimHall"
         // Use the code
         //      String s = parse("s", t.getRequestURI().getQuery().split("&"));
         // to parse the query string of the GET request URL
