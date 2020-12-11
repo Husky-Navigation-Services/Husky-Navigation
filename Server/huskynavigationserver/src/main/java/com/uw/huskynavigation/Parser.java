@@ -1,5 +1,7 @@
 package com.uw.huskynavigation;
 
+import java.io.*;
+
 // the Parser class accepts a File and creates a HashMap from each Node to its neighbor
 // functionalities that have yet to be added: 
 // - return an error if the file is in incorrect format (see format below)
@@ -28,7 +30,7 @@ public class Parser {
 //        busStops = new HashSet<Node>();
 //    }
 
-    public static void createMap(File input) throws FileNotFoundException {
+    public static void createMap(BufferedReader reader) throws FileNotFoundException, java.io.IOException {
         map = new HashMap<>();
         busStops = new HashSet<>();
         names = new HashMap<>();
@@ -36,10 +38,10 @@ public class Parser {
 //        int counter1 = 0;
 //        int counter2 = 0;
         HashMap<Location, Integer> ids = new HashMap<>();
-        Scanner reader = new Scanner(input);
-        while (reader.hasNextLine()) {
+        String str = "";
+        while ((str = reader.readLine()) != null) {
 //            counter1++;
-            StringTokenizer line = new StringTokenizer(reader.nextLine());
+            StringTokenizer line = new StringTokenizer(str);
             Location keyLoc = new Location(Float.parseFloat(line.nextToken()), Float.parseFloat(line.nextToken()));
             Location loc1 = contains(ids, keyLoc);
             if (loc1 == null) {

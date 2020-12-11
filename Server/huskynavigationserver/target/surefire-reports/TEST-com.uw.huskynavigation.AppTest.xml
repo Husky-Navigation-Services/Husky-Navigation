@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.uw.huskynavigation.AppTest" time="0.095" tests="1" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.uw.huskynavigation.AppTest" time="0.105" tests="1" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="14"/>
     <property name="sun.cpu.isalist" value="amd64"/>
     <property name="sun.jnu.encoding" value="Cp1252"/>
-    <property name="java.class.path" value="C:\Users\bcaki\OneDrive\Documents\University of Washington\2020 Fall Quarter\CSE 143\CSE 143 Project\Husky-Navigation\Server\huskynavigationserver\target\test-classes;C:\Users\bcaki\OneDrive\Documents\University of Washington\2020 Fall Quarter\CSE 143\CSE 143 Project\Husky-Navigation\Server\huskynavigationserver\target\classes;C:\Users\bcaki\.m2\repository\junit\junit\4.11\junit-4.11.jar;C:\Users\bcaki\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;"/>
+    <property name="java.class.path" value="C:\Users\bcaki\OneDrive\Documents\University of Washington\2020 Fall Quarter\CSE 143\CSE 143 Project\Husky-Navigation\Server\huskynavigationserver\target\test-classes;C:\Users\bcaki\OneDrive\Documents\University of Washington\2020 Fall Quarter\CSE 143\CSE 143 Project\Husky-Navigation\Server\huskynavigationserver\target\classes;C:\Users\bcaki\.m2\repository\com\microsoft\azure\applicationinsights-web-auto\2.5.0\applicationinsights-web-auto-2.5.0.jar;C:\Users\bcaki\.m2\repository\junit\junit\4.11\junit-4.11.jar;C:\Users\bcaki\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;"/>
     <property name="java.vm.vendor" value="AdoptOpenJDK"/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="user.variant" value=""/>
@@ -15,9 +15,9 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="US"/>
     <property name="sun.boot.library.path" value="C:\Program Files\AdoptOpenJDK\jdk-14.0.1.7-hotspot\bin"/>
-    <property name="sun.java.command" value="C:\Users\bcaki\AppData\Local\Temp\surefire9689590277132764787\surefirebooter11444334801691043320.jar C:\Users\bcaki\AppData\Local\Temp\surefire9689590277132764787 2020-12-11T00-53-31_688-jvmRun1 surefire11102742545962978196tmp surefire_017394048213811887180tmp"/>
+    <property name="sun.java.command" value="C:\Users\bcaki\AppData\Local\Temp\surefire6890066707412831812\surefirebooter7752384105837901338.jar C:\Users\bcaki\AppData\Local\Temp\surefire6890066707412831812 2020-12-11T03-39-13_229-jvmRun1 surefire12806813215636935923tmp surefire_013899615255681295340tmp"/>
     <property name="jdk.debug" value="release"/>
-    <property name="surefire.test.class.path" value="C:\Users\bcaki\OneDrive\Documents\University of Washington\2020 Fall Quarter\CSE 143\CSE 143 Project\Husky-Navigation\Server\huskynavigationserver\target\test-classes;C:\Users\bcaki\OneDrive\Documents\University of Washington\2020 Fall Quarter\CSE 143\CSE 143 Project\Husky-Navigation\Server\huskynavigationserver\target\classes;C:\Users\bcaki\.m2\repository\junit\junit\4.11\junit-4.11.jar;C:\Users\bcaki\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;"/>
+    <property name="surefire.test.class.path" value="C:\Users\bcaki\OneDrive\Documents\University of Washington\2020 Fall Quarter\CSE 143\CSE 143 Project\Husky-Navigation\Server\huskynavigationserver\target\test-classes;C:\Users\bcaki\OneDrive\Documents\University of Washington\2020 Fall Quarter\CSE 143\CSE 143 Project\Husky-Navigation\Server\huskynavigationserver\target\classes;C:\Users\bcaki\.m2\repository\com\microsoft\azure\applicationinsights-web-auto\2.5.0\applicationinsights-web-auto-2.5.0.jar;C:\Users\bcaki\.m2\repository\junit\junit\4.11\junit-4.11.jar;C:\Users\bcaki\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
     <property name="user.home" value="C:\Users\bcaki"/>
     <property name="user.language" value="en"/>
@@ -30,7 +30,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\bcaki\AppData\Local\Temp\surefire9689590277132764787\surefirebooter11444334801691043320.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\bcaki\AppData\Local\Temp\surefire6890066707412831812\surefirebooter7752384105837901338.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="14.0.1+7"/>
@@ -56,5 +56,5 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="58.0"/>
   </properties>
-  <testcase name="shouldAnswerWithTrue" classname="com.uw.huskynavigation.AppTest" time="0.004"/>
+  <testcase name="shouldAnswerWithTrue" classname="com.uw.huskynavigation.AppTest" time="0.01"/>
 </testsuite>
