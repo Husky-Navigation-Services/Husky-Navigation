@@ -10,7 +10,7 @@ public class Server {
     private static final int PORT = Integer.parseInt(System.getenv().getOrDefault("PORT", "8000"));
 
     public static void main(String[] args) throws FileNotFoundException, IOException {
-        
+
         // Prepare Parser/Decision Module
         System.out.println(new File(".").getAbsolutePath());
         Parser.createMap(new File("./Back-End/nodes6.txt"));
