@@ -14,7 +14,7 @@ public class Server {
     public static void main(String[] args) throws FileNotFoundException, IOException {
 
         // Prepare Parser/Decision Module
-        InputStream in = new Server().getClass().getResourceAsStream("/nodes6.txt");
+        InputStream in = new Server().getClass().getResourceAsStream("/nodes7.txt");
         BufferedReader reader = new BufferedReader(new InputStreamReader(in));
         Parser.createMap(reader);
         // Parser.setStops(new File("./Back-End/placeholder2.txt")); 
