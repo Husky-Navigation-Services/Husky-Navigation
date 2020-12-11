@@ -1,3 +1,5 @@
+package com.uw.huskynavigation;
+
 public class Edge {
     public float distance;
     public Node start;

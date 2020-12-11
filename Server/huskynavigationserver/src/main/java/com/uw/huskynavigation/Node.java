@@ -1,3 +1,5 @@
+package com.uw.huskynavigation;
+
 public class Node {
     public int id;
     public String location;

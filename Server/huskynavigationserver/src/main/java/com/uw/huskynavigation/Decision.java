@@ -1,3 +1,5 @@
+package com.uw.huskynavigation;
+
 import java.util.*;
 
 public class Decision {

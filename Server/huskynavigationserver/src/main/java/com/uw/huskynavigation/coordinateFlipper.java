@@ -1,3 +1,5 @@
+package com.uw.huskynavigation;
+
 import java.io.*;
 import java.util.*;
 

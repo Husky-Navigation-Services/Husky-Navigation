@@ -1,3 +1,5 @@
+package com.uw.huskynavigation;
+
 // the Parser class accepts a File and creates a HashMap from each Node to its neighbor
 // functionalities that have yet to be added: 
 // - return an error if the file is in incorrect format (see format below)
