@@ -347,6 +347,8 @@ function navPossible(from, to) {
 // Navigates. Sets the map view to contain both endpoints, makes AJAX to back-end server, 
 // draws path and displays information.
 function nav() {
+    console.log("Entering nav");
+
     setNavView(locationsMap[fromElement.innerHTML], locationsMap[toElement.innerHTML]);
     // .replace(/\s/g, '')  ---> removes all spaces
     var GETurl = "http://51.124.108.31:8000/pathfind?start=" 
