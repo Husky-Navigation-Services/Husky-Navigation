@@ -1,7 +1,6 @@
 // Contents:
 //      Location Data
 //      Map Initialization
-//      Server Interface
 //      Event Listeners
 //      Event Listener Callbacks
 //      Navigation
@@ -46,16 +45,16 @@ var locationsMap = {
     "NE Pacific St and 15th Ave NE": [47.652351, -122.311089]
 }
 
-// stores map markes
+// stores building/library/bus-stop marker currently on map
 var mapMarkers = [];
 
-// stores current location markers
+// stores "current location" marker on map
 var locationMarkers = [];
 
-// stores current path
+// stores current path on map
 var geoJSONPaths = [];
 
-// maps section ids to its height
+// maps content section ids (as in, Navigation, Buildings, ..., About Us) to their heights
 var dropDownLengths = {
     "navSection": "160px",
     "buildingsSection": "200px",
@@ -83,16 +82,6 @@ var searchItemsContainer = {
 // Map Initialization
 ////////////////////////
 
-// Initialize Icon Style
-/*
-var redIcon = L.icon({
-    iconUrl: 'MarkerIcon2.png',
-    iconSize:     [20, 30], // size of the icon
-    iconAnchor:   [0, 0], // point of the icon which will correspond to marker's location
-    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
-});
-*/
-
 // Initialize Map
 var mymap = L.map('map').setView([47.650017, -122.30654], 13);
 L.tileLayer( 'https://api.mapbox.com/styles/v1/aferman/ckhvetwgy0bds19nznkfvodbx/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYWZlcm1hbiIsImEiOiJja2ZrZXJvbjUwZW5wMnhxcjdyMXc3ZjRnIn0.WGdId2uO9XokPaJmaxlLXg', {
@@ -103,18 +92,11 @@ mymap.zoomControl.setPosition('bottomright');
 var pathGroup = new L.LayerGroup();
 pathGroup.addTo(mymap);
 
-//////////////////////
-// Server Interface
-/////////////////////
-
-// Test Server Back-End
-// HTTP Request: "ws://[ipaddress]:[port]/[path]?[parameterName1]=[value1]&[parameterName2]=[value2]"
-
 /////////////////////
 // Event Listeners
 /////////////////////
 
-// Add Event Listeners
+// Get DOM Elements
 var fromElement = document.getElementById("from");
 var toElement = document.getElementById("to");
 var distanceElement = document.getElementById("distance");
@@ -130,7 +112,6 @@ var horizontalBar = document.getElementById("horizontalBarId");
 var leftSideBar = document.getElementById("sidebarLeft");
 var logo = document.getElementById("logo");
 var titleElements = document.getElementById("titleElements");
-var currentTheme = document.getElementById("currentMode");
 var navBttn = document.getElementById("navBtn");
 var title = document.getElementById("title");
 var footer =  document.getElementById("footer");
@@ -146,14 +127,16 @@ var feedbackInput = document.getElementById("feedbackInput");
 var titleSlant = document.getElementById("title-slant");
 var wordmark = document.getElementById("uw-wordmark");
 
+// Add Event Listeners
 logo.addEventListener("click", toggleContent);
 navBttn.addEventListener("click", tryNav);
 locationIcon.addEventListener("click", goToCurrentLocation);
 weatherIcon.addEventListener("click", toggleWeatherPopup);
-
 document.getElementById("submitFeedback").addEventListener("click", sendFeedback);
 document.getElementById("startingPointsId").addEventListener("change", updateStart);
 document.getElementById("destinationsId").addEventListener("change", updateDest);
+document.getElementById("themeCheckbox").addEventListener("change", toggleTheme);
+// Add click listeners to each dropdown header
 document.getElementById("navHeader").addEventListener("click", () => {
     toggleDropdown(document.getElementById("navSection"));
 });
@@ -166,21 +149,19 @@ document.getElementById("stopHeader").addEventListener("click", () => {
 document.getElementById("aboutHeader").addEventListener("click", () => {
     toggleDropdown(document.getElementById("aboutSection"));
 });
-
 document.getElementById("librariesHeader").addEventListener("click", () => {
     toggleDropdown(document.getElementById("librariesSection"));
 });
-
 document.getElementById("feedbackHeader").addEventListener("click", () => {
     toggleDropdown(document.getElementById("feedbackSection"));
 });
 
-document.getElementById("themeCheckbox").addEventListener("change", toggleTheme);
-
+// Add event listeners to each location element
 for (var i = 0; i < locationElements.length; i++) {
     locationElements[i].addEventListener('click', setViewToLocation);
 }
 
+// Add event listeners to each search bar
 for (var i = 0; i < searchBars.length; i++) {
     searchBars[i].addEventListener("keyup", handleNewInput);
 }
@@ -189,6 +170,8 @@ for (var i = 0; i < searchBars.length; i++) {
 // Event Listener Callbacks
 /////////////////////////////
 
+// Sends email to huskynavigationFeedback@gmail.com via SMPTP API
+// Credit: https://www.geeksforgeeks.org/how-to-send-an-email-from-javascript/
 function sendFeedback() {
     Email.send({ 
         Host: "smtp.gmail.com", 
@@ -199,11 +182,11 @@ function sendFeedback() {
         Subject: "Feedback Form", 
         Body: "Feedback Message: " + feedbackInput.value, 
     }).then(function (message) {
-        // alert("Feature in progress...");
         alert("Feedback sent successfully!");
     });
 }
 
+// Toggles visibility of weather popup
 function toggleWeatherPopup() {
     if (weatherPopup.style.height != "0px") {
         weatherPopup.style.height = "0px";
@@ -214,6 +197,7 @@ function toggleWeatherPopup() {
     }
 }
 
+// Toggles overall color theme
 function toggleTheme() {
     if (this.checked) { // Represents dark mode.
         horizontalBar.style.backgroundColor = "#202225";
@@ -228,8 +212,7 @@ function toggleTheme() {
         logo.style.width = "70px";
         logo.style.height = "70px";
         logo.style.marginLeft = "0px";
-        logo.style.marginTop = "10px";
-        currentTheme.innerHTML = "Dark";    
+        logo.style.marginTop = "10px";  
     } else { // Represents light mode.
         horizontalBar.style.backgroundColor = "#4b2e83";
         leftSideBar.style.backgroundColor = "#4b2e83";
@@ -242,17 +225,19 @@ function toggleTheme() {
         logo.style.borderWidth = "5px";
         logo.style.width = "60px";
         logo.style.height = "60px";
-        currentTheme.innerHTML = "Light";
     }
 }
 
-// Handles new input in a search bar
+// Handles new input in a search bar. Scrolls to the matching location element
+// in the search bar's corresponding list of location elements
+// using the prefix in the search bar.
 function handleNewInput() {
     var els = document.getElementsByClassName(searchItemsClass[this.id]);
     var container = document.getElementById(searchItemsContainer[this.id]);
     scrollToLocation(this.value, els, container);
 }
 
+// Toggles visibility of dropdown (represented by each of the headers on the left sidebar)
 function toggleDropdown(sec) {
     var size = dropDownLengths[sec.id];
     if (sec.style.height == "0px") {
@@ -260,16 +245,6 @@ function toggleDropdown(sec) {
     } else {
         sec.style.height = "0px";
     }
-}
-
-// Scrolls to the caller (a building location) when the caller is changed
-function scrollToBuilding() {
-    scrollToLocation(this.value, buildingElements, buildingContainer);
-}
-
-// Scrolls to the caller (a bus stop location) when the caller is changed
-function scrollToStop() {
-    scrollToLocation(this.value, busStopElements, busStopContainer);
 }
 
 // Scrolls to the first location containing the given prefix, from the given list
@@ -285,6 +260,7 @@ function scrollToLocation(prefix, els, holder) {
     }
 }
 
+// [Currently Unused]
 // Updates the opacities of the location elements when the caller is scrolled
 function updateLocationOpacities() {
     for (var i = 0; i < locationElements.length; i++) {
@@ -296,15 +272,16 @@ function updateLocationOpacities() {
     }
 }
 
-// Sets the map view to the caller's location
+// Sets the map view to the caller's corresponding lat/lng location
 function setViewToLocation() {
     var coords = locationsMap[this.innerHTML];
     mymap.setView(coords, 30);
-    // Remove all previous markers
-    for (var i = 0; i < mapMarkers.length; i++) {
-        mapMarkers[i].remove();
+    // Remove previous marker
+    if (mapMarkers.length > 0) {
+        mapMarkers[0].remove();
+        mapMarkers.pop();
     }
-    var locMarker = L.marker(coords/*, {icon: redIcon}*/).addTo(mymap);
+    var locMarker = L.marker(coords).addTo(mymap);
     mapMarkers.push(locMarker);
 }
 
@@ -312,7 +289,7 @@ function setViewToLocation() {
 function updateStart() {
     const newLocation = this.value;
     fromElement.style.opacity = 0;
-    // Gives css transition time to operate
+    // Gives css transition time to operate 
     window.setTimeout(function () {
         fromElement.innerHTML = newLocation;
         fromElement.style.opacity = 1;
@@ -331,7 +308,7 @@ function updateDest() {
 }
 
 // Attempts navigation when the caller is clicked. If location endpoints are unique and if 
-// neither are set to "Current Location," then it navigates. Otherwise, it creates an alert.
+// neither are set to the default, then it navigates. Otherwise, it creates an alert.
 function tryNav() {
     var from = fromElement.innerHTML;
     var to = toElement.innerHTML;
@@ -342,7 +319,7 @@ function tryNav() {
     }
 }
 
-// Toggles visbility of the left sidebar when the caller is clicked
+// Toggles visbility of the left sidebar when the logo is clicked
 function toggleContent() {
     var sidebarLeft = document.getElementById("sidebarLeft");
     var horizontalBar = document.getElementById("horizontalBarId");
@@ -362,17 +339,22 @@ function toggleContent() {
 //////////////////////////
 
 // Return whether navigation is possible. If location endpoints are unique and if 
-// neither are set to "Current Location," then it returns true. Otherwise, false.
+// neither are set to their defaults, then it returns true. Otherwise, false.
 function navPossible(from, to) {
-    return from != "Select Starting Point" && to != "Select Destination" && to != from;
+    return from != "--Select Starting Point--" && to != "--Select Destination--" && to != from;
 }
 
-// Navigates. Sets the map view to contain both endpoints and draws the path.
+// Navigates. Sets the map view to contain both endpoints, makes AJAX to back-end server, 
+// draws path and displays information.
 function nav() {
+    console.log("Entering nav");
+
     setNavView(locationsMap[fromElement.innerHTML], locationsMap[toElement.innerHTML]);
     // .replace(/\s/g, '')  ---> removes all spaces
-    var GETurl = "https://hnav.azurewebsites.net:8000/pathfind?start=" + fromElement.innerHTML.replace(/\s/g, '') + "&end=" + toElement.innerHTML.replace(/\s/g, '');
-    var testGETurl = "http://localhost:8000/pathfind?start=BagleyHall&end=GuggenheimHall";
+    var GETurl = "http://51.124.108.31:8000/pathfind?start=" 
+        + fromElement.innerHTML.replace(/\s/g, '') 
+        + "&end=" + toElement.innerHTML.replace(/\s/g, '');
+    var testGETurl = "http://51.124.108.31:8000/pathfind?start=BagleyHall&end=GuggenheimHall";
     fetch(GETurl)
         .then(res => res.json())
         .then(res => {
@@ -397,7 +379,7 @@ function setNavView(coord1, coord2) {
 // Weather
 //////////////////////
 
-// Gathers the weather data by using a open weather API.
+// Gathers the weather data by using the Open Weather Map API.
 function weatherBalloon() {
     fetch("https://api.openweathermap.org/data/2.5/weather?q=Seattle&appid=0eabe4f0d958928ef5fbeb6346eade3c")  
         .then(res => res.json())
@@ -414,7 +396,7 @@ function weatherBalloon() {
         .catch(e => console.log("Error with weather API fetch: " + e));
 }
 
-// Choose which icon based on whether it is raining
+// Updates to given icon and displays give data.
 function updateData(tempF, tempC, wind, weather, humidity, iconcode) {
     // update icon
     weatherIcon.src = "openWeatherIcons/" + iconcode + ".png";
@@ -456,13 +438,6 @@ function updateData(tempF, tempC, wind, weather, humidity, iconcode) {
     }
     // update popup data
     weatherPopupData.innerHTML = tempF + "&#176F / " + tempC + "&#176C <br> " + wind + " <small>MPH</small> Wind";
-   
-    
-    //} else {
-    //   weatherIcon.src = "NoRainIcon.png";
-    //}
-    
-    console.log(tempF);
 }
 
 // Returns given number rounded to the nearest tenth
@@ -470,17 +445,19 @@ function roundTen(num) {
     return Math.round(num * 10) / 10;
 }
 
+// Sets up weather data on startup
 weatherBalloon();
 
 ////////////////////////////
 // Scrolling Tools
 ////////////////////////////
 
+// [Currently Unused]
 // Returns whether the given element is centered in the given container
 function isElementCentered (el, holder) {
     const { y } = el.getBoundingClientRect()
     const holderRect = holder.getBoundingClientRect()
-    if (y <= holderRect.bottom - 60 && y >= holderRect.top + 40) {
+    if (y <= holderRect.bottom - 50 && y >= holderRect.top + 50) {
         return true;
     } else {
         return false;
@@ -489,7 +466,6 @@ function isElementCentered (el, holder) {
 
 // Scrolls the given element to the center (if possible) of the given container
 function scroll(el, holder) {
-    console.log("scorlling " + el.offsetTop + " to " + el.innerHTML);
     var topPos = el.offsetTop;
     holder.scrollTop = topPos - 40;
 }
@@ -498,6 +474,7 @@ function scroll(el, holder) {
 // Geolocation Tools
 //////////////////////////
 
+// Gets the current location when icon is clicked
 function goToCurrentLocation() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(goToPosition);
@@ -506,6 +483,7 @@ function goToCurrentLocation() {
     }
 }
 
+// Goes to the given position on map, gives alert if user is outside the UW
 function goToPosition(position) {
     // Remove previous markers
     if (locationMarkers.length > 0) {
@@ -522,7 +500,10 @@ function goToPosition(position) {
     var inXBounds = coords[0] > 47.656183871790766 && coords[0] < 47.66121658241639;
     var inYBounds = coords[0] > -122.30475545604999 && coords[0] < -122.30798213509433;
     if (!inXBounds || !inYBounds) {
+        // Give map time to reach current location
+        window.setTimeout(() => {
         alert("You appear to be outside the University of Washington campus. Please note that our service works best for locations near the campus.")
+        }, 500);
     }
 
 }
@@ -531,5 +512,6 @@ function goToPosition(position) {
 // Other
 //////////////////////////
 
+// [Currently Unused]
 // Initialize Location Opacities on Start
 // updateLocationOpacities();
