@@ -1,0 +1,19 @@
+47.65353	-122.30879	BagleyHall            	47.6536154	-122.3083869	BagleyEntrance        									
+47.6536154	-122.3083869	BagleyEntrance        	47.65353	-122.30879	BagleyHall            	47.6539845	-122.308645	IntersectionN1          						
+47.6539845	-122.308645	IntersectionN1          	47.6536154	-122.3083869	BagleyEntrance        	47.65417105	-122.3080482	IntersectionN2         						
+47.65417105	-122.3080482	IntersectionN2          	47.6539845	-122.308645	IntersectionN1          	47.65433998	-122.3075245	IntersectionN3						
+47.65433998	-122.3075245	IntersectionN3         	47.65417105	-122.3080482	IntersectionN2      	47.6545071	-122.3069679	IntersectionN4         	47.6542588	-122.3071469	IntersectionN5          			
+47.6545071	-122.3069679	IntersectionN4         	47.65433998	-122.3075245	IntersectionN3         	47.65415614	-122.3067004	GuggenheimHallEntrance	47.6542588	-122.3071469	IntersectionN5          			
+47.65415614	-122.3067004	GuggenheimHallEntrance	47.6545071	-122.3069679	IntersectionN4        	47.65424	-122.30644	GuggenheimHall        						
+47.65424	-122.30644	GuggenheimHall        	47.65415614	-122.3067004	GuggenheimHallEntrance									
+47.6542588	-122.3071469	IntersectionN5          	47.65415614	-122.3067004	GuggenheimHallEntrance	47.6545071	-122.3069679	IntersectionN4      	47.65433998	-122.3075245	IntersectionN3          	47.65402423	-122.3072851	IntersectionN6
+47.65402423	-122.3072851	IntersectionN6	47.6542588	-122.3071469	IntersectionN5          	47.65433998	-122.3075245	IntersectionN3          						
+47.65367013	-122.308193	IntersectionF1	47.65415614	-122.3067004	GuggenheimHallEntrance	47.65378531	-122.3082366	IntersectionF2						
+47.65378531	-122.3082366	IntersectionF2	47.65367013	-122.308193	IntersectionF1	47.6539023	-122.3082084	IntersectionF3						
+47.6539023	-122.3082084	IntersectionF3	47.65378531	-122.3082366	IntersectionF2	47.65400393	-122.3081172	IntersectionF4						
+47.65400393	-122.3081172	IntersectionF4	47.6539023	-122.3082084	IntersectionF3	47.6540771	-122.3079791	IntersectionF5						
+47.6540771	-122.3079791	IntersectionF5	47.65400393	-122.3081172	IntersectionF4	47.65409788	-122.3077812	IntersectionF6						
+47.65409788	-122.3077812	IntersectionF6	47.6540771	-122.3079791	IntersectionF5	47.65406807	-122.307617	IntersectionF7						
+47.65406807	-122.307617	IntersectionF7	47.65409788	-122.3077812	IntersectionF6	47.6539967	-122.3074768	IntersectionF8						
+47.6539967	-122.3074768	IntersectionF8	47.65406807	-122.307617	IntersectionF7	47.65393121	-122.3074151	IntersectionF9						
+47.65393121	-122.3074151	IntersectionF9	47.6539967	-122.3074768	IntersectionF8	47.65402423	-122.3072851	IntersectionN6						
