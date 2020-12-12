@@ -1,0 +1,6 @@
+Our team found that there was not enough file space in Ed and as a result below is a link to the team's GitHub repository.
+Most of the user documents such as the design, readme, and reflection are more easily viewable by github.
+
+GitHub Link:
+
+https://github.com/Husky-Navigation-Services/Husky-Navigation

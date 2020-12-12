@@ -77,7 +77,7 @@ public class Parser {
 
     private static Location contains (Map<Location, Integer> map, Location l) {
         for (Location location: map.keySet()) {
-            if (l.compareTo(location) == 0) {
+            if (l.equals(location)) {
                 return location;
             }
         }
@@ -106,7 +106,7 @@ public class Parser {
         return busStops;
     }
 
-    private static class Location implements Comparable<Location> {
+    private static class Location {
         private float x, y;
 
         private Location(float x, float y) {
@@ -119,11 +119,13 @@ public class Parser {
         }
 
         @Override
-        public int compareTo(Parser.Location o) {
-            if (x == o.x && y == o.y) {
-                return 0;
+        public boolean equals(Object o) {
+            if (o instanceof Parser.Location) {
+                if (x == ((Location)o).x && y == ((Location)o).y) {
+                    return true;
+                }
             }
-            return 1;
+            return false;
         }
     }
 }
