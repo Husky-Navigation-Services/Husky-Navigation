@@ -13,15 +13,22 @@ To the right of the weather icon is an option to display your current location u
 
 ![Demo Image](Project/DemonstrationImage.PNG)
 
-# Running the Code
+# Accesing the application
 
-This is a full-stack web application, so running it will require to main steps:
-1.	We have two options for running the Front-End code:
--	Go to: https://huskynavigation.azurewebsites.net	
--	Open the Front-End code (i.e., the index.html file) in the browser with either the file or HTTP protocol. (HTTP protocol is recommended here. VS Code has a Live Server extension which makes this quite simple.)
-2.	Open the Back-End code in any code editor. Run “Server.java.” If there is a BindException when run, this means the Port 8000 is already used on your computer. If closing and re-opening the code editor, and re-running “Server.java” and the Front-End code fails, then change any instance of “8000” to some other port on your computer and do the same on the Front-End index.html file. Re-run. Repeat these steps if it fails again, though we expect it will work on the first attempt. 
+1. Currently our team is using a virtual machine to run the back-end of the web application in conjunction with the Front-end web application. This way you can access the web application by going to:
+https://huskynavigation.azurewebsites.net	
+However, you will need to change the site settings to allow insecure content due to a mixed conent issue between the HTTPS web site on the Front-end and the HTTP server on the Back-end. This issue is currently being adressed by our team as discussed in step 3 (a solution is expected by 11:59 PM PST on 12-12-20).
 
-Thank you and enjoy!
+2. Since this is a full-stack web application, another way to run this web application would be to:
+  1.	We have two options for running the Front-End code:
+  -	Go to: https://huskynavigation.azurewebsites.net	
+  -	Open the Front-End code (i.e., the index.html file) in the browser with either the file or HTTP protocol. (HTTP protocol is recommended here. VS Code has a Live Server extension which makes this quite simple.)
+  2.	Open the Back-End code in any code editor. Run “Server.java.” If there is a BindException when run, this means the Port 8000 is already used on your computer. If closing and re-opening the code editor, and re-running “Server.java” and the Front-End code fails, then change any instance of “8000” to some other port on your computer and do the same on the Front-End index.html file. Re-run. Repeat these steps if it fails again, though we expect it will work on the first attempt. 
+  
+3. In the future all the user needs to do in order to access and interact with all the content on our website is to go to:
+https://huskynavigation.azurewebsites.net	
+
+Thank you and we hope you enjoy!
 
 Video Guide Walkthrough:
 
