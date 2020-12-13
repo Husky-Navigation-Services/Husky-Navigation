@@ -1,5 +1,5 @@
 # Husky-Navigation
-A full-stack Web App for navigation of the University of Washington Campus. Enables shortest-route calculation between buildings, bus stops, and the current location. Builds off the limited University of Washington Campus Map web app (https://www.washington.edu/maps/) that already exists in a campus-oriented way. Built to be highly scalable such that other campuses can customize our map.
+A full-stack Web App for navigation of the University of Washington Campus. Enables shortest-route calculation between buildings, bus stops, and the current location. Builds off the limited University of Washington Campus Map web app (https://www.washington.edu/maps/) that already exists in a campus-oriented way. Built to be highly scalable such that other campuses can customize our map for the University of Washington Campus.
 
 # Detailed Walk-through
 
@@ -9,24 +9,17 @@ The next three dropdowns enable you to easily search for UW locations, and, when
 
 On the horizontal bar, the starting point and destination selected in the left sidebar are listed first. Following is the total distance along the recommended path from these locations in miles, and the estimated time of arrival in minutes. Next is a weather icon which shows the current weather in Seattle, WA using the OpenWeatherMaps API. If you click the icon, a popup will drop down from the icon with more details about the icon itself, the current temperature in two units, the windspeed, and another icon recommending whether or not to bring an umbrella. If the icon is clicked again, the popup will close. 
 
-To the right of the weather icon is an option to display your current location using a browser API. If the user is outside the University of Washington campus, an alert will appear stating that the website is best-suited for navigation within the campus, and has limited functionality beyond it. The next icon, the GitHub logo, takes you to our public GitHub repository when clicked. The coffee-cup icon (which is currently commented out) gives the user an option to “buy us a coffee,” or donate money to our website’s further development. Finally, the right-most switch on the horizontal bar changes the theme of the entire webpage to a alternate dark-mode theme.
+To the right of the weather icon is an option to display your current location using a browser API. If the user is outside the University of Washington campus, an alert will appear stating that the website is best-suited for navigation within the campus, and has limited functionality beyond it. The next icon, the GitHub logo, takes you to our public GitHub repository when clicked. The coffee-cup icon (which is currently a not visible feature) gives the user an option to “buy us a coffee,” or donate money to our website’s further development. Finally, the right-most switch on the horizontal bar changes the theme of the entire webpage to an alternate dark-mode theme.
 
 ![Demo Image](Project/DemonstrationImage.PNG)
 
 # Accesing the application
 
-1. Currently our team is using a virtual machine to run the back-end of the web application in conjunction with the Front-end web application. This way you can access the web application by going to:
-https://huskynavigation.azurewebsites.net	
-However, you will need to change the site settings to allow insecure content due to a mixed conent issue between the HTTPS web site on the Front-end and the HTTP server on the Back-end. This issue is currently being adressed by our team as discussed in step 3 (a solution is expected by 11:59 PM PST on 12-12-20).
+All a user needs to do in order to interact with all the content of the Husky Navigation web application is to go to:
 
-2. Since this is a full-stack web application, another way to run this web application would be to:
-  1.	We have two options for running the Front-End code:
-  -	Go to: https://huskynavigation.azurewebsites.net	
-  -	Open the Front-End code (i.e., the index.html file) in the browser with either the file or HTTP protocol. (HTTP protocol is recommended here. VS Code has a Live Server extension which makes this quite simple.)
-  2.	Open the Back-End code in any code editor. Run “Server.java.” If there is a BindException when run, this means the Port 8000 is already used on your computer. If closing and re-opening the code editor, and re-running “Server.java” and the Front-End code fails, then change any instance of “8000” to some other port on your computer and do the same on the Front-End index.html file. Re-run. Repeat these steps if it fails again, though we expect it will work on the first attempt. 
-  
-3. In the future all the user needs to do in order to access and interact with all the content on our website is to go to:
-https://huskynavigation.azurewebsites.net	
+https://huskynavigation.azurewebsites.net
+
+There the user can engage with most of the features mentioned in the previous section and use the navigation feature while our team continues to expand the supported regions of the University of Washington campus.
 
 Thank you and we hope you enjoy!
 
