@@ -1,1 +1,1 @@
-Our beta is tenativle planned to releas at 12-11-20 at 11:59 PST in an effort to gain more feedback from users.
+The Husky Navigation web application beta was released at at 12-13-20 at around 01:10 AM PST in an effort to gain more feedback from users. The overall results of this beta feedback round will be collected with-in this file including the major take aways that we got from our initial round of users.
