@@ -351,6 +351,7 @@ function nav() {
 
     setNavView(locationsMap[fromElement.innerHTML], locationsMap[toElement.innerHTML]);
     // .replace(/\s/g, '')  ---> removes all spaces
+    console.log("Started using server");
     var GETurl = "https://huskynavigationserver2.azurewebsites.net/api/pathfind?start=" 
         + fromElement.innerHTML.replace(/\s/g, '') 
         + "&end=" + toElement.innerHTML.replace(/\s/g, '');
