@@ -19,7 +19,7 @@ All a user needs to do in order to interact with all the content of the Husky Na
 
 https://huskynavigation.azurewebsites.net
 
-There the user can engage with most of the features mentioned in the previous section and use the navigation feature while our team continues to expand the supported regions of the University of Washington campus.
+Through this website the user can engage with most of the features mentioned in the previous section and use the navigation feature while our team continues to expand the supported regions of the University of Washington campus.
 
 Thank you and we hope you enjoy!
 
