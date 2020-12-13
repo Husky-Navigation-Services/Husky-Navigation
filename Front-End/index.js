@@ -347,17 +347,11 @@ function navPossible(from, to) {
 // Navigates. Sets the map view to contain both endpoints, makes AJAX to back-end server, 
 // draws path and displays information.
 function nav() {
-    console.log("Entering nav");
-
     setNavView(locationsMap[fromElement.innerHTML], locationsMap[toElement.innerHTML]);
-    // .replace(/\s/g, '')  ---> removes all spaces
     var GETurl = "https://huskynavigationserver2.azurewebsites.net/api/pathfind?start=" 
-        + fromElement.innerHTML.replace(/\s/g, '') 
-        + "&end=" + toElement.innerHTML.replace(/\s/g, '');
+        + fromElement.innerHTML.replace(/\s/g, '') // Remove space from start.
+        + "&end=" + toElement.innerHTML.replace(/\s/g, ''); // Remove space from end.
     var testGETurl = "https://huskynavigationserver2.azurewebsites.net/api/pathfind?start=BagleyHall&end=GuggenheimHall";
-
-    console.log("Req url: " + GETurl);
-
     fetch(GETurl)
         .then(res => res.json())
         .then(res => {
