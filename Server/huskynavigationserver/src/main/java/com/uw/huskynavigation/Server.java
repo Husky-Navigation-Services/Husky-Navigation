@@ -3,7 +3,6 @@ package com.uw.huskynavigation;
 import java.util.*;
 import java.io.*;
 import java.net.*;
-import java.nio.file.*;
 
 import com.sun.net.httpserver.*;
 
@@ -71,10 +70,10 @@ public class Server {
         server.start();
     }
 
-    // Returns the value corresponding to the given key in query string, which is given as an array split up at each "&" character. 
-    private static String parse(String key, String... params) {
-        for (String param : params) {
-            String[] edge = param.split("=");
+    // Returns the value from the given key in a query string of a certain format. 
+    private static String parse(String key, String... parameters) {
+        for (String parameter : parameters) {
+            String[] edge = parameter.split("=");
             if (edge.length == 2 && edge[0].equals(key)) {
                 return edge[1];
             }

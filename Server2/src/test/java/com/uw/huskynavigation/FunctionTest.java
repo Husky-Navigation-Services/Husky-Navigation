@@ -1,4 +1,4 @@
-package com.function;
+package com.uw.huskynavigation;
 
 import com.microsoft.azure.functions.*;
 import org.mockito.invocation.InvocationOnMock;

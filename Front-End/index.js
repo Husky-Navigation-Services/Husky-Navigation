@@ -351,10 +351,10 @@ function nav() {
 
     setNavView(locationsMap[fromElement.innerHTML], locationsMap[toElement.innerHTML]);
     // .replace(/\s/g, '')  ---> removes all spaces
-    var GETurl = "http://51.124.108.31:8000/pathfind?start=" 
+    var GETurl = "https://huskynavigationserver2.azurewebsites.net/api/pathfind?start=" 
         + fromElement.innerHTML.replace(/\s/g, '') 
         + "&end=" + toElement.innerHTML.replace(/\s/g, '');
-    var testGETurl = "http://51.124.108.31:8000/pathfind?start=BagleyHall&end=GuggenheimHall";
+    var testGETurl = "https://huskynavigationserver2.azurewebsites.net/api/pathfind?start=BagleyHall&end=GuggenheimHall";
     fetch(GETurl)
         .then(res => res.json())
         .then(res => {

@@ -1,4 +1,4 @@
-package com.function;
+package com.uw.huskynavigation;
 
 import com.microsoft.azure.functions.*;
 
@@ -76,6 +76,10 @@ public class HttpResponseMessageMock implements HttpResponseMessage {
         @Override
         public HttpResponseMessage build() {
             return new HttpResponseMessageMock(this.httpStatus, this.headers, this.body);
+        }
+
+        public int getStatus() {
+            return httpStatusCode;
         }
     }
 }
