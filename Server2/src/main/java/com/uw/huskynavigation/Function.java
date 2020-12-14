@@ -28,7 +28,7 @@ public class Function {
     // instance of a decision. Throws both file not found and IOE exceptions.
     // [Get List of Nodes] --> [Instantiate parser] --> [Instantiate decision]
     public Function() throws FileNotFoundException, java.io.IOException {
-        InputStream in = getClass().getResourceAsStream("/nodes6.txt");
+        InputStream in = getClass().getResourceAsStream("/nodes7.txt");
         BufferedReader reader = new BufferedReader(new InputStreamReader(in));
         Parser.createMap(reader);
         this.map = Parser.getMap();
