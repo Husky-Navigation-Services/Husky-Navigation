@@ -188,13 +188,13 @@ option {
     width: 200px;
     height: 40px;
     font-family: 'Encode Sans', sans-serif;
-    background-color: whitesmoke;
+    background-color: #b7a57a;
     cursor: pointer;
 }
 
 #navBtn:hover {
-    background-color: #b7a57a !important;
-    border-color: whitesmoke;
+    background-color: #b51213 !important;
+    border-color: #b7a57a;
     transition: 0.5s;
 }
 
@@ -374,9 +374,16 @@ option {
     width: 100px;
     height: 30px;
     font-family: 'Encode Sans', sans-serif;
-    background-color: whitesmoke;
+    text-align: center;
+    background-color: #b7a57a;
     cursor: pointer;
     border-radius: 5px;
+}
+
+#submitFeedback:hover {
+    background-color: #b51213 !important;
+    border-color: #b7a57a;
+    transition: 0.5s;
 }
 
 #feedbackText {
