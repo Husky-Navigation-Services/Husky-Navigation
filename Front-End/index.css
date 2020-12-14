@@ -193,8 +193,9 @@ option {
 }
 
 #navBtn:hover {
-    background-color: #b51213 !important;
+    background-color: #808080 !important;
     border-color: #b7a57a;
+    /* border-color: #b51213; Red Color*/
     transition: 0.5s;
 }
 
@@ -381,8 +382,9 @@ option {
 }
 
 #submitFeedback:hover {
-    background-color: #b51213 !important;
+    background-color: #808080 !important;
     border-color: #b7a57a;
+    /* border-color: #b51213; Red Color*/
     transition: 0.5s;
 }
 
