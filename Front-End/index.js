@@ -9,8 +9,6 @@
 //      Geolocation Tools
 //      Other
 
-require('dotenv').config();
-
 ////////////////////
 // Location Data
 ///////////////////
@@ -178,7 +176,7 @@ function sendFeedback() {
     Email.send({ 
         Host: "smtp.gmail.com", 
         Username: "huskynavigationfeedback@gmail.com", 
-        Password: process.env.GMAIL_PASSWORD,
+        Password: "bighusky1234", 
         To: 'huskynavigationfeedback@gmail.com', 
         From: "huskynavigationfeedback@gmail.com", 
         Subject: "Feedback Form", 
