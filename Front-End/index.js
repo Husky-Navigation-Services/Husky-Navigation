@@ -176,7 +176,7 @@ function sendFeedback() {
     Email.send({ 
         Host: "smtp.gmail.com", 
         Username: "huskynavigationfeedback@gmail.com", 
-        Password: process.env.GmailPassword, 
+        Password: "bighusky1234", 
         To: 'huskynavigationfeedback@gmail.com', 
         From: "huskynavigationfeedback@gmail.com", 
         Subject: "Feedback Form", 
