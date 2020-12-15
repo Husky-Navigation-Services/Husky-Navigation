@@ -394,3 +394,7 @@ option {
     color: whitesmoke;
     margin-top: 5px;
 }
+
+.invalid {
+    pointer-events: none;
+}
