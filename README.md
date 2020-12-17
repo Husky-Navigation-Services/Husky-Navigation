@@ -17,7 +17,7 @@ To the right of the weather icon is an option to display your current location u
 
 All a user needs to do in order to interact with all the content of the Husky Navigation web application is to go to:
 
-https://huskynavigation.azurewebsites.net
+[https://huskynavigation.azurewebsites.net](https://huskynavigation.azurewebsites.net)
 
 Through this website the user can engage with most of the features mentioned in the previous section and use the navigation feature while our team continues to expand the supported regions of the University of Washington campus (meaning that some paths may be unavailable).
 
@@ -25,4 +25,4 @@ Thank you and we hope you enjoy!
 
 Video Guide Walkthrough:
 
-https://youtu.be/ExndwEhgLXs
+[https://youtu.be/ExndwEhgLXs](https://youtu.be/ExndwEhgLXs)
