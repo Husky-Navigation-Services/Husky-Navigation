@@ -11,8 +11,8 @@
     transition: 0.2s;
     cursor: pointer;
     
-    animation: updown 4s 2 forwards;
-    animation-delay: 5s;
+    animation: updown 2s 2 forwards;
+    animation-delay: 4s;
     /*transition: border-width 0.1s ease-in-out;*/
 }
 
