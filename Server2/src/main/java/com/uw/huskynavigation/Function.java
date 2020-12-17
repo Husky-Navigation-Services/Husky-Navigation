@@ -21,7 +21,6 @@ public class Function {
      * 1. curl -d "HTTP Body" {your host}/api/HttpExample
      * 2. curl "{your host}/api/HttpExample?name=HTTP%20Query"
      */
-    private Map<Node, Set<Edge>> map;
     private Decision decision;
      
     // Parses through a list of nodes in order to create a map and creates an
@@ -31,8 +30,7 @@ public class Function {
         InputStream in = getClass().getResourceAsStream("/Nodes.txt");
         BufferedReader reader = new BufferedReader(new InputStreamReader(in));
         Parser.createMap(reader);
-        this.map = Parser.getMap();
-        this.decision = new Decision(map);
+        this.decision = new Decision(Parser.getMap());
     }
 
     @FunctionName("pathfind")
@@ -58,8 +56,9 @@ public class Function {
         ArrayList<Node> decisionPath = new ArrayList<Node>();
         float decisionDistance = decision.getDecision(names.get(start), names.get(end), decisionPath);
         decisionDistance *= 69.096;
-        double eta = decisionDistance / 0.05223; // Where distance is in miles, time is
-        // in minutes. Average walking speed is 4.6 ft/sec or 276 ft/min.
+        decisionDistance -= 0.04; // Average amount of distance error across paths.
+        double eta = (decisionDistance / 0.05223) - 1; // Where distance is in miles,
+        // time is in minutes. Average walking speed is 4.6 ft/sec or 276 ft/min.
         // - Package data.
         String decisionPathJSON = convertPathToJSON(decisionPath);
         String data = convertAllDataToJSON(decisionDistance, eta, decisionPathJSON);
