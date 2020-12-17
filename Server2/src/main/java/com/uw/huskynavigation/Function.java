@@ -56,7 +56,9 @@ public class Function {
         ArrayList<Node> decisionPath = new ArrayList<Node>();
         float decisionDistance = decision.getDecision(names.get(start), names.get(end), decisionPath);
         decisionDistance *= 69.096;
-        decisionDistance -= 0.05429461; // Average distance error across paths.
+        if (decisionDistance - 0.05429461 > 0.1) {
+            decisionDistance -= 0.05429461; // Average distance error across paths.
+        }
         double eta = decisionDistance / 0.05223; // Where distance is in miles, time
         // is in minutes. Average walking speed is 4.6 ft/sec or 276 ft/min.
         // - Package data.
