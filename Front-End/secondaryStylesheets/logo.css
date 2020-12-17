@@ -10,6 +10,9 @@
     pointer-events: auto;
     transition: 0.2s;
     cursor: pointer;
+    
+    animation: updown 2s ease infinite;
+    animation-delay: 5s;
     /*transition: border-width 0.1s ease-in-out;*/
 }
 
@@ -20,4 +23,20 @@
 #logo:active {
     transform: translateY(-5px);
     transition: 5s;
+}
+
+@keyframes updown {
+    0%,
+    25%,
+    50%,
+    75%,
+    100% {
+      transform: translateY(0);
+    }
+    40% {
+      transform: translateY(-10px);
+    }
+    60% {
+      transform: translateY(-5px);
+    }
 }
