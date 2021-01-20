@@ -310,6 +310,10 @@ option {
     color: whitesmoke;
 }
 
+.contributor {
+    font-size: 11pt;
+}
+
 .credential {
     font-size: 10pt;
     font-weight: 800;
