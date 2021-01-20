@@ -4,7 +4,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-5175XW1NS8"></script>
     <script>
-        window.dataLayer = window.dataLayer || [];
+        window.dataLayer=window.dataLayer || [];
         function gtag() {
             dataLayer.push(arguments);
         }
@@ -13,355 +13,355 @@
     </script>
     <title>Husky Navigation</title>
     <!-- For Webpage Icon (appears on browser tab) -->
-    <link rel = "icon" href = "logos/HuskyNavLogoTransparent.png">
+    <link rel="icon" href="logos/HuskyNavLogoTransparent.png">
     <!-- Primary Stylesheets -->
-    <link rel = "stylesheet" href = "index.css">
-    <link rel = "stylesheet" href = "secondaryStylesheets/toggleSwitch.css">
-    <link rel = "stylesheet" href = "secondaryStylesheets/weather.css">
-    <link rel = "stylesheet" href = "secondaryStylesheets/logo.css">
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="secondaryStylesheets/toggleSwitch.css">
+    <link rel="stylesheet" href="secondaryStylesheets/weather.css">
+    <link rel="stylesheet" href="secondaryStylesheets/logo.css">
     <!-- For LeafletJS Maps -->
-    <link rel = "stylesheet" href = "https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
-    integrity = "sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
-    crossorigin = ""/>
-    <script src = "https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
-    integrity = "sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
-    crossorigin = ""></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+    crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+    crossorigin=""></script>
     <!-- For sending emails via gmail -->
     <script src="https://smtpjs.com/v3/smtp.js"></script>
 </head>
  
 <body>
     <!-- Map -->
-    <div id = "map"></div>
+    <div id="map"></div>
     
     <!-- Content -->
-    <div id = "content">
+    <div id="content">
         <!-- Left Sidebar -->
-        <div id = "sidebarLeft">
-            <div id = "titleElements">
+        <div id="sidebarLeft">
+            <div id="titleElements">
                 <!-- Title + Slant -->
-                <h1 id = "title">Husky Navigation</h1>
-                <span id = "title-slant" class = "uw-slant-large"></span>
+                <h1 id="title">Husky Navigation</h1>
+                <span id="title-slant" class="uw-slant-large"></span>
                 <!-- UW Wordmark -->
-                <a href = "https://www.washington.edu">
-                    <img id = "uw-wordmark" src = "uwWordmarks/UnivWaWordmarkPurple.png" alt = "uwWordmarks/UnivWaWordmark.png">
+                <a href="https://www.washington.edu">
+                    <img id="uw-wordmark" src="uwWordmarks/UnivWaWordmarkPurple.png" alt="uwWordmarks/UnivWaWordmark.png">
                 </a>
             </div>
 
             <!-- Nav -->
-            <h6 id = "navHeader" class = "header">NAVIGATION </h6>
-            <span class = "uw-slant"></span>
+            <h6 id="navHeader" class="header">NAVIGATION </h6>
+            <span class="uw-slant"></span>
 
             <!-- Input Fields -->
-            <div id = "navSection" class = "inputs contentSection"> 
+            <div id="navSection" class="inputs contentSection"> 
                 <!-- Select Start -->
-                <div class = "inputDiv">
-                    <select name = "startingPoints" id = "startingPointsId" class = "select">
+                <div class="inputDiv">
+                    <select name="startingPoints" id="startingPointsId" class="select">
                         <!-- Default -->
-                        <option value = "--Select Starting Point--">--Select Starting Point--</option>
+                        <option value="--Select Starting Point--">--Select Starting Point--</option>
                         <!-- All Locations Grouped by Type -->
-                        <optgroup label = "Buildings"></optgroup>
-                            <option value = "Allen North">Allen North</option>
-                            <option value = "Allen South">Allen South</option>
-                            <option value = "Architecture Hall">Architecture Hall</option>
-                            <option value = "Bagley Hall">Bagley Hall</option>
-                            <option value = "Benson Hall">Benson Hall</option>
-                            <option value = "CSE 1">CSE 1</option>
-                            <option value = "CSE 2">CSE 2</option>
-                            <option value = "Chemistry Building">Chemistry Building</option>
-                            <option value = "Dept of Biology">Dept of Biology</option>
-                            <option value = "Electrical And Computer Engineering Building">Electrical And Computer Engineering Building</option>
-                            <option value = "Gowen Hall" disabled>Gowen Hall</option>
-                            <option value = "Grieg Garden">Grieg Garden</option>
-                            <option value = "Guggenheim Annex">Guggenheim Annex</option>
-                            <option value = "Guggenheim Hall">Guggenheim Hall</option>
-                            <option value = "Guthrie Hall">Guthrie Hall</option>
-                            <option value = "HUB Yard">HUB Yard</option>
-                            <option value = "Hall Health">Hall Health</option>
-                            <option value = "Husky Union Building">Husky Union Building</option>
-                            <option value = "Johnson Hall">Johnson Hall</option>
-                            <option value = "Kirsten Wind Tunnel">Kirsten Wind Tunnel</option>
-                            <option value = "Mary Gates Hall">Mary Gates Hall</option>
-                            <option value = "Meany Hall">Meany Hall</option>
-                            <option value = "Mechanical Engineering Building">Mechanical Engineering Building</option>
-                            <option value = "More Hall">More Hall</option>
-                            <option value = "Mueller Hall">Mueller Hall</option>
-                            <option value = "Physics Astronomy Auditorium">Physics Astronomy Auditorium</option>
-                            <option value = "Planetarium">Planetarium</option>
-                            <option value = "Red Square">Red Square</option>
-                            <option value = "Sieg Hall">Sieg Hall</option>
-                            <option value = "Wilcox Hall">Wilcox Hall</option>
-                            <option value = "Wilson Annex">Wilson Annex</option>
-                            <option value = "Winkenwerder Forest Sciences Laboratory">Winkenwerder Forest Sciences Laboratory</option>
-                        <optgroup label = "Libraries"></optgroup>
-                            <option value = "Allen North">Allen Library</option>
-                            <option value = "Engineering Library">Engineering Library</option>
-                            <option value = "Gowen Library" disabled>Gowen Library</option>
-                            <option value = "Odegaard Library" disabled>Odegaard Library</option>
-                            <option value = "Suzzallo Library">Suzzallo Library</option>
-                        <optgroup label = "Bus Stops"></optgroup>
-                            <option value = "E Stevens WAY NE and Jefferson RD NE" disabled>E Stevens WAY NE and Jefferson RD NE</option>option>
-                            <option value = "Montlake Blvd NE and NE Pacific Pl - Bay 3" disabled>Montlake Blvd NE and NE Pacific Pl - Bay 3</option>
-                            <option value = "Montlake Blvd NE and NE Pacific Pl - Bay 4" disabled>Montlake Blvd NE and NE Pacific Pl - Bay 4</option>
-                            <option value = "NE Pacific Pl and Montlake Blvd NE - Bay 1" disabled>NE Pacific Pl and Montlake Blvd NE - Bay 1</option>
-                            <option value = "NE Pacific Pl and NE Pacific St" disabled>NE Pacific Pl and NE Pacific St</option>
-                            <option value = "NE Pacific St and 15th Ave NE" disabled>NE Pacific St and 15th Ave NE</option>
-                            <option value = "NE Pacific St and Montlake Blvd NE - Bay 2" disabled>NE Pacific St and Montlake Blvd NE - Bay 2</option>
-                            <option value = "Stevens Way and Asotin Pl" disabled>Stevens Way and Asotin Pl</option>
-                            <option value = "Stevens Way and Benton Ln" disabled>Stevens Way and Benton Ln</option>
-                            <option value = "Stevens Way and Okanogan Ln" disabled>Stevens Way and Okanogan Ln</option>
-                            <option value = "Stevens Way and Rainier Vista NE" disabled>Stevens Way and Rainier Vista NE</option>
-                            <option value = "W Stevens WAY NE and Okanogan LN NE" disabled>W Stevens WAY NE and Okanogan LN NE</option>
-                            <option value = "W Stevens Way and Rainier Vista NE" disabled>W Stevens Way and Rainier Vista NE</option>
+                        <optgroup label="Buildings"></optgroup>
+                            <option value="Allen North">Allen North</option>
+                            <option value="Allen South">Allen South</option>
+                            <option value="Architecture Hall">Architecture Hall</option>
+                            <option value="Bagley Hall">Bagley Hall</option>
+                            <option value="Benson Hall">Benson Hall</option>
+                            <option value="CSE 1">CSE 1</option>
+                            <option value="CSE 2">CSE 2</option>
+                            <option value="Chemistry Building">Chemistry Building</option>
+                            <option value="Dept of Biology">Dept of Biology</option>
+                            <option value="Electrical And Computer Engineering Building">Electrical And Computer Engineering Building</option>
+                            <option value="Gowen Hall" disabled>Gowen Hall</option>
+                            <option value="Grieg Garden">Grieg Garden</option>
+                            <option value="Guggenheim Annex">Guggenheim Annex</option>
+                            <option value="Guggenheim Hall">Guggenheim Hall</option>
+                            <option value="Guthrie Hall">Guthrie Hall</option>
+                            <option value="HUB Yard">HUB Yard</option>
+                            <option value="Hall Health">Hall Health</option>
+                            <option value="Husky Union Building">Husky Union Building</option>
+                            <option value="Johnson Hall">Johnson Hall</option>
+                            <option value="Kirsten Wind Tunnel">Kirsten Wind Tunnel</option>
+                            <option value="Mary Gates Hall">Mary Gates Hall</option>
+                            <option value="Meany Hall">Meany Hall</option>
+                            <option value="Mechanical Engineering Building">Mechanical Engineering Building</option>
+                            <option value="More Hall">More Hall</option>
+                            <option value="Mueller Hall">Mueller Hall</option>
+                            <option value="Physics Astronomy Auditorium">Physics Astronomy Auditorium</option>
+                            <option value="Planetarium">Planetarium</option>
+                            <option value="Red Square">Red Square</option>
+                            <option value="Sieg Hall">Sieg Hall</option>
+                            <option value="Wilcox Hall">Wilcox Hall</option>
+                            <option value="Wilson Annex">Wilson Annex</option>
+                            <option value="Winkenwerder Forest Sciences Laboratory">Winkenwerder Forest Sciences Laboratory</option>
+                        <optgroup label="Libraries"></optgroup>
+                            <option value="Allen North">Allen Library</option>
+                            <option value="Engineering Library">Engineering Library</option>
+                            <option value="Gowen Library" disabled>Gowen Library</option>
+                            <option value="Odegaard Library" disabled>Odegaard Library</option>
+                            <option value="Suzzallo Library">Suzzallo Library</option>
+                        <optgroup label="Bus Stops"></optgroup>
+                            <option value="E Stevens WAY NE and Jefferson RD NE" disabled>E Stevens WAY NE and Jefferson RD NE</option>option>
+                            <option value="Montlake Blvd NE and NE Pacific Pl - Bay 3" disabled>Montlake Blvd NE and NE Pacific Pl - Bay 3</option>
+                            <option value="Montlake Blvd NE and NE Pacific Pl - Bay 4" disabled>Montlake Blvd NE and NE Pacific Pl - Bay 4</option>
+                            <option value="NE Pacific Pl and Montlake Blvd NE - Bay 1" disabled>NE Pacific Pl and Montlake Blvd NE - Bay 1</option>
+                            <option value="NE Pacific Pl and NE Pacific St" disabled>NE Pacific Pl and NE Pacific St</option>
+                            <option value="NE Pacific St and 15th Ave NE" disabled>NE Pacific St and 15th Ave NE</option>
+                            <option value="NE Pacific St and Montlake Blvd NE - Bay 2" disabled>NE Pacific St and Montlake Blvd NE - Bay 2</option>
+                            <option value="Stevens Way and Asotin Pl" disabled>Stevens Way and Asotin Pl</option>
+                            <option value="Stevens Way and Benton Ln" disabled>Stevens Way and Benton Ln</option>
+                            <option value="Stevens Way and Okanogan Ln" disabled>Stevens Way and Okanogan Ln</option>
+                            <option value="Stevens Way and Rainier Vista NE" disabled>Stevens Way and Rainier Vista NE</option>
+                            <option value="W Stevens WAY NE and Okanogan LN NE" disabled>W Stevens WAY NE and Okanogan LN NE</option>
+                            <option value="W Stevens Way and Rainier Vista NE" disabled>W Stevens Way and Rainier Vista NE</option>
                     </select>
                 </div>
 
                 <!-- Select End -->
-                <div class = "inputDiv">
-                    <!--<img class = "miniEndMarker" src = "MarkerIcon2.png"></img>-->
-                    <select name = "destinations" id = "destinationsId" class = "select">
+                <div class="inputDiv">
+                    <!--<img class="miniEndMarker" src="MarkerIcon2.png"></img>-->
+                    <select name="destinations" id="destinationsId" class="select">
                         <!-- Default -->
-                        <option value = "--Select Destination--">--Select Destination--</option>
+                        <option value="--Select Destination--">--Select Destination--</option>
                         <!-- All Locations Grouped by Type -->
-                        <optgroup label = "Buildings"></optgroup>
-                            <option value = "Allen North">Allen North</option>
-                            <option value = "Allen South">Allen South</option>
-                            <option value = "Architecture Hall">Architecture Hall</option>
-                            <option value = "Bagley Hall">Bagley Hall</option>
-                            <option value = "Benson Hall">Benson Hall</option>
-                            <option value = "CSE 1">CSE 1</option>
-                            <option value = "CSE 2">CSE 2</option>
-                            <option value = "Chemistry Building">Chemistry Building</option>
-                            <option value = "Dept of Biology">Dept of Biology</option>
-                            <option value = "Electrical And Computer Engineering Building">Electrical And Computer Engineering Building</option>
-                            <option value = "Gowen Hall" disabled>Gowen Hall</option>
-                            <option value = "Grieg Garden">Grieg Garden</option>
-                            <option value = "Guggenheim Annex">Guggenheim Annex</option>
-                            <option value = "Guggenheim Hall">Guggenheim Hall</option>
-                            <option value = "Guthrie Hall">Guthrie Hall</option>
-                            <option value = "HUB Yard">HUB Yard</option>
-                            <option value = "Hall Health">Hall Health</option>
-                            <option value = "Husky Union Building">Husky Union Building</option>
-                            <option value = "Johnson Hall">Johnson Hall</option>
-                            <option value = "Kirsten Wind Tunnel">Kirsten Wind Tunnel</option>
-                            <option value = "Mary Gates Hall">Mary Gates Hall</option>
-                            <option value = "Meany Hall">Meany Hall</option>
-                            <option value = "Mechanical Engineering Building">Mechanical Engineering Building</option>
-                            <option value = "More Hall">More Hall</option>
-                            <option value = "Mueller Hall">Mueller Hall</option>
-                            <option value = "Physics Astronomy Auditorium">Physics Astronomy Auditorium</option>
-                            <option value = "Planetarium">Planetarium</option>
-                            <option value = "Red Square">Red Square</option>
-                            <option value = "Sieg Hall">Sieg Hall</option>
-                            <option value = "Wilcox Hall">Wilcox Hall</option>
-                            <option value = "Wilson Annex">Wilson Annex</option>
-                            <option value = "Winkenwerder Forest Sciences Laboratory">Winkenwerder Forest Sciences Laboratory</option>
-                        <optgroup label = "Libraries"></optgroup>
-                            <option value = "Allen North">Allen Library</option>
-                            <option value = "Engineering Library">Engineering Library</option>
-                            <option value = "Gowen Library" disabled>Gowen Library</option>
-                            <option value = "Odegaard Library" disabled>Odegaard Library</option>
-                            <option value = "Suzzallo Library">Suzzallo Library</option>
-                        <optgroup label = "Bus Stops"></optgroup>
-                            <option value = "E Stevens WAY NE and Jefferson RD NE" disabled>E Stevens WAY NE and Jefferson RD NE</option>option>
-                            <option value = "Montlake Blvd NE and NE Pacific Pl - Bay 3" disabled>Montlake Blvd NE and NE Pacific Pl - Bay 3</option>
-                            <option value = "Montlake Blvd NE and NE Pacific Pl - Bay 4" disabled>Montlake Blvd NE and NE Pacific Pl - Bay 4</option>
-                            <option value = "NE Pacific Pl and Montlake Blvd NE - Bay 1" disabled>NE Pacific Pl and Montlake Blvd NE - Bay 1</option>
-                            <option value = "NE Pacific Pl and NE Pacific St" disabled>NE Pacific Pl and NE Pacific St</option>
-                            <option value = "NE Pacific St and 15th Ave NE" disabled>NE Pacific St and 15th Ave NE</option>
-                            <option value = "NE Pacific St and Montlake Blvd NE - Bay 2" disabled>NE Pacific St and Montlake Blvd NE - Bay 2</option>
-                            <option value = "Stevens Way and Asotin Pl" disabled>Stevens Way and Asotin Pl</option>
-                            <option value = "Stevens Way and Benton Ln" disabled>Stevens Way and Benton Ln</option>
-                            <option value = "Stevens Way and Okanogan Ln" disabled>Stevens Way and Okanogan Ln</option>
-                            <option value = "Stevens Way and Rainier Vista NE" disabled>Stevens Way and Rainier Vista NE</option>
-                            <option value = "W Stevens WAY NE and Okanogan LN NE" disabled>W Stevens WAY NE and Okanogan LN NE</option>
-                            <option value = "W Stevens Way and Rainier Vista NE" disabled>W Stevens Way and Rainier Vista NE</option>
+                        <optgroup label="Buildings"></optgroup>
+                            <option value="Allen North">Allen North</option>
+                            <option value="Allen South">Allen South</option>
+                            <option value="Architecture Hall">Architecture Hall</option>
+                            <option value="Bagley Hall">Bagley Hall</option>
+                            <option value="Benson Hall">Benson Hall</option>
+                            <option value="CSE 1">CSE 1</option>
+                            <option value="CSE 2">CSE 2</option>
+                            <option value="Chemistry Building">Chemistry Building</option>
+                            <option value="Dept of Biology">Dept of Biology</option>
+                            <option value="Electrical And Computer Engineering Building">Electrical And Computer Engineering Building</option>
+                            <option value="Gowen Hall" disabled>Gowen Hall</option>
+                            <option value="Grieg Garden">Grieg Garden</option>
+                            <option value="Guggenheim Annex">Guggenheim Annex</option>
+                            <option value="Guggenheim Hall">Guggenheim Hall</option>
+                            <option value="Guthrie Hall">Guthrie Hall</option>
+                            <option value="HUB Yard">HUB Yard</option>
+                            <option value="Hall Health">Hall Health</option>
+                            <option value="Husky Union Building">Husky Union Building</option>
+                            <option value="Johnson Hall">Johnson Hall</option>
+                            <option value="Kirsten Wind Tunnel">Kirsten Wind Tunnel</option>
+                            <option value="Mary Gates Hall">Mary Gates Hall</option>
+                            <option value="Meany Hall">Meany Hall</option>
+                            <option value="Mechanical Engineering Building">Mechanical Engineering Building</option>
+                            <option value="More Hall">More Hall</option>
+                            <option value="Mueller Hall">Mueller Hall</option>
+                            <option value="Physics Astronomy Auditorium">Physics Astronomy Auditorium</option>
+                            <option value="Planetarium">Planetarium</option>
+                            <option value="Red Square">Red Square</option>
+                            <option value="Sieg Hall">Sieg Hall</option>
+                            <option value="Wilcox Hall">Wilcox Hall</option>
+                            <option value="Wilson Annex">Wilson Annex</option>
+                            <option value="Winkenwerder Forest Sciences Laboratory">Winkenwerder Forest Sciences Laboratory</option>
+                        <optgroup label="Libraries"></optgroup>
+                            <option value="Allen North">Allen Library</option>
+                            <option value="Engineering Library">Engineering Library</option>
+                            <option value="Gowen Library" disabled>Gowen Library</option>
+                            <option value="Odegaard Library" disabled>Odegaard Library</option>
+                            <option value="Suzzallo Library">Suzzallo Library</option>
+                        <optgroup label="Bus Stops"></optgroup>
+                            <option value="E Stevens WAY NE and Jefferson RD NE" disabled>E Stevens WAY NE and Jefferson RD NE</option>option>
+                            <option value="Montlake Blvd NE and NE Pacific Pl - Bay 3" disabled>Montlake Blvd NE and NE Pacific Pl - Bay 3</option>
+                            <option value="Montlake Blvd NE and NE Pacific Pl - Bay 4" disabled>Montlake Blvd NE and NE Pacific Pl - Bay 4</option>
+                            <option value="NE Pacific Pl and Montlake Blvd NE - Bay 1" disabled>NE Pacific Pl and Montlake Blvd NE - Bay 1</option>
+                            <option value="NE Pacific Pl and NE Pacific St" disabled>NE Pacific Pl and NE Pacific St</option>
+                            <option value="NE Pacific St and 15th Ave NE" disabled>NE Pacific St and 15th Ave NE</option>
+                            <option value="NE Pacific St and Montlake Blvd NE - Bay 2" disabled>NE Pacific St and Montlake Blvd NE - Bay 2</option>
+                            <option value="Stevens Way and Asotin Pl" disabled>Stevens Way and Asotin Pl</option>
+                            <option value="Stevens Way and Benton Ln" disabled>Stevens Way and Benton Ln</option>
+                            <option value="Stevens Way and Okanogan Ln" disabled>Stevens Way and Okanogan Ln</option>
+                            <option value="Stevens Way and Rainier Vista NE" disabled>Stevens Way and Rainier Vista NE</option>
+                            <option value="W Stevens WAY NE and Okanogan LN NE" disabled>W Stevens WAY NE and Okanogan LN NE</option>
+                            <option value="W Stevens Way and Rainier Vista NE" disabled>W Stevens Way and Rainier Vista NE</option>
                     </select>
                 </div>
                 <!-- Navigation Button -->
-                <button id = "navBtn">Navigate</button>
+                <button id="navBtn">Navigate</button>
             </div>
             
             <!-- Buildings List -->
-            <h6 id = "buildingsHeader" class = "header"> BUILDINGS </h6>
-            <span class = "uw-slant"></span>
+            <h6 id="buildingsHeader" class="header"> BUILDINGS </h6>
+            <span class="uw-slant"></span>
             <!-- TODO: "height: 0px" attribute is not included in stylesheet since it gets overwritten somehow, leading
             to bug where the user must click on a header twice before it functions properly. Fix style. -->
-            <div id = "buildingsSection" class = "contentSection" style = "height: 0px;"> 
-                <input type = "text" class = "searchBar" id = "buildingsSearch" placeholder = "Search for buildings..">
-                <div id = "building-container" class = "vertical-menu">
-                    <p class = "building location">Allen North</p>
-                    <p class = "building location">Allen South</p>
-                    <p class = "building location">Architecture Hall</p>
-                    <p class = "building location">Bagley Hall</p>
-                    <p class = "building location">Benson Hall</p>
-                    <p class = "building location">CSE 1</p>
-                    <p class = "building location">CSE 2</p>
-                    <p class = "building location">Chemistry Building</p>
-                    <p class = "building location">Dept of Biology</p>
-                    <p class = "building location">Electrical And Computer Engineering Building</p>
-                    <p class = "building location">Gowen Hall</p>
-                    <p class = "building location">Grieg Garden</p>
-                    <p class = "building location">Guggenheim Annex</p>
-                    <p class = "building location">Guggenheim Hall</p>
-                    <p class = "building location">Guthrie Hall</p>
-                    <p class = "building location">HUB Yard</p>
-                    <p class = "building location">Hall Health</p>
-                    <p class = "building location">Husky Union Building</p>
-                    <p class = "building location">Johnson Hall</p>
-                    <p class = "building location">Kirsten Wind Tunnel</p>
-                    <p class = "building location">Mary Gates Hall</p>
-                    <p class = "building location">Meany Hall</p>
-                    <p class = "building location">Mechanical Engineering Building</p>
-                    <p class = "building location">More Hall</p>
-                    <p class = "building location">Mueller Hall</p>
-                    <p class = "building location">Physics Astronomy Auditorium</p>
-                    <p class = "building location">Planetarium</p>
-                    <p class = "building location">Red Square</p>
-                    <p class = "building location">Sieg Hall</p>
-                    <p class = "building location">Wilcox Hall</p>
-                    <p class = "building location">Wilson Annex</p>
-                    <p class = "building location">Winkenwerder Forest Sciences Laboratory</p>
+            <div id="buildingsSection" class="contentSection" style="height: 0px;"> 
+                <input type="text" class="searchBar" id="buildingsSearch" placeholder="Search for buildings..">
+                <div id="building-container" class="vertical-menu">
+                    <p class="building location">Allen North</p>
+                    <p class="building location">Allen South</p>
+                    <p class="building location">Architecture Hall</p>
+                    <p class="building location">Bagley Hall</p>
+                    <p class="building location">Benson Hall</p>
+                    <p class="building location">CSE 1</p>
+                    <p class="building location">CSE 2</p>
+                    <p class="building location">Chemistry Building</p>
+                    <p class="building location">Dept of Biology</p>
+                    <p class="building location">Electrical And Computer Engineering Building</p>
+                    <p class="building location">Gowen Hall</p>
+                    <p class="building location">Grieg Garden</p>
+                    <p class="building location">Guggenheim Annex</p>
+                    <p class="building location">Guggenheim Hall</p>
+                    <p class="building location">Guthrie Hall</p>
+                    <p class="building location">HUB Yard</p>
+                    <p class="building location">Hall Health</p>
+                    <p class="building location">Husky Union Building</p>
+                    <p class="building location">Johnson Hall</p>
+                    <p class="building location">Kirsten Wind Tunnel</p>
+                    <p class="building location">Mary Gates Hall</p>
+                    <p class="building location">Meany Hall</p>
+                    <p class="building location">Mechanical Engineering Building</p>
+                    <p class="building location">More Hall</p>
+                    <p class="building location">Mueller Hall</p>
+                    <p class="building location">Physics Astronomy Auditorium</p>
+                    <p class="building location">Planetarium</p>
+                    <p class="building location">Red Square</p>
+                    <p class="building location">Sieg Hall</p>
+                    <p class="building location">Wilcox Hall</p>
+                    <p class="building location">Wilson Annex</p>
+                    <p class="building location">Winkenwerder Forest Sciences Laboratory</p>
                 </div>
             </div>
 
             <!-- Libraries List -->
-            <h6 id = "librariesHeader" class = "header"> LIBRARIES </h6>
-            <span class = "uw-slant"></span>
-            <div id = "librariesSection" class = "contentSection" style = "height: 0px;"> 
-                <input type = "text" class = "searchBar" id="librariesSearch" placeholder = "Search for libraries..">
-                <div id = "library-container" class = "vertical-menu">
-                    <p class = "library location">Suzzallo Library</p>
-                    <p class = "library location">Allen North</p>
-                    <p class = "library location">Allen South</p>
-                    <p class = "library location">Odegaard Library</p>
-                    <p class = "library location">Engineering Library</p>
-                    <p class = "library location">Gowen Library</p>
+            <h6 id="librariesHeader" class="header"> LIBRARIES </h6>
+            <span class="uw-slant"></span>
+            <div id="librariesSection" class="contentSection" style="height: 0px;"> 
+                <input type="text" class="searchBar" id="librariesSearch" placeholder="Search for libraries..">
+                <div id="library-container" class="vertical-menu">
+                    <p class="library location">Suzzallo Library</p>
+                    <p class="library location">Allen North</p>
+                    <p class="library location">Allen South</p>
+                    <p class="library location">Odegaard Library</p>
+                    <p class="library location">Engineering Library</p>
+                    <p class="library location">Gowen Library</p>
                 </div>
             </div>
 
             <!-- Bus Stops List -->
-            <h6 id = "stopHeader" class = "header"> BUS STOPS </h6>
-            <span class = "uw-slant"></span>
-            <div id = "stopSection" class = "contentSection" style = "height: 0px;"> 
-                <input type = "text" class = "searchBar" id = "busStopSearch" placeholder = "Search for bus stops..">
-                <div id = "bus-stop-container" class = "vertical-menu">
-                    <p class = "bus-stop location">Stevens Way and Okanogan Ln</p>
-                    <p class = "bus-stop location">W Stevens WAY NE and Okanogan LN NE</p>
-                    <p class = "bus-stop location">W Stevens Way and Rainier Vista NE</p>
-                    <p class = "bus-stop location">Stevens Way and Rainier Vista NE</p>
-                    <p class = "bus-stop location">Stevens Way and Benton Ln</p>
-                    <p class = "bus-stop location">E Stevens WAY NE and Jefferson RD NE</p>
-                    <p class = "bus-stop location">Stevens Way and Asotin Pl</p>
-                    <p class = "bus-stop location">NE Pacific Pl and NE Pacific St</p>
-                    <p class = "bus-stop location">NE Pacific Pl and Montlake Blvd NE - Bay 1</p>
-                    <p class = "bus-stop location">NE Pacific St and Montlake Blvd NE - Bay 2</p>
-                    <p class = "bus-stop location">Montlake Blvd NE and NE Pacific Pl - Bay 3</p>
-                    <p class = "bus-stop location">Montlake Blvd NE and NE Pacific Pl - Bay 4</p>
-                    <p class = "bus-stop location">NE Pacific St and 15th Ave NE</p>
+            <h6 id="stopHeader" class="header"> BUS STOPS </h6>
+            <span class="uw-slant"></span>
+            <div id="stopSection" class="contentSection" style="height: 0px;"> 
+                <input type="text" class="searchBar" id="busStopSearch" placeholder="Search for bus stops..">
+                <div id="bus-stop-container" class="vertical-menu">
+                    <p class="bus-stop location">Stevens Way and Okanogan Ln</p>
+                    <p class="bus-stop location">W Stevens WAY NE and Okanogan LN NE</p>
+                    <p class="bus-stop location">W Stevens Way and Rainier Vista NE</p>
+                    <p class="bus-stop location">Stevens Way and Rainier Vista NE</p>
+                    <p class="bus-stop location">Stevens Way and Benton Ln</p>
+                    <p class="bus-stop location">E Stevens WAY NE and Jefferson RD NE</p>
+                    <p class="bus-stop location">Stevens Way and Asotin Pl</p>
+                    <p class="bus-stop location">NE Pacific Pl and NE Pacific St</p>
+                    <p class="bus-stop location">NE Pacific Pl and Montlake Blvd NE - Bay 1</p>
+                    <p class="bus-stop location">NE Pacific St and Montlake Blvd NE - Bay 2</p>
+                    <p class="bus-stop location">Montlake Blvd NE and NE Pacific Pl - Bay 3</p>
+                    <p class="bus-stop location">Montlake Blvd NE and NE Pacific Pl - Bay 4</p>
+                    <p class="bus-stop location">NE Pacific St and 15th Ave NE</p>
                 </div>
             </div>
 
             <!--Feedback-->
-            <h6 id = "feedbackHeader" class = "header"> FEEDBACK </h6>
-            <span class = "uw-slant"></span>
-            <div id = "feedbackSection" class = "contentSection" style = "height: 0px;">
+            <h6 id="feedbackHeader" class="header"> FEEDBACK </h6>
+            <span class="uw-slant"></span>
+            <div id="feedbackSection" class="contentSection" style="height: 0px;">
                 <!-- Feedback Description/Text -->
-                <p id = "feedbackText"> We appreciate feedback! </p>
+                <p id="feedbackText"> We appreciate feedback! </p>
                 <!-- Feedback Textarea Input -->
-                <textarea id = "feedbackInput" name = "Feedback" rows = "4" cols = "24"></textarea>
+                <textarea id="feedbackInput" name="Feedback" rows="4" cols="24"></textarea>
                 <!-- Feedback Submission Button -->
-                <button id = "submitFeedback"> Submit </button>
+                <button id="submitFeedback"> Submit </button>
             </div>
 
             <!--About Us-->
-            <h6 id = "aboutHeader" class = "header"> ABOUT US </h6>
-            <span class = "uw-slant"></span>
-            <div id = "aboutSection" class = "contentSection" style = "height: 0px;">
-                <p class = "contributor">Daniel Berezansky | Full-Stack </p>
-                <p class = "credential"> UW CS 2024 </p>
-                <p class = "contributor">Amit Ferman | Full-Stack </p>
-                <p class = "credential"> UW CS 2024 </p>
-                <p class = "contributor">Albert Weng | Full-Stack </p>
-                <p class = "credential"> UW CS 2024</p>
+            <h6 id="aboutHeader" class="header"> ABOUT US </h6>
+            <span class="uw-slant"></span>
+            <div id="aboutSection" class="contentSection" style="height: 0px;">
+                <p class="contributor"><a style="color: whitesmoke; text-decoration:none;" href="https://www.linkedin.com/in/daniel-berezansky/"> Daniel Berezansky</a> | Full-Stack </p>
+                <p class="credential"> University of Washington CS '24 </p>
+                <p class="contributor"><a style="color: whitesmoke; text-decoration:none;" href="https://www.linkedin.com/in/amit-ferman-4b3a231b2/"></a> Amit Ferman | Full-Stack </p>
+                <p class="credential"> University of Washington CS '24 </p>
+                <p class="contributor"> Albert Weng | Full-Stack </p>
+                <p class="credential"> University of Washington CS '24 </p>
             </div>
         </div>
 
         <!-- Right Sidebar (where the logo sits) -->
-        <div class = "sidebarRight">
-            <img id = "logo" src = "logos/HuskyNavLogoWhite.png" alt = "logos/HuskyNavLogoTransparent.png">
+        <div class="sidebarRight">
+            <img id="logo" src="logos/HuskyNavLogoWhite.png" alt="logos/HuskyNavLogoTransparent.png">
         </div>
 
         <!-- Horizontal Sidebar -->
-        <div id = "horizontalBarId" class = "horizontalBar">
+        <div id="horizontalBarId" class="horizontalBar">
             <!-- Start -->
-            <img id = "startMarker" class = "marker" src = "markerIcons/EmptyRedCircle.png">
-            <p id = "from" class = "tofrom">Select Starting Point</p>
-            <div class = "horizontalSpacer"></div>
+            <img id="startMarker" class="marker" src="markerIcons/EmptyRedCircle.png">
+            <p id="from" class="tofrom">Select Starting Point</p>
+            <div class="horizontalSpacer"></div>
             <!-- End -->
-            <img id = "endMarker" class = "marker" src = "markerIcons/RedMarker.png">
-            <p id = "to" class = "tofrom">Select Destination</p>
+            <img id="endMarker" class="marker" src="markerIcons/RedMarker.png">
+            <p id="to" class="tofrom">Select Destination</p>
             <!-- Distance -->
-            <div class = "bar"> &#9474 </div>
-            <div id = "distance"> Distance &#8765 &#8211 &#8211 mi </div>
+            <div class="bar"> &#9474 </div>
+            <div id="distance"> Distance &#8765 &#8211 &#8211 mi </div>
             <!-- ETA -->
-            <div class = "bar"> &#9474 </div>
-            <div id = "eta"> ETA &#8765 &#8211 &#8211 mins </div>
+            <div class="bar"> &#9474 </div>
+            <div id="eta"> ETA &#8765 &#8211 &#8211 mins </div>
             <!-- Theme Switch -->
-            <div class = "bar"> &#9474 </div>
+            <div class="bar"> &#9474 </div>
             <!-- Weather Icon and Weather Popup -->
-            <div id = "weatherDiv">
+            <div id="weatherDiv">
                 <!-- Weather Icon -->
-                <img id = "weatherIcon" src = "miscIcons/TransparentPlaceholderIcon.png" alt = "//:0">
+                <img id="weatherIcon" src="miscIcons/TransparentPlaceholderIcon.png" alt="//:0">
                 <!-- Weather Popup (Sky Conditions) -->
                 <!-- TODO: Fix same double-clicking styling issue from earlier -->
-                <div id = "weatherPopup" style = "height: 0px;">
+                <div id="weatherPopup" style="height: 0px;">
                     <!-- Popup upward arrow -->
-                    <svg viewBox = "0 0 20 10" id = "arrow">
-                        <polygon points = "0, 10, 20, 10, 10, 0"/>
+                    <svg viewBox="0 0 20 10" id="arrow">
+                        <polygon points="0, 10, 20, 10, 10, 0"/>
                     </svg>
                     <!-- Popup Rectangle -->
-                    <div id = "weatherPopupBody">
+                    <div id="weatherPopupBody">
                         <!-- Popup Text -->
-                        <div id = "weatherPopupText">
+                        <div id="weatherPopupText">
                             <!-- Popup Header -->
-                            <p id = "weatherPopupHeader">It's Raining in Seattle Now!</p>
+                            <p id="weatherPopupHeader">It's Raining in Seattle Now!</p>
                             <!-- Popup Data -->
-                            <p id = "weatherPopupData"> 45&#176F / 7&#176C <br> 10 <small>MPH</small> Wind</p>
-                            <!--<p id = "weatherPopupData1" style = "display: inline-block; "> No <br> Rain </p>-->
+                            <p id="weatherPopupData"> 45&#176F / 7&#176C <br> 10 <small>MPH</small> Wind</p>
+                            <!--<p id="weatherPopupData1" style="display: inline-block; "> No <br> Rain </p>-->
                             <!-- Popup Sub-Icon (Need Umbrella or Not?)-->
-                            <img id = "weatherIconMini" src = "umbrellaIcons/RainIcon.png" alt = "//:0">
+                            <img id="weatherIconMini" src="umbrellaIcons/RainIcon.png" alt="//:0">
                         </div>
                     </div>
                 </div>
             </div>
             <!-- Location Icon -->
-            <div id = "locationIconDiv">
-                <img id = "locationIcon" src = "miscIcons/LocationIcon.png" alt = "//:0">
+            <div id="locationIconDiv">
+                <img id="locationIcon" src="miscIcons/LocationIcon.png" alt="//:0">
             </div>
             <!-- GitHub Page Icon -->
-            <div class = "githubIconDiv">
-                <a href = "https://github.com/Husky-Navigation-Services/Husky-Navigation">
-                    <img src = "miscIcons/GithubIcon.png" id = "githubIcon">
+            <div class="githubIconDiv">
+                <a href="https://github.com/Husky-Navigation-Services/Husky-Navigation">
+                    <img src="miscIcons/GithubIcon.png" id="githubIcon">
                 </a>
             </div>
             <!-- Coffe Cup Icon (Monetized) -->
             <!--
-            <div id = "coffeeIconDiv">
-                <a href = "https://www.paypal.com/paypalme/AmitFerman">
-                    <img title = "Buy Us a Coffee!" src = "miscIcons/coffeeCup.svg" id = "coffeeCupIcon">
+            <div id="coffeeIconDiv">
+                <a href="https://www.paypal.com/paypalme/AmitFerman">
+                    <img title="Buy Us a Coffee!" src="miscIcons/coffeeCup.svg" id="coffeeCupIcon">
                 </a>
             </div>
             -->
             <!-- Color Theme Switcher -->
-            <p id = "currentMode">Light</p>
-            <label id = "switch">
-                <input id = "themeCheckbox" type = "checkbox">
-                <span id = "slider"></span>
+            <p id="currentMode">Light</p>
+            <label id="switch">
+                <input id="themeCheckbox" type="checkbox">
+                <span id="slider"></span>
             </label>
         </div>
     </div>
     <!-- Load primary JavaScript source code -->
-    <script src = "index.js"></script>
+    <script src="index.js"></script>
 </body>
 </html>
