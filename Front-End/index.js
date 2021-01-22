@@ -194,7 +194,7 @@ for (var i = 0; i < searchBars.length; i++) {
 // Event Listener Callbacks
 /////////////////////////////
 
-// Sends feedback from user via SMPTP API
+// Sends email to huskynavigationFeedback@gmail.com via SMPTP API
 function sendFeedback() {
     fetch('https://huskynavigationserver2.azurewebsites.net/api/password').then(response => response.text()).then(data => {
         Email.send({ 
