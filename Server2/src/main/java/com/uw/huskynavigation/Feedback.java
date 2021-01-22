@@ -1,12 +1,17 @@
 package com.uw.huskynavigation;
 
 import java.util.*;
-import javax.mail.*;
-import javax.mail.internet.*;
-import javax.activation.*;
+import java.time.*;
+
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import javax.mail.Transport;
-import java.time.*;
+import javax.mail.internet.AddressException;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+
 import com.microsoft.azure.functions.annotation.*;
 import com.microsoft.azure.functions.*;
 
@@ -28,23 +33,31 @@ public class Feedback {
         // Parse and setup feedback message.
         String feedback = request.getBody().orElse("");
 
-        // Send email to process feedback.
-        Properties properties = System.getProperties();
-        properties.setProperty("mail.smtp.host", "smtp.gmail.com");
+        Properties props = new Properties();
+        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.host", "smtp.gmail.com");
+        props.put("mail.smtp.port", "587");
+
+        context.getLogger().info("Authenticating");
+        Session session = Session.getInstance(props, new javax.mail.Authenticator() {
+            protected PasswordAuthentication getPasswordAuthentication() {
+               return new PasswordAuthentication("huskynavigationfeedback", System.getenv("GMAIL_PASSWORD"));
+            }
+        });
+        context.getLogger().info("Entering email stage.");
         try {
-            MimeMessage message = new MimeMessage(Session.getDefaultInstance(properties));
+            Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress("huskynavigationfeedback@gmail.com"));
-            message.addRecipient(Message.RecipientType.TO, new InternetAddress("huskynavigationfeedback@gmail.com"));
+            message.setRecipients(Message.RecipientType.TO,
+                InternetAddress.parse("huskynavigationfeedback@gmail.com"));
             message.setSubject("Feedback Form Response [" + LocalDate.now().toString() + "]");
             message.setText(feedback);
             Transport.send(message);
-            System.out.println("Mail successfully sent!");
+            context.getLogger().info("Message sent");
+            return request.createResponseBuilder(HttpStatus.OK).body("Feedback successfully sent! " + feedback).build();
+        } finally {
+            return request.createResponseBuilder(HttpStatus.BAD_REQUEST).body("Feedback failed to send!").build();
         }
-        catch (MessagingException messageError) {
-            messageError.printStackTrace();
-        }
-        
-        // Return confirmation that feedback has been sent.
-        return request.createResponseBuilder(HttpStatus.OK).body("Feedback sent! " + feedback).build();
     }
 }

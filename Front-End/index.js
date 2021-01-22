@@ -196,9 +196,19 @@ for (var i = 0; i < searchBars.length; i++) {
 
 // Sends feedback from user via SMPTP API
 function sendFeedback() {
-    var SENDurl = "https://huskynavigationserver2.azurewebsites.net/api/feedback?" 
-        + feedbackInput.value;
-    fetch(SENDurl).then(alert("Feedback sent successfully!"))
+    fetch('https://huskynavigationserver2.azurewebsites.net/api/password').then(response => response.text()).then(data => {
+        Email.send({ 
+            Host: "smtp.gmail.com", 
+            Username: "huskynavigationfeedback@gmail.com", 
+            Password: data,
+            To: 'huskynavigationfeedback@gmail.com', 
+            From: "huskynavigationfeedback@gmail.com", 
+            Subject: "Feedback Form", 
+            Body: "Feedback Message: " + feedbackInput.value, 
+        }).then(function(message) {
+            alert("Feedback sent successfully!");
+        });
+    })
 }
 
 // Toggles visibility of weather popup
