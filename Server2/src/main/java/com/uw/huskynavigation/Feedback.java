@@ -21,12 +21,11 @@ public class Feedback {
      */
     @FunctionName("feedback")
     public HttpResponseMessage run(
-            @HttpTrigger(name = "req", methods = {HttpMethod.GET, HttpMethod.POST}, authLevel = AuthorizationLevel.FUNCTION) HttpRequestMessage<Optional<String>> request,
+            @HttpTrigger(name = "req", methods = {HttpMethod.GET, HttpMethod.POST}, authLevel = AuthorizationLevel.ANONYMOUS) HttpRequestMessage<Optional<String>> request,
             final ExecutionContext context) {
         context.getLogger().info("Java HTTP trigger processed a request.");
 
         // Parse and setup feedback message.
-        boolean feedbackStatus = false;
         String feedback = request.getBody().orElse("");
 
         // Send email to process feedback.
@@ -39,17 +38,13 @@ public class Feedback {
             message.setSubject("Feedback Form Response [" + LocalDate.now().toString() + "]");
             message.setText(feedback);
             Transport.send(message);
-            System.out.println("Mail successfully sent");
+            System.out.println("Mail successfully sent!");
         }
         catch (MessagingException messageError) {
             messageError.printStackTrace();
         }
         
         // Return confirmation that feedback has been sent.
-        if (feedbackStatus == false) {
-            return request.createResponseBuilder(HttpStatus.BAD_REQUEST).body("Feedback failed to send!").build();
-        } else {
-            return request.createResponseBuilder(HttpStatus.OK).body("Feedback sent! " + feedback).build();
-        }
+        return request.createResponseBuilder(HttpStatus.OK).body("Feedback sent! " + feedback).build();
     }
 }
