@@ -334,8 +334,9 @@ option {
 }
 
 #coffeeCupIcon {
-    width: 55px; 
-    height: 55px;
+    width: 35px;
+    height: 40px;
+    margin-left: 10px;
     margin-top: 3px;
 }
 
