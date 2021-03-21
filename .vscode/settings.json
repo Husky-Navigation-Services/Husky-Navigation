@@ -1,5 +1,5 @@
 {
-    "azureFunctions.deploySubpath": "Server2/target/azure-functions/huskynavigationserver2",
+    "azureFunctions.deploySubpath": "Server/target/azure-functions/huskynavigationserver2",
     "azureFunctions.projectLanguage": "Java",
     "azureFunctions.projectRuntime": "~3",
     "debug.internalConsoleOptions": "neverOpen",

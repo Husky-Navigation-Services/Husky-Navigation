@@ -7,7 +7,7 @@
 			"problemMatcher": "$func-java-watch",
 			"isBackground": true,
 			"options": {
-				"cwd": "${workspaceFolder}/Server2/target/azure-functions/huskynavigationserver2"
+				"cwd": "${workspaceFolder}/Server/target/azure-functions/huskynavigationserver2"
 			},
 			"dependsOn": "package"
 		},
@@ -20,7 +20,7 @@
 				"isDefault": true
 			},
 			"options": {
-				"cwd": "${workspaceFolder}/Server2"
+				"cwd": "${workspaceFolder}/Server"
 			}
 		}
 	]
