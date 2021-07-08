@@ -56,7 +56,7 @@ public class Parser {
             map.put(current, edges);
             while (line.hasMoreTokens()) {
                 edges.add(new Edge(current, nodes[Integer.parseInt(line.nextToken())-1]));
-            }
+                edges.add(new Edge(nodes[Integer.parseInt(line.nextToken())-1], current));            }
         }
         reader.close();
     }
