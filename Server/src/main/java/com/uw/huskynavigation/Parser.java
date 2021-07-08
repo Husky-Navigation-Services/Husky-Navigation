@@ -9,9 +9,12 @@ import java.io.*;
 
 // Format of Parsing File:
 /*
-x y [name] x y [name] x y [name]
-x y [name] x y [name]
-x y [name] x y [name] x y [name] x y [name]
+ID x y name
+ID x y name
+...
+ID neighborID neighborID...
+ID neighborID neighborID...
+...
 */
 // each of the x and y are Strings for latitude and longitude, [name] is the name, and d is an int
 
@@ -55,7 +58,6 @@ public class Parser {
             HashSet<Edge> edges = new HashSet<>();
             map.put(current, edges);
             while (line.hasMoreTokens()) {
-                // add both ways
                 edges.add(new Edge(current, nodes[Integer.parseInt(line.nextToken())-1]));
                 edges.add(new Edge(nodes[Integer.parseInt(line.nextToken())-1], current));            }
         }
