@@ -7,17 +7,17 @@ import java.io.*;
 // - return an error if the file is in incorrect format (see format below)
 // - construct GeoJSON
 
-// Format of Parsing File:
-/*
-ID x y name
-ID x y name
-...
-ID neighborID neighborID...
-ID neighborID neighborID...
-...
-*/
-// each of the x and y are Strings for latitude and longitude, [name] is the name, and d is an int
+/* Format of Parsing File:
 
+ID x y name
+ID x y name
+...
+ID neighborID neighborID...
+ID neighborID neighborID...
+...
+
+each of the x and y are Strings for latitude and longitude, [name] is the name, and d is an int
+*/
 
 import java.util.*;
 public class Parser {
