@@ -15,6 +15,16 @@ public class Edge {
         this.end = end;
     }
 
+    public Edge(Node start, Node end) {
+        if (start == null || end == null) {
+            throw new IllegalArgumentException("Illegal start or end given.");
+        }
+        this.start = start;
+        this.end = end;
+        this.distance = (float) Math.sqrt(((start.latitude-end.latitude)*(start.latitude-end.latitude)
+        -(start.longitude-end.longitude)*(start.longitude-end.longitude)));
+    }
+
     // Returns the distance from the start and end nodes.
     public float getDistance() {
         return distance;

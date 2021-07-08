@@ -22,6 +22,7 @@ public class Parser {
 //  private Map<String, Node> names;
     private static Set<Node> busStops;
     private static Map<String, Node> names;
+    private static Node[] nodes;
         
 //    public Parser() {
 //        map = new HashMap<Node, HashSet<Edge>>();
@@ -29,62 +30,35 @@ public class Parser {
 //        busStops = new HashSet<Node>();
 //    }
 
-    public static void createMap(BufferedReader reader) throws FileNotFoundException, java.io.IOException {
+    public static void createMap(BufferedReader reader) throws IOException {
         map = new HashMap<>();
         busStops = new HashSet<>();
         names = new HashMap<>();
-        int currentId = 0;
-//        int counter1 = 0;
-//        int counter2 = 0;
-        HashMap<Location, Integer> ids = new HashMap<>();
-        String str = "";
-        while ((str = reader.readLine()) != null) {
-//            counter1++;
+        int total = Integer.parseInt(reader.readLine());
+        nodes = new Node[total];
+        String str;
+        for (int i = 0; i < total; i++) {
+            str = reader.readLine();
             StringTokenizer line = new StringTokenizer(str);
-            Location keyLoc = new Location(Float.parseFloat(line.nextToken()), Float.parseFloat(line.nextToken()));
-            Location loc1 = contains(ids, keyLoc);
-            if (loc1 == null) {
-//                counter2++;
-                ids.put(keyLoc, currentId++);
-            } else {
-                keyLoc = loc1;
-            }
-            Node key = new Node(ids.get(keyLoc), keyLoc.x, keyLoc.y, line.nextToken());
-            map.put(key, new HashSet<>());
+            int id = Integer.parseInt(line.nextToken());
+            float lat = Float.parseFloat(line.nextToken());
+            float lon = Float.parseFloat(line.nextToken());
+            String name = line.nextToken();
+            Node node = new Node(id, lat, lon, name);
+            names.put(name,node);
+            nodes[i] = node;
+        }
+        for (int i = 0; i < total; i++) {
+            str = reader.readLine();
+            StringTokenizer line = new StringTokenizer(str);
+            Node current = nodes[Integer.parseInt(line.nextToken())-1];
+            HashSet<Edge> edges = new HashSet<>();
+            map.put(current, edges);
             while (line.hasMoreTokens()) {
-                Location temp = new Location(Float.parseFloat(line.nextToken()), Float.parseFloat(line.nextToken()));
-                Location loc2 = contains(ids, temp);
-                if (loc2 == null) {
-//                    counter2++;
-                    ids.put(temp, currentId++);
-                } else {
-                    temp = loc2;
-                }
-                String name = line.nextToken();
-                Node end;
-                if (name.equals("null")) {
-                     end = new Node(ids.get(temp), temp.x, temp.y, null);
-                } else {
-                    end = new Node(ids.get(temp), temp.x, temp.y, name);
-                    names.put(name, end);
-                    System.out.println("name " + name);
-                }
-                float d = temp.getDist(keyLoc);
-                map.get(key).add(new Edge(d, key, end));
-                map.get(key).add(new Edge(d, end, key));
+                edges.add(new Edge(current, nodes[Integer.parseInt(line.nextToken())-1]));
             }
         }
         reader.close();
-//        System.out.println("number test: " +  ids.size() + " " + counter1 + " " + counter2);
-    }
-
-    private static Location contains(Map<Location, Integer> map, Location l) {
-        for (Location location: map.keySet()) {
-            if (l.compareTo(location) == 0) {
-                return location;
-            }
-        }
-        return null;
     }
 
     public static void setStops(File input) throws FileNotFoundException {
@@ -107,26 +81,5 @@ public class Parser {
 
     public static Set<Node> getStops() {
         return busStops;
-    }
-
-    private static class Location implements Comparable<Location> {
-        private float x, y;
-
-        private Location(float x, float y) {
-            this.x = x;
-            this.y = y;
-        }
-
-        public float getDist(Location other) {
-            return (float) Math.sqrt((x-other.x)*(x-other.x)+(y-other.y)*(y-other.y));
-        }
-
-        @Override
-        public int compareTo(Parser.Location o) {
-            if (x == o.x && y == o.y) {
-                return 0;
-            }
-            return 1;
-        }
     }
 }

@@ -1,0 +1,46 @@
+there's nothing here i was just too lazy to manually edit nodes lol
+
+package com.uw.huskynavigation;
+
+import java.io.*;
+import java.util.*;
+
+public class Tempedit {
+    public static void main(String[] args) throws IOException{
+        Map<Double, Integer> nodeToID = new HashMap<>();
+        String line;
+        StringBuilder newnodes = new StringBuilder();
+        File nodes = new File("Content/nodes9.txt");
+        FileReader fr = new FileReader(nodes);
+        BufferedReader br = new BufferedReader(fr);
+        for (int i = 1; i <= 204; i++) {
+            line = br.readLine();
+            StringTokenizer st = new StringTokenizer(line);
+            newnodes.append(st.nextToken());
+            newnodes.append(" ");
+            String lat = st.nextToken();
+            nodeToID.put(Double.parseDouble(lat), i);
+            newnodes.append(lat);
+            for (int j = 0; j < 2; j++) {
+                newnodes.append(st.nextToken());
+                newnodes.append(" ");
+            }
+            newnodes.append("\n");
+        }
+        while ((line = br.readLine()) != null) {
+            StringTokenizer st = new StringTokenizer(line);
+            while (st.hasMoreTokens()) {
+                newnodes.append(nodeToID.get(Double.parseDouble(st.nextToken())));
+                newnodes.append(" ");
+                st.nextToken();
+                st.nextToken();
+            }
+            newnodes.append("\n");
+        }
+        br.close();
+        FileWriter fw = new FileWriter(nodes);
+        BufferedWriter bw = new BufferedWriter(fw);
+        bw.write(newnodes.toString());
+        bw.close();
+    }
+}
