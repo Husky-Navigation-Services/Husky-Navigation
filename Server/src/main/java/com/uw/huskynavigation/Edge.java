@@ -15,6 +15,7 @@ public class Edge {
         this.end = end;
     }
 
+    // Constructs an instance of an edge, with a computed distance, given a start and end.
     public Edge(Node start, Node end) {
         if (start == null || end == null) {
             throw new IllegalArgumentException("Illegal start or end given.");
