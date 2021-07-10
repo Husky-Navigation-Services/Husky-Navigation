@@ -382,7 +382,13 @@ function nav() {
             console.log(res);
             distanceElement.innerHTML = roundTen(res.distance) + " mi";
             etaElement.innerHTML = roundTen(res.eta) + " min";
-            var path = L.geoJSON(res.pathGeoJSON).addTo(mymap);
+            var style = {
+                weight: 3,
+                dashArray: '5, 10',
+                lineCap: 'square', // Optional, just to avoid round borders.
+                color: 'black'
+            }
+            var path = L.geoJSON(res.pathGeoJSON, style).addTo(mymap);
             geoJSONPaths.push(path);
     });
 }
