@@ -164,6 +164,11 @@ var wordmark = document.getElementById("uw-wordmark");
 const startSelection = document.getElementById("startingPointsId");
 const destSelection = document.getElementById("destinationsId");
 
+// Load list data
+populateList(buildingContainer, buildingLocations);
+populateList(busStopContainer, busLocations);
+populateList(librariesContainer, libraryLocations);
+
 // Adds event listeners.
 logo.addEventListener("click", toggleContent);
 navBttn.addEventListener("click", tryNav);
@@ -398,8 +403,8 @@ function nav() {
                 geoJSONPaths.pop();
             }
             console.log(res);
-            distanceElement.innerHTML = "Distance: " + roundTen(res.distance) + " mi";
-            etaElement.innerHTML = "ETA: " + roundTen(res.eta) + " min";
+            distanceElement.innerHTML = roundTen(res.distance) + " mi";
+            etaElement.innerHTML = roundTen(res.eta) + " min";
             var style = {
                 weight: 3,
                 dashArray: '5, 10',
@@ -594,9 +599,7 @@ function populateNavOptions(locGroups, selection) {
     });
 }
 
-populateList(buildingContainer, buildingLocations);
-populateList(busStopContainer, busLocations);
-populateList(librariesContainer, libraryLocations);
+
 function populateList(list, names) {
     for (const name in names) {
         list.innerHTML += "<p class=\"building location\">" + name + "</p>";
