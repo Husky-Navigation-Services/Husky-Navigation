@@ -183,6 +183,7 @@ option {
     transition: 0.5s;
 }
 
+/*
 #navBtn {
     border-radius: 5px;
     width: 200px;
@@ -195,9 +196,10 @@ option {
 #navBtn:hover {
     background-color: #808080 !important;
     border-color: #b7a57a;
-    /* border-color: #b51213; Red Color*/
+  
     transition: 0.5s;
 }
+*/
 
 .vertical-menu {
     height: 160px;
@@ -403,4 +405,46 @@ option {
 
 .invalid {
     pointer-events: none;
+}
+
+/* Loading Animation */
+
+#navBtn {
+	border-radius: 5px;
+    width: 200px;
+    height: 40px;
+    font-family: 'Encode Sans', sans-serif;
+    background-color: #b7a57a;
+    cursor: pointer;
+    z-index: 3;
+	transition: all 0.2s ease-out;
+
+}
+
+.loading {
+	border-radius: 50px !important;
+	width: 40px !important;
+    margin-left: 29%;
+    background: transparent !important;
+    border: none !important;
+    outline: none !important;
+    user-select: none;
+}
+
+.spinner {
+	display: block;
+	width: 30px;
+	height: 30px;
+
+	background: transparent;
+	box-sizing: border-box;
+	border-top: 3px solid white;
+	border-left: 3px solid transparent;
+	border-right: 3px solid transparent;
+	border-bottom: 3px solid transparent;
+	border-radius: 100%;
+	animation: spin 0.6s ease-out infinite;
+}
+@keyframes spin {
+	100% {transform: rotate(360deg)}
 }

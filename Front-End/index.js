@@ -7,6 +7,7 @@
 //      Weather
 //      Scrolling Tools
 //      Geolocation Tools
+//      Navigation Loading
 //      Other
 
 ////////////////////
@@ -332,7 +333,10 @@ function updateDest() {
 function tryNav() {
     var from = fromElement.innerHTML;
     var to = toElement.innerHTML;
+    console.log(from);
+    console.log(to);
     if (navPossible(from, to)) {
+        beginLoading();
         nav(from, to);
     } else {
        alert("Invalid path. Try again.");
@@ -361,7 +365,7 @@ function toggleContent() {
 // Return whether navigation is possible. If location endpoints are unique and if 
 // neither are set to their defaults, then it returns true. Otherwise, false.
 function navPossible(from, to) {
-    return from != "--Select Starting Point--" && to != "--Select Destination--" && to != from;
+    return from != "Select Starting Point" && to != "Select Destination" && to != from;
 }
 
 // Sets the map view to contain both endpoints. Allows navigation using AJAX to connect
@@ -390,6 +394,7 @@ function nav() {
             }
             var path = L.geoJSON(res.pathGeoJSON, style).addTo(mymap);
             geoJSONPaths.push(path);
+            endLoading();
     });
 }
 
@@ -531,6 +536,34 @@ function goToPosition(position) {
 
 }
 
+//////////////////////////
+// Navigation Loading
+//////////////////////////
+
+const spinner = '<span class="spinner"></span>';
+/*
+function toggleLoading() {
+    if (!navBttn.classList.contains('loading')) {
+		navBttn.classList.add('loading');
+        navBttn.innerHTML = spinner;
+	}
+	else {
+		navBttn.classList.remove('loading');
+        navBttn.innerHTML = 'Navigate';
+	}
+}
+*/
+
+
+function beginLoading() {
+    navBttn.classList.add('loading');
+    navBttn.innerHTML = spinner;
+}
+
+function endLoading() {
+    navBttn.classList.remove('loading');
+    navBttn.innerHTML = 'Navigate';
+}
 //////////////////////////
 // Other [Unused Section]
 //////////////////////////
