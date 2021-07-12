@@ -7,7 +7,8 @@
 //      Weather
 //      Scrolling Tools
 //      Geolocation Tools
-//      Navigation Loading
+//      Navigation Loading Spinner
+//      Populate Starting Point/Destination Dropdowns
 //      Other
 
 ////////////////////
@@ -15,7 +16,7 @@
 ///////////////////
 
 // Maps locations to their latitude and longitude coordinates.
-var locationsMap = {
+var buildingLocations = {
     "Red Square": [47.65584980498794, -122.30949825416076],
     "Grieg Garden": [47.656201081851385, -122.30659040317289],
     "HUB Yard": [47.65592643429362, -122.30609494049766],
@@ -48,13 +49,19 @@ var locationsMap = {
     "Gerberding Hall": [47.65531970084914, -122.30935166970617],
     "Mary Gates Hall": [47.65487923837424, -122.30787575101562],
     "Kane Hall": [47.65662775950031, -122.30915002044803],
-    "Meany Hall": [47.65557303847933, -122.31044083467523],
+    "Meany Hall": [47.65557303847933, -122.31044083467523]
+}
+
+var libraryLocations = {
     "Suzzallo Library": [47.65578389645157, -122.30815422653524],
     "Allen North": [47.65570394658331, -122.30715296533181],
     "Allen South": [47.655373676690964, -122.3069516908259],
     "Odegaard Library": [47.65661065901535, -122.31036360163384],
     "Engineering Library": [47.65465642494313, -122.30448276388466],
-    "Gowen Library": [47.656411266735155, -122.30783977331431],
+    "Gowen Library": [47.656411266735155, -122.30783977331431]
+}
+
+var busLocations = {
     "Stevens Way and Okanogan Ln": [47.652027, -122.308655],
     "W Stevens WAY NE and Okanogan LN NE": [47.652172, -122.308624],
     "W Stevens Way and Rainier Vista NE": [47.652389, -122.306305],
@@ -69,6 +76,8 @@ var locationsMap = {
     "Montlake Blvd NE and NE Pacific Pl - Bay 4": [47.650494, -122.304092],
     "NE Pacific St and 15th Ave NE": [47.652351, -122.311089]
 }
+
+var locationsMap = Object.assign({}, buildingLocations, libraryLocations, busLocations);
 
 // Stores the building/library/bus-stop marker currently on the map.
 var mapMarkers = [];
@@ -151,6 +160,8 @@ var weatherPopupData = document.getElementById("weatherPopupData");
 var feedbackInput = document.getElementById("feedbackInput");
 var titleSlant = document.getElementById("title-slant");
 var wordmark = document.getElementById("uw-wordmark");
+const startSelection = document.getElementById("startingPointsId");
+const destSelection = document.getElementById("destinationsId");
 
 // Adds event listeners.
 logo.addEventListener("click", toggleContent);
@@ -308,6 +319,7 @@ function setViewToLocation() {
 
 // Sets the start text in the horizontal bar to the caller's text when the caller is changed.
 function updateStart() {
+    endLoading();
     const newLocation = this.value;
     fromElement.style.opacity = 0;
     // Gives css transition time to operate 
@@ -319,6 +331,7 @@ function updateStart() {
 
 // Sets the end text in the horizontal bar to the caller's text when the caller is changed.
 function updateDest() {
+    endLoading();
     const newLocation = this.value;
     toElement.style.opacity = 0;
     // Gives css transition time to operate
@@ -564,6 +577,22 @@ function endLoading() {
     navBttn.classList.remove('loading');
     navBttn.innerHTML = 'Navigate';
 }
+
+////////////////////
+// Populate Starting Point/Destination Dropdowns
+///////////////////
+populateNavOptions([buildingLocations, libraryLocations, busLocations], startSelection);
+populateNavOptions([buildingLocations, libraryLocations, busLocations], destSelection);
+function populateNavOptions(locGroups, selection) {
+    const labelMap = ["Buildings", "Libraries", "Bus Stops"];
+    locGroups.forEach( (group, i) => {
+        selection.innerHTML += "<optgroup label=\"" + labelMap[i] + "\"></optgroup>";
+        for (const buildingName in group) {
+            selection.innerHTML += "<option value=\"" + buildingName + "\">" + buildingName + "</option>";
+        }
+    });
+}
+
 //////////////////////////
 // Other [Unused Section]
 //////////////////////////
