@@ -8,7 +8,7 @@
 //      Scrolling Tools
 //      Geolocation Tools
 //      Navigation Loading Spinner
-//      Populate Starting Point/Destination Dropdowns
+//      Populate Dropdowns & Lists
 //      Other
 
 ////////////////////
@@ -142,6 +142,7 @@ var selectElements = document.getElementsByClassName("select");
 var searchBars = document.getElementsByClassName("searchBar");
 var buildingContainer = document.getElementById("building-container");
 var busStopContainer = document.getElementById("bus-stop-container");
+var librariesContainer = document.getElementById("library-container");
 var horizontalBar = document.getElementById("horizontalBarId");
 var leftSideBar = document.getElementById("sidebarLeft");
 var logo = document.getElementById("logo");
@@ -579,7 +580,7 @@ function endLoading() {
 }
 
 ////////////////////
-// Populate Starting Point/Destination Dropdowns
+// Populate Dropdowns & Lists
 ///////////////////
 populateNavOptions([buildingLocations, libraryLocations, busLocations], startSelection);
 populateNavOptions([buildingLocations, libraryLocations, busLocations], destSelection);
@@ -591,6 +592,15 @@ function populateNavOptions(locGroups, selection) {
             selection.innerHTML += "<option value=\"" + buildingName + "\">" + buildingName + "</option>";
         }
     });
+}
+
+populateList(buildingContainer, buildingLocations);
+populateList(busStopContainer, busLocations);
+populateList(librariesContainer, libraryLocations);
+function populateList(list, names) {
+    for (const name in names) {
+        list.innerHTML += "<p class=\"building location\">" + name + "</p>";
+    }
 }
 
 //////////////////////////
