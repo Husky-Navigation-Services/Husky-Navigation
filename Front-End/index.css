@@ -409,7 +409,7 @@ option {
 
 /* Loading Animation */
 
-#navBtn {
+.navBtn {
 	border-radius: 5px;
     width: 200px;
     height: 40px;
@@ -422,12 +422,12 @@ option {
 }
 
 .loading {
-	border-radius: 50px !important;
-	width: 40px !important;
+	border-radius: 50px;
+	width: 40px;
     margin-left: 29%;
-    background: transparent !important;
-    border: none !important;
-    outline: none !important;
+    background: transparent;
+    border: none;
+    outline: none;
     user-select: none;
 }
 
