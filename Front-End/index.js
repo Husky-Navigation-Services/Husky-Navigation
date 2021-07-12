@@ -384,8 +384,8 @@ function nav() {
                 geoJSONPaths.pop();
             }
             console.log(res);
-            distanceElement.innerHTML = roundTen(res.distance) + " mi";
-            etaElement.innerHTML = roundTen(res.eta) + " min";
+            distanceElement.innerHTML = "Distance: " + roundTen(res.distance) + " mi";
+            etaElement.innerHTML = "ETA: " + roundTen(res.eta) + " min";
             var style = {
                 weight: 3,
                 dashArray: '5, 10',
