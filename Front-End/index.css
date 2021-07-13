@@ -480,7 +480,9 @@ option {
     margin: 2px;
 }
 
-@media only screen and (max-device-width: 600px), only screen and (max-width: 600px) {
+@media only screen and (max-width: 600px) {
+
+
     #sidebarLeft {
         position: relative;
         box-sizing: border-box;
@@ -527,4 +529,11 @@ option {
     #expand-icon-div {
         display: block;
     }
+  }
+
+  @media only screen and (max-device-width: 600px) {
+      #title {
+          font-size: 50px;
+          word-break: break-all;
+      }
   }
