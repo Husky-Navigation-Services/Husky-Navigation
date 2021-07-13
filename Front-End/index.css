@@ -530,12 +530,7 @@ option {
         display: block;
     }
 
-    @media only screen and (max-device-width: 600px) {
-        #title {
-            font-size: 50px;
-            word-break: break-all;
-        }
-    }
+    
   }
 
  
