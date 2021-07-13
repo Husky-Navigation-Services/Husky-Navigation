@@ -647,3 +647,17 @@ function resizeElements() {
 }
 
 window.addEventListener('resize', resizeElements);
+
+// when user finishes zooming, set path style to dashed if zoomed in
+// or solid otherwise
+mymap.on('zoomend', function() {
+    const curZoom = mymap.getZoom();
+    console.log(curZoom);
+    geoJSONPaths[0].setStyle(() => {
+        return curZoom < 17 ? { // if zoom is low
+            dashArray: '1, 1'
+        }:{ // if zoom is high
+            dashArray: '5, 10'
+        }
+    });
+});
