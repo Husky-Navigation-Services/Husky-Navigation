@@ -529,11 +529,13 @@ option {
     #expand-icon-div {
         display: block;
     }
+
+    @media only screen and (max-device-width: 600px) {
+        #title {
+            font-size: 50px;
+            word-break: break-all;
+        }
+    }
   }
 
-  @media only screen and (max-device-width: 600px) {
-      #title {
-          font-size: 50px;
-          word-break: break-all;
-      }
-  }
+ 
