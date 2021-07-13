@@ -536,12 +536,16 @@ function scroll(el, holder) {
 //////////////////////////
 
 // Gets the current location of the user when the icon is clicked.
+// NOTE: now this sets the view to UW, rather than current location
 function goToCurrentLocation() {
+    /*
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(goToPosition);
     } else {
         alert("Geolocation is not supported.");
     }
+    */
+    mymap.setView([47.650017, -122.30654], 13);
 }
 
 // Goes to the given position on the map and gives alert if outside campus.
@@ -648,16 +652,25 @@ function resizeElements() {
 
 window.addEventListener('resize', resizeElements);
 
-// when user finishes zooming, set path style to dashed if zoomed in
-// or solid otherwise
+// When user finishes zooming, set path style to dashed if zoomed in
+// or solid otherwise.
 mymap.on('zoomend', function() {
     const curZoom = mymap.getZoom();
     console.log(curZoom);
-    geoJSONPaths[0].setStyle(() => {
+    geoJSONPaths[0] ? geoJSONPaths[0].setStyle(() => { // if geoJSONPaths[0] is defined
         return curZoom < 17 ? { // if zoom is low
             dashArray: '1, 1'
         }:{ // if zoom is high
             dashArray: '5, 10'
         }
-    });
+    }) : ()=>{}; // if undefined, do nothing
+});
+
+// When user finishes zooming, alert user if zoomed out too much 
+mymap.on('zoomend', function() {
+    const curZoom = mymap.getZoom();
+    if (curZoom < 10) {
+        alert("You have zoomed out too much!");
+        mymap.setZoom(10);
+    }
 });
