@@ -444,7 +444,7 @@ option {
 	display: block;
 	width: 30px;
 	height: 30px;
-
+    margin: auto;
 	background: transparent;
 	box-sizing: border-box;
 	border-top: 3px solid white;
