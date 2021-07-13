@@ -480,7 +480,7 @@ option {
     margin: 2px;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-device-width: 600px), only screen and (max-width: 600px) {
     #sidebarLeft {
         position: relative;
         box-sizing: border-box;
@@ -500,7 +500,10 @@ option {
     }
 
     .horizontalBar {
-        display: none;
+        position: fixed;
+        bottom: 0px;
+        margin: 10px;
+        width: 100%;
     }
 
     .header {
