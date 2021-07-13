@@ -504,12 +504,19 @@ option {
         width: calc(100vw - 20px);
         height: 135px;
         padding-bottom: 5px;
-    
+        overflow: auto;
+        flex: 1;
     }
+
+    .contentSection {
+       
+    }
+    
 
     #titleElements {
         flex-shrink: 0;
         border-radius: 5px;
+        
 
     }
 
@@ -529,6 +536,7 @@ option {
         margin-top: 0px;
         
     }
+
 
     .uw-slant {
         flex-shrink: 0;
