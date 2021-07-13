@@ -628,10 +628,10 @@ var isOpen = false;
 function toggleSideBarMobile() {
     if (document.documentElement.clientWidth <= 600) {
         if (isOpen) {
-            leftSideBar.style.height = "135px";
+            leftSideBar.style.height = "78px";
             leftSideBar.scrollTop = 0;
         } else {
-            leftSideBar.style.height = "calc(90% - 40px)";
+            leftSideBar.style.height = "calc(70% - 40px)";
         }
         isOpen = !isOpen;
     }
@@ -642,7 +642,7 @@ function resizeElements() {
     if (document.documentElement.clientWidth > 600) {
         leftSideBar.style.height = "calc(100% - 20px)";
     } else {
-        leftSideBar.style.height = "135px";
+        leftSideBar.style.height = "78px";
     }
 }
 

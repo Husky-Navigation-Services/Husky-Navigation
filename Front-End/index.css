@@ -118,7 +118,7 @@ html, body {
     border-radius: 10px;
     margin: 10px;
     margin-bottom: 0px;
-    transition: 0.5s;
+    transition: 0.5s ease-out;
     color: whitesmoke;
     pointer-events: auto;
     font-family: 'Encode Sans', sans-serif;
@@ -508,7 +508,7 @@ option {
         margin: 10px;
         margin-bottom: 0px;
         width: calc(100vw - 20px);
-        height: 135px;
+        height: 78px;
         padding-bottom: 5px;
         overflow: auto;
         flex: 1;
@@ -520,10 +520,27 @@ option {
     
 
     #titleElements {
+        display: flex;
+        flex-direction: row;
         flex-shrink: 0;
         border-radius: 5px;
-        
+    }
 
+    #title, title-slant, uw-wordmark-container {
+        display: inline-block !important;
+        margin: 10px !important;
+    }
+
+    #title-slant {
+        width: 50px;
+        transform: skew(0deg, 0) rotate(90deg);
+        margin-top: 27px;
+    }
+
+    #uw-wordmark-container {
+        margin: auto;
+        margin-right: 30px;
+        
     }
 
     .sidebarRight {
@@ -534,21 +551,36 @@ option {
         position: fixed;
         bottom: 0px;
         margin: 10px;
-        width: calc(100% - 20px);
+        width: calc(100% - 30px);
+        height: 100px;
+        flex-wrap: wrap;
+        align-items: stretch;
+        padding: 5px;
         
     }
 
-    .header {
-        margin-top: 0px;
-        
+    .marker, #distance, #eta, .tofrom {
+        margin: 15px !important;
+        margin-bottom: 10px !important;
+        height: 30px;
+    }    
+
+    /* force elements to take up entire space */
+    #distance, #eta {
+        flex-basis: 40%;
+        margin-top: 0px !important;
     }
 
+    .tofrom{
+        flex-basis: 30%;
+    }
 
+    /* Prevent shrinking of uw-slant */
     .uw-slant {
         flex-shrink: 0;
     }
 
-    .bar, #distance, #eta, #weatherDiv, #locationIconDiv, .githubIconDiv, #currentMode, #slider, #themeCheckbox, #switch {
+    .bar, #weatherDiv, #locationIconDiv, .githubIconDiv, #currentMode, #slider, #themeCheckbox, #switch, .horizontalSpacer {
         display: none !important;
     }
     
