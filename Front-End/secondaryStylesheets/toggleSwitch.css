@@ -16,6 +16,7 @@ https://www.w3schools.com/howto/howto_css_switch.asp
     border-radius: 5em;
     margin-left: 10px;
     margin-right: 20px;
+    overflow: hidden;
   }
   
   /* Hide default HTML checkbox */

@@ -639,7 +639,7 @@ function toggleSideBarMobile() {
 }
 
 function resizeElements() {
-    console.log("g");
+
     if (document.documentElement.clientWidth > 600) {
         leftSideBar.style.height = "calc(100% - 20px)";
     } else {
