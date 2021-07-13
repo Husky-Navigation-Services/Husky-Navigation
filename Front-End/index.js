@@ -293,9 +293,7 @@ function toggleDropdown(sec) {
             }
         }
     } else {
-        sec.style.height = "0px";
-        // hide all other sections if small screen
-        
+        sec.style.height = "0px";  
     }
     console.log(window.innerWidth);
     
@@ -631,6 +629,7 @@ function toggleSideBarMobile() {
     if (document.documentElement.clientWidth <= 600) {
         if (isOpen) {
             leftSideBar.style.height = "135px";
+            leftSideBar.scrollTop = 0;
         } else {
             leftSideBar.style.height = "calc(90% - 40px)";
         }
