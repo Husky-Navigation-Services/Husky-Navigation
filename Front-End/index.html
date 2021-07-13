@@ -37,104 +37,112 @@
     <!-- Content -->
     <div id="content">
         <!-- Left Sidebar -->
-        <div id="sidebarLeft">
-            <div id="titleElements">
-                <!-- Title + Slant -->
-                <h1 id="title">Husky Navigation</h1>
-                <span id="title-slant" class="uw-slant-large"></span>
-                <!-- UW Wordmark -->
-                <a href="https://www.washington.edu">
-                    <img id="uw-wordmark" src="uwWordmarks/UnivWaWordmarkPurple.png" alt="uwWordmarks/UnivWaWordmark.png">
-                </a>
-            </div>
-
-            <!-- Nav -->
-            <h6 id="navHeader" class="header">NAVIGATION </h6>
-            <span class="uw-slant"></span>
-
-            <!-- Input Fields -->
-            <div id="navSection" class="inputs contentSection"> 
-                <!-- Select Start -->
-                <div class="inputDiv">
-                    <select name="startingPoints" id="startingPointsId" class="select">
-                        <!-- Default -->
-                        <option value="--Select Starting Point--">--Select Starting Point--</option>
-                        <!-- All Locations Grouped by Type -->
-                        <!-- [Dynamically added] -->
-                    </select>
+        <div>
+            <div id="sidebarLeft">
+                <div id="titleElements">
+                    <!-- Title + Slant -->
+                    <h1 id="title">Husky Navigation</h1>
+                    <span id="title-slant" class="uw-slant-large"></span>
+                    <!-- UW Wordmark -->
+                    <div id="uw-wordmark-container">
+                        <a href="https://www.washington.edu">
+                            <img id="uw-wordmark" src="uwWordmarks/UnivWaWordmarkPurple.png" alt="uwWordmarks/UnivWaWordmark.png">
+                        </a>
+                    </div>
                 </div>
 
-                <!-- Select End -->
-                <div class="inputDiv">
-                    <!--<img class="miniEndMarker" src="MarkerIcon2.png"></img>-->
-                    <select name="destinations" id="destinationsId" class="select">
-                        <!-- Default -->
-                        <option value="--Select Destination--">--Select Destination--</option>
-                        <!-- All Locations Grouped by Type -->
-                        <!-- [Dynamically added] -->
-                    </select>
-                </div>
-                <!-- Navigation Button -->
-                <button id="navBtn" class="navBtn">Navigate</button>
-            </div>
-            
-            <!-- Buildings List -->
-            <h6 id="buildingsHeader" class="header"> BUILDINGS </h6>
-            <span class="uw-slant"></span>
-            <!-- TODO: "height: 0px" attribute is not included in stylesheet since it gets overwritten somehow, leading
-            to bug where the user must click on a header twice before it functions properly. Fix style. -->
-            <div id="buildingsSection" class="contentSection" style="height: 0px;"> 
-                <input type="text" class="searchBar" id="buildingsSearch" placeholder="Search for buildings..">
-                <div id="building-container" class="vertical-menu">
-                    <!-- [Dynamically Added] -->
-                </div>
-            </div>
+                <!-- Nav -->
+                <h6 id="navHeader" class="header">NAVIGATION </h6>
+                <span class="uw-slant"></span>
 
-            <!-- Libraries List -->
-            <h6 id="librariesHeader" class="header"> LIBRARIES </h6>
-            <span class="uw-slant"></span>
-            <div id="librariesSection" class="contentSection" style="height: 0px;"> 
-                <input type="text" class="searchBar" id="librariesSearch" placeholder="Search for libraries..">
-                <div id="library-container" class="vertical-menu">
-                    <!-- [Dynamically Added] -->
+                <!-- Input Fields -->
+                <div id="navSection" class="inputs contentSection"> 
+                    <!-- Select Start -->
+                    <div class="inputDiv">
+                        <select name="startingPoints" id="startingPointsId" class="select">
+                            <!-- Default -->
+                            <option value="--Select Starting Point--">--Select Starting Point--</option>
+                            <!-- All Locations Grouped by Type -->
+                            <!-- [Dynamically added] -->
+                        </select>
+                    </div>
+
+                    <!-- Select End -->
+                    <div class="inputDiv">
+                        <!--<img class="miniEndMarker" src="MarkerIcon2.png"></img>-->
+                        <select name="destinations" id="destinationsId" class="select">
+                            <!-- Default -->
+                            <option value="--Select Destination--">--Select Destination--</option>
+                            <!-- All Locations Grouped by Type -->
+                            <!-- [Dynamically added] -->
+                        </select>
+                    </div>
+                    <!-- Navigation Button -->
+                    <button id="navBtn" class="navBtn">Navigate</button>
+                </div>
+                
+                <!-- Buildings List -->
+                <h6 id="buildingsHeader" class="header"> BUILDINGS </h6>
+                <span class="uw-slant"></span>
+                <!-- TODO: "height: 0px" attribute is not included in stylesheet since it gets overwritten somehow, leading
+                to bug where the user must click on a header twice before it functions properly. Fix style. -->
+                <div id="buildingsSection" class="contentSection" style="height: 0px;"> 
+                    <input type="text" class="searchBar" id="buildingsSearch" placeholder="Search for buildings..">
+                    <div id="building-container" class="vertical-menu">
+                        <!-- [Dynamically Added] -->
+                    </div>
+                </div>
+
+                <!-- Libraries List -->
+                <h6 id="librariesHeader" class="header"> LIBRARIES </h6>
+                <span class="uw-slant"></span>
+                <div id="librariesSection" class="contentSection" style="height: 0px;"> 
+                    <input type="text" class="searchBar" id="librariesSearch" placeholder="Search for libraries..">
+                    <div id="library-container" class="vertical-menu">
+                        <!-- [Dynamically Added] -->
+                    </div>
+                </div>
+
+                <!-- Bus Stops List -->
+                <h6 id="stopHeader" class="header"> BUS STOPS </h6>
+                <span class="uw-slant"></span>
+                <div id="stopSection" class="contentSection" style="height: 0px;"> 
+                    <input type="text" class="searchBar" id="busStopSearch" placeholder="Search for bus stops..">
+                    <div id="bus-stop-container" class="vertical-menu">
+                        <!-- [Dynamically Added] -->
+                    </div>
+                </div>
+
+                <!--Feedback-->
+                <h6 id="feedbackHeader" class="header"> FEEDBACK </h6>
+                <span class="uw-slant"></span>
+                <div id="feedbackSection" class="contentSection" style="height: 0px;">
+                    <!-- Feedback Description/Text -->
+                    <p id="feedbackText"> We appreciate feedback! </p>
+                    <!-- Feedback Textarea Input -->
+                    <textarea id="feedbackInput" name="Feedback" rows="4" cols="24"></textarea>
+                    <!-- Feedback Submission Button -->
+                    <button id="submitFeedback"> Submit </button>
+                </div>
+
+                <!--About Us-->
+                <h6 id="aboutHeader" class="header"> ABOUT US </h6>
+                <span class="uw-slant"></span>
+                <div id="aboutSection" class="contentSection" style="height: 0px;">
+                    <p class="contributor"><a style="color: whitesmoke; text-decoration:none;" href="https://www.linkedin.com/in/daniel-berezansky/"> Daniel Berezansky</a> | Software Lead </p>
+                    <p class="credential"> University of Washington CS '23 </p>
+                    <p class="contributor"><a style="color: whitesmoke; text-decoration:none;" href="https://www.linkedin.com/in/amit-ferman/"> Amit Ferman</a> | Development Lead </p>
+                    <p class="credential"> University of Washington CS '24 </p>
+                    <p class="contributor"><a style="color: whitesmoke; text-decoration:none;" href="https://www.linkedin.com/in/albweng/"> Albert Weng</a> | Content Lead </p>
+                    <p class="credential"> University of Washington CS '24 </p>
                 </div>
             </div>
-
-            <!-- Bus Stops List -->
-            <h6 id="stopHeader" class="header"> BUS STOPS </h6>
-            <span class="uw-slant"></span>
-            <div id="stopSection" class="contentSection" style="height: 0px;"> 
-                <input type="text" class="searchBar" id="busStopSearch" placeholder="Search for bus stops..">
-                <div id="bus-stop-container" class="vertical-menu">
-                    <!-- [Dynamically Added] -->
-                </div>
-            </div>
-
-            <!--Feedback-->
-            <h6 id="feedbackHeader" class="header"> FEEDBACK </h6>
-            <span class="uw-slant"></span>
-            <div id="feedbackSection" class="contentSection" style="height: 0px;">
-                <!-- Feedback Description/Text -->
-                <p id="feedbackText"> We appreciate feedback! </p>
-                <!-- Feedback Textarea Input -->
-                <textarea id="feedbackInput" name="Feedback" rows="4" cols="24"></textarea>
-                <!-- Feedback Submission Button -->
-                <button id="submitFeedback"> Submit </button>
-            </div>
-
-            <!--About Us-->
-            <h6 id="aboutHeader" class="header"> ABOUT US </h6>
-            <span class="uw-slant"></span>
-            <div id="aboutSection" class="contentSection" style="height: 0px;">
-                <p class="contributor"><a style="color: whitesmoke; text-decoration:none;" href="https://www.linkedin.com/in/daniel-berezansky/"> Daniel Berezansky</a> | Software Lead </p>
-                <p class="credential"> University of Washington CS '23 </p>
-                <p class="contributor"><a style="color: whitesmoke; text-decoration:none;" href="https://www.linkedin.com/in/amit-ferman/"> Amit Ferman</a> | Development Lead </p>
-                <p class="credential"> University of Washington CS '24 </p>
-                <p class="contributor"><a style="color: whitesmoke; text-decoration:none;" href="https://www.linkedin.com/in/albweng/"> Albert Weng</a> | Content Lead </p>
-                <p class="credential"> University of Washington CS '24 </p>
+            <div id="expand-icon-div" onclick="toggleSideBarMobile()">
+                <hr class="expand-icon-bar">
+                <hr class="expand-icon-bar">
+                <hr class="expand-icon-bar">
             </div>
         </div>
-
         <!-- Right Sidebar (in the same row as the main logo) -->
         <div class="sidebarRight">
             <img id="logo" src="logos/HuskyNavLogoWhite.png" alt="logos/HuskyNavLogoTransparent.png">

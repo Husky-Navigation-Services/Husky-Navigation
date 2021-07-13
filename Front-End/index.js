@@ -15,6 +15,8 @@
 // Location Data
 ///////////////////
 
+// TODO: Populate buildingLocations, libraryLocations, busLocations dynamically from Nodes.txt
+
 // Maps locations to their latitude and longitude coordinates.
 var buildingLocations = {
     "Red Square": [47.65584980498794, -122.30949825416076],
@@ -163,6 +165,7 @@ var titleSlant = document.getElementById("title-slant");
 var wordmark = document.getElementById("uw-wordmark");
 const startSelection = document.getElementById("startingPointsId");
 const destSelection = document.getElementById("destinationsId");
+const contentSections = document.getElementsByClassName("contentSection");
 
 // Load list data
 populateList(buildingContainer, buildingLocations);
@@ -280,9 +283,22 @@ function toggleDropdown(sec) {
     var size = dropDownLengths[sec.id];
     if (sec.style.height == "0px") {
         sec.style.height = size;
+        // hide all other sections if small screen
+        if (window.innerWidth <= 600) {
+            for (var i = 0; i < contentSections.length; i++) {
+                const curSec = contentSections[i];
+                if(curSec != sec) {
+                    curSec.style.height = "0px";
+                }
+            }
+        }
     } else {
         sec.style.height = "0px";
+        // hide all other sections if small screen
+        
     }
+    console.log(window.innerWidth);
+    
 }
 
 // Scrolls to the first location containing the given prefix, from the given list
@@ -607,5 +623,16 @@ function populateList(list, names) {
 }
 
 //////////////////////////
-// Other [Unused Section]
+// Mobile
 //////////////////////////
+
+var isOpen = false;
+function toggleSideBarMobile() {
+    if (isOpen) {
+        leftSideBar.style.height = "135px";
+    } else {
+        leftSideBar.style.height = "calc(100% - 40px)";
+    }
+    isOpen = !isOpen;
+    console.log("gell");
+}

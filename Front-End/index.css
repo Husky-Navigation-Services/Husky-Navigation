@@ -261,19 +261,27 @@ option {
     transition: 0.5s;
 }
 
-#uw-wordmark {
+#uw-wordmark-container {
     width: 120px;
     margin-bottom: 0px;
     margin-top: 10px;
-    margin-left: 78.2px;
+    margin-left: auto;
+    margin-right: auto;
     margin-bottom: 20px;
+}
+
+#uw-wordmark {
+    width: 120px;
+   
 }
 
 #title {
     color: #4B2E83;
     font-size: 20pt;
     width: 220px;
-    margin-left: 35px;
+    box-sizing: border-box;
+    margin: auto;
+    padding-left: 5px;
     font-weight: 700;
     font-family: 'Castoro', sans-serif;
     opacity: 1;
@@ -327,6 +335,7 @@ option {
     height: 0px;
     overflow: hidden;
     transition: 0.5s;
+    width: max-content;
 }
 
 #locationIcon {
@@ -418,13 +427,13 @@ option {
     cursor: pointer;
     z-index: 3;
 	transition: all 0.2s ease-out;
-
 }
 
 .loading {
 	border-radius: 50px;
-	width: 40px;
-    margin-left: 29%;
+	width: 40px !important;
+    margin-left: 50%;
+    transform: translate(-50%, 0);
     background: transparent;
     border: none;
     outline: none;
@@ -445,6 +454,74 @@ option {
 	border-radius: 100%;
 	animation: spin 0.6s ease-out infinite;
 }
+
 @keyframes spin {
 	100% {transform: rotate(360deg)}
 }
+
+/* Mobile CSS */
+
+#expand-icon-div {
+    display: none;
+    width: 50px;
+    height: 13px;
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
+    background-color: #4b2e83;
+    position: relative;
+    left: 50%;
+    top: -3px;
+    transform: translate(-50%, 0);
+    z-index: 3;
+    pointer-events: all;
+}
+
+.expand-icon-bar {
+    margin: 2px;
+}
+
+@media only screen and (max-width: 600px) {
+    #sidebarLeft {
+        position: relative;
+        box-sizing: border-box;
+        margin: 10px;
+        margin-bottom: 0px;
+        width: calc(100vw - 20px);
+        height: 135px;
+        padding-bottom: 5px;
+    }
+
+    #titleElements {
+        border-radius: 5px;
+    }
+
+    .sidebarRight {
+        display: none;
+    }
+
+    .horizontalBar {
+        display: none;
+    }
+
+    .header {
+        font-size: 20px;
+    }
+
+    option, select {
+        font-size: 20px !important;
+    }
+    
+    select, input, .building.location, #feedbackText, #submitFeedback, #feedbackInput, .contributor, .credential {
+        width: 400px !important;
+        font-size: 20px !important;
+    }
+
+    #navBtn {
+        width: 400px;
+        font-size: 20px !important;
+    }
+
+    #expand-icon-div {
+        display: block;
+    }
+  }
