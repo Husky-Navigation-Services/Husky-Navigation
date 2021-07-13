@@ -333,10 +333,15 @@ option {
 }
 
 .contentSection {
-    height: 0px;
-    overflow: hidden;
+    flex-shrink: 0;
+    
+    overflow: hidden ;
     transition: 0.5s;
     width: calc(90% - 40px);
+
+    white-space: nowrap;
+
+    text-overflow: ellipsis;
 }
 
 #locationIcon {
@@ -499,10 +504,13 @@ option {
         width: calc(100vw - 20px);
         height: 135px;
         padding-bottom: 5px;
+    
     }
 
     #titleElements {
+        flex-shrink: 0;
         border-radius: 5px;
+
     }
 
     .sidebarRight {
@@ -519,6 +527,11 @@ option {
 
     .header {
         margin-top: 0px;
+        
+    }
+
+    .uw-slant {
+        flex-shrink: 0;
     }
 
     .bar, #distance, #eta, #weatherDiv, #locationIconDiv, .githubIconDiv, #currentMode, #slider, #themeCheckbox, #switch {
