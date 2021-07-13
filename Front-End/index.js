@@ -631,7 +631,7 @@ function toggleSideBarMobile() {
     if (isOpen) {
         leftSideBar.style.height = "135px";
     } else {
-        leftSideBar.style.height = "calc(100% - 40px)";
+        leftSideBar.style.height = "calc(90% - 40px)";
     }
     isOpen = !isOpen;
     console.log("gell");

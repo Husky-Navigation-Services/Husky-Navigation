@@ -335,7 +335,7 @@ option {
     height: 0px;
     overflow: hidden;
     transition: 0.5s;
-    width: max-content;
+    width: calc(90% - 40px);
 }
 
 #locationIcon {
@@ -432,7 +432,7 @@ option {
 .loading {
 	border-radius: 50px;
 	width: 40px !important;
-    margin-left: 50%;
+    margin-left: 45%;
     transform: translate(-50%, 0);
     background: transparent;
     border: none;
@@ -511,25 +511,26 @@ option {
         position: fixed;
         bottom: 0px;
         margin: 10px;
-        width: 100%;
+        width: calc(100% - 20px);
+        
     }
 
     .header {
-        font-size: 20px;
+        margin-top: 0px;
     }
 
-    option, select {
-        font-size: 20px !important;
+    .bar, #distance, #eta, #weatherDiv, #locationIconDiv, .githubIconDiv, #currentMode, #slider, #themeCheckbox, #switch {
+        display: none !important;
     }
     
     select, input, .building.location, #feedbackText, #submitFeedback, #feedbackInput, .contributor, .credential {
-        width: 400px !important;
-        font-size: 20px !important;
+        width: 90% !important;
+        
     }
 
     #navBtn {
-        width: 400px;
-        font-size: 20px !important;
+        width: 90%;
+        
     }
 
     #expand-icon-div {
