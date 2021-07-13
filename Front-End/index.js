@@ -368,11 +368,10 @@ function updateDest() {
 function tryNav() {
     var from = fromElement.innerHTML;
     var to = toElement.innerHTML;
-    console.log(from);
-    console.log(to);
     if (navPossible(from, to)) {
         beginLoading();
         nav(from, to);
+        
     } else {
        alert("Invalid path. Try again.");
     }
@@ -430,6 +429,7 @@ function nav() {
             var path = L.geoJSON(res.pathGeoJSON, style).addTo(mymap);
             geoJSONPaths.push(path);
             endLoading();
+            toggleSideBarMobile();
     });
 }
 
@@ -628,11 +628,23 @@ function populateList(list, names) {
 
 var isOpen = false;
 function toggleSideBarMobile() {
-    if (isOpen) {
-        leftSideBar.style.height = "135px";
-    } else {
-        leftSideBar.style.height = "calc(90% - 40px)";
+    if (document.documentElement.clientWidth <= 600) {
+        if (isOpen) {
+            leftSideBar.style.height = "135px";
+        } else {
+            leftSideBar.style.height = "calc(90% - 40px)";
+        }
+        isOpen = !isOpen;
     }
-    isOpen = !isOpen;
-    console.log("gell");
 }
+
+function resizeElements() {
+    console.log("g");
+    if (document.documentElement.clientWidth > 600) {
+        leftSideBar.style.height = "calc(100% - 20px)";
+    } else {
+        leftSideBar.style.height = "135px";
+    }
+}
+
+window.addEventListener('resize', resizeElements);
