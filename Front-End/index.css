@@ -193,14 +193,14 @@ option {
     background-color: #b7a57a;
     cursor: pointer;
 }
-
+*/
 #navBtn:hover {
     background-color: #808080 !important;
     border-color: #b7a57a;
   
     transition: 0.5s;
 }
-*/
+
 
 .vertical-menu {
     height: 160px;
