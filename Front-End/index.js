@@ -416,8 +416,8 @@ function nav() {
                 geoJSONPaths.pop();
             }
             console.log(res);
-            distanceElement.innerHTML = roundTen(res.distance) + " mi";
-            etaElement.innerHTML = roundTen(res.eta) + " min";
+            distanceElement.innerHTML = "Distance: " + roundTen(res.distance) + " mi";
+            etaElement.innerHTML = "ETA: " + roundTen(res.eta) + " min";
             var style = {
                 weight: 3,
                 dashArray: '5, 10',
@@ -640,13 +640,13 @@ function toggleSideBarMobile() {
         isOpen = !isOpen;
     }
 }
-
+resizeElements();
 function resizeElements() {
-
     if (document.documentElement.clientWidth > 600) {
         leftSideBar.style.height = "calc(100% - 20px)";
     } else {
-        leftSideBar.style.height = "78px";
+        console.log(document.getElementById("titleElements").offsetHeight);
+        leftSideBar.style.height =  (document.getElementById("titleElements").offsetHeight + 10) + "px";
     }
 }
 

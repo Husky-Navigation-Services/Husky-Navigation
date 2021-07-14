@@ -251,10 +251,8 @@ option {
 }
 
 #titleElements {
-    padding-top: 0px;
     display: block;
     background-color: whitesmoke;
-    padding-top: 5px;
     margin: 5px;
     margin-bottom: 10px;
     border-top-left-radius: 5px;
@@ -482,8 +480,8 @@ option {
     display: none;
     width: 50px;
     height: 13px;
-    border-bottom-left-radius: 2px;
-    border-bottom-right-radius: 2px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
     background-color: #4b2e83;
     position: relative;
     left: 50%;
@@ -512,7 +510,7 @@ option {
         margin: 10px;
         margin-bottom: 0px;
         width: calc(100vw - 20px);
-        height: 78px;
+        height: 0px;
         padding-bottom: 5px;
         overflow: auto;
         flex: 1;
@@ -522,13 +520,11 @@ option {
         font-size: 4.5vw;
     }
     
-
     #titleElements {
         display: flex;
         flex-direction: row;
         flex-shrink: 0;
-        border-radius: 5px;
-       
+        border-radius: 5px;   
     }
 
     #title, title-slant, uw-wordmark-container {
@@ -540,6 +536,7 @@ option {
         width: 40px;
         transform: skew(0deg, 0) rotate(90deg);
         margin-top: 27px;
+        display: none;
        
     }
 
@@ -547,6 +544,7 @@ option {
         margin: auto;
         margin-right: 30px;
         width: 25%;
+        
     }
 
     #uw-wordmark {
@@ -562,29 +560,66 @@ option {
         position: fixed;
         bottom: 0px;
         margin: 10px;
-        width: calc(100% - 30px);
-        height: 100px;
+        width: calc(100% - 60px);
+        height: 80px;
         flex-wrap: wrap;
         align-items: stretch;
-        padding: 5px;
-        
+        padding: 20px;
+        justify-content: space-between;
+        align-content: space-between;
+
     }
 
     .marker, #distance, #eta, .tofrom {
-        margin: 15px !important;
-        margin-bottom: 10px !important;
-        height: 30px;
-    }    
+        margin: 0px !important;
+    }
+
+    #startMarker, #endMarker {
+        margin-right: 20px !important;
+    }
+
+    
+    #startMarker {
+        margin: -2.5px !important;
+        margin-right: 17.5px !important;
+    }
+
+    .marker {
+        width: 20px;
+    }
+
+    #distance, #eta {
+        width: 0px;
+    }
 
     /* force elements to take up entire space */
     #distance, #eta {
-        flex-basis: 40%;
-        margin-top: 0px !important;
+        flex-basis: 50%;
     }
 
     .tofrom{
-        flex-basis: 30%;
+       flex-basis: calc(50% - 40px);
     }
+
+    /* Order elements correctly*/
+
+    #startMarker, #from {
+        order: 0;
+    }
+
+    #endMarker, #to {
+        order: 2;
+    }
+
+    #distance {
+        order: 1;
+    }
+
+    #eta {
+        order: 3;
+    }
+
+    
 
     /* Prevent shrinking of uw-slant */
     .uw-slant {
