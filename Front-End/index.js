@@ -335,6 +335,7 @@ function setViewToLocation() {
     }
     var locMarker = L.marker(coords).addTo(mymap);
     mapMarkers.push(locMarker);
+    toggleSideBarMobile();
 }
 
 // Sets the start text in the horizontal bar to the caller's text when the caller is changed.
