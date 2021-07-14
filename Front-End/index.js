@@ -95,7 +95,7 @@ var dropDownLengths = {
     "navSection": "160px",
     "buildingsSection": "200px",
     "stopSection": "200px",
-    "aboutSection": "200px",
+    "aboutSection": "240px",
     "librariesSection": "200px",
     "feedbackSection": "160px"
 }
@@ -674,3 +674,8 @@ mymap.on('zoomend', function() {
         mymap.setZoom(10);
     }
 });
+
+
+fetch("https://hnavcontent.azurewebsites.net/Nodes.txt")
+.then(res => res.text())
+.then(text => console.log("WORKKKS"));
