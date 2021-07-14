@@ -601,11 +601,11 @@ option {
 
     /* force elements to take up entire space */
     #distance, #eta {
-        flex-basis: 50%;
+        flex-basis: 40%;
     }
 
     .tofrom{
-       flex-basis: calc(50% - 40px);
+       flex-basis: calc(60% - 40px);
     }
 
     /* Order elements correctly*/
