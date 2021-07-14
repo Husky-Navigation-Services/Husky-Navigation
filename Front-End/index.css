@@ -47,7 +47,7 @@
 
 .header {
     margin-left: 40px;
-    margin-top: 15px;
+    margin-top: 10px;
     margin-bottom: 0px;
     color: whitesmoke;
     opacity: 1;
@@ -297,7 +297,9 @@ option {
     height: 3px;
     margin-bottom: 10px;
     transition: 0.5s;
+    flex-shrink: 0;
 }
+
 
 #title-slant {
     margin-left: auto;
@@ -327,6 +329,7 @@ option {
 
 .contributor {
     font-size: 11pt;
+    text-overflow: ellipsis;
 }
 
 .credential {
@@ -648,6 +651,12 @@ option {
     #expand-icon-div {
         display: block;
     }
+  }
+
+  /* Leaflet Circle */
+
+  .circle-transition {
+      transition: all 0s !important;
   }
 
 

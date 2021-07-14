@@ -9,7 +9,8 @@
 //      Geolocation Tools
 //      Navigation Loading Spinner
 //      Populate Dropdowns & Lists
-//      Other
+//      Mobile
+//      Select Map Buildings onclick
 
 ////////////////////
 // Location Data
@@ -119,7 +120,7 @@ var searchItemsContainer = {
 ////////////////////////
 
 // Initializes the map using the Mapbox API and Leaflet.
-var mymap = L.map('map').setView([47.650017, -122.30654], 13);
+var mymap = L.map('map').setView([47.654047, -122.30854], 16);
 L.tileLayer( 'https://api.mapbox.com/styles/v1/aferman/ckhvetwgy0bds19nznkfvodbx/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYWZlcm1hbiIsImEiOiJja2ZrZXJvbjUwZW5wMnhxcjdyMXc3ZjRnIn0.WGdId2uO9XokPaJmaxlLXg', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
     subdomains: ['a','b','c']
@@ -428,7 +429,7 @@ function nav() {
             var path = L.geoJSON(res.pathGeoJSON, style).addTo(mymap);
             geoJSONPaths.push(path);
             endLoading();
-            toggleSideBarMobile();
+            toggleSideBarMobile("off");
     });
 }
 
@@ -630,8 +631,15 @@ function populateList(list, names) {
 //////////////////////////
 
 var isOpen = false;
-function toggleSideBarMobile() {
+// toggle sidebar when sidebar toggle button clicked
+function toggleSideBarMobile(cmd) {
     if (document.documentElement.clientWidth <= 600) {
+        if (cmd == "off") {
+            leftSideBar.style.height = (document.getElementById("titleElements").offsetHeight + 10) + "px";
+            leftSideBar.scrollTop = 0;
+            return;
+        }
+    
         if (isOpen) {
             leftSideBar.style.height = (document.getElementById("titleElements").offsetHeight + 10) + "px";
             leftSideBar.scrollTop = 0;
@@ -642,6 +650,7 @@ function toggleSideBarMobile() {
     }
 }
 resizeElements();
+// Resize left sidebar when window resizes
 function resizeElements() {
     if (document.documentElement.clientWidth > 600) {
         leftSideBar.style.height = "calc(100% - 20px)";
@@ -675,7 +684,72 @@ mymap.on('zoomend', function() {
     }
 });
 
+////////////////////
+// Select Map Buildings onclick
+///////////////////
 
-fetch("https://hnavcontent.azurewebsites.net/Nodes.txt")
-.then(res => res.text())
-.then(text => console.log("WORKKKS"));
+// Onclick Event
+mymap.on('click', handleMapClick)
+
+var startCircle;
+var endCircle;
+function handleMapClick(ev) {
+    const latlng = [ev.latlng.lat, ev.latlng.lng];
+    // create new circle
+    var circle = L.circle(latlng, {radius: 5, className: 'circle-transition'});
+    circle.setStyle(!startCircle || startCircle && endCircle ? {color: "green"} : {color : "red"});
+    // add circle according to # of circles already on map
+    if (!startCircle) { // if 0 circle
+        circle.addTo(mymap);
+        startCircle = circle;
+    } else if (startCircle && !endCircle) { // if 1 circle
+        circle.addTo(mymap);
+        endCircle = circle;
+    } else { // if 2 circle
+        circle = startCircle;
+        endCircle.remove();
+        endCircle = undefined;
+    }
+    // get nearest circle
+    const nearest = findNearestLoc(latlng);
+    // move circle to latlng of nearest location
+    circle.setLatLng(nearest.latlng);
+    // adjust dropdown values
+    if (!endCircle) {
+        startSelection.selectedIndex = nearest.index;
+        startSelection.dispatchEvent(new Event('change'));
+    } else {
+        destSelection.selectedIndex = nearest.index;
+        destSelection.dispatchEvent(new Event('change'));
+        // navigate
+        window.setTimeout(()=>{navBttn.click();}, 100);
+    }
+    
+   
+}
+
+// Find location closest to selected circle
+function findNearestLoc(latlng) {
+    var nearest = {"index": 0, "name": "Red Square", "latlng": buildingLocations["Red Square"]};
+    for(const building in buildingLocations) {
+        const buildingLatlng = buildingLocations[building];
+        if (dist(buildingLatlng, latlng) < dist(nearest.latlng, latlng)) {
+            const buildingIndex = startSelection.innerHTML.split('n>').findIndex(opt => opt.includes(building));
+            nearest = {"index": buildingIndex ,"name": building, "latlng": buildingLatlng}
+        }
+    }
+    console.log(dist(nearest.latlng, latlng));
+    return nearest;
+}
+
+
+
+// calculates euclidean distance between two 2d arrays
+function dist(n, m) {
+    return Math.sqrt(square(n[0] - m[0]) + square(n[1] - m[1]));
+}
+
+// returns squared number
+function square(a) {
+    return a*a;
+}
