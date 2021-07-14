@@ -447,7 +447,7 @@ option {
     margin-left: auto;
     margin-right: auto;
     transform: translate(-50%, 0);
-    background: transparent;
+    
     border: none;
     outline: none;
     user-select: none;
