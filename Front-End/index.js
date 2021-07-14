@@ -696,8 +696,8 @@ var endCircle;
 function handleMapClick(ev) {
     const latlng = [ev.latlng.lat, ev.latlng.lng];
     // create new circle
-    var circle = L.circle(latlng, {radius: 5, className: 'circle-transition'});
-    circle.setStyle(!startCircle || startCircle && endCircle ? {color: "green"} : {color : "red"});
+    var circle = L.circle(latlng, {radius: 15, weight:13, color: 'yellow', opacity: 0.3, fillOpacity: 0, className: 'circle-transition'});
+    circle.setStyle(!startCircle || startCircle && endCircle ? {color: "green"} : {color : "green"});
     // add circle according to # of circles already on map
     if (!startCircle) { // if 0 circle
         circle.addTo(mymap);
@@ -724,8 +724,6 @@ function handleMapClick(ev) {
         // navigate
         window.setTimeout(()=>{navBttn.click();}, 100);
     }
-    
-   
 }
 
 // Find location closest to selected circle
@@ -742,7 +740,21 @@ function findNearestLoc(latlng) {
     return nearest;
 }
 
+// Highlight nearest when hovering
+mymap.on('mousemove', highlightNearest);
 
+var hoverCircles = [];
+function highlightNearest(ev) {
+    console.log("works");
+    hoverCircles.forEach(circ => circ.remove());
+    hoverCircles = [];
+    const latlng = [ev.latlng.lat, ev.latlng.lng];
+    var circle = L.circle(latlng, {radius: 15, weight:10, color: 'yellow', opacity: 0.3, fillOpacity: 0, className: 'circle-transition'}).addTo(mymap);
+    hoverCircles.push(circle);
+    const nearest = findNearestLoc(latlng);
+    circle.setLatLng(nearest.latlng);
+
+}
 
 // calculates euclidean distance between two 2d arrays
 function dist(n, m) {
@@ -753,3 +765,4 @@ function dist(n, m) {
 function square(a) {
     return a*a;
 }
+
