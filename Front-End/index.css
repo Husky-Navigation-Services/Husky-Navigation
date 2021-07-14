@@ -195,7 +195,7 @@ option {
 }
 */
 #navBtn:hover {
-    background-color: #808080 !important;
+    background-color: #808080;
     border-color: #b7a57a;
   
     transition: 0.5s;
@@ -453,6 +453,10 @@ option {
     user-select: none;
 }
 
+.loading:hover, .spinner:hover {
+    background: none !important;
+}
+
 .spinner {
 	display: block;
 	width: 30px;
@@ -514,8 +518,8 @@ option {
         flex: 1;
     }
 
-    .contentSection {
-       
+    #title {
+        font-size: 4.5vw;
     }
     
 
@@ -524,6 +528,7 @@ option {
         flex-direction: row;
         flex-shrink: 0;
         border-radius: 5px;
+       
     }
 
     #title, title-slant, uw-wordmark-container {
@@ -532,15 +537,21 @@ option {
     }
 
     #title-slant {
-        width: 50px;
+        width: 40px;
         transform: skew(0deg, 0) rotate(90deg);
         margin-top: 27px;
+       
     }
 
     #uw-wordmark-container {
         margin: auto;
         margin-right: 30px;
-        
+        width: 25%;
+    }
+
+    #uw-wordmark {
+        width: 100%;
+        height: 100%;
     }
 
     .sidebarRight {
