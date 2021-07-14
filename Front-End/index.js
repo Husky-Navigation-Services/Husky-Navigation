@@ -212,6 +212,10 @@ for (var i = 0; i < searchBars.length; i++) {
     searchBars[i].addEventListener("keyup", handleNewInput);
 }
 
+// Other
+var startCircle;
+var endCircle;
+
 /////////////////////////////
 // Event Listener Callbacks
 /////////////////////////////
@@ -342,6 +346,7 @@ function setViewToLocation() {
 // Sets the start text in the horizontal bar to the caller's text when the caller is changed.
 function updateStart() {
     endLoading();
+    handleMapClick({"latlng": {"lat": buildingLocations[this.value][0],"lng": buildingLocations[this.value][1]}});
     const newLocation = this.value;
     fromElement.style.opacity = 0;
     // Gives css transition time to operate 
@@ -354,6 +359,7 @@ function updateStart() {
 // Sets the end text in the horizontal bar to the caller's text when the caller is changed.
 function updateDest() {
     endLoading();
+    handleMapClick({"latlng": {"lat": buildingLocations[this.value][0],"lng": buildingLocations[this.value][1]}});
     const newLocation = this.value;
     toElement.style.opacity = 0;
     // Gives css transition time to operate
@@ -691,9 +697,8 @@ mymap.on('zoomend', function() {
 // Onclick Event
 mymap.on('click', handleMapClick)
 
-var startCircle;
-var endCircle;
 function handleMapClick(ev) {
+    console.log(ev);
     const latlng = [ev.latlng.lat, ev.latlng.lng];
     // create new circle
     var circle = L.circle(latlng, {radius: 15, weight:13, color: 'yellow', opacity: 0.3, fillOpacity: 0, className: 'circle-transition'});
@@ -714,6 +719,9 @@ function handleMapClick(ev) {
     const nearest = findNearestLoc(latlng);
     // move circle to latlng of nearest location
     circle.setLatLng(nearest.latlng);
+    if(!ev.target) {
+        return;
+    }
     // adjust dropdown values
     if (!endCircle) {
         startSelection.selectedIndex = nearest.index;
