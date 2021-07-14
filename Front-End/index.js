@@ -756,6 +756,14 @@ function highlightNearest(ev) {
 
 }
 
+// Remove hover circles when mouse leaves map
+mymap.on('mouseout', removeHoverCircles);
+
+function removeHoverCircles() {
+    hoverCircles.forEach(circ => circ.remove());
+    hoverCircles = [];
+}
+
 // calculates euclidean distance between two 2d arrays
 function dist(n, m) {
     return Math.sqrt(square(n[0] - m[0]) + square(n[1] - m[1]));
