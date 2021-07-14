@@ -519,8 +519,12 @@ option {
         flex: 1;
     }
 
+    .header {
+        margin-top: 5px;
+    }
+
     #title {
-        font-size: 4.5vw;
+        font-size: 6vw;
     }
     
     #titleElements {
@@ -580,7 +584,6 @@ option {
     #startMarker, #endMarker {
         margin-right: 20px !important;
     }
-
     
     #startMarker {
         margin: -2.5px !important;
@@ -621,8 +624,6 @@ option {
     #eta {
         order: 3;
     }
-
-    
 
     /* Prevent shrinking of uw-slant */
     .uw-slant {
