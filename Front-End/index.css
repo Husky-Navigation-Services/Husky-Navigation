@@ -437,7 +437,7 @@ option {
     background-color: #b7a57a;
     cursor: pointer;
     z-index: 3;
-	
+	transition-duration: 0s !important;
 }
 
 .loading {
