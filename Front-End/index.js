@@ -96,7 +96,7 @@ var dropDownLengths = {
     "navSection": "160px",
     "buildingsSection": "200px",
     "stopSection": "200px",
-    "aboutSection": "240px",
+    "aboutSection": "130px",
     "librariesSection": "200px",
     "feedbackSection": "120px"
 }
