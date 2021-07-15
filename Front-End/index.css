@@ -10,7 +10,7 @@
     height: 100%; 
     width: 100%;
     position: fixed; /* Stay in place */
-    z-index: 1;
+    z-index: 1; 
     top: 0;
     left: 0;
     overflow-x: hidden;
@@ -324,10 +324,15 @@ option {
 #aboutSection {
     margin-left: 40px;
     color: whitesmoke;
+    
+    
 }
 
 .contributor {
     font-size: 11pt;
+    width: 210px;
+    overflow: hidden;
+    white-space:nowrap;
     text-overflow: ellipsis;
 }
 
