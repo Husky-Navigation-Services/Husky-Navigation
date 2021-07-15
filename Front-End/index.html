@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html>
-<head> 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-5175XW1NS8"></script>
     <script>
@@ -60,7 +61,7 @@
                 <div id="navSection" class="inputs contentSection"> 
                     <!-- Select Start -->
                     <div class="inputDiv">
-                        <select name="startingPoints" id="startingPointsId" class="select">
+                        <select aria-label="Starting Point" name="startingPoints" id="startingPointsId" class="select">
                             <!-- Default -->
                             <option value="--Select Starting Point--">--Select Starting Point--</option>
                             <!-- All Locations Grouped by Type -->
@@ -71,7 +72,7 @@
                     <!-- Select End -->
                     <div class="inputDiv">
                         <!--<img class="miniEndMarker" src="MarkerIcon2.png"></img>-->
-                        <select name="destinations" id="destinationsId" class="select">
+                        <select aria-label="Destination" name="destinations" id="destinationsId" class="select">
                             <!-- Default -->
                             <option value="--Select Destination--">--Select Destination--</option>
                             <!-- All Locations Grouped by Type -->
@@ -119,7 +120,7 @@
                 <span class="uw-slant"></span>
                 <div id="feedbackSection" class="contentSection" style="height: 0px;">
                     <!-- Feedback Input -->
-                    <textarea id="feedbackInput" name="Feedback" rows="4" cols="24" placeholder='What can we improve? We truly appreciate your feedback, feel free to leave your email! '></textarea>
+                    <textarea id="feedbackInput" aria-label="Feedback" name="Feedback" rows="4" cols="24" placeholder='What can we improve? We truly appreciate your feedback, feel free to leave your email! '></textarea>
                     <!-- Feedback Submission Button -->
                     <button id="submitFeedback"> Submit </button>
                 </div>
@@ -148,11 +149,11 @@
         <!-- Horizontal Sidebar -->
         <div id="horizontalBarId" class="horizontalBar">
             <!-- Start -->
-            <img id="startMarker" class="marker" src="markerIcons/EmptyRedCircle.png">
+            <img id="startMarker" class="marker" alt="Start Point Icon" src="markerIcons/EmptyRedCircle.png">
             <p id="from" class="tofrom">Select Starting Point</p>
             <div class="horizontalSpacer"></div>
             <!-- End -->
-            <img id="endMarker" class="marker" src="markerIcons/RedMarker.png">
+            <img id="endMarker" class="marker" alt="End Point Icon" src="markerIcons/RedMarker.png">
             <p id="to" class="tofrom">Select Destination</p>
             <!-- Distance -->
             <div class="bar"> &#9474 </div>
@@ -194,8 +195,8 @@
             </div>
             <!-- GitHub Page Icon -->
             <div class="githubIconDiv" title="Visit GitHub Repository">
-                <a href="https://github.com/Husky-Navigation-Services/Husky-Navigation">
-                    <img src="miscIcons/GithubIcon.png" id="githubIcon">
+                <a href="https://github.com/Husky-Navigation-Services/Husky-Navigation" aria-label="Visit GitHub Repository">
+                    <img alt="GitHub Icon" src="miscIcons/GithubIcon.png" id="githubIcon">
                 </a>
             </div>
             <!-- Coffee Cup Icon (Monetized) -->
@@ -210,7 +211,7 @@
             <!-- Color Theme Switcher -->
             <p id="currentMode">Light</p>
             <label id="switch">
-                <input id="themeCheckbox" type="checkbox">
+                <input aria-label="Checkbox" id="themeCheckbox" type="checkbox">
                 <span id="slider"></span>
             </label>
         </div>
