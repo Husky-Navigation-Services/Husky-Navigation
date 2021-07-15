@@ -98,7 +98,7 @@ var dropDownLengths = {
     "stopSection": "200px",
     "aboutSection": "240px",
     "librariesSection": "200px",
-    "feedbackSection": "160px"
+    "feedbackSection": "120px"
 }
 
 // Maps search bar id's to the class of items being searched.
