@@ -646,4 +646,8 @@ option {
   }
 
 
- 
+ /* Terms */
+ #terms {
+     margin: auto;
+     margin-bottom: 15px;
+ }
