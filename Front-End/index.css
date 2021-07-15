@@ -327,15 +327,9 @@ option {
 }
 
 .contributor {
-    font-size: 11pt;
+    font-size: 10.5pt;
+    font-weight: 700;
     text-overflow: ellipsis;
-}
-
-.credential {
-    font-size: 10pt;
-    font-weight: 800;
-    margin-left: 6px;
-    margin-top: -10px;
 }
 
 .contentSection {
