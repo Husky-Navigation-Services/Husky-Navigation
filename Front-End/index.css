@@ -329,6 +329,7 @@ option {
 .contributor {
     font-size: 10.5pt;
     font-weight: 700;
+    margin-top: 5px;
     text-overflow: ellipsis;
 }
 
@@ -410,13 +411,6 @@ option {
     border-color: #b7a57a;
     /* border-color: #b51213; Red Color*/
     transition: 0.5s;
-}
-
-#feedbackText {
-    font-weight: 600;
-    font-family: 'Encode Sans', sans-serif;
-    color: whitesmoke;
-    margin-top: 5px;
 }
 
 .invalid {
