@@ -651,3 +651,8 @@ option {
      margin: auto;
      margin-bottom: 15px;
  }
+
+ /* UW tilelayer */
+ .uw-tilelayer {
+    filter: alpha(opacity=50);
+ }

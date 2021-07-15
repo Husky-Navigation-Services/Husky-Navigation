@@ -125,6 +125,19 @@ L.tileLayer( 'https://api.mapbox.com/styles/v1/aferman/ckhvetwgy0bds19nznkfvodbx
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
     subdomains: ['a','b','c']
 }).addTo( mymap );
+var r = [-122.32296105, 47.64674039, -122.28707804, 47.66318327]
+var w = new L.LatLngBounds(new L.LatLng(r[1],r[0]),new L.LatLng(r[3],r[2]))
+var y, z, A = {
+    minZoom: 10,
+    maxZoom: 20,
+    bounds: w,
+    opacity: 1,
+    attribution: 'Rendered with <a href="http://www.maptiler.com/">MapTiler</a>',
+    tms: !1,
+    className: "uw-tilelayer"
+};
+z = "https://www.washington.edu/maps/wp-content/themes/maps-2014/tiles/retina/{z}/{x}/{y}.png"
+// y = L.tileLayer(z, A).addTo(mymap);
 mymap.zoomControl.setPosition('bottomright');
 var pathGroup = new L.LayerGroup();
 pathGroup.addTo(mymap);
@@ -177,7 +190,7 @@ populateList(librariesContainer, libraryLocations, "library");
 // Adds event listeners.
 logo.addEventListener("click", toggleContent);
 navBttn.addEventListener("click", tryNav);
-locationIcon.addEventListener("click", setViewToUW());
+locationIcon.addEventListener("click", setViewToUW);
 weatherIcon.addEventListener("click", toggleWeatherPopup);
 document.getElementById("submitFeedback").addEventListener("click", sendFeedback);
 document.getElementById("startingPointsId").addEventListener("change", updateStart);
@@ -765,12 +778,12 @@ function handleMapClick(ev) {
 
 function setStartCircle(latlng, removeOld) {
     startCircle && removeOld ? startCircle.remove() : null;
-    startCircle = L.circle(latlng, {radius: 15, weight:13, color: 'green', opacity: 0.3, fillOpacity: 0, className: 'circle-transition'}).addTo(mymap);
+    startCircle = L.circle(latlng, {radius: 15, weight:13, color: 'green', opacity: 0.5, fillOpacity: 0, className: 'circle-transition'}).addTo(mymap);
 }
 
 function setEndCircle(latlng, removeOld) {
     endCircle && removeOld ? endCircle.remove() : null
-    endCircle = L.circle(latlng, {radius: 15, weight:13, color: 'green', opacity: 0.3, fillOpacity: 0, className: 'circle-transition'}).addTo(mymap);
+    endCircle = L.circle(latlng, {radius: 15, weight:13, color: 'green', opacity: 0.5, fillOpacity: 0, className: 'circle-transition'}).addTo(mymap);
 }
 
 function updateDropdown(selection, index, isEnd) {
@@ -804,7 +817,7 @@ function highlightNearest(ev) {
     hoverCircles.forEach(circ => circ.remove());
     hoverCircles = [];
     const latlng = [ev.latlng.lat, ev.latlng.lng];
-    var circle = L.circle(latlng, {radius: 15, weight:10, color: 'yellow', opacity: 0.3, fillOpacity: 0, className: 'circle-transition'}).addTo(mymap);
+    var circle = L.circle(latlng, {radius: 15, weight:10, color: 'yellow', opacity: 0.7, fillOpacity: 0, className: 'circle-transition'}).addTo(mymap);
     hoverCircles.push(circle);
     const nearest = findNearestLoc(latlng);
     circle.setLatLng(nearest.latlng);
