@@ -401,7 +401,7 @@ function tryNav() {
         nav(from, to);
         
     } else {
-       alert("Invalid path. Try again.");
+       alert("Invalid. Try again.");
     }
 }
 
@@ -732,14 +732,21 @@ function handleMapClick(ev) {
             ev.target ? updateDropdown(startSelection, nearest.index, false) : null;
             break;
         case 1:
+            if (nearest.index == startSelection.selectedIndex){
+                alert("Invalid. Try again.");
+                break;
+            }
             setEndCircle(nearest.latlng);
             ev.target ? updateDropdown(destSelection, nearest.index, true) : null;
             break;
         case 2:
+            if (nearest.index == destSelection.selectedIndex || nearest.index == startSelection.selectedIndex){
+                alert("Invalid. Try again.");
+                break;
+            }
             ev.target ? updateDropdown(startSelection, destSelection.selectedIndex, true): null;
             startCircle.remove();
             startCircle = endCircle;
-            
             
             setEndCircle(nearest.latlng);
             ev.target ? updateDropdown(destSelection, nearest.index, true) : null;
