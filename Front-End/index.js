@@ -170,9 +170,9 @@ const destSelection = document.getElementById("destinationsId");
 const contentSections = document.getElementsByClassName("contentSection");
 
 // Load list data
-populateList(buildingContainer, buildingLocations);
-populateList(busStopContainer, busLocations);
-populateList(librariesContainer, libraryLocations);
+populateList(buildingContainer, buildingLocations, "building");
+populateList(busStopContainer, busLocations, "bus-stop");
+populateList(librariesContainer, libraryLocations, "library");
 
 // Adds event listeners.
 logo.addEventListener("click", toggleContent);
@@ -648,9 +648,9 @@ function populateNavOptions(locGroups, selection) {
 }
 
 
-function populateList(list, names) {
+function populateList(list, names, className) {
     for (const name in names) {
-        list.innerHTML += "<p class=\"building location\">" + name + "</p>";
+        list.innerHTML += "<p class=\"" + className + " location\">" + name + "</p>";
     }
 }
 
