@@ -177,7 +177,7 @@ populateList(librariesContainer, libraryLocations, "library");
 // Adds event listeners.
 logo.addEventListener("click", toggleContent);
 navBttn.addEventListener("click", tryNav);
-locationIcon.addEventListener("click", goToCurrentLocation);
+locationIcon.addEventListener("click", setViewToUW());
 weatherIcon.addEventListener("click", toggleWeatherPopup);
 document.getElementById("submitFeedback").addEventListener("click", sendFeedback);
 document.getElementById("startingPointsId").addEventListener("change", updateStart);
@@ -351,9 +351,12 @@ function setViewToLocation() {
 // Sets the start text in the horizontal bar to the caller's text when the caller is changed.
 function updateStart() {
     endLoading();
+    removePath();
+    
     if (drawCircle) {
         setStartCircle(buildingLocations[this.value], true);
     }
+    
     const newLocation = this.value;
     fromElement.style.opacity = 0;
     // Gives css transition time to operate 
@@ -362,18 +365,17 @@ function updateStart() {
         fromElement.style.opacity = 1;
     }, 100);
     drawCircle = true;
-    if (numCircles == 2) {
-        window.setTimeout(()=>{navBttn.click();}, 400);
-    }
-    navIfTwoCircles();
+    // navIfTwoCircles();
 }
 
 // Sets the end text in the horizontal bar to the caller's text when the caller is changed.
 function updateDest() {
     endLoading();
+    removePath();
     if (drawCircle) { // includes the case where it's undefined
         setEndCircle(buildingLocations[this.value], true);
     }
+
     const newLocation = this.value;
     toElement.style.opacity = 0;
     // Gives css transition time to operate
@@ -382,7 +384,14 @@ function updateDest() {
         toElement.style.opacity = 1;
     }, 100);
     drawCircle = true;
-    navIfTwoCircles();
+    // navIfTwoCircles();
+}
+
+function removePath() {
+    if (geoJSONPaths.length > 0) {
+        geoJSONPaths[0].remove();
+        geoJSONPaths.pop();
+    }
 }
 
 function navIfTwoCircles() {
@@ -565,16 +574,8 @@ function scroll(el, holder) {
 // Geolocation Tools
 //////////////////////////
 
-// Gets the current location of the user when the icon is clicked.
-// NOTE: now this sets the view to UW, rather than current location
-function goToCurrentLocation() {
-    /*
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(goToPosition);
-    } else {
-        alert("Geolocation is not supported.");
-    }
-    */
+// Sets the view to UW
+function setViewToUW() {
     mymap.setView([47.654047, -122.30854], 16);
 }
 
