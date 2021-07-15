@@ -164,6 +164,7 @@ var weatherPopupData = document.getElementById("weatherPopupData");
 var feedbackInput = document.getElementById("feedbackInput");
 var titleSlant = document.getElementById("title-slant");
 var wordmark = document.getElementById("uw-wordmark");
+var expandIcon = document.getElementById("expand-icon-div");
 const startSelection = document.getElementById("startingPointsId");
 const destSelection = document.getElementById("destinationsId");
 const contentSections = document.getElementsByClassName("contentSection");
@@ -261,7 +262,8 @@ function toggleTheme() {
         logo.style.width = "70px";
         logo.style.height = "70px";
         logo.style.marginLeft = "0px";
-        logo.style.marginTop = "10px";  
+        logo.style.marginTop = "10px"; 
+        expandIcon.style.background = "#202225"; 
     } else { // Represents light mode.
         horizontalBar.style.backgroundColor = "#4b2e83";
         leftSideBar.style.backgroundColor = "#4b2e83";
@@ -274,6 +276,7 @@ function toggleTheme() {
         logo.style.borderWidth = "5px";
         logo.style.width = "60px";
         logo.style.height = "60px";
+        expandIcon.style.background = "#4b2e83"; 
     }
 }
 
@@ -572,7 +575,7 @@ function goToCurrentLocation() {
         alert("Geolocation is not supported.");
     }
     */
-    mymap.setView([47.650017, -122.30654], 13);
+    mymap.setView([47.654047, -122.30854], 16);
 }
 
 // Goes to the given position on the map and gives alert if outside campus.
