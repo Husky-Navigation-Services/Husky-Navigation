@@ -324,15 +324,10 @@ option {
 #aboutSection {
     margin-left: 40px;
     color: whitesmoke;
-    
-    
 }
 
 .contributor {
     font-size: 11pt;
-    width: 210px;
-    overflow: hidden;
-    white-space:nowrap;
     text-overflow: ellipsis;
 }
 
