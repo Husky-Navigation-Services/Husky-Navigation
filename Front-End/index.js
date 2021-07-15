@@ -734,7 +734,7 @@ function handleMapClick(ev) {
             break;
         case 1:
             if (nearest.index == startSelection.selectedIndex){
-                alert("Invalid. Try again.");
+                // alert("Invalid. Try again.");
                 break;
             }
             setEndCircle(nearest.latlng);
@@ -742,7 +742,7 @@ function handleMapClick(ev) {
             break;
         case 2:
             if (nearest.index == destSelection.selectedIndex || nearest.index == startSelection.selectedIndex){
-                alert("Invalid. Try again.");
+                // alert("Invalid. Try again.");
                 break;
             }
             ev.target ? updateDropdown(startSelection, destSelection.selectedIndex, true): null;
