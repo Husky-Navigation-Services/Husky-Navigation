@@ -388,7 +388,7 @@ function navIfTwoCircles() {
     }
 }
 
-// Attempts navigation when the caller is clicked. If location endpoints are unique and if 
+// Attempts navigation when the caller is clicked. If location endpoints are unique and if
 // neither are set to the default, then it navigates. Otherwise, it creates an alert.
 function tryNav() {
     var from = fromElement.innerHTML;
