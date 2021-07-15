@@ -1,211 +1,245 @@
 <!DOCTYPE html>
 <html>
-<head> 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5175XW1NS8"></script>
-    <script>
+<head>
+  <meta content="width=device-width, initial-scale=1.0, user-scalable=no"
+        name="viewport"><!-- Global site tag (gtag.js) - Google Analytics -->
+
+  <script async
+        src="https://www.googletagmanager.com/gtag/js?id=G-5175XW1NS8"></script>
+  <script>
         window.dataLayer=window.dataLayer || [];
         function gtag() {
             dataLayer.push(arguments);
         }
         gtag('js', new Date());
         gtag('config', 'G-5175XW1NS8');
-    </script>
-    <title>Husky Navigation</title>
-    <!-- For Webpage Icon (appears on browser tab) -->
-    <link rel="icon" href="logos/HuskyNavLogoTransparent.png">
-    <!-- Primary Stylesheets -->
-    <link rel="stylesheet" href="index.css">
-    <link rel="stylesheet" href="secondaryStylesheets/toggleSwitch.css">
-    <link rel="stylesheet" href="secondaryStylesheets/weather.css">
-    <link rel="stylesheet" href="secondaryStylesheets/logo.css">
-    <!-- For LeafletJS Maps -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
-    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
-    crossorigin=""/>
-    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
-    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
-    crossorigin=""></script>
-    <!-- For sending emails via Smtp.JS API -->
-    <script src="https://smtpjs.com/v3/smtp.js"></script>
+  </script>
+  <title>Husky Navigation</title><!-- For Webpage Icon (appears on browser tab) -->
+  <link href="logos/HuskyNavLogoTransparent.png"
+        rel="icon"><!-- Primary Stylesheets -->
+  <link href="index.css"
+        rel="stylesheet">
+  <link href="secondaryStylesheets/toggleSwitch.css"
+        rel="stylesheet">
+  <link href="secondaryStylesheets/weather.css"
+        rel="stylesheet">
+  <link href="secondaryStylesheets/logo.css"
+        rel="stylesheet"><!-- For LeafletJS Maps -->
+  <link crossorigin=""
+        href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+        integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+        rel="stylesheet">
+  <script crossorigin=""
+        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+        src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script><!-- For sending emails via Smtp.JS API -->
+
+  <script src="https://smtpjs.com/v3/smtp.js"></script>
 </head>
- 
 <body>
-    <!-- Map -->
-    <div id="map"></div>
-    
-    <!-- Content -->
-    <div id="content">
-        <!-- Left Sidebar -->
-        <div>
-            <div id="sidebarLeft">
-                <div id="titleElements">
-                    <!-- Title + Slant -->
-                    <h1 id="title">Husky Navigation</h1>
-                    <span id="title-slant" class="uw-slant-large"></span>
-                    <!-- UW Wordmark -->
-                    <div id="uw-wordmark-container">
-                        <a href="https://www.washington.edu">
-                            <img id="uw-wordmark" src="uwWordmarks/UnivWaWordmarkPurple.png" alt="uwWordmarks/UnivWaWordmark.png">
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Nav -->
-                <h6 id="navHeader" class="header">NAVIGATION </h6>
-                <span class="uw-slant"></span>
-
-                <!-- Input Fields -->
-                <div id="navSection" class="inputs contentSection"> 
-                    <!-- Select Start -->
-                    <div class="inputDiv">
-                        <select name="startingPoints" id="startingPointsId" class="select">
-                            <!-- Default -->
-                            <option value="--Select Starting Point--">--Select Starting Point--</option>
-                            <!-- All Locations Grouped by Type -->
-                            <!-- [Dynamically added] -->
-                        </select>
-                    </div>
-
-                    <!-- Select End -->
-                    <div class="inputDiv">
-                        <!--<img class="miniEndMarker" src="MarkerIcon2.png"></img>-->
-                        <select name="destinations" id="destinationsId" class="select">
-                            <!-- Default -->
-                            <option value="--Select Destination--">--Select Destination--</option>
-                            <!-- All Locations Grouped by Type -->
-                            <!-- [Dynamically added] -->
-                        </select>
-                    </div>
-                    <!-- Navigation Button -->
-                    <button id="navBtn" class="navBtn">Navigate</button>
-                </div>
-                
-                <!-- Buildings List -->
-                <h6 id="buildingsHeader" class="header"> BUILDINGS </h6>
-                <span class="uw-slant"></span>
-                <!-- TODO: "height: 0px" attribute is not included in stylesheet since it gets overwritten somehow, leading
+  <!-- Map -->
+  <div id="map"></div><!-- Content -->
+  <div id="content">
+    <!-- Left Sidebar -->
+    <div>
+      <div id="sidebarLeft">
+        <div id="titleElements">
+          <!-- Title + Slant -->
+          <h1 id="title">Husky Navigation</h1><span class="uw-slant-large"
+               id="title-slant"></span> <!-- UW Wordmark -->
+          <div id="uw-wordmark-container">
+            <a href="https://www.washington.edu"><img alt="uwWordmarks/UnivWaWordmark.png"
+                 id="uw-wordmark"
+                 src="uwWordmarks/UnivWaWordmarkPurple.png"></a>
+          </div>
+        </div><!-- Nav -->
+        <h6 class="header"
+            id="navHeader">NAVIGATION</h6><!-- Input Fields -->
+        <div class="inputs contentSection"
+             id="navSection">
+          <!-- Select Start -->
+          <div class="inputDiv">
+            <select class="select"
+                 id="startingPointsId"
+                 name="startingPoints">
+              <!-- Default -->
+              <option value="--Select Starting Point--">
+                --Select Starting Point--
+              </option><!-- All Locations Grouped by Type -->
+              <!-- [Dynamically added] -->
+            </select>
+          </div><!-- Select End -->
+          <div class="inputDiv">
+            <!--<img class="miniEndMarker" src="MarkerIcon2.png"></img>-->
+            <select class="select"
+                 id="destinationsId"
+                 name="destinations">
+              <!-- Default -->
+              <option value="--Select Destination--">
+                --Select Destination--
+              </option><!-- All Locations Grouped by Type -->
+              <!-- [Dynamically added] -->
+            </select>
+          </div><!-- Navigation Button -->
+          <button class="navBtn"
+               id="navBtn">Navigate</button>
+        </div><!-- Buildings List -->
+        <h6 class="header"
+            id="buildingsHeader">BUILDINGS</h6><!-- TODO: "height: 0px" attribute is not included in stylesheet since it gets overwritten somehow, leading
                 to bug where the user must click on a header twice before it functions properly. Fix style. -->
-                <div id="buildingsSection" class="contentSection" style="height: 0px;"> 
-                    <input type="text" class="searchBar" id="buildingsSearch" placeholder="Search for buildings..">
-                    <div id="building-container" class="vertical-menu">
-                        <!-- [Dynamically Added] -->
-                    </div>
-                </div>
-
-                <!-- Libraries List -->
-                <h6 id="librariesHeader" class="header"> LIBRARIES </h6>
-                <span class="uw-slant"></span>
-                <div id="librariesSection" class="contentSection" style="height: 0px;"> 
-                    <input type="text" class="searchBar" id="librariesSearch" placeholder="Search for libraries..">
-                    <div id="library-container" class="vertical-menu">
-                        <!-- [Dynamically Added] -->
-                    </div>
-                </div>
-
-                <!-- Bus Stops List -->
-                <h6 id="stopHeader" class="header"> BUS STOPS </h6>
-                <span class="uw-slant"></span>
-                <div id="stopSection" class="contentSection" style="height: 0px;"> 
-                    <input type="text" class="searchBar" id="busStopSearch" placeholder="Search for bus stops..">
-                    <div id="bus-stop-container" class="vertical-menu">
-                        <!-- [Dynamically Added] -->
-                    </div>
-                </div>
-
-                <!--Feedback-->
-                <h6 id="feedbackHeader" class="header"> FEEDBACK </h6>
-                <span class="uw-slant"></span>
-                <div id="feedbackSection" class="contentSection" style="height: 0px;">
-                    <!-- Feedback Description/Text -->
-                    <p id="feedbackText"> We appreciate feedback! </p>
-                    <!-- Feedback Textarea Input -->
-                    <textarea id="feedbackInput" name="Feedback" rows="4" cols="24"></textarea>
-                    <!-- Feedback Submission Button -->
-                    <button id="submitFeedback"> Submit </button>
-                </div>
-
-                <!--About Us-->
-                <h6 id="aboutHeader" class="header"> ABOUT US </h6>
-                <span class="uw-slant"></span>
-                <div id="aboutSection" class="contentSection" style="height: 0px;">
-                    <p class="contributor" title="Daniel Berezansky | Software Lead"><a style="color: whitesmoke; text-decoration:none;" href="https://www.linkedin.com/in/daniel-berezansky/"><span style="text-decoration: underline;"> Daniel Berezansky</span></a> | Software Lead </p>
-                    <p class="credential"> University of Washington CS '23 </p>
-                    <p class="contributor" title="Amit Ferman | Development Lead"><a style="color: whitesmoke; text-decoration:none;" href="https://www.linkedin.com/in/amit-ferman/"><span style="text-decoration: underline;"> Amit Ferman</span></a> | Development Lead </p>
-                    <p class="credential"> University of Washington CS '24 </p>
-                    <p class="contributor" title="Albert Weng | Content Lead"><a style="color: whitesmoke; text-decoration:none;" href="https://www.linkedin.com/in/albweng/"><span style="text-decoration: underline;"> Albert Weng</span></a> | Content Lead </p>
-                    <p class="credential"> University of Washington CS '24 </p>
-                    <p class="contributor" title="Lawrence Qupty | Development Lead"><a style="color: whitesmoke; text-decoration:none;" href="https://github.com/Lawqup"><span style="text-decoration: underline;"> Lawrence Qupty</span></a> | Devlopment Lead </p>
-                    <p class="credential"> University of Washington CS '23 </p>
-                </div>
-            </div>
-            <div id="expand-icon-div" onclick="toggleSideBarMobile()">
-                <hr class="expand-icon-bar">
-                <hr class="expand-icon-bar">
-                <hr class="expand-icon-bar">
-            </div>
+        <div class="contentSection"
+             id="buildingsSection"
+             style="height: 0px;">
+          <input class="searchBar"
+               id="buildingsSearch"
+               placeholder="Search for buildings.."
+               type="text">
+          <div class="vertical-menu"
+               id="building-container">
+            <!-- [Dynamically Added] -->
+          </div>
+        </div><!-- Libraries List -->
+        <h6 class="header"
+            id="librariesHeader">LIBRARIES</h6>
+        <div class="contentSection"
+             id="librariesSection"
+             style="height: 0px;">
+          <input class="searchBar"
+               id="librariesSearch"
+               placeholder="Search for libraries.."
+               type="text">
+          <div class="vertical-menu"
+               id="library-container">
+            <!-- [Dynamically Added] -->
+          </div>
+        </div><!-- Bus Stops List -->
+        <h6 class="header"
+            id="stopHeader">BUS STOPS</h6>
+        <div class="contentSection"
+             id="stopSection"
+             style="height: 0px;">
+          <input class="searchBar"
+               id="busStopSearch"
+               placeholder="Search for bus stops.."
+               type="text">
+          <div class="vertical-menu"
+               id="bus-stop-container">
+            <!-- [Dynamically Added] -->
+          </div>
+        </div><!--Feedback-->
+        <h6 class="header"
+            id="feedbackHeader">FEEDBACK</h6>
+        <div class="contentSection"
+             id="feedbackSection"
+             style="height: 0px;">
+          <!-- Feedback Description/Text -->
+          <p id="feedbackText">We appreciate feedback!</p><!-- Feedback Textarea Input -->
+          <textarea cols="24"
+               id="feedbackInput"
+               name="Feedback"
+               rows="4"></textarea> <!-- Feedback Submission Button -->
+           <button id="submitFeedback">Submit</button>
+        </div><!--About Us-->
+        <h6 class="header"
+            id="aboutHeader">ABOUT US</h6>
+        <div class="contentSection"
+             id="aboutSection"
+             style="height: 0px;">
+          <p class="contributor"
+             title="Daniel Berezansky | Software Lead"><a href="https://www.linkedin.com/in/daniel-berezansky/"
+             style="color: whitesmoke; text-decoration:none;"><span style="text-decoration: underline;">Daniel Berezansky</span></a> | Software Lead</p>
+          <p class="credential">University of Washington CS '23</p>
+          <p class="contributor"
+             title="Amit Ferman | Development Lead"><a href="https://www.linkedin.com/in/amit-ferman/"
+             style="color: whitesmoke; text-decoration:none;"><span style="text-decoration: underline;">Amit Ferman</span></a> | Development Lead</p>
+          <p class="credential">University of Washington CS '24</p>
+          <p class="contributor"
+             title="Albert Weng | Content Lead"><a href="https://www.linkedin.com/in/albweng/"
+             style="color: whitesmoke; text-decoration:none;"><span style="text-decoration: underline;">Albert Weng</span></a> | Content Lead</p>
+          <p class="credential">University of Washington CS '24</p>
+          <p class="contributor"
+             title="Lawrence Qupty | Development Lead"><a href="https://github.com/Lawqup"
+             style="color: whitesmoke; text-decoration:none;"><span style="text-decoration: underline;">Lawrence Qupty</span></a> | Devlopment Lead</p>
+          <p class="credential">University of Washington CS '23</p>
         </div>
-        <!-- Right Sidebar (in the same row as the main logo) -->
-        <div class="sidebarRight">
-            <img id="logo" src="logos/HuskyNavLogoWhite.png" alt="logos/HuskyNavLogoTransparent.png">
+        <div id="terms">
+          <a href="./Terms-of-Service/"
+               style="color: gainsboro; text-decoration:none;"><span style="text-decoration: underline;">Terms of Service</span></a>
         </div>
-
-        <!-- Horizontal Sidebar -->
-        <div id="horizontalBarId" class="horizontalBar">
-            <!-- Start -->
-            <img id="startMarker" class="marker" src="markerIcons/EmptyRedCircle.png">
-            <p id="from" class="tofrom">Select Starting Point</p>
-            <div class="horizontalSpacer"></div>
-            <!-- End -->
-            <img id="endMarker" class="marker" src="markerIcons/RedMarker.png">
-            <p id="to" class="tofrom">Select Destination</p>
-            <!-- Distance -->
-            <div class="bar"> &#9474 </div>
-            <div id="distance"> Distance: &#8211 &#8211 mi </div>
-            <!-- ETA -->
-            <div class="bar"> &#9474 </div>
-            <div id="eta"> ETA: &#8211 &#8211 min </div>
-            <!-- Theme Switch -->
-            <div class="bar"> &#9474 </div>
-            <!-- Weather Icon and Weather Popup -->
-            <div id="weatherDiv">
-                <!-- Weather Icon -->
-                <img id="weatherIcon" src="miscIcons/TransparentPlaceholderIcon.png" alt="//:0">
-                <!-- Weather Popup (Sky Conditions) -->
-                <!-- TODO: Fix same double-clicking styling issue as above -->
-                <div id="weatherPopup" style="height: 0px;">
-                    <!-- Popup upward arrow -->
-                    <svg viewBox="0 0 20 10" id="arrow">
-                        <polygon points="0, 10, 20, 10, 10, 0"/>
-                    </svg>
-                    <!-- Popup Rectangle -->
-                    <div id="weatherPopupBody">
-                        <!-- Popup Text -->
-                        <div id="weatherPopupText">
-                            <!-- Popup Header -->
-                            <p id="weatherPopupHeader">It's Raining in Seattle Now!</p>
-                            <!-- Popup Data -->
-                            <p id="weatherPopupData"> 45&#176F / 7&#176C <br> 10 <small>MPH</small> Wind</p>
-                            <!--<p id="weatherPopupData1" style="display: inline-block; "> No <br> Rain </p>-->
-                            <!-- Popup Sub-Icon (Need Umbrella or Not?)-->
-                            <img id="weatherIconMini" src="umbrellaIcons/RainIcon.png" alt="//:0">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Location Icon -->
-            <div id="locationIconDiv" title="Return to UW">
-                <img id="locationIcon" src="miscIcons/LocationIcon.png" alt="//:0">
-            </div>
-            <!-- GitHub Page Icon -->
-            <div class="githubIconDiv" title="Visit GitHub Repository">
-                <a href="https://github.com/Husky-Navigation-Services/Husky-Navigation">
-                    <img src="miscIcons/GithubIcon.png" id="githubIcon">
-                </a>
-            </div>
-            <!-- Coffee Cup Icon (Monetized) -->
-            <!--
+      </div>
+      <div id="expand-icon-div"
+           onclick="toggleSideBarMobile()">
+        <hr class="expand-icon-bar">
+        <hr class="expand-icon-bar">
+        <hr class="expand-icon-bar">
+      </div>
+    </div><!-- Right Sidebar (in the same row as the main logo) -->
+    <div class="sidebarRight"><img alt="logos/HuskyNavLogoTransparent.png"
+         id="logo"
+         src="logos/HuskyNavLogoWhite.png"></div><!-- Horizontal Sidebar -->
+    <div class="horizontalBar"
+         id="horizontalBarId">
+      <!-- Start -->
+      <img class="marker"
+           id="startMarker"
+           src="markerIcons/EmptyRedCircle.png">
+      <p class="tofrom"
+         id="from">Select Starting Point</p>
+      <div class="horizontalSpacer"></div><!-- End -->
+      <img class="marker"
+           id="endMarker"
+           src="markerIcons/RedMarker.png">
+      <p class="tofrom"
+         id="to">Select Destination</p><!-- Distance -->
+      <div class="bar">
+        &#9474
+      </div>
+      <div id="distance">
+        Distance: &#8211 &#8211 mi
+      </div><!-- ETA -->
+      <div class="bar">
+        &#9474
+      </div>
+      <div id="eta">
+        ETA: &#8211 &#8211 min
+      </div><!-- Theme Switch -->
+      <div class="bar">
+        &#9474
+      </div><!-- Weather Icon and Weather Popup -->
+      <div id="weatherDiv">
+        <!-- Weather Icon -->
+        <img alt="//:0"
+             id="weatherIcon"
+             src="miscIcons/TransparentPlaceholderIcon.png"> <!-- Weather Popup (Sky Conditions) -->
+         <!-- TODO: Fix same double-clicking styling issue as above -->
+        <div id="weatherPopup"
+             style="height: 0px;">
+          <!-- Popup upward arrow -->
+          <svg id="arrow"
+               viewbox="0 0 20 10">
+          <polygon points="0, 10, 20, 10, 10, 0"></polygon></svg> <!-- Popup Rectangle -->
+          <div id="weatherPopupBody">
+            <!-- Popup Text -->
+            <div id="weatherPopupText"><!-- Popup Header -->
+            <p id="weatherPopupHeader">It's Raining in Seattle Now!</p><!-- Popup Data -->
+            <p id="weatherPopupData">45&#176;F / 7&#176;C<br>
+            10 <small>MPH</small> Wind</p><!--<p id="weatherPopupData1" style="display: inline-block; "> No <br> Rain </p>-->
+            <!-- Popup Sub-Icon (Need Umbrella or Not?)-->
+            <img alt="//:0"
+                 id="weatherIconMini"
+                 src="umbrellaIcons/RainIcon.png"></div>
+          </div>
+        </div>
+      </div><!-- Location Icon -->
+      <div id="locationIconDiv"
+           title="Return to UW"><img alt="//:0"
+           id="locationIcon"
+           src="miscIcons/LocationIcon.png"></div><!-- GitHub Page Icon -->
+      <div class="githubIconDiv"
+           title="Visit GitHub Repository">
+        <a href="https://github.com/Husky-Navigation-Services/Husky-Navigation"><img id="githubIcon"
+             src="miscIcons/GithubIcon.png"></a>
+      </div><!-- Coffee Cup Icon (Monetized) -->
+      <!--
             <div id="coffeeIconDiv">
             \\ Alternative link: https://www.paypal.com/paypalme/AmitFerman
                 <a href="buymeacoffee.com/huskynavigation">
@@ -213,15 +247,11 @@
                 </a>
             </div>
             -->
-            <!-- Color Theme Switcher -->
-            <p id="currentMode">Light</p>
-            <label id="switch">
-                <input id="themeCheckbox" type="checkbox">
-                <span id="slider"></span>
-            </label>
-        </div>
+      <!-- Color Theme Switcher -->
+      <p id="currentMode">Light</p><label id="switch"><input id="themeCheckbox"
+             type="checkbox"> <span id="slider"></span></label>
     </div>
-    <!-- Load primary JavaScript source code -->
-    <script src="index.js"></script>
+  </div><!-- Load primary JavaScript source code -->
+  <script src="index.js"></script>
 </body>
 </html>
