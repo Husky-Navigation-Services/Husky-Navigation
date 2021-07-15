@@ -47,14 +47,13 @@
 
 .header {
     margin-left: 40px;
-    margin-top: 10px;
+    margin-top: 5px;
     margin-bottom: 0px;
     color: whitesmoke;
     opacity: 1;
     font-size: 12pt;
     cursor: pointer;
     padding: 5px 5px 2px 2px;
-
 }
 
 .header:hover {
