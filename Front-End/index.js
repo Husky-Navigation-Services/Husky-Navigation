@@ -698,38 +698,50 @@ mymap.on('zoomend', function() {
 mymap.on('click', handleMapClick)
 
 function handleMapClick(ev) {
-    console.log(ev);
     const latlng = [ev.latlng.lat, ev.latlng.lng];
-    // create new circle
-    var circle = L.circle(latlng, {radius: 15, weight:13, color: 'yellow', opacity: 0.3, fillOpacity: 0, className: 'circle-transition'});
-    circle.setStyle(!startCircle || startCircle && endCircle ? {color: "green"} : {color : "green"});
-    // add circle according to # of circles already on map
-    if (!startCircle) { // if 0 circle
-        circle.addTo(mymap);
-        startCircle = circle;
-    } else if (startCircle && !endCircle) { // if 1 circle
-        circle.addTo(mymap);
-        endCircle = circle;
-    } else { // if 2 circle
-        circle = startCircle;
-        endCircle.remove();
-        endCircle = undefined;
-    }
-    // get nearest circle
     const nearest = findNearestLoc(latlng);
-    // move circle to latlng of nearest location
-    circle.setLatLng(nearest.latlng);
-    if(!ev.target) {
-        return;
+    var numCircles = 0;
+    startCircle ? numCircles+=1 : numCircles+=0;
+    endCircle ? numCircles+=1 : numCircles+=0;
+    console.log(numCircles);
+    switch(numCircles) {
+        case 0:
+            setStartCircle(nearest.latlng);
+            break;
+        case 1:
+            setEndCircle(nearest.latlng);
+            break;
+        case 2:
+            startCircle.remove();
+            setStartCircle(nearest.latlng);
+            // startCircle.remove();
+            // startCircle = endCircle;
+            // setEndCircle(nearest.latlng);
+            break;
     }
-    // adjust dropdown values
-    if (!endCircle) {
-        startSelection.selectedIndex = nearest.index;
-        startSelection.dispatchEvent(new Event('change'));
-    } else {
-        destSelection.selectedIndex = nearest.index;
-        destSelection.dispatchEvent(new Event('change'));
-        // navigate
+
+    
+    if(ev.target) {
+        if (!endCircle) {
+            updateDropdown(startSelection, nearest.index, false);
+        } else {
+            updateDropdown(destSelection, nearest.index, true);
+        }
+    }
+}
+
+function setStartCircle(latlng) {
+    startCircle = L.circle(latlng, {radius: 15, weight:13, color: 'green', opacity: 0.3, fillOpacity: 0, className: 'circle-transition'}).addTo(mymap);
+}
+
+function setEndCircle(latlng) {
+    endCircle = L.circle(latlng, {radius: 15, weight:13, color: 'green', opacity: 0.3, fillOpacity: 0, className: 'circle-transition'}).addTo(mymap);
+}
+
+function updateDropdown(selection, index, isEnd) {
+    selection.selectedIndex = index;
+    selection.dispatchEvent(new Event('change'));
+    if (isEnd) {
         window.setTimeout(()=>{navBttn.click();}, 100);
     }
 }
@@ -744,7 +756,7 @@ function findNearestLoc(latlng) {
             nearest = {"index": buildingIndex ,"name": building, "latlng": buildingLatlng}
         }
     }
-    console.log(dist(nearest.latlng, latlng));
+   
     return nearest;
 }
 
@@ -753,7 +765,6 @@ mymap.on('mousemove', highlightNearest);
 
 var hoverCircles = [];
 function highlightNearest(ev) {
-    console.log("works");
     hoverCircles.forEach(circ => circ.remove());
     hoverCircles = [];
     const latlng = [ev.latlng.lat, ev.latlng.lng];
