@@ -349,7 +349,7 @@ function setViewToLocation() {
 function updateStart() {
     endLoading();
     if (drawCircle) {
-        setStartCircle(buildingLocations[this.value]);
+        setStartCircle(buildingLocations[this.value], true);
     }
     const newLocation = this.value;
     fromElement.style.opacity = 0;
@@ -368,8 +368,8 @@ function updateStart() {
 // Sets the end text in the horizontal bar to the caller's text when the caller is changed.
 function updateDest() {
     endLoading();
-    if (drawCircle != false) { // includes the case where it's undefined
-        setEndCircle(buildingLocations[this.value]);
+    if (drawCircle) { // includes the case where it's undefined
+        setEndCircle(buildingLocations[this.value], true);
     }
     const newLocation = this.value;
     toElement.style.opacity = 0;
@@ -749,16 +749,16 @@ function handleMapClick(ev) {
     
 
 
-    window.setTimeout(()=>{}, 400);
+    ;
 }
 
-function setStartCircle(latlng) {
-    console.log("set start");
+function setStartCircle(latlng, removeOld) {
+    startCircle && removeOld ? startCircle.remove() : null;
     startCircle = L.circle(latlng, {radius: 15, weight:13, color: 'green', opacity: 0.3, fillOpacity: 0, className: 'circle-transition'}).addTo(mymap);
 }
 
-function setEndCircle(latlng) {
-    console.log("set end");
+function setEndCircle(latlng, removeOld) {
+    endCircle && removeOld ? endCircle.remove() : null
     endCircle = L.circle(latlng, {radius: 15, weight:13, color: 'green', opacity: 0.3, fillOpacity: 0, className: 'circle-transition'}).addTo(mymap);
 }
 
