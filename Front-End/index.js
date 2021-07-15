@@ -215,6 +215,8 @@ for (var i = 0; i < searchBars.length; i++) {
 // Other
 var startCircle;
 var endCircle;
+var drawCircle = true;
+var numCircles = 0;
 
 /////////////////////////////
 // Event Listener Callbacks
@@ -346,7 +348,9 @@ function setViewToLocation() {
 // Sets the start text in the horizontal bar to the caller's text when the caller is changed.
 function updateStart() {
     endLoading();
-    handleMapClick({"latlng": {"lat": buildingLocations[this.value][0],"lng": buildingLocations[this.value][1]}});
+    if (drawCircle) {
+        setStartCircle(buildingLocations[this.value]);
+    }
     const newLocation = this.value;
     fromElement.style.opacity = 0;
     // Gives css transition time to operate 
@@ -354,12 +358,19 @@ function updateStart() {
         fromElement.innerHTML = newLocation;
         fromElement.style.opacity = 1;
     }, 100);
+    drawCircle = true;
+    if (numCircles == 2) {
+        window.setTimeout(()=>{navBttn.click();}, 400);
+    }
+    navIfTwoCircles();
 }
 
 // Sets the end text in the horizontal bar to the caller's text when the caller is changed.
 function updateDest() {
     endLoading();
-    handleMapClick({"latlng": {"lat": buildingLocations[this.value][0],"lng": buildingLocations[this.value][1]}});
+    if (drawCircle != false) { // includes the case where it's undefined
+        setEndCircle(buildingLocations[this.value]);
+    }
     const newLocation = this.value;
     toElement.style.opacity = 0;
     // Gives css transition time to operate
@@ -367,6 +378,14 @@ function updateDest() {
         toElement.innerHTML = newLocation;
         toElement.style.opacity = 1;
     }, 100);
+    drawCircle = true;
+    navIfTwoCircles();
+}
+
+function navIfTwoCircles() {
+    if (numCircles == 2) {
+        window.setTimeout(()=>{navBttn.click();}, 400);
+    }
 }
 
 // Attempts navigation when the caller is clicked. If location endpoints are unique and if 
@@ -700,20 +719,27 @@ mymap.on('click', handleMapClick)
 function handleMapClick(ev) {
     const latlng = [ev.latlng.lat, ev.latlng.lng];
     const nearest = findNearestLoc(latlng);
-    var numCircles = 0;
+    numCircles = 0;
     startCircle ? numCircles+=1 : numCircles+=0;
     endCircle ? numCircles+=1 : numCircles+=0;
     console.log(numCircles);
     switch(numCircles) {
         case 0:
             setStartCircle(nearest.latlng);
+            ev.target ? updateDropdown(startSelection, nearest.index, false) : null;
             break;
         case 1:
             setEndCircle(nearest.latlng);
+            ev.target ? updateDropdown(destSelection, nearest.index, true) : null;
             break;
         case 2:
+            ev.target ? updateDropdown(startSelection, destSelection.selectedIndex, true): null;
             startCircle.remove();
-            setStartCircle(nearest.latlng);
+            startCircle = endCircle;
+            
+            
+            setEndCircle(nearest.latlng);
+            ev.target ? updateDropdown(destSelection, nearest.index, true) : null;
             // startCircle.remove();
             // startCircle = endCircle;
             // setEndCircle(nearest.latlng);
@@ -721,28 +747,27 @@ function handleMapClick(ev) {
     }
 
     
-    if(ev.target) {
-        if (!endCircle) {
-            updateDropdown(startSelection, nearest.index, false);
-        } else {
-            updateDropdown(destSelection, nearest.index, true);
-        }
-    }
+
+
+    window.setTimeout(()=>{}, 400);
 }
 
 function setStartCircle(latlng) {
+    console.log("set start");
     startCircle = L.circle(latlng, {radius: 15, weight:13, color: 'green', opacity: 0.3, fillOpacity: 0, className: 'circle-transition'}).addTo(mymap);
 }
 
 function setEndCircle(latlng) {
+    console.log("set end");
     endCircle = L.circle(latlng, {radius: 15, weight:13, color: 'green', opacity: 0.3, fillOpacity: 0, className: 'circle-transition'}).addTo(mymap);
 }
 
 function updateDropdown(selection, index, isEnd) {
     selection.selectedIndex = index;
+    drawCircle = false;
     selection.dispatchEvent(new Event('change'));
     if (isEnd) {
-        window.setTimeout(()=>{navBttn.click();}, 100);
+        window.setTimeout(()=>{navBttn.click();}, 400);
     }
 }
 
@@ -772,7 +797,6 @@ function highlightNearest(ev) {
     hoverCircles.push(circle);
     const nearest = findNearestLoc(latlng);
     circle.setLatLng(nearest.latlng);
-
 }
 
 // Remove hover circles when mouse leaves map
