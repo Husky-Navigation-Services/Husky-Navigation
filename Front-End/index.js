@@ -472,7 +472,7 @@ function nav() {
 
 // Sets the map view to contain the given latitude and longitude endpoints.
 function setNavView(coord1, coord2) {
-    mymap.fitBounds([coord1, coord2]);
+    mymap.flyToBounds([coord1, coord2], {maxZoom: 17});
 }
 
 ////////////////////////
