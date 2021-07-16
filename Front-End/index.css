@@ -649,7 +649,10 @@ option {
  /* Terms */
  #terms {
      margin: auto;
-     margin-bottom: 15px;
+     font-size: 11pt;
+     font-weight: 600;
+     margin-left: 30px;
+     margin-bottom: 10px;
  }
 
  /* UW tilelayer */
