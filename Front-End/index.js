@@ -1,6 +1,7 @@
 // Contents:
 //      Location Data
 //      Map Initialization
+//      Initialize Location Data
 //      Event Listeners
 //      Event Listener Callbacks
 //      Navigation
@@ -46,7 +47,7 @@ var busLocations = {
     "NE Pacific St and 15th Ave NE": [47.652351, -122.311089]
 }
 
-var locationsMap = Object.assign({}, buildingLocations, libraryLocations, busLocations);
+var locationsMap;
 
 // Stores the building/library/bus-stop marker currently on the map.
 var mapMarkers = [];
@@ -107,6 +108,26 @@ z = "https://www.washington.edu/maps/wp-content/themes/maps-2014/tiles/retina/{z
 mymap.zoomControl.setPosition('bottomright');
 var pathGroup = new L.LayerGroup();
 pathGroup.addTo(mymap);
+
+/////////////////////
+// Initialize Location Data
+/////////////////////
+fetch('https://hnavcontent.azurewebsites.net/nodes.txt')
+.then(res => res.text())
+.then(data=>{
+    parseBuildingNodes(data);
+    // Display list data
+    populateList(buildingContainer, buildingLocations, "building");
+    populateList(busStopContainer, busLocations, "bus-stop");
+    populateList(librariesContainer, libraryLocations, "library");
+    // Display nav option data
+    populateNavOptions([buildingLocations, libraryLocations, busLocations], startSelection);
+    populateNavOptions([buildingLocations, libraryLocations, busLocations], destSelection);
+    // Highlight nearest when hovering
+    mymap.on('mousemove', highlightNearest);
+    
+    locationsMap = Object.assign({}, buildingLocations, libraryLocations, busLocations);
+});
 
 /////////////////////
 // Event Listeners
@@ -186,18 +207,6 @@ for (var i = 0; i < locationElements.length; i++) {
 for (var i = 0; i < searchBars.length; i++) {
     searchBars[i].addEventListener("keyup", handleNewInput);
 }
-
-// Load list data
-populateList(buildingContainer, buildingLocations, "building");
-populateList(busStopContainer, busLocations, "bus-stop");
-populateList(librariesContainer, libraryLocations, "library");
-
-//parse nodes
-fetch('https://hnavcontent.azurewebsites.net/nodes.txt')
-    .then(response => response.text())
-    .then(txt => {
-        parseBuildingNodes(txt);
-    });
 
 // Other
 var startCircle;
@@ -458,6 +467,8 @@ function nav() {
 
 // Sets the map view to contain the given latitude and longitude endpoints.
 function setNavView(coord1, coord2) {
+    console.log(coord1);
+    console.log(coord2);
     mymap.flyToBounds([coord1, coord2], {maxZoom: 17});
 }
 
@@ -593,7 +604,6 @@ function goToPosition(position) {
 //////////////////////////
 // Navigation Loading
 //////////////////////////
-
 const spinner = '<span class="spinner"></span>';
 /*
 function toggleLoading() {
@@ -622,8 +632,6 @@ function endLoading() {
 ////////////////////
 // Populate Dropdowns & Lists
 ///////////////////
-populateNavOptions([buildingLocations, libraryLocations, busLocations], startSelection);
-populateNavOptions([buildingLocations, libraryLocations, busLocations], destSelection);
 function populateNavOptions(locGroups, selection) {
     const labelMap = ["Buildings", "Libraries", "Bus Stops"];
     locGroups.forEach( (group, i) => {
@@ -742,11 +750,6 @@ function handleMapClick(ev) {
             // setEndCircle(nearest.latlng);
             break;
     }
-
-    
-
-
-    ;
 }
 
 function setStartCircle(latlng, removeOld) {
@@ -770,20 +773,17 @@ function updateDropdown(selection, index, isEnd) {
 
 // Find location closest to selected circle
 function findNearestLoc(latlng) {
-    var nearest = {"index": 0, "name": "Red Square", "latlng": buildingLocations["Red Square"]};
+    var nearest = {"index": 0, "name": "Red Square", "latlng": buildingLocations["Planetarium"]};
     for(const building in buildingLocations) {
+  
         const buildingLatlng = buildingLocations[building];
         if (dist(buildingLatlng, latlng) < dist(nearest.latlng, latlng)) {
             const buildingIndex = startSelection.innerHTML.split('n>').findIndex(opt => opt.includes(building));
             nearest = {"index": buildingIndex ,"name": building, "latlng": buildingLatlng}
         }
     }
-   
     return nearest;
 }
-
-// Highlight nearest when hovering
-mymap.on('mousemove', highlightNearest);
 
 var hoverCircles = [];
 function highlightNearest(ev) {
