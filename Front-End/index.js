@@ -19,41 +19,7 @@
 // TODO: Populate buildingLocations, libraryLocations, busLocations dynamically from Nodes.txt
 
 // Maps locations to their latitude and longitude coordinates.
-var buildingLocations = {
-    "Red Square": [47.65584980498794, -122.30949825416076],
-    "Grieg Garden": [47.656201081851385, -122.30659040317289],
-    "HUB Yard": [47.65592643429362, -122.30609494049766],
-    "Architecture Hall": [47.65458694342144, -122.31084310874614],
-    "Guthrie Hall": [47.65399764506977, -122.31083615322409],
-    "Chemistry Library Building": [47.653731062575304, -122.310051571756],
-    "Chemistry Building": [47.65296868931889, -122.30843381313426],
-    "Benson Hall": [47.653048206961266, -122.3096002665617],
-    "Electrical And Computer Engineering Building": [47.6535972288713, -122.30637550325774],
-    "Husky Union Building": [47.655283783151624, -122.30516350511866],
-    "Hall Health": [47.656158391539535, -122.30427475275344],
-    "Mechanical Engineering Building": [47.65364686161925, -122.30472610489173],
-    "CSE 1": [47.653305444097526, -122.30585785124353],
-    "CSE 2": [47.653004095219195, -122.30492318177295],
-    "More Hall": [47.65253605375579, -122.30491610286617],
-    "Mueller Hall": [47.65201433361888, -122.3050952261274],
-    "Wilcox Hall": [47.651847517804114, -122.30454729355858],
-    "Wilson Annex": [47.651393239293384, -122.3051953431917],
-    "Physics Astronomy Auditorium": [47.65359750746842, -122.31136042970951],
-    "Planetarium": [47.65292532304343, -122.31109810478416],
-    "Dept of Biology": [47.65264120124092, -122.31062231547371],
-    "Kirsten Wind Tunnel": [47.65438893908237, -122.30599030312719],
-    "Winkenwerder Forest Sciences Laboratory": [47.65140751264051, -122.30684546371367],
-    "Bagley Hall": [47.65353, -122.30879],
-    "Guggenheim Hall": [47.65424, -122.30644],
-    "Guggenheim Annex": [47.65463696322391, -122.30645798451044],
-    "Gowen Hall": [47.656414394121924, -122.3078418940589],
-    "Sieg Hall": [47.6548927921735, -122.30647925125312],
-    "Johnson Hall": [47.65464740610828, -122.30890915209709],
-    "Gerberding Hall": [47.65531970084914, -122.30935166970617],
-    "Mary Gates Hall": [47.65487923837424, -122.30787575101562],
-    "Kane Hall": [47.65662775950031, -122.30915002044803],
-    "Meany Hall": [47.65557303847933, -122.31044083467523]
-}
+var buildingLocations = {}
 
 var libraryLocations = {
     "Suzzallo Library": [47.65578389645157, -122.30815422653524],
@@ -182,11 +148,6 @@ const startSelection = document.getElementById("startingPointsId");
 const destSelection = document.getElementById("destinationsId");
 const contentSections = document.getElementsByClassName("contentSection");
 
-// Load list data
-populateList(buildingContainer, buildingLocations, "building");
-populateList(busStopContainer, busLocations, "bus-stop");
-populateList(librariesContainer, libraryLocations, "library");
-
 // Adds event listeners.
 logo.addEventListener("click", toggleContent);
 navBttn.addEventListener("click", tryNav);
@@ -225,6 +186,18 @@ for (var i = 0; i < locationElements.length; i++) {
 for (var i = 0; i < searchBars.length; i++) {
     searchBars[i].addEventListener("keyup", handleNewInput);
 }
+
+// Load list data
+populateList(buildingContainer, buildingLocations, "building");
+populateList(busStopContainer, busLocations, "bus-stop");
+populateList(librariesContainer, libraryLocations, "library");
+
+//parse nodes
+fetch('https://hnavcontent.azurewebsites.net/nodes.txt')
+    .then(response => response.text())
+    .then(txt => {
+        parseBuildingNodes(txt);
+    });
 
 // Other
 var startCircle;
@@ -841,3 +814,44 @@ function square(a) {
     return a*a;
 }
 
+function parseBuildingNodes(nodesTxt) {
+
+    //splits code into lines
+    var lines = nodesTxt.replaceAll("\r\n", ",").split(",");
+
+
+    //finds the number of unique nodes
+    var nodeCount = parseInt(lines[0]);
+
+    for(i = 1; i <= nodeCount; i++) {
+        
+        var elements  = lines[i].split(" ");
+
+        var name = elements[3];
+
+        //formats node names correctly
+        //e.g. "MeanyHall" -> "Meany Hall" 
+        var spacePositions = [];
+        var offset = 0;
+        for(j = 0; j < name.length; j++) {
+
+            var c = name.charAt(j);
+
+            //somehow finds correct spots for spaces
+            if(j > 0 && c == c.toUpperCase() && !parseInt(c) && c != '0' &&
+                name.charAt(j + 1) != name.charAt(j + 1).toUpperCase()) {
+                spacePositions.push(j + offset);
+                offset++;
+            }
+        }
+
+        //update without concurrent modification
+        spacePositions.forEach(pos => {
+            name = name.substring(0, pos) + " " + name.substring(pos);
+        });
+
+        if(name.charAt(0) != 'R' && name.charAt(0) != 'N' && !libraryLocations[name]) {
+            buildingLocations[name] = [elements[1], elements[2]];
+        }
+    }
+}
