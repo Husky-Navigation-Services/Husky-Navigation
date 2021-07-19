@@ -112,7 +112,7 @@ pathGroup.addTo(mymap);
 /////////////////////
 // Initialize Location Data
 /////////////////////
-fetch('https://hnavcontent.azurewebsites.net/nodes.txt')
+fetch('https://hnavcontent.azurewebsites.net/PublishedNodes.txt')
 .then(res => res.text())
 .then(data=>{
     parseBuildingNodes(data);
