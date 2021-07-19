@@ -663,9 +663,9 @@ option {
  /* Dev Resources */
  #dev-resources {
     position: fixed;
-    right: -85px;
+    right: -70px;
     top: 50%;
-    width: 200px;
+    width: 170px;
     height: 30px;
     transform: rotate(90deg);
     background-color: #4b2e83;
