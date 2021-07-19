@@ -263,6 +263,7 @@ function toggleTheme() {
         logo.style.marginLeft = "0px";
         logo.style.marginTop = "10px"; 
         expandIcon.style.background = "#202225"; 
+        devResources.style.background = "#202225";
     } else { // Represents light mode.
         horizontalBar.style.backgroundColor = "#4b2e83";
         leftSideBar.style.backgroundColor = "#4b2e83";
@@ -276,6 +277,7 @@ function toggleTheme() {
         logo.style.width = "60px";
         logo.style.height = "60px";
         expandIcon.style.background = "#4b2e83"; 
+        devResources.style.background = "#4b2e83";
     }
 }
 
@@ -685,8 +687,10 @@ resizeElements();
 function resizeElements() {
     if (document.documentElement.clientWidth > 600) {
         leftSideBar.style.height = "calc(100% - 20px)";
+        devResources.style.display = "inline-block";
     } else {
         leftSideBar.style.height =  (document.getElementById("titleElements").offsetHeight + 10) + "px";
+        devResources.style.display = "none";
     }
 }
 
