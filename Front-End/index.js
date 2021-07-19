@@ -12,6 +12,7 @@
 //      Populate Dropdowns & Lists
 //      Mobile
 //      Select Map Buildings onclick
+//      Other
 
 ////////////////////
 // Location Data
@@ -117,7 +118,7 @@ pathGroup.addTo(mymap);
 fetch('https://hnavcontent.azurewebsites.net/PublishedNodes.txt')
 .then(res => res.text())
 .then(data=>{
-    parseBuildingNodes(data);
+    parseNodes(data);
     // Display list data
     populateList(buildingContainer, buildingLocations, "building");
     populateList(busStopContainer, busLocations, "bus-stop");
@@ -127,9 +128,11 @@ fetch('https://hnavcontent.azurewebsites.net/PublishedNodes.txt')
     populateNavOptions([buildingLocations, libraryLocations, busLocations], destSelection);
     // Highlight nearest when hovering
     mymap.on('mousemove', highlightNearest);
-    
+    // Initialize Data
     locationsMap = Object.assign({}, buildingLocations, libraryLocations, busLocations);
     navigableLocations = Object.assign({}, buildingLocations, libraryLocations);
+    // Add event listeners to location list items
+    addListenersToLists();
 });
 
 /////////////////////
@@ -137,11 +140,11 @@ fetch('https://hnavcontent.azurewebsites.net/PublishedNodes.txt')
 /////////////////////
 
 // Gets DOM elements.
+var locationElements
 var fromElement = document.getElementById("from");
 var toElement = document.getElementById("to");
 var distanceElement = document.getElementById("distance");
 var etaElement = document.getElementById("eta");
-var locationElements = document.getElementsByClassName("location");
 var buildingElements = document.getElementsByClassName("building");
 var busStopElements = document.getElementsByClassName("bus-stop");
 var selectElements = document.getElementsByClassName("select");
@@ -203,11 +206,6 @@ document.getElementById("librariesHeader").addEventListener("click", () => {
 document.getElementById("feedbackHeader").addEventListener("click", () => {
     toggleDropdown(document.getElementById("feedbackSection"));
 });
-
-// Adds event listeners to each location element.
-for (var i = 0; i < locationElements.length; i++) {
-    locationElements[i].addEventListener('click', setViewToLocation);
-}
 
 // Adds event listeners to each search bar.
 for (var i = 0; i < searchBars.length; i++) {
@@ -823,7 +821,7 @@ function square(a) {
     return a*a;
 }
 
-function parseBuildingNodes(nodesTxt) {
+function parseNodes(nodesTxt) {
 
     //splits code into lines
     var lines = nodesTxt.replaceAll("\r\n", ",").split(",");
@@ -869,5 +867,17 @@ function parseBuildingNodes(nodesTxt) {
         if(isBuilding) {
             buildingLocations[name] = [elements[1], elements[2]];
         }
+    }
+}
+
+//////////////
+// Other
+//////////////
+
+// Adds event listeners to each location element.
+function addListenersToLists() {
+    locationElements = document.getElementsByClassName("location");
+    for (var i = 0; i < locationElements.length; i++) {
+        locationElements[i].addEventListener('click', setViewToLocation);
     }
 }
