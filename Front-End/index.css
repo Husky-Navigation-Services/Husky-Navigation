@@ -659,3 +659,46 @@ option {
  .uw-tilelayer {
     filter: alpha(opacity=50);
  }
+
+ /* Dev Resources */
+ #dev-resources {
+    position: fixed;
+    right: -85px;
+    top: 50%;
+    width: 200px;
+    height: 30px;
+    transform: rotate(90deg);
+    background-color: #4b2e83;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    z-index: 3;
+    color: white;
+    font-family: 'Encode Sans', sans-serif;
+    text-align: center;
+    display: inline-block;
+    padding: 0px;
+    transition: 0.2s;
+ }
+
+ #close-dev-x { 
+    display: inline-block;
+    color: grey;
+    font-size: 33px;
+    height: 20px;
+    width: 20px;
+    line-height: 25px;
+    vertical-align: middle;
+    transform: rotate(45deg);
+    margin-left: 10px;
+    cursor: pointer;
+ }
+
+ #dev-resources-text {
+    margin: 0px;
+    line-height: 25px;
+    vertical-align: middle;
+    height: 30px;
+    color: white;
+    text-decoration: none;
+
+ }

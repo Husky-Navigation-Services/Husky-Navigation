@@ -168,12 +168,15 @@ var expandIcon = document.getElementById("expand-icon-div");
 const startSelection = document.getElementById("startingPointsId");
 const destSelection = document.getElementById("destinationsId");
 const contentSections = document.getElementsByClassName("contentSection");
+const closeDevX = document.getElementById("close-dev-x");
+const devResources = document.getElementById("dev-resources");
 
 // Adds event listeners.
 logo.addEventListener("click", toggleContent);
 navBttn.addEventListener("click", tryNav);
 locationIcon.addEventListener("click", setViewToUW);
 weatherIcon.addEventListener("click", toggleWeatherPopup);
+closeDevX.addEventListener("click", closeDevResources);
 document.getElementById("submitFeedback").addEventListener("click", sendFeedback);
 document.getElementById("startingPointsId").addEventListener("change", updateStart);
 document.getElementById("destinationsId").addEventListener("change", updateDest);
@@ -422,6 +425,10 @@ function toggleContent() {
         sidebarLeft.style.width = "0px";
         horizontalBar.style.width = "calc(100% - 90px)";
     }
+}
+
+function closeDevResources() {
+    devResources.style.opacity = 0;
 }
 
 ///////////////////////////
