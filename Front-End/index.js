@@ -49,6 +49,8 @@ var busLocations = {
 
 var locationsMap;
 
+var navigableLocationsMap;
+
 // Stores the building/library/bus-stop marker currently on the map.
 var mapMarkers = [];
 
@@ -127,6 +129,7 @@ fetch('https://hnavcontent.azurewebsites.net/PublishedNodes.txt')
     mymap.on('mousemove', highlightNearest);
     
     locationsMap = Object.assign({}, buildingLocations, libraryLocations, busLocations);
+    navigableLocations = Object.assign({}, buildingLocations, libraryLocations);
 });
 
 /////////////////////
@@ -780,13 +783,12 @@ function updateDropdown(selection, index, isEnd) {
 
 // Find location closest to selected circle
 function findNearestLoc(latlng) {
-    var nearest = {"index": 0, "name": "Red Square", "latlng": buildingLocations["Planetarium"]};
-    for(const building in buildingLocations) {
-  
-        const buildingLatlng = buildingLocations[building];
+    var nearest = {"index": 0, "name": "Red Square", "latlng": navigableLocations["Planetarium"]};
+    for(const loc in navigableLocations) {
+        const buildingLatlng = navigableLocations[loc];
         if (dist(buildingLatlng, latlng) < dist(nearest.latlng, latlng)) {
-            const buildingIndex = startSelection.innerHTML.split('n>').findIndex(opt => opt.includes(building));
-            nearest = {"index": buildingIndex ,"name": building, "latlng": buildingLatlng}
+            const buildingIndex = startSelection.innerHTML.split('n>').findIndex(opt => opt.includes(loc));
+            nearest = {"index": buildingIndex ,"name": loc, "latlng": buildingLatlng}
         }
     }
     return nearest;
@@ -857,7 +859,14 @@ function parseBuildingNodes(nodesTxt) {
             name = name.substring(0, pos) + " " + name.substring(pos);
         });
 
-        if(name.charAt(0) != 'R' && name.charAt(0) != 'N' && !libraryLocations[name]) {
+        // if...
+        //      name starts with R OR N, AND the rest of name is an integer
+        //      OR
+        //      name belongs to libraryLocations
+        // then its not a building
+        var isBuilding = !( ((name.charAt(0) == 'R' || name.charAt(0) == 'N') && parseInt(name.substring(1))) || libraryLocations[name]);
+
+        if(isBuilding) {
             buildingLocations[name] = [elements[1], elements[2]];
         }
     }
