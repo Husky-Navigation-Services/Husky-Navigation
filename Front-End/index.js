@@ -710,7 +710,9 @@ mymap.on('zoomend', function() {
     }) : ()=>{}; // if undefined, do nothing
 });
 
-// When user finishes zooming, alert user if zoomed out too much 
+
+// [Not In Use] When user finishes zooming, alert user if zoomed out too much 
+/*
 mymap.on('zoomend', function() {
     const curZoom = mymap.getZoom();
     if (curZoom < 10) {
@@ -718,6 +720,7 @@ mymap.on('zoomend', function() {
         mymap.setZoom(10);
     }
 });
+*/
 
 ////////////////////
 // Select Map Buildings onclick
