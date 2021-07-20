@@ -54,6 +54,7 @@ public class Function {
         }
         // - Call find path in decision module.
         ArrayList<Node> decisionPath = new ArrayList<Node>();
+        System.out.println(names.get(start).id);
         float decisionDistance = decision.getDecision(names.get(start), names.get(end), decisionPath);
         decisionDistance *= 69.096;
         if (decisionDistance - 0.05429461 > 0.1) {

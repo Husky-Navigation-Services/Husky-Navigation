@@ -25,14 +25,19 @@ public class Decision {
     public float getDecision(Node start, Node end, ArrayList<Node> path) {
         ArrayList<Integer> predecessors = new ArrayList<>();
         ArrayList<Float> distances = new ArrayList<>();
+        System.out.println("gg");
         for (int setup = 0; setup < neighbors.size(); setup++) {
             predecessors.add(setup);
+            System.out.println("gg1");
             distances.add(Float.MAX_VALUE);
         }
+        System.out.println("gg");
         getShortestPath(start.id, start.id, 0, predecessors, distances);
+        System.out.println("gg2" + start.id + "neighs: " + neighbors.get(start.id));
         for (int nodeId: getPath(start.id, end.id, predecessors)) {
             path.add(nodeSearch.get(nodeId)); // Adds nodes to path.
         } // Based on the total distance, the total time can be computed.
+        System.out.println("gg3");
         return distances.get(end.id); // Returns total distance.
     }
 
@@ -40,6 +45,7 @@ public class Decision {
     // array list of predecessors, and a array list of distances.
     private void getShortestPath(int previousId, int currentId, float totalDistance,
             ArrayList<Integer> predecessors, ArrayList<Float> distances) {
+        System.out.println(".");
         if (distances.get(currentId) > totalDistance) {
             distances.set(currentId, totalDistance);
             predecessors.set(currentId, previousId);
@@ -54,7 +60,9 @@ public class Decision {
     private ArrayList<Integer> getPath(int startId, int endId, ArrayList<Integer> predecessors) {
         ArrayList<Integer> path = new ArrayList<Integer>();
         int currentId = endId;
+        
         while (currentId != startId) {
+            
             path.add(0, currentId);
             currentId = predecessors.get(currentId);
         }
