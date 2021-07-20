@@ -48,7 +48,7 @@ public class Function {
         final String end = request.getQueryParameters().get("end"); // e.g., "GuggenheimHall"
 
         // - Map start and end to node.
-        Map<String, Node> names = Parser.getNames();
+        Map<Integer, Node> names = Parser.getNames();
         if (!names.containsKey(start) || !names.containsKey(end)) {
             return request.createResponseBuilder(HttpStatus.BAD_REQUEST).body("Please pass valid endpoints").build();
         }
