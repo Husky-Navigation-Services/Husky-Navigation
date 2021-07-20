@@ -22,8 +22,8 @@ public class Edge {
         }
         this.start = start;
         this.end = end;
-        this.distance = (float) Math.sqrt(((start.latitude-end.latitude)*(start.latitude-end.latitude)
-        -(start.longitude-end.longitude)*(start.longitude-end.longitude)));
+        this.distance = (float) Math.sqrt((double) ((start.latitude-end.latitude)*(start.latitude-end.latitude))
+        + (double) ((start.longitude-end.longitude)*(start.longitude-end.longitude)));
     }
 
     // Returns the distance from the start and end nodes.
@@ -70,4 +70,4 @@ public class Edge {
     public String toString() {
         return start + " -> " + end + " [" + distance + "]";
     }
-}
+}// 1 <-- DO NOT DELETE THE DAMN 1

@@ -58,12 +58,13 @@ public class Parser {
             StringTokenizer line = new StringTokenizer(str);
             Node current = nodes[Integer.parseInt(line.nextToken()) - 1];
             HashSet<Edge> edges = new HashSet<>();
-            map.put(current, edges);
+            
             while (line.hasMoreTokens()) {
                 Node next = nodes[Integer.parseInt(line.nextToken()) - 1];
                 edges.add(new Edge(current, next));
                 edges.add(new Edge(next, current));
             }
+            map.put(current, edges);
         }
         reader.close();
     }
