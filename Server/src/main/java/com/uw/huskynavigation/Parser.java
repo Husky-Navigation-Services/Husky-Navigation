@@ -26,7 +26,6 @@ public class Parser {
     private static Set<Node> busStops;
     private static Map<String, Node> names;
     private static Node[] nodes; //nodes[id] gives the Node
-    private static Map<Integer, Node> ids;
 //    public Parser() {
 //        map = new HashMap<Node, HashSet<Edge>>();
 //        names = new HashMap<String, Node>();
@@ -37,7 +36,6 @@ public class Parser {
         map = new HashMap<>();
         busStops = new HashSet<>();
         names = new HashMap<>();
-        ids = new HashMap<>();
         int total = Integer.parseInt(reader.readLine());
         nodes = new Node[total];
         String str;
@@ -50,7 +48,6 @@ public class Parser {
             String name = line.nextToken();
             Node node = new Node(id, lat, lon, name);
             names.put(name, node);
-            ids.put(id, node);
             nodes[id] = node;
         }
         for (int i = 0; i < total; i++) {
