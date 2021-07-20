@@ -41,7 +41,7 @@ public class Parser {
         int total = Integer.parseInt(reader.readLine());
         nodes = new Node[total];
         String str;
-        for (int i = 1; i <= total; i++) {
+        for (int i = 0; i < total; i++) {
             str = reader.readLine();
             StringTokenizer line = new StringTokenizer(str);
             int id = Integer.parseInt(line.nextToken()) - 1;
@@ -56,14 +56,14 @@ public class Parser {
         for (int i = 0; i < total; i++) {
             str = reader.readLine();
             StringTokenizer line = new StringTokenizer(str);
-            Node current = ids.get(Integer.parseInt(line.nextToken()) - 1);
+            Node current = nodes[Integer.parseInt(line.nextToken()) - 1];
             HashSet<Edge> edges = new HashSet<>();
+            map.put(current, edges);
             while (line.hasMoreTokens()) {
-                Node next = ids.get(Integer.parseInt(line.nextToken()) - 1);
+                Node next = nodes[Integer.parseInt(line.nextToken()) - 1];
                 edges.add(new Edge(current, next));
                 edges.add(new Edge(next, current));
             }
-            map.put(current, edges);
         }
         reader.close();
     }
