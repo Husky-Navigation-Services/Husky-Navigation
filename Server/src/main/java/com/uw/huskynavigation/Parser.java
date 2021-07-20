@@ -25,7 +25,7 @@ public class Parser {
 //  private Map<String, Node> names;
     private static Set<Node> busStops;
     private static Map<String, Node> names;
-    private static Node[] nodes; //nodes[id] gives the Node
+    private static Node[] nodes;
         
 //    public Parser() {
 //        map = new HashMap<Node, HashSet<Edge>>();
@@ -38,9 +38,9 @@ public class Parser {
         busStops = new HashSet<>();
         names = new HashMap<>();
         int total = Integer.parseInt(reader.readLine());
-        nodes = new Node[total + 1];
+        nodes = new Node[total];
         String str;
-        for (int i = 1; i <= total; i++) {
+        for (int i = 0; i < total; i++) {
             str = reader.readLine();
             StringTokenizer line = new StringTokenizer(str);
             int id = Integer.parseInt(line.nextToken());
@@ -49,19 +49,19 @@ public class Parser {
             String name = line.nextToken();
             Node node = new Node(id, lat, lon, name);
             names.put(name,node);
-            nodes[id] = node;
+            nodes[i] = node;
         }
         for (int i = 0; i < total; i++) {
             str = reader.readLine();
             StringTokenizer line = new StringTokenizer(str);
-            Node current = nodes[Integer.parseInt(line.nextToken())];
+            Node current = nodes[Integer.parseInt(line.nextToken()) - 1];
             HashSet<Edge> edges = new HashSet<>();
+            map.put(current, edges);
             while (line.hasMoreTokens()) {
-                Node next = nodes[Integer.parseInt(line.nextToken())];
+                Node next = nodes[Integer.parseInt(line.nextToken()) - 1];
                 edges.add(new Edge(current, next));
                 edges.add(new Edge(next, current));
             }
-            map.put(current, edges);
         }
         reader.close();
     }
