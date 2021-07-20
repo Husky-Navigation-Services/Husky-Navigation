@@ -24,8 +24,8 @@ public class Parser {
     private static Map<Node, Set<Edge>> map;
 //  private Map<String, Node> names;
     private static Set<Node> busStops;
-    private static Map<Integer, Node> names;
-    private static Node[] nodes;
+    private static Map<String, Node> names;
+    private static Node[] nodes; //nodes[id] gives the Node
         
 //    public Parser() {
 //        map = new HashMap<Node, HashSet<Edge>>();
@@ -38,30 +38,30 @@ public class Parser {
         busStops = new HashSet<>();
         names = new HashMap<>();
         int total = Integer.parseInt(reader.readLine());
-        nodes = new Node[total];
+        nodes = new Node[total + 1];
         String str;
-        for (int i = 0; i < total; i++) {
+        for (int i = 1; i <= total; i++) {
             str = reader.readLine();
             StringTokenizer line = new StringTokenizer(str);
-            int id = Integer.parseInt(line.nextToken()) - 1;
+            int id = Integer.parseInt(line.nextToken());
             float lat = Float.parseFloat(line.nextToken());
             float lon = Float.parseFloat(line.nextToken());
             String name = line.nextToken();
             Node node = new Node(id, lat, lon, name);
-            names.put(id,node);
-            nodes[i] = node;
+            names.put(name,node);
+            nodes[id] = node;
         }
         for (int i = 0; i < total; i++) {
             str = reader.readLine();
             StringTokenizer line = new StringTokenizer(str);
-            Node current = nodes[Integer.parseInt(line.nextToken()) - 1];
+            Node current = nodes[Integer.parseInt(line.nextToken())];
             HashSet<Edge> edges = new HashSet<>();
-            map.put(current, edges);
             while (line.hasMoreTokens()) {
-                Node next = nodes[Integer.parseInt(line.nextToken()) - 1];
+                Node next = nodes[Integer.parseInt(line.nextToken())];
                 edges.add(new Edge(current, next));
                 edges.add(new Edge(next, current));
             }
+            map.put(current, edges);
         }
         reader.close();
     }
@@ -80,7 +80,7 @@ public class Parser {
         return map;
     }
 
-    public static Map<Integer, Node> getNames() {
+    public static Map<String, Node> getNames() {
         return names;
     }
 
