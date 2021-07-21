@@ -27,7 +27,7 @@ public class FunctionTest {
         final HttpRequestMessage<Optional<String>> req = mock(HttpRequestMessage.class);
 
         final Map<String, String> queryParams = new HashMap<>();
-        queryParams.put("start", "BagleyHall");
+        queryParams.put("start", "Planetarium");
         queryParams.put("end", "GuggenheimHall");
         doReturn(queryParams).when(req).getQueryParameters();
 
@@ -47,6 +47,8 @@ public class FunctionTest {
 
         // Invoke
         final HttpResponseMessage ret = new Function().run(req, context);
+
+        System.out.println(ret.getBody());
 
         // Verify
         assertEquals(ret.getStatus(), HttpStatus.OK);

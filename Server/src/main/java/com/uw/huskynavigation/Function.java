@@ -52,20 +52,17 @@ public class Function {
         if (!names.containsKey(start) || !names.containsKey(end)) {
             return request.createResponseBuilder(HttpStatus.BAD_REQUEST).body("Please pass valid endpoints").build();
         }
+        
         // - Call find path in decision module.
         ArrayList<Node> decisionPath = new ArrayList<Node>();
         System.out.println(names.get(start).id);
         float decisionDistance = decision.getDecision(names.get(start), names.get(end), decisionPath);
-        decisionDistance *= 69.096;
-        if (decisionDistance - 0.05429461 > 0.1) {
-            decisionDistance -= 0.05429461; // Average distance error across paths.
-        }
-        double eta = decisionDistance / 0.05223; // Where distance is in miles, time
-        // is in minutes. Average walking speed is 4.6 ft/sec or 276 ft/min.
+        double eta = decisionDistance / 0.05223; // Where distance is in miles, time is in minutes. Average walking speed is 4.6 ft/sec or 276 ft/min.
+
         // - Package data.
         String decisionPathJSON = convertPathToJSON(decisionPath);
         String data = convertAllDataToJSON(decisionDistance, eta, decisionPathJSON);
-        // String testdata = "{\"someData\": \"someinfo\"}";
+
         // - Return HTTP request.
         return request.createResponseBuilder(HttpStatus.OK).body(data).build();
     }
