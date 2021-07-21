@@ -11,7 +11,7 @@ public class Decision {
     public Decision(Map<Node, Set<Edge>> paths) {
         this.neighbors = new ArrayList<Set<Edge>>();
         this.nodeSearch = new HashMap<Integer, Node>();
-        for (int i = 0; i < paths.keySet().size(); i++) {
+        for (int i = 0; i < 5000; i++) {
             neighbors.add(new HashSet<Edge>());
         }
         

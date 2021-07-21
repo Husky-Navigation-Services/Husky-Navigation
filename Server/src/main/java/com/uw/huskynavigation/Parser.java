@@ -37,7 +37,7 @@ public class Parser {
         busStops = new HashSet<>();
         names = new HashMap<>();
         int total = Integer.parseInt(reader.readLine());
-        nodes = new Node[total];
+        nodes = new Node[5000];
         String str;
         for (int i = 0; i < total; i++) {
             str = reader.readLine();
