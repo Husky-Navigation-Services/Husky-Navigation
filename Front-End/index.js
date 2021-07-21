@@ -32,6 +32,8 @@ var libraryLocations = {
     "Gowen Library": [47.656411266735155, -122.30783977331431]
 }
 
+var disabledLibraries = ["Odegaard Library", "Gowen Library"];
+
 var busLocations = {
     "Stevens Way and Okanogan Ln": [47.652027, -122.308655],
     "W Stevens WAY NE and Okanogan LN NE": [47.652172, -122.308624],
@@ -647,7 +649,12 @@ function populateNavOptions(locGroups, selection) {
     locGroups.forEach( (group, i) => {
         selection.innerHTML += "<optgroup label=\"" + labelMap[i] + "\"></optgroup>";
         for (const buildingName in group) {
-            selection.innerHTML += "<option value=\"" + buildingName + "\">" + buildingName + "</option>";
+            if (labelMap[i] == "Bus Stops" || disabledLibraries.includes(buildingName)) {
+                selection.innerHTML += "<option value=\"" + buildingName + "\" disabled>" + buildingName + "</option>";
+            } else {
+                selection.innerHTML += "<option value=\"" + buildingName + "\">" + buildingName + "</option>";
+            }
+            
         }
     });
 }
