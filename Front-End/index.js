@@ -32,7 +32,7 @@ var libraryLocations = {
     "Gowen Library": [47.656411266735155, -122.30783977331431]
 }
 
-var disabledLibraries = ["Odegaard Library", "Gowen Library"];
+var disabledLibraries = ["Gowen Library"];
 
 var busLocations = {
     "Stevens Way and Okanogan Ln": [47.652027, -122.308655],
