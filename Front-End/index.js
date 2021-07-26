@@ -227,7 +227,7 @@ var numCircles = 0;
 // Sends feedback via Elastic Email SMTP using the SMTP API.
 function sendFeedback() {
     Email.send({
-        SecureToken : "258d453b-f17d-4182-a7df-9f54d622a568",
+        SecureToken : "8a0cc952-eb5f-4c5a-a604-d924a6ed00e3",
         To : 'huskynavigationfeedback@gmail.com',
         From : "huskynavigationfeedback@gmail.com",
         Subject : "Feedback Form Response [" + new Date() + "]",
