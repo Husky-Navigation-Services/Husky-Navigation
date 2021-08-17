@@ -10,9 +10,9 @@ public class Edge {
         if (start == null || end == null) {
             throw new IllegalArgumentException("Illegal start or end given.");
         }
-        this.distance = distance;
         this.start = start;
         this.end = end;
+        this.distance = distance;
     }
 
     // Constructs an instance of an edge, with a computed distance, given a start and end.
