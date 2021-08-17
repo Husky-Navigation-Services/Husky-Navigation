@@ -22,7 +22,8 @@ public class Edge {
         }
         this.start = start;
         this.end = end;
-        this.distance = (float) distance((double) start.latitude, (double) start.longitude, (double) end.latitude, (double) end.longitude);
+        this.distance = (float) distance((double) start.latitude, (double) start.longitude, 
+                (double) end.latitude, (double) end.longitude);
     }
 
     // Returns the distance from the start and end nodes.
