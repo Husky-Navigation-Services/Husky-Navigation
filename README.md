@@ -23,7 +23,7 @@ Through this website the user can engage with most of the features mentioned in 
 
 Thank you and we hope you enjoy!
 
-Please let us know if you have any feedback at [huskynavigationfeedback@gmail.com](mailto:huskynavigationfeedback@gmail.com)
+Please let us know if you have any feedback at mailto:huskynavigationfeedback@gmail.com.
 
 Video Guide Walkthrough:
 
