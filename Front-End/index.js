@@ -1,4 +1,5 @@
 // Contents:
+//      Server Warmup
 //      Location Data
 //      Map Initialization
 //      Initialize Location Data
@@ -13,6 +14,14 @@
 //      Mobile
 //      Select Map Buildings onclick
 //      Other
+
+////////////////////
+// Server Warmup
+///////////////////
+
+window.onload = () => {
+    fetch("https://huskynavigationserver2.azurewebsites.net/api/pathfind?start=BagleyHall&end=GuggenheimHall")
+}
 
 ////////////////////
 // Location Data
