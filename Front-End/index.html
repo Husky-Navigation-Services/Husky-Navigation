@@ -31,6 +31,7 @@
     <link rel="stylesheet" href="secondaryStylesheets/toggleSwitch.css">
     <link rel="stylesheet" href="secondaryStylesheets/weather.css">
     <link rel="stylesheet" href="secondaryStylesheets/logo.css">
+    <link rel="stylesheet" href="secondaryStylesheets/popup.css">
     <!-- For LeafletJS Maps -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
     integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
@@ -42,6 +43,8 @@
     <script src="https://smtpjs.com/v3/smtp.js"></script>
     <!-- Load primary JavaScript source code -->
     <script src="index.js" defer></script>
+
+    <script src="./Scripts/popup.js" defer></script>
 </head>
  
 <body>
@@ -70,7 +73,14 @@
                 </div>
 
                 <!-- Nav -->
-                <h6 id="navHeader" class="header">NAVIGATION </h6>
+                <div id="nav-header-container">
+                    <h6 id="navHeader" class="header">NAVIGATION </h6>
+                    <img id="nav-info" class="info-icon" src="./miscIcons/InfoIcon.png">
+                </div>
+                <div id="nav-popup-container" class="is-not-visible">
+                    <h4 class="instruction-header">Walk between campus locations with <span class="underline">Navigation</span></h4>
+                    <p class="instruction-header">Select a start and destination to begin.</p>
+                </div>
                 <span class="uw-slant"></span>
 
                 <!-- Input Fields -->
