@@ -257,21 +257,20 @@ function toggleWeatherPopup() {
     }
 }
 
-// Sets theme by cookie if exists or by OS theme if no cookie exists.
-window.onload=function() {
-    var cookie_pos = document.cookie.indexOf('theme='); // locates cookie
-    if (cookie_pos != -1) { // if exists cookie
-        var cookieTheme = substr(cookie_pos + 10, document.cookie.indexOf(';', cookie_pos)); // extracts cookie
-        if (cookieTheme == "dark") {
-            darkMode();
-        } else {
-            lightMode();
-        }
-    } else {
-        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-            darkMode();
-        }
-    }
+// Sets site theme by cookie if exists.
+// var cookie_pos = document.cookie.indexOf('theme='); // locates cookie
+// if (cookie_pos != -1) { // if exists cookie
+//     var cookieTheme = substr(cookie_pos + 10, document.cookie.indexOf(';', cookie_pos)); // extracts cookie
+//     if (cookieTheme == 'dark') {
+//         darkMode();
+//     } else {
+//         lightMode();
+//     }
+// } 
+
+// Sets site theme by OS theme.
+if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    darkMode();
 }
 
 // Toggles the overall site theme.
