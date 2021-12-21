@@ -102,12 +102,12 @@ var searchItemsContainer = {
 
 // Initializes the map using the Mapbox API and Leaflet.
 var mymap = L.map('map').setView([47.654047, -122.30854], 16);
-L.tileLayer( 'https://api.mapbox.com/styles/v1/aferman/ckhvetwgy0bds19nznkfvodbx/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYWZlcm1hbiIsImEiOiJja2ZrZXJvbjUwZW5wMnhxcjdyMXc3ZjRnIn0.WGdId2uO9XokPaJmaxlLXg', {
+L.tileLayer('https://api.mapbox.com/styles/v1/aferman/ckhvetwgy0bds19nznkfvodbx/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYWZlcm1hbiIsImEiOiJja2ZrZXJvbjUwZW5wMnhxcjdyMXc3ZjRnIn0.WGdId2uO9XokPaJmaxlLXg', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-    subdomains: ['a','b','c']
-}).addTo( mymap );
+    subdomains: ['a', 'b', 'c']
+}).addTo(mymap);
 var r = [-122.32296105, 47.64674039, -122.28707804, 47.66318327]
-var w = new L.LatLngBounds(new L.LatLng(r[1],r[0]),new L.LatLng(r[3],r[2]))
+var w = new L.LatLngBounds(new L.LatLng(r[1], r[0]), new L.LatLng(r[3], r[2]))
 var y, z, A = {
     minZoom: 10,
     maxZoom: 20,
@@ -118,7 +118,7 @@ var y, z, A = {
     className: "uw-tilelayer"
 };
 z = "https://www.washington.edu/maps/wp-content/themes/maps-2014/tiles/retina/{z}/{x}/{y}.png"
-// y = L.tileLayer(z, A).addTo(mymap);
+    // y = L.tileLayer(z, A).addTo(mymap);
 mymap.zoomControl.setPosition('bottomright');
 var pathGroup = new L.LayerGroup();
 pathGroup.addTo(mymap);
@@ -127,24 +127,24 @@ pathGroup.addTo(mymap);
 // Initialize Location Data
 /////////////////////
 fetch('https://hnavcontent.azurewebsites.net/PublishedNodes.txt')
-.then(res => res.text())
-.then(data=>{
-    parseNodes(data);
-    // Display list data
-    populateList(buildingContainer, buildingLocations, "building");
-    populateList(busStopContainer, busLocations, "bus-stop");
-    populateList(librariesContainer, libraryLocations, "library");
-    // Display nav option data
-    populateNavOptions([buildingLocations, libraryLocations, busLocations], startSelection);
-    populateNavOptions([buildingLocations, libraryLocations, busLocations], destSelection);
-    // Highlight nearest when hovering
-    mymap.on('mousemove', highlightNearest);
-    // Initialize Data
-    locationsMap = Object.assign({}, buildingLocations, libraryLocations, busLocations);
-    navigableLocations = Object.assign({}, buildingLocations, libraryLocations);
-    // Add event listeners to location list items
-    addListenersToLists();
-});
+    .then(res => res.text())
+    .then(data => {
+        parseNodes(data);
+        // Display list data
+        populateList(buildingContainer, buildingLocations, "building");
+        populateList(busStopContainer, busLocations, "bus-stop");
+        populateList(librariesContainer, libraryLocations, "library");
+        // Display nav option data
+        populateNavOptions([buildingLocations, libraryLocations, busLocations], startSelection);
+        populateNavOptions([buildingLocations, libraryLocations, busLocations], destSelection);
+        // Highlight nearest when hovering
+        mymap.on('mousemove', highlightNearest);
+        // Initialize Data
+        locationsMap = Object.assign({}, buildingLocations, libraryLocations, busLocations);
+        navigableLocations = Object.assign({}, buildingLocations, libraryLocations);
+        // Add event listeners to location list items
+        addListenersToLists();
+    });
 
 /////////////////////
 // Event Listeners
@@ -169,7 +169,7 @@ var logo = document.getElementById("logo");
 var titleElements = document.getElementById("titleElements");
 var navBttn = document.getElementById("navBtn");
 var title = document.getElementById("title");
-var footer =  document.getElementById("footer");
+var footer = document.getElementById("footer");
 var locationIcon = document.getElementById("locationIcon");
 var weatherPopup = document.getElementById("weatherPopup");
 var weatherIcon = document.getElementById("weatherIcon");
@@ -187,7 +187,9 @@ const destSelection = document.getElementById("destinationsId");
 const contentSections = document.getElementsByClassName("contentSection");
 const closeDevX = document.getElementById("close-dev-x");
 const devResources = document.getElementById("dev-resources");
+const themeCheckbox = document.getElementById("themeCheckbox");
 var navPopupContainer = document.getElementById("nav-popup-container");
+
 
 // Adds event listeners.
 logo.addEventListener("click", toggleContent);
@@ -198,7 +200,7 @@ closeDevX.addEventListener("click", closeDevResources);
 document.getElementById("submitFeedback").addEventListener("click", sendFeedback);
 document.getElementById("startingPointsId").addEventListener("change", updateStart);
 document.getElementById("destinationsId").addEventListener("change", updateDest);
-document.getElementById("themeCheckbox").addEventListener("change", toggleTheme);
+themeCheckbox.addEventListener("change", toggleTheme);
 // Adds click listeners to each dropdown header.
 document.getElementById("navHeader").addEventListener("click", () => {
     toggleDropdown(document.getElementById("navSection"));
@@ -237,11 +239,11 @@ var numCircles = 0;
 // Sends feedback via Elastic Email SMTP using the SMTP API.
 function sendFeedback() {
     Email.send({
-        SecureToken : "6438fb72-8362-400b-8edb-d102fe68f79e",
-        To : 'huskynavigationfeedback@gmail.com',
-        From : "huskynavigationfeedback@gmail.com",
-        Subject : "Feedback Form Response [" + new Date() + "]",
-        Body : "Feedback Message: " + feedbackInput.value
+        SecureToken: "6438fb72-8362-400b-8edb-d102fe68f79e",
+        To: 'huskynavigationfeedback@gmail.com',
+        From: "huskynavigationfeedback@gmail.com",
+        Subject: "Feedback Form Response [" + new Date() + "]",
+        Body: "Feedback Message: " + feedbackInput.value
     }).then(
         alert("Feedback sent successfully!")
     );
@@ -259,15 +261,12 @@ function toggleWeatherPopup() {
 }
 
 // Sets site theme by cookie if exists.
-// var cookie_pos = document.cookie.indexOf('theme='); // locates cookie
-// if (cookie_pos != -1) { // if exists cookie
-//     var cookieTheme = substr(cookie_pos + 10, document.cookie.indexOf(';', cookie_pos)); // extracts cookie
-//     if (cookieTheme == 'dark') {
-//         darkMode();
-//     } else {
-//         lightMode();
-//     }
-// } 
+const cookies = {};
+document.cookie.split(';').forEach(pair => {
+    pair = pair.split('=');
+    cookies[pair[0]] = pair[1];
+});
+cookies['theme'] && cookies['theme'] == 'dark' && darkMode();
 
 // Sets site theme by OS theme.
 if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
@@ -285,6 +284,7 @@ function toggleTheme() {
 
 // Sets site UI to dark mode.
 function darkMode() {
+    themeCheckbox.checked = true;
     horizontalBar.style.backgroundColor = "#202225";
     leftSideBar.style.backgroundColor = "#202225";
     titleElements.style.backgroundColor = "#202225";
@@ -297,14 +297,15 @@ function darkMode() {
     logo.style.width = "70px";
     logo.style.height = "70px";
     logo.style.marginLeft = "0px";
-    logo.style.marginTop = "10px"; 
-    expandIcon.style.background = "#202225"; 
+    logo.style.marginTop = "10px";
+    expandIcon.style.background = "#202225";
     devResources.style.background = "#202225";
     document.cookie = 'theme=dark;';
 }
 
 // Sets site UI to light mode.
 function lightMode() {
+    themeCheckbox.checked = false;
     horizontalBar.style.backgroundColor = "#4b2e83";
     leftSideBar.style.backgroundColor = "#4b2e83";
     titleElements.style.backgroundColor = "whitesmoke";
@@ -316,7 +317,7 @@ function lightMode() {
     logo.style.borderWidth = "5px";
     logo.style.width = "60px";
     logo.style.height = "60px";
-    expandIcon.style.background = "#4b2e83"; 
+    expandIcon.style.background = "#4b2e83";
     devResources.style.background = "#4b2e83";
     document.cookie = 'theme=light;';
 }
@@ -338,16 +339,16 @@ function toggleDropdown(sec) {
         if (window.innerWidth <= 600) {
             for (var i = 0; i < contentSections.length; i++) {
                 const curSec = contentSections[i];
-                if(curSec != sec) {
+                if (curSec != sec) {
                     curSec.style.height = "0px";
                 }
             }
         }
     } else {
-        sec.style.height = "0px";  
+        sec.style.height = "0px";
     }
     console.log(window.innerWidth);
-    
+
 }
 
 // Scrolls to the first location containing the given prefix, from the given list
@@ -359,7 +360,7 @@ function scrollToLocation(prefix, els, holder) {
         if (prefix === currentPrefix) {
             scroll(els[i], holder);
             break;
-        } 
+        }
     }
 }
 
@@ -393,15 +394,15 @@ function setViewToLocation() {
 function updateStart() {
     endLoading();
     removePath();
-    
+
     if (drawCircle) {
         setStartCircle(buildingLocations[this.value], true);
     }
-    
+
     const newLocation = this.value;
     fromElement.style.opacity = 0;
     // Gives css transition time to operate 
-    window.setTimeout(function () {
+    window.setTimeout(function() {
         fromElement.innerHTML = newLocation;
         fromElement.style.opacity = 1;
     }, 100);
@@ -420,7 +421,7 @@ function updateDest() {
     const newLocation = this.value;
     toElement.style.opacity = 0;
     // Gives css transition time to operate
-    window.setTimeout(function () {
+    window.setTimeout(function() {
         toElement.innerHTML = newLocation;
         toElement.style.opacity = 1;
     }, 100);
@@ -437,7 +438,7 @@ function removePath() {
 
 function navIfTwoCircles() {
     if (numCircles == 2) {
-        window.setTimeout(()=>{navBttn.click();}, 400);
+        window.setTimeout(() => { navBttn.click(); }, 400);
     }
 }
 
@@ -449,9 +450,9 @@ function tryNav() {
     if (navPossible(from, to)) {
         beginLoading();
         nav(from, to);
-        
+
     } else {
-       alert("Invalid. Try again.");
+        alert("Invalid. Try again.");
     }
 }
 
@@ -488,9 +489,10 @@ function navPossible(from, to) {
 // to the back-end server hosted with Azure. Draws path and displays information.
 function nav() {
     setNavView(locationsMap[fromElement.innerHTML], locationsMap[toElement.innerHTML]);
-    var GETurl = "https://huskynavigationserver2.azurewebsites.net/api/pathfind?start=" 
-        + fromElement.innerHTML.replace(/\s/g, '') // Remove space from start.
-        + "&end=" + toElement.innerHTML.replace(/\s/g, ''); // Remove space from end.
+    var GETurl = "https://huskynavigationserver2.azurewebsites.net/api/pathfind?start=" +
+        fromElement.innerHTML.replace(/\s/g, '') // Remove space from start.
+        +
+        "&end=" + toElement.innerHTML.replace(/\s/g, ''); // Remove space from end.
     // var testGETurl = "https://huskynavigationserver2.azurewebsites.net/api/pathfind?start=BagleyHall&end=GuggenheimHall";
     fetch(GETurl)
         .then(res => res.json())
@@ -512,14 +514,14 @@ function nav() {
             geoJSONPaths.push(path);
             endLoading();
             toggleSideBarMobile("off");
-    });
+        });
 }
 
 // Sets the map view to contain the given latitude and longitude endpoints.
 function setNavView(coord1, coord2) {
     console.log(coord1);
     console.log(coord2);
-    mymap.flyToBounds([coord1, coord2], {maxZoom: 17});
+    mymap.flyToBounds([coord1, coord2], { maxZoom: 17 });
 }
 
 ////////////////////////
@@ -528,11 +530,11 @@ function setNavView(coord1, coord2) {
 
 // Gathers the weather data by using the Open Weather Map API.
 function weatherBalloon() {
-    fetch("https://api.openweathermap.org/data/2.5/weather?q=Seattle&appid=0eabe4f0d958928ef5fbeb6346eade3c")  
+    fetch("https://api.openweathermap.org/data/2.5/weather?q=Seattle&appid=0eabe4f0d958928ef5fbeb6346eade3c")
         .then(res => res.json())
         .then(res => {
             var tempK = res.main.temp;
-            var tempF = roundTen((tempK - 273.15) * 9/5 + 32);
+            var tempF = roundTen((tempK - 273.15) * 9 / 5 + 32);
             var tempC = roundTen(tempK - 273.15);
             var wind = roundTen(res.wind.speed);
             var humidity = res.main.humidity;
@@ -549,7 +551,7 @@ function updateData(tempF, tempC, wind, weather, humidity, iconcode) {
     weatherIcon.src = "openWeatherIcons/" + iconcode + ".png";
     // Update the header message.
     var adj;
-    switch(weather) {
+    switch (weather) {
         case "Rain":
             adj = "Rainy";
             break;
@@ -573,7 +575,7 @@ function updateData(tempF, tempC, wind, weather, humidity, iconcode) {
             break;
     }
     var header = "It's " + adj + " in Seatte Now!"
-    // Updates the icon.
+        // Updates the icon.
     weatherPopupHeader.innerHTML = header;
     // Updates the popup icon
     if (humidity > 75 && weather != "Clear") {
@@ -601,7 +603,7 @@ weatherBalloon();
 
 // [Currently Unused]
 // Returns whether the given element is centered in the given container.
-function isElementCentered (el, holder) {
+function isElementCentered(el, holder) {
     const { y } = el.getBoundingClientRect()
     const holderRect = holder.getBoundingClientRect()
     if (y <= holderRect.bottom - 50 && y >= holderRect.top + 50) {
@@ -634,7 +636,7 @@ function goToPosition(position) {
     }
     // Adds new location marker.
     var coords = [position.coords.latitude, position.coords.longitude];
-    var locMarker = L.marker(coords/*, {icon: redIcon}*/).addTo(mymap);
+    var locMarker = L.marker(coords /*, {icon: redIcon}*/ ).addTo(mymap);
     // Set view.
     mymap.setView(coords);
     // Update previous marker value.
@@ -645,7 +647,7 @@ function goToPosition(position) {
     if (!inXBounds || !inYBounds) {
         // Gives map time to reach the current location of the user.
         window.setTimeout(() => {
-        alert("You appear to be outside the University of Washington campus. Please note that our service works best for locations near the campus.")
+            alert("You appear to be outside the University of Washington campus. Please note that our service works best for locations near the campus.")
         }, 500);
     }
 
@@ -684,7 +686,7 @@ function endLoading() {
 ///////////////////
 function populateNavOptions(locGroups, selection) {
     const labelMap = ["Buildings", "Libraries", "Bus Stops"];
-    locGroups.forEach( (group, i) => {
+    locGroups.forEach((group, i) => {
         selection.innerHTML += "<optgroup label=\"" + labelMap[i] + "\"></optgroup>";
         for (const buildingName in group) {
             if (labelMap[i] == "Bus Stops" || disabledLibraries.includes(buildingName)) {
@@ -692,7 +694,7 @@ function populateNavOptions(locGroups, selection) {
             } else {
                 selection.innerHTML += "<option value=\"" + buildingName + "\">" + buildingName + "</option>";
             }
-            
+
         }
     });
 }
@@ -717,7 +719,7 @@ function toggleSideBarMobile(cmd) {
             leftSideBar.scrollTop = 0;
             return;
         }
-    
+
         if (isOpen) {
             leftSideBar.style.height = (document.getElementById("titleElements").offsetHeight + 10) + "px";
             leftSideBar.scrollTop = 0;
@@ -734,7 +736,7 @@ function resizeElements() {
         leftSideBar.style.height = "calc(100% - 20px)";
         devResources.style.display = "inline-block";
     } else {
-        leftSideBar.style.height =  (document.getElementById("titleElements").offsetHeight + 10) + "px";
+        leftSideBar.style.height = (document.getElementById("titleElements").offsetHeight + 10) + "px";
         devResources.style.display = "none";
     }
 }
@@ -749,10 +751,10 @@ mymap.on('zoomend', function() {
     geoJSONPaths[0] ? geoJSONPaths[0].setStyle(() => { // if geoJSONPaths[0] is defined
         return curZoom < 17 ? { // if zoom is low
             dashArray: '1, 1'
-        }:{ // if zoom is high
+        } : { // if zoom is high
             dashArray: '5, 10'
         }
-    }) : ()=>{}; // if undefined, do nothing
+    }) : () => {}; // if undefined, do nothing
 });
 
 
@@ -778,16 +780,16 @@ function handleMapClick(ev) {
     const latlng = [ev.latlng.lat, ev.latlng.lng];
     const nearest = findNearestLoc(latlng);
     numCircles = 0;
-    startCircle ? numCircles+=1 : numCircles+=0;
-    endCircle ? numCircles+=1 : numCircles+=0;
+    startCircle ? numCircles += 1 : numCircles += 0;
+    endCircle ? numCircles += 1 : numCircles += 0;
     console.log(numCircles);
-    switch(numCircles) {
+    switch (numCircles) {
         case 0:
             setStartCircle(nearest.latlng);
             ev.target ? updateDropdown(startSelection, nearest.index, false) : null;
             break;
         case 1:
-            if (nearest.index == startSelection.selectedIndex){
+            if (nearest.index == startSelection.selectedIndex) {
                 // alert("Invalid. Try again.");
                 break;
             }
@@ -795,14 +797,14 @@ function handleMapClick(ev) {
             ev.target ? updateDropdown(destSelection, nearest.index, true) : null;
             break;
         case 2:
-            if (nearest.index == destSelection.selectedIndex || nearest.index == startSelection.selectedIndex){
+            if (nearest.index == destSelection.selectedIndex || nearest.index == startSelection.selectedIndex) {
                 // alert("Invalid. Try again.");
                 break;
             }
-            ev.target ? updateDropdown(startSelection, destSelection.selectedIndex, true): null;
+            ev.target ? updateDropdown(startSelection, destSelection.selectedIndex, true) : null;
             startCircle.remove();
             startCircle = endCircle;
-            
+
             setEndCircle(nearest.latlng);
             ev.target ? updateDropdown(destSelection, nearest.index, true) : null;
             // startCircle.remove();
@@ -814,12 +816,12 @@ function handleMapClick(ev) {
 
 function setStartCircle(latlng, removeOld) {
     startCircle && removeOld ? startCircle.remove() : null;
-    startCircle = L.circle(latlng, {radius: 15, weight:13, color: 'green', opacity: 0.5, fillOpacity: 0, className: 'circle-transition'}).addTo(mymap);
+    startCircle = L.circle(latlng, { radius: 15, weight: 13, color: 'green', opacity: 0.5, fillOpacity: 0, className: 'circle-transition' }).addTo(mymap);
 }
 
 function setEndCircle(latlng, removeOld) {
     endCircle && removeOld ? endCircle.remove() : null
-    endCircle = L.circle(latlng, {radius: 15, weight:13, color: 'green', opacity: 0.5, fillOpacity: 0, className: 'circle-transition'}).addTo(mymap);
+    endCircle = L.circle(latlng, { radius: 15, weight: 13, color: 'green', opacity: 0.5, fillOpacity: 0, className: 'circle-transition' }).addTo(mymap);
 }
 
 function updateDropdown(selection, index, isEnd) {
@@ -827,29 +829,30 @@ function updateDropdown(selection, index, isEnd) {
     drawCircle = false;
     selection.dispatchEvent(new Event('change'));
     if (isEnd) {
-        window.setTimeout(()=>{navBttn.click();}, 400);
+        window.setTimeout(() => { navBttn.click(); }, 400);
     }
 }
 
 // Find location closest to selected circle
 function findNearestLoc(latlng) {
-    var nearest = {"index": 0, "name": "Red Square", "latlng": navigableLocations["Planetarium"]};
-    for(const loc in navigableLocations) {
+    var nearest = { "index": 0, "name": "Red Square", "latlng": navigableLocations["Planetarium"] };
+    for (const loc in navigableLocations) {
         const buildingLatlng = navigableLocations[loc];
         if (dist(buildingLatlng, latlng) < dist(nearest.latlng, latlng)) {
             const buildingIndex = startSelection.innerHTML.split('n>').findIndex(opt => opt.includes(loc));
-            nearest = {"index": buildingIndex ,"name": loc, "latlng": buildingLatlng}
+            nearest = { "index": buildingIndex, "name": loc, "latlng": buildingLatlng }
         }
     }
     return nearest;
 }
 
 var hoverCircles = [];
+
 function highlightNearest(ev) {
     hoverCircles.forEach(circ => circ.remove());
     hoverCircles = [];
     const latlng = [ev.latlng.lat, ev.latlng.lng];
-    var circle = L.circle(latlng, {radius: 15, weight:10, color: 'yellow', opacity: 0.7, fillOpacity: 0, className: 'circle-transition'}).addTo(mymap);
+    var circle = L.circle(latlng, { radius: 15, weight: 10, color: 'yellow', opacity: 0.7, fillOpacity: 0, className: 'circle-transition' }).addTo(mymap);
     hoverCircles.push(circle);
     const nearest = findNearestLoc(latlng);
     circle.setLatLng(nearest.latlng);
@@ -870,7 +873,7 @@ function dist(n, m) {
 
 // returns squared number
 function square(a) {
-    return a*a;
+    return a * a;
 }
 
 function parseNodes(nodesTxt) {
@@ -882,9 +885,9 @@ function parseNodes(nodesTxt) {
     //finds the number of unique nodes
     var nodeCount = parseInt(lines[0]);
 
-    for(i = 1; i <= nodeCount; i++) {
-        
-        var elements  = lines[i].split(" ");
+    for (i = 1; i <= nodeCount; i++) {
+
+        var elements = lines[i].split(" ");
 
         var name = elements[3];
 
@@ -892,12 +895,12 @@ function parseNodes(nodesTxt) {
         //e.g. "MeanyHall" -> "Meany Hall" 
         var spacePositions = [];
         var offset = 0;
-        for(j = 0; j < name.length; j++) {
+        for (j = 0; j < name.length; j++) {
 
             var c = name.charAt(j);
 
             //somehow finds correct spots for spaces
-            if(j > 0 && c == c.toUpperCase() && !parseInt(c) && c != '0' &&
+            if (j > 0 && c == c.toUpperCase() && !parseInt(c) && c != '0' &&
                 name.charAt(j + 1) != name.charAt(j + 1).toUpperCase()) {
                 spacePositions.push(j + offset);
                 offset++;
@@ -914,9 +917,9 @@ function parseNodes(nodesTxt) {
         //      OR
         //      name belongs to libraryLocations
         // then its not a building
-        var isBuilding = !( ((name.charAt(0) == 'R' || name.charAt(0) == 'N') && parseInt(name.substring(1))) || libraryLocations[name]);
+        var isBuilding = !(((name.charAt(0) == 'R' || name.charAt(0) == 'N') && parseInt(name.substring(1))) || libraryLocations[name]);
 
-        if(isBuilding) {
+        if (isBuilding) {
             buildingLocations[name] = [elements[1], elements[2]];
         }
     }
