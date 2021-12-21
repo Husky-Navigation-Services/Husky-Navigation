@@ -11,4 +11,3 @@ navInfo.onmouseleave = () => {
   navPopup.classList.add("is-not-visible");
 }
 
-

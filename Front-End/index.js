@@ -173,7 +173,7 @@ var footer =  document.getElementById("footer");
 var locationIcon = document.getElementById("locationIcon");
 var weatherPopup = document.getElementById("weatherPopup");
 var weatherIcon = document.getElementById("weatherIcon");
-var weatherIconMini = document.getElementById("weatherIconMini"); // icon within popup
+var weatherIconMini = document.getElementById("weatherIconMini");
 var weatherArrow = document.getElementById("arrow");
 var weatherPopupBody = document.getElementById("weatherPopupBody");
 var weatherPopupHeader = document.getElementById("weatherPopupHeader");
@@ -187,6 +187,7 @@ const destSelection = document.getElementById("destinationsId");
 const contentSections = document.getElementsByClassName("contentSection");
 const closeDevX = document.getElementById("close-dev-x");
 const devResources = document.getElementById("dev-resources");
+var navPopupContainer = document.getElementById("nav-popup-container");
 
 // Adds event listeners.
 logo.addEventListener("click", toggleContent);
