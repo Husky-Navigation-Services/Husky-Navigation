@@ -262,8 +262,7 @@ function toggleWeatherPopup() {
 
 // Sets site theme by cookie if exists.
 const cookies = {};
-console.log(document.cookie);
-document.cookie.split(';').forEach(pair => {
+document.cookie.replace(/\s/g, '').split(';').forEach(pair => {
     pair = pair.split('=');
     cookies[pair[0]] = pair[1];
 });
