@@ -257,39 +257,68 @@ function toggleWeatherPopup() {
     }
 }
 
-// Toggles the overall color theme.
+// Sets theme by cookie if exists or by OS theme if no cookie exists.
+window.onload=function() {
+    var cookie_pos = document.cookie.indexOf('theme='); // locates cookie
+    if (cookie_pos != -1) { // if exists cookie
+        var cookieTheme = substr(cookie_pos + 10, document.cookie.indexOf(';', cookie_pos)); // extracts cookie
+        if (cookieTheme == "dark") {
+            darkMode();
+        } else {
+            lightMode();
+        }
+    } else {
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            darkMode();
+        }
+    }
+}
+
+// Toggles the overall site theme.
 function toggleTheme() {
     if (this.checked) { // Represents dark mode.
-        horizontalBar.style.backgroundColor = "#202225";
-        leftSideBar.style.backgroundColor = "#202225";
-        titleElements.style.backgroundColor = "#202225";
-        weatherArrow.style.fill = "#202225";
-        weatherPopupBody.style.backgroundColor = "#202225";
-        wordmark.src = "uwWordmarks/UnivWaWordmark.png";
-        title.style.color = "whitesmoke";
-        logo.src = "logos/HuskyNavLogoDarker.png";
-        logo.style.borderWidth = "0px";
-        logo.style.width = "70px";
-        logo.style.height = "70px";
-        logo.style.marginLeft = "0px";
-        logo.style.marginTop = "10px"; 
-        expandIcon.style.background = "#202225"; 
-        devResources.style.background = "#202225";
+        darkMode();
     } else { // Represents light mode.
-        horizontalBar.style.backgroundColor = "#4b2e83";
-        leftSideBar.style.backgroundColor = "#4b2e83";
-        titleElements.style.backgroundColor = "whitesmoke";
-        weatherArrow.style.fill = "#4b2e83";
-        weatherPopupBody.style.backgroundColor = "#4b2e83"
-        wordmark.src = "uwWordmarks/UnivWaWordmarkPurple.png";
-        title.style.color = "#4b2e83";
-        logo.src = "logos/HuskyNavLogoWhite.png";
-        logo.style.borderWidth = "5px";
-        logo.style.width = "60px";
-        logo.style.height = "60px";
-        expandIcon.style.background = "#4b2e83"; 
-        devResources.style.background = "#4b2e83";
+        lightMode();
     }
+}
+
+// Sets site UI to dark mode.
+function darkMode() {
+    horizontalBar.style.backgroundColor = "#202225";
+    leftSideBar.style.backgroundColor = "#202225";
+    titleElements.style.backgroundColor = "#202225";
+    weatherArrow.style.fill = "#202225";
+    weatherPopupBody.style.backgroundColor = "#202225";
+    wordmark.src = "uwWordmarks/UnivWaWordmark.png";
+    title.style.color = "whitesmoke";
+    logo.src = "logos/HuskyNavLogoDarker.png";
+    logo.style.borderWidth = "0px";
+    logo.style.width = "70px";
+    logo.style.height = "70px";
+    logo.style.marginLeft = "0px";
+    logo.style.marginTop = "10px"; 
+    expandIcon.style.background = "#202225"; 
+    devResources.style.background = "#202225";
+    document.cookie = 'theme=dark;';
+}
+
+// Sets site UI to light mode.
+function lightMode() {
+    horizontalBar.style.backgroundColor = "#4b2e83";
+    leftSideBar.style.backgroundColor = "#4b2e83";
+    titleElements.style.backgroundColor = "whitesmoke";
+    weatherArrow.style.fill = "#4b2e83";
+    weatherPopupBody.style.backgroundColor = "#4b2e83"
+    wordmark.src = "uwWordmarks/UnivWaWordmarkPurple.png";
+    title.style.color = "#4b2e83";
+    logo.src = "logos/HuskyNavLogoWhite.png";
+    logo.style.borderWidth = "5px";
+    logo.style.width = "60px";
+    logo.style.height = "60px";
+    expandIcon.style.background = "#4b2e83"; 
+    devResources.style.background = "#4b2e83";
+    document.cookie = 'theme=light;';
 }
 
 // Handles new input in a search bar. Scrolls to the matching location element in the

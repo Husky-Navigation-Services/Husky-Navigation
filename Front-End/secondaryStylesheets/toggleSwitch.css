@@ -21,13 +21,12 @@ https://www.w3schools.com/howto/howto_css_switch.asp
   
   /* Hide default HTML checkbox */
   #switch input {
-    
     opacity: 0;
     width: 0;
     height: 0;
   }
   
-  /* The slider */
+  /* Theme Slider */
   #slider {
     position: absolute;
     cursor: pointer;

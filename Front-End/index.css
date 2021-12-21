@@ -325,10 +325,6 @@ option {
   height: 160px;
 }
 
-#currentMode {
-  display: none;
-}
-
 #aboutSection {
   margin-left: 40px;
   color: whitesmoke;
@@ -643,7 +639,6 @@ option {
   #weatherDiv,
   #locationIconDiv,
   .githubIconDiv,
-  #currentMode,
   #slider,
   #themeCheckbox,
   #switch,
