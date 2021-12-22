@@ -6,17 +6,19 @@
 -- @url https://huskynavigation.azurewebsites.net
 -->
 <html lang="en">
+
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta http-equiv="Content-Language" content="en">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=1">
-	<meta name="Husky Navigation" />
-	<meta name="keywords" content="husky navigation, hnav, localized mapping, campus navigation, uw campus map, washington campus map" />
-	<meta name="description" content="Localized mapping service prototype for ground-up navigation of the University of Washington campus via shortest-route routing." />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Language" content="en">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=1">
+    <meta name="Husky Navigation" />
+    <meta name="keywords" content="husky navigation, hnav, localized mapping, campus navigation, uw campus map, washington campus map" />
+    <meta name="description" content="Localized mapping service prototype for ground-up navigation of the University of Washington campus via shortest-route routing." />
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-5175XW1NS8"></script>
     <script>
-        window.dataLayer=window.dataLayer || [];
+        window.dataLayer = window.dataLayer || [];
+
         function gtag() {
             dataLayer.push(arguments);
         }
@@ -25,34 +27,29 @@
     </script>
     <title>Husky Navigation</title>
     <!-- For Webpage Icon (appears on browser tab) -->
-    <link rel="icon" href="logos/HuskyNavLogoTransparent.png">
+    <link rel="icon" href="./src/assets/logos/HuskyNavLogoTransparent.png">
     <!-- Primary Stylesheets -->
-    <link rel="stylesheet" href="index.css">
-    <link rel="stylesheet" href="secondaryStylesheets/toggleSwitch.css">
-    <link rel="stylesheet" href="secondaryStylesheets/weather.css">
-    <link rel="stylesheet" href="secondaryStylesheets/logo.css">
-    <link rel="stylesheet" href="secondaryStylesheets/popup.css">
+    <link rel="stylesheet" href="./src/css/index.css">
+    <link rel="stylesheet" href="./src/css/toggleSwitch.css">
+    <link rel="stylesheet" href="./src/css/weather.css">
+    <link rel="stylesheet" href="./src/css/logo.css">
+    <link rel="stylesheet" href="./src/css/popup.css">
     <!-- For LeafletJS Maps -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
-    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
-    crossorigin=""/>
-    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
-    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
-    crossorigin=""></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
     <!-- For sending emails via Smtp.JS API -->
     <script src="https://smtpjs.com/v3/smtp.js"></script>
     <!-- Load primary JavaScript source code -->
-    <script src="index.js" defer></script>
-
-    <script src="./Scripts/popup.js" defer></script>
+    <script src="./src/js/index.js" defer></script>
+    <script src="./src/js/scripts/popup.js" defer></script>
 </head>
- 
+
 <body>
     <!-- Map -->
     <div id="map"></div>
-    
+
     <div id="dev-resources">
-        <a id="dev-resources-text" href="https://hnavcontent.azurewebsites.net">Developer Tools</a><span  id="close-dev-x">+</span>
+        <a id="dev-resources-text" href="https://hnavcontent.azurewebsites.net">Developer Tools</a><span id="close-dev-x">+</span>
     </div>
 
     <!-- Content -->
@@ -67,7 +64,7 @@
                     <!-- UW Wordmark -->
                     <div id="uw-wordmark-container">
                         <a href="https://www.washington.edu">
-                            <img id="uw-wordmark" src="uwWordmarks/UnivWaWordmarkPurple.png" alt="uwWordmarks/UnivWaWordmark.png">
+                            <img id="uw-wordmark" src="./src/assets/uwWordmarks/UnivWaWordmarkPurple.png" alt="uwWordmarks/UnivWaWordmark.png">
                         </a>
                     </div>
                 </div>
@@ -75,7 +72,7 @@
                 <!-- Nav -->
                 <div id="nav-header-container">
                     <h6 id="navHeader" class="header">NAVIGATION </h6>
-                    <img id="nav-info" class="info-icon" alt="information" src="./miscIcons/InfoIcon.png">
+                    <img id="nav-info" class="info-icon" alt="information" src="./src/assets/miscIcons/InfoIcon.png">
                 </div>
                 <div id="nav-popup-container" class="is-not-visible">
                     <h4 class="instruction-header">Walk between campus locations with <span class="underline">Navigation</span></h4>
@@ -84,7 +81,7 @@
                 <span class="uw-slant"></span>
 
                 <!-- Input Fields -->
-                <div id="navSection" class="inputs contentSection"> 
+                <div id="navSection" class="inputs contentSection">
                     <!-- Select Start -->
                     <div class="inputDiv">
                         <select aria-label="Starting Point" name="startingPoints" id="startingPointsId" class="select">
@@ -108,13 +105,13 @@
                     <!-- Navigation Button -->
                     <button id="navBtn" class="navBtn">Navigate</button>
                 </div>
-                
+
                 <!-- Buildings List -->
                 <h6 id="buildingsHeader" class="header"> BUILDINGS </h6>
                 <span class="uw-slant"></span>
                 <!-- TODO: "height: 0px" attribute is not included in stylesheet since it gets overwritten somehow, leading
                 to bug where the user must click on a header twice before it functions properly. Fix style. -->
-                <div id="buildingsSection" class="contentSection" style="height: 0px;"> 
+                <div id="buildingsSection" class="contentSection" style="height: 0px;">
                     <input type="text" class="searchBar" id="buildingsSearch" placeholder="Search for buildings..">
                     <div id="building-container" class="vertical-menu">
                         <!-- [Dynamically Added] -->
@@ -124,7 +121,7 @@
                 <!-- Libraries List -->
                 <h6 id="librariesHeader" class="header"> LIBRARIES </h6>
                 <span class="uw-slant"></span>
-                <div id="librariesSection" class="contentSection" style="height: 0px;"> 
+                <div id="librariesSection" class="contentSection" style="height: 0px;">
                     <input type="text" class="searchBar" id="librariesSearch" placeholder="Search for libraries..">
                     <div id="library-container" class="vertical-menu">
                         <!-- [Dynamically Added] -->
@@ -134,7 +131,7 @@
                 <!-- Bus Stops List -->
                 <h6 id="stopHeader" class="header"> BUS STOPS </h6>
                 <span class="uw-slant"></span>
-                <div id="stopSection" class="contentSection" style="height: 0px;"> 
+                <div id="stopSection" class="contentSection" style="height: 0px;">
                     <input type="text" class="searchBar" id="busStopSearch" placeholder="Search for bus stops..">
                     <div id="bus-stop-container" class="vertical-menu">
                         <!-- [Dynamically Added] -->
@@ -161,9 +158,9 @@
                     <p class="contributor"><a style="color: whitesmoke; text-decoration:none;" href="https://www.linkedin.com/in/albweng/"> Albert Weng </a> 24' | Content </p>
                 </div>
                 <div id="terms">
-                    <a style="color: gray; text-decoration:underline;" href="./Terms-of-Service/">Terms of Service</a>
+                    <a style="color: gray; text-decoration:underline;" href="./public/Terms-of-Service/">Terms of Service</a>
                     <span style="color: gray; text-decoration:underline;">|</span>
-                    <a style="color: gray; text-decoration:underline;" href="./Cookie-Policy/">Cookie Policy</a>
+                    <a style="color: gray; text-decoration:underline;" href="./public/Cookie-Policy/">Cookie Policy</a>
                 </div>
             </div>
             <div id="expand-icon-div" onclick="toggleSideBarMobile()">
@@ -174,17 +171,17 @@
         </div>
         <!-- Right Sidebar (in the same row as the main logo) -->
         <div class="sidebarRight">
-            <img id="logo" src="logos/HuskyNavLogoWhite.png" alt="logos/HuskyNavLogoTransparent.png">
+            <img id="logo" src="./src/assets/logos/HuskyNavLogoWhite.png">
         </div>
 
         <!-- Horizontal Sidebar -->
         <div id="horizontalBarId" class="horizontalBar">
             <!-- Start -->
-            <img id="startMarker" class="marker" alt="Start Point Icon" src="markerIcons/EmptyRedCircle.png">
+            <img id="startMarker" class="marker" alt="Start Point Icon" src="./src/assets/markerIcons/EmptyRedCircle.png">
             <p id="from" class="tofrom">Select Starting Point</p>
             <div class="horizontalSpacer"></div>
             <!-- End -->
-            <img id="endMarker" class="marker" alt="End Point Icon" src="markerIcons/RedMarker.png">
+            <img id="endMarker" class="marker" alt="End Point Icon" src="./src/assets/markerIcons/RedMarker.png">
             <p id="to" class="tofrom">Select Destination</p>
             <!-- Distance -->
             <div class="bar"> &#9474 </div>
@@ -197,7 +194,7 @@
             <!-- Weather Icon and Weather Popup -->
             <div id="weatherDiv">
                 <!-- Weather Icon -->
-                <img id="weatherIcon" src="miscIcons/TransparentPlaceholderIcon.png" alt="//:0">
+                <img id="weatherIcon" src="./src/assets/miscIcons/TransparentPlaceholderIcon.png" alt="//:0">
                 <!-- Weather Popup (Sky Conditions) -->
                 <!-- TODO: Fix same double-clicking styling issue as above -->
                 <div id="weatherPopup" style="height: 0px;">
@@ -215,19 +212,19 @@
                             <p id="weatherPopupData"> 45&#176F / 7&#176C <br> 10 <small>MPH</small> Wind</p>
                             <!--<p id="weatherPopupData1" style="display: inline-block; "> No <br> Rain </p>-->
                             <!-- Popup Sub-Icon (Need Umbrella or Not?)-->
-                            <img id="weatherIconMini" src="umbrellaIcons/RainIcon.png" alt="//:0">
+                            <img id="weatherIconMini" src="./src/assets/umbrellaIcons/RainIcon.png" alt="//:0">
                         </div>
                     </div>
                 </div>
             </div>
             <!-- Location Icon -->
             <div id="locationIconDiv" title="Return to UW">
-                <img id="locationIcon" src="miscIcons/LocationIcon.png" alt="//:0">
+                <img id="locationIcon" src="./src/assets/miscIcons/LocationIcon.png" alt="//:0">
             </div>
             <!-- GitHub Page Icon -->
             <div class="githubIconDiv" title="Visit GitHub Repository">
                 <a href="https://github.com/Husky-Navigation-Services/Husky-Navigation" aria-label="Visit GitHub Repository">
-                    <img alt="GitHub Icon" src="miscIcons/GithubIcon.png" id="githubIcon">
+                    <img alt="GitHub Icon" src="./src/assets/miscIcons/GithubIcon.png" id="githubIcon">
                 </a>
             </div>
             <!-- Coffee Cup Icon (Monetized) -->
@@ -246,6 +243,7 @@
             </label>
         </div>
     </div>
-    
+
 </body>
+
 </html>
