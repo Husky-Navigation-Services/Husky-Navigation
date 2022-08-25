@@ -1,3 +1,5 @@
+*Check it out!* https://huskynavigation.azurewebsites.net/
+
 # Husky-Navigation
 A full-stack web application for navigation of the University of Washington Campus that enables shortest-route calculation between buildings and other locations. Builds off the existing, limited [University of Washington Campus Map web application](https://www.washington.edu/maps/) in a campus-oriented way. Built to be highly scalable such that other campuses can customize our map for the University of Washington Campus for their own campus.
 
